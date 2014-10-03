@@ -5,12 +5,12 @@
     <uri>/utils</uri> 
     <function>
         <name>formatDate</name>
-        <function-class>com.uuola.txweb.framework.utils.DateUtil</function-class>
+        <function-class>com.uuola.commons.DateUtil</function-class>
         <function-signature>java.lang.String formatDate(java.util.Date, java.lang.String)</function-signature>
     </function>
     <function>
         <name>formatTimeMillis</name>
-        <function-class>com.uuola.txweb.framework.utils.DateUtil</function-class>
+        <function-class>com.uuola.commons.DateUtil</function-class>
         <function-signature>java.lang.String formatTimeMillis(java.lang.Long, java.lang.String)</function-signature>
     </function>
     <function>
