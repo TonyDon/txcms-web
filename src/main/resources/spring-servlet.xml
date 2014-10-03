@@ -54,12 +54,12 @@
 		<property name="defaultViews">
 			<list>
 				<bean class="com.uuola.txweb.framework.view.json.MappingFastJsonView" />
-				<bean class="com.uuola.txweb.framework.view.xml.XmlView">
+				<!-- <bean class="com.uuola.txweb.framework.view.xml.XmlView">
 					<property name="marshaller">
 						<bean class="org.springframework.oxm.xstream.XStreamMarshaller"
 							p:autodetectAnnotations="true" />
 					</property>
-				</bean>
+				</bean> -->
 			</list>
 		</property>
 	</bean>
