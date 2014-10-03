@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册用户</title>
+<link href="../static/style/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<link href="../static/style/common.css" rel="stylesheet">
+<style>
+.frm{
+ padding:15px;margin:2px auto;
+ border:1px solid #D2D1D5;
+ width:380px;
+ height:380px;
+}
+.frm .col {
+	margin-bottom: 20px;
+	height:50px;
+}
+
+label.title , label.error{
+	display: inline-block;
+	font-size: 14px;
+	padding: 0 0 0 5px;
+	margin:0;
+	width: 70px;
+	text-align: right;
+}
+label.error{display:block;clear:both;color:#DB0000;padding:0 0 0 80px;font-size:12px;text-align: left;width:99%;}
+input.frm_input:hover,select.frm_select:hover{border-color:#4BA9E6;background-color:#ffffff;}
+input.frm_input:focus,select.frm_select:focus{background-color:#ffffff;border-color:#3EA3E5;color:#1A7FC0;}
+input.frm_input{
+width: 220px;
+height: 26px;
+line-height: 22px;
+font:14px '微软雅黑','Arial',sans-serif;
+padding-left:2px;
+border: solid 1px #C7C7C7;
+background:url(http://img03.taobaocdn.com/imgextra/i3/152137799/T2QU15XkBaXXXXXXXX_!!152137799.png) repeat-x;
+-webkit-border-radius: .3em; 
+-moz-border-radius: .3em;
+border-radius: .3em;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+.frm .vcode{
+margin: 0 5px;
+height:30px;
+vertical-align: middle;
+}
+.h2_ti{padding:0px 0px 9px 0px; font-size:16px;border-bottom:1px solid #D2D1D5;}
+.em_c1{color:#8A8891;display:block;padding-left:80px;clear:both;font-style:normal;}
+#regFrm{padding-top:20px;}
+
+#mask_bg{display:none;background:#ABABAB url(../static/image/ui-bg_flat_0_aaaaaa_40x100.png) repeat;
+		position:fixed;top:0;left:0;width:100%;height:100%;z-index:2;}
+#loading_img{display:none;z-index:3;width:100%;text-align:center;position:fixed;padding-top:50px;}
+#message_dialog{display:none;}
+#error_dialog{display:none;}
+</style>
+</head>
+<body>
+
+
+
+<div class="frm">
+<h2 class="h2_ti">您好，欢迎加入爱吃网【527001.com】 </h2>
+<form id="regFrm" action="../user/reg" method="post">
+<div class="col">
+	<label for="tel" class="title">手机号码：</label>
+	<input type="text" id="tel" name="tel" value="" class="frm_input notEmpty  number  tel" maxlength="12">
+	<em class="em_c1">用于登录系统、密码重置使用.</em>
+	<label for="tel" class="error"></label>
+</div>
+<div class="col">
+	<label for="key" class="title">登录密码：</label>
+	<input type="password" id="key" value="" class="frm_input notEmpty krate"  minlength="6">
+	<em class="em_c1">为了帐号安全,密码至少6位数字和字母的组合.</em>
+	<label for="key" class="error"></label>
+</div>
+<div class="col">
+	<label for="reKey" class="title">确认密码：</label>
+	<input type="password" id="reKey" value="" class="frm_input notEmpty" equalTo="#key">
+	<em class="em_c1">请重输入登录密码，确保无误.</em>
+	<label for="reKey" class="error"></label>
+</div>
+<div class="col">
+	<label for="captcha" class="title">验 证 码：</label>
+	<input type="text" id="captcha" name="captcha" value=""  class="frm_input notEmpty"  style="width:80px;">
+	<img id="vcode" class="vcode codeimg" src="../captcha/a" data-src="../captcha/">
+	<a href="#" id="refreshCaptcha">看不清,换一张</a>
+	<label for="captcha" class="error"></label>
+</div>
+<div class="center">
+ <input name="passKey" id="passKey" type="hidden" value="">
+ <input id="regBtn" type="button" value="注 册" class="button orange "/>
+ <input type="button"  id="resetBtn" value="重 填" class="button gray" onclick="ut.reload('?t='+ut.r());"/>
+</div>
+</form>
+
+</div>
+
+
+
+<div id="mask_bg" class="opacity"></div>
+<div id="loading_img"><img src="../static/image/ajax-loader.gif"/></div>
+
+<div id="message_dialog" title="提示信息">
+<div class="msg-content" style="padding:3px;word-break:break-all;word-wrap:break-word;line-height:24px;"></div>
+</div>
+
+<div id="error_dialog" title="错误信息">
+<ul id="err_list" class="ui-state-highlight ui-corner-all" style="display:none;padding:3px;word-break:break-all;word-wrap:break-word;line-height:18px;color:red;"></ul>
+</div>
+
+<script src="../static/js/jquery-1.10.1.min.js"></script>
+<script src="../static/js/jquery.validate.min.js"></script>
+<script src="../static/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="../static/js/messages_zh.js"></script>
+<script src="../static/js/common.js"></script>
+<script src="../static/js/jq.md5.js"></script>
+<script>
+$(function(){
+	var $rFrm = $("#regFrm");
+	$('#refreshCaptcha').click(function(){
+		var jvcode = $('#vcode');
+		jvcode.attr('src', jvcode.data('src')+ut.rndChr(64));
+	});
+	$.validator.addMethod("notEmpty", function(value, element) {
+		return (!value || $.trim(value)=='')?false:true;
+	}, '该项不能为空.');
+	$.validator.addMethod("tel", function(value, element) {
+		return va.tel(value);
+	}, '手机号码填写错误,请检查.');
+	$.validator.addMethod("krate", function(value, element) {
+		return (va.krate(value)>1);
+	}, '密码设置过于简单,请使用字母和数字混合设置.');
+	$rFrm.validate({
+		  rules: {
+			  tel: {
+			      remote: {
+			        url: "../userInfoRegCheck/tel",
+			        type: "get",
+			        data: {
+			          regTel: function() {
+			            return $("#tel").val();
+			          }
+			        }
+			      }
+			    }
+		},
+		messages: {
+			tel:{
+				remote:'手机号码已被注册过,请重新输入.'
+			}
+		}
+	});
+	
+    $('#regBtn').on('click', function(e){
+		if(!$rFrm.valid() ) {
+			return false;
+		}
+		$('#passKey').val($.md5($('#key').val()));
+		$(this).attr('disabled','disabled').val('正在处理, 请稍后...');
+		$rFrm.submit();
+   });
+    
+    $rFrm.on('submit',function(event) {
+	     event.preventDefault();
+	     showLoading();
+		 var jqFrm = $(this);
+		 var action = jqFrm.attr('action') || '';
+		 if(action==''){
+			 alert('form bind error');
+			 return false;
+		 }
+		 jQuery.ajax({
+				type: jqFrm.attr('method') || 'post',
+				url: action,
+				data: jqFrm.serialize(),
+				dataType: "json",
+				success: function(data,textStatus, xhr){
+					if(data) {
+						if(data.errors.length==0) {
+							showMessage('恭喜,注册成功!');
+							ut.wait(function(){ut.reload('?t='+ut.r());},2000);
+						}else{
+							showMessage(data.errors.join('<br/>'));
+							$('#refreshCaptcha').click();
+							$('#regBtn').removeAttr('disabled').val('注 册');
+						}
+					}
+				},
+				complete: function(){
+					hideLoading();
+				}
+			});
+	   return false;
+	 });
+    
+    $(document).ajaxError(onGlobalAjaxError);
+});
+</script>
+
+
+</body>
+</html>

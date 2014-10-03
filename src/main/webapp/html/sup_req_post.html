@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>发布供求信息</title>
+<link href="../static/style/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<link href="../static/style/common.css" rel="stylesheet">
+<link href="../static/uploadify/uploadify.css" rel="stylesheet">
+<style>
+.frm{
+ padding:15px;margin:2px auto;
+ border:1px solid #D2D1D5;
+ width:500px;
+}
+.frm .col {
+	margin-bottom: 20px;
+	height:50px;
+	clear:both;
+}
+
+label.title , label.error{
+	display: inline-block;
+	font-size: 14px;
+	padding: 0;
+	margin:0;
+	width: 90px;
+	text-align: right;
+}
+label.error{display:block;clear:both;color:#DB0000;padding:0 0 0 95px;font-size:12px;text-align: left;width:99%;}
+.em_c1{color:#8A8891;display:block;padding-left:95px;clear:both;font-style:normal;}
+input.frm_input:hover,select.frm_select:hover{border-color:#4BA9E6;background-color:#ffffff;}
+input.frm_input:focus,select.frm_select:focus{background-color:#ffffff;border-color:#3EA3E5;color:#1A7FC0;}
+input.frm_input, select.frm_select{
+width: 220px;
+height: 26px;
+line-height: 22px;
+font:14px '微软雅黑','Arial',sans-serif;
+padding-left:2px;
+border: solid 1px #C7C7C7;
+-webkit-border-radius: .3em; 
+-moz-border-radius: .3em;
+border-radius: .3em;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+textarea.frm_text{
+                border: solid 1px #C7C7C7;
+                -webkit-border-radius: .3em; 
+                -moz-border-radius: .3em;
+                border-radius: .3em;
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+                -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+                box-shadow: 0 1px 2px rgba(0,0,0,.1);
+                padding:3px;
+                font-size:14px;  
+}
+select.frm_select{
+ border: solid 1px #C7C7C7;
+ height:26px;
+}
+.frm .vcode{
+margin: 0 5px;
+height:30px;
+vertical-align: middle;
+}
+.h2_ti{padding:0px 0px 9px 0px; font-size:16px;border-bottom:1px solid #D2D1D5;}
+
+#srFrm{padding-top:20px;}
+#imageArea{
+	display:block;
+	padding:5px;
+	width:400px;
+	height:99%;
+	clear:both;
+}
+#imageArea div{
+	width:120px;
+	height:100px;
+	float:left;
+}
+#imageArea img{
+	border:1px #DEDFEC solid;
+	padding:2px;
+	margin-top:9px;
+}
+#imageArea a{clear:both;display:block;}
+
+#mask_bg{display:none;background:#ABABAB url(../static/image/ui-bg_flat_0_aaaaaa_40x100.png) repeat;
+		position:fixed;top:0;left:0;width:100%;height:100%;z-index:2;}
+#loading_img{display:none;z-index:3;width:100%;text-align:center;position:fixed;padding-top:50px;}
+#message_dialog{display:none;}
+#error_dialog{display:none;}
+
+.imageUploadBtn{background:#3399E0}
+</style>
+</head>
+<body>
+
+
+
+<div class="frm">
+<h2 class="h2_ti">供求信息发布 </h2>
+<form id="srFrm" action="../supReq/info" method="post">
+<input type="hidden" name="catId" value="0">
+<div class="col">
+	<label for="title" class="title">信息标题：</label>
+	<input type="text" id="title" name="title" value="" class="frm_input notEmpty" maxlength="50" style="width:350px;">
+	<em class="em_c1">该项必填，给信息起个标题方便客户检索.</em>
+	<label for="title" class="error"></label>
+</div>
+<div class="col">
+	<label for="infoType" class="title">信息类型：</label>
+	<select id="infoType" name="infoType" class="frm_select notSel">
+		<option value="">--请选择--</option>
+		<option value="0">S: 我有资源， 发布供应信息。</option>
+		<option value="1">R: 我有需求，发布需求信息。</option>
+	</select>
+	<em class="em_c1">该项必填，请选择您的信息类型</em>
+	<label for="infoType" class="error"></label>
+</div>
+<div class="col">
+	<label for="publishType" class="title">发布者类型：</label>
+	<select id="publishType" name="publishType" class="frm_select notEmpty">
+		<option value="">--请选择--</option>
+		<option value="0">P: 我是个人发布。</option>
+		<option value="1">S: 我是销售商。</option>
+		<option value="2">C: 我是合作社。</option>
+		<option value="3">M: 我是生产商。</option>
+		<option value="4">O： 其他类型。</option>
+	</select>
+	<em class="em_c1">该项必填.</em>
+	<label for="publishType" class="error"></label>
+</div>
+<div class="col">
+	<label for="contactName" class="title">联系人名：</label>
+	<input type="text" id="contactName" name="contactName" value="" class="frm_input notEmpty" maxlength="18">
+	<em class="em_c1">该项必填，方便客户联系您.</em>
+	<label for="contactName" class="error"></label>
+</div>
+<div class="col">
+	<label for="contactTel" class="title">联系电话：</label>
+	<input type="text" id="contactTel" name="contactTel" value="" class="frm_input notEmpty tel" maxlength="18">
+	<em class="em_c1">该项必填，方便客户联系您.</em>
+	<label for="contactTel" class="error"></label>
+</div>
+<div class="col">
+	<label for="contactMail" class="title">联系邮箱：</label>
+	<input type="text" id="contactMail" name="contactMail" value="" class="frm_input email" maxlength="50">
+	<em class="em_c1">该项选填，建议填写.</em>
+	<label for="contactMail" class="error"></label>
+</div>
+<div class="col">
+	<label for="province" class="title">所在地区：</label> 
+	<select name="province" id="province" class="frm_select  notSel" style="width: 114px; height: 26px;"></select>
+	<select name="city" id="city" class="frm_select" style="width: 114px; height: 26px;"></select>
+	<select name="area" id="area" class="frm_select" style="width: 114px; height: 26px;"></select>
+	<em class="em_c1">该项必填.</em>
+	<label for="province" class="error"></label>
+</div>
+<div class="col">
+	<label for="contactAddr" class="title">详细地址：</label>
+	<input type="text" id="contactAddr" name="contactAddr" value="" class="frm_input" maxlength="100" style="width:350px;">
+	<em class="em_c1">该项选填，建议填写.</em>
+	<label for="contactAddr" class="error"></label>
+</div>
+<div class="col">
+	<label for="contactQq" class="title">联系QQ：</label>
+	<input type="text" id="contactQq" name="contactQq" value="" class="frm_input number" maxlength="100">
+	<em class="em_c1">该项选填，建议填写.</em>
+	<label for="contactQq" class="error"></label>
+</div>
+<div class="col">
+	<label for="contactWebsite" class="title">网站地址:</label>
+	<input type="text" id="contactWebsite" name="contactWebsite" value="" class="frm_input url" maxlength="100">
+	<em class="em_c1">该项选填，建议填写.</em>
+	<label for="contactWebsite" class="error"></label>
+</div>
+<div class="col">
+	<label for="orgName" class="title">公司/社团名：</label>
+	<input type="text" id="orgName" name="orgName" value="" class="frm_input" maxlength="100">
+	<em class="em_c1">该项选填，建议填写.</em>
+	<label for="orgName" class="error"></label>
+</div>
+<div class="col">
+	<label for="infoTag" class="title">推广词：</label>
+	<input type="text" id="infoTag" name="infoTag" value="" class="frm_input" maxlength="18">
+	<em class="em_c1">该项选填，建议填写.</em>
+	<label for="infoTag" class="error"></label>
+</div>
+<div class="col" style="height:150px;">
+	<label for="message" class="title" style="display:block;clear:both;">信息内容：</label>
+	<textarea id="message" name="message" class="frm_text notEmpty" minlength="10" maxlength="1000" style="width:350px;height:100px;margin-left:90px;"></textarea>
+	<em class="em_c1">该项必填，请对您的信息做说明. 限1000字内. -看看别人怎么写?</em>
+	<label for="message" class="error"></label>
+</div>
+<div class="col">
+	<label for="videoUrl" class="title">视频地址：</label>
+	<input type="text" id="videoUrl" name="videoUrl" value="" class="frm_input url" maxlength="18" style="width:350px;">
+	<em class="em_c1">该项选填，使用视频可以详细的介绍您的信息. -看看如何填写？</em>
+	<label for="videoUrl" class="error"></label>
+</div>
+<div class="col" style="height:200px;">
+	<label for="imageUrls" class="title">上传图片：</label>
+	<input type="file" id="image_upload" />
+	<em class="em_c1">该项选填，图片可以更好的让客户了解您的信息.</em>
+	<em class="em_c1">提示：</em>
+	<em class="em_c1">图片为jpg,png,gif类型，文件大小请控制在500KB. </em>
+	<em class="em_c1">最多可上传3张图片.</em>
+	<input type="hidden" id="imageUrls" name="imageUrls" value="">
+	<div id="imageArea"></div>
+	<div id="fileQueue"></div>
+</div>
+<div class="col">
+	<label for="captcha" class="title">验 证 码：</label>
+	<input type="text" id="captcha" name="captcha" value=""  class="frm_input notEmpty"  style="width:80px;">
+	<img id="vcode" class="vcode codeimg" src="../captcha/abc" data-src="../captcha/">
+	<a href="javascript:;" id="refreshCaptcha">看不清,换一张</a>
+	<label for="captcha" class="error"></label>
+</div>
+<div class="center">
+ <input id="submitBtn" type="button" value="发 布" class="button orange "/>
+ <input type="button"  id="resetBtn" value="重 填" class="button gray" onclick="ut.reload('?t='+ut.r());"/>
+</div>
+</form>
+</div>
+
+
+
+<div id="mask_bg" class="opacity"></div>
+<div id="loading_img"><img src="../static/image/ajax-loader.gif"/></div>
+
+<div id="message_dialog" title="提示信息">
+<div class="msg-content" style="padding:3px;word-break:break-all;word-wrap:break-word;line-height:24px;"></div>
+</div>
+
+<div id="error_dialog" title="错误信息">
+<ul id="err_list" class="ui-state-highlight ui-corner-all" style="display:none;padding:3px;word-break:break-all;word-wrap:break-word;line-height:18px;color:red;"></ul>
+</div>
+
+
+<script src="../static/js/jquery-1.10.1.min.js"></script>
+<script src="../static/js/jquery.validate.min.js"></script>
+<script src="../static/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="../static/js/messages_zh.js"></script>
+<script src="../static/js/common.js"></script>
+<script src="../static/js/address.js"></script>
+<script src="../static/js/template.js"></script>
+<script src="../static/uploadify/jquery.uploadify.min.js"></script>
+
+<script id="imgTpl" type="text/html">
+ <div id="upimg_{%=img.id%}">
+  <img id="img_{%=img.id%}" src="{%=img.thumb_src%}" width="80" height="65" class="up_img" data-src="{%=img.src%}"/>
+  <a href="javascript:;" id="imgDel_{%=img.id%}" onclick="deleteImage('{%=img.id%}','{%=img.src%}');">X 删除图片</a>
+ </div>
+</script>
+
+<script>
+function deleteImage(id, src){
+	var res = src || '';
+	$('#upimg_'+id).remove();
+	window.image_num--;
+	if(res==''){
+		return;
+	}
+	$.post('../uploader/image',{_method:'delete',imageUrl:res},function(res){
+		alert('删除成功!');
+	});
+};
+
+
+function mergeImage(){
+	var $imgs = $('#imageArea img.up_img');
+	var urls = [];
+	$.each($imgs, function(i,n){
+		var src = $(n).data('src') || '';
+		if(src && src.indexOf('upfile')>=0){
+			urls.push(src);
+		}
+	});
+	if(urls.length>0){
+		$('#imageUrls').val(urls.join('|'));
+	}else{
+		$('#imageUrls').val('');
+	}
+};
+var image_num = 0;
+$(function(){
+	var $rFrm = $("#srFrm");
+	$('#refreshCaptcha').click(function(){
+		var jvcode = $('#vcode');
+		jvcode.attr('src', jvcode.data('src')+ut.rndChr(32));
+	});
+	
+	$.validator.addMethod("notEmpty", function(value, element) {
+		return (!value || $.trim(value)=='')?false:true;
+	}, '该项不能为空.');
+	
+	$.validator.addMethod("notSel", function(value, element) {
+		return (!value || $.trim(value)=='' || $.trim(value)=='-' || $.trim(value).indexOf('请选择')>=0)?false:true;
+	}, '该项不能为空，请选择.');
+	
+	$.validator.addMethod("tel", function(value, element) {
+		return va.tel(value);
+	}, '手机号码填写错误,请检查.');
+	
+    $('#submitBtn').on('click', function(e){
+    	mergeImage();
+		if(!$rFrm.valid() ) {
+			return false;
+		}
+		$(this).attr('disabled','disabled').val('正在处理, 请稍后...');
+		$rFrm.submit();
+   });
+
+    
+    $rFrm.on('submit',function(event) {
+	     event.preventDefault();
+	     showLoading();
+		 var jqFrm = $(this);
+		 var action = jqFrm.attr('action') || '';
+		 if(action==''){
+			 alert('form bind error');
+			 return false;
+		 }
+		 jQuery.ajax({
+				type: jqFrm.attr('method') || 'post',
+				url: action,
+				data: jqFrm.serialize(),
+				dataType: "json",
+				success: function(data,textStatus, xhr){
+					if(data) {
+						if(data.errors.length==0) {
+							showMessage('恭喜,信息提交成功, 正在审核中!');
+							ut.wait(function(){ut.reload('?t='+ut.r());},2000);
+						}else{
+							showMessage(data.errors.join('<br/>'));
+							$('#refreshCaptcha').click();
+							$('#submitBtn').removeAttr('disabled').val('发 布');
+						}
+					}
+				},
+				complete: function(){
+					hideLoading();
+				}
+			});
+	   return false;
+	 });
+    addressInit('province', 'city', 'area');
+    
+    $('#image_upload').uploadify({
+        'swf'      : '../static/uploadify/uploadify.swf',
+        'uploader' : '../uploader/image',
+        'fileObjName' : 'imageFile',
+        'method'   : 'post',
+        'formData' : { '_r' : ut.r() },
+        'queueID'  : 'fileQueue',
+        'fileTypeDesc' : '图片文件',
+        'fileTypeExts' : '*.gif; *.jpg; *.png',
+        'queueSizeLimit' : 1,
+        'fileSizeLimit' : '500KB',
+        'auto'     : true,
+        'buttonText' : '选择图片',
+        'multi'    : false,
+        'width'    : 70,
+        'height'   : 22,
+        'buttonClass' : 'imageUploadBtn',
+        'onSelect' : function(file) {
+            if(window.image_num==3){
+            	$('#image_upload').uploadify('stop');
+            }
+        },
+	    'onUploadSuccess' : function(file, data, response) {
+	    	if(data.indexOf('/image')<0){
+	    		// log.trace(upload image error);
+	    		return;
+	    	}
+	    	var dat={};
+	    	dat.img={};
+	    	dat.img.src=data;
+	    	dat.img.thumb_src='..' + data +'.w200.thumb';
+	    	dat.img.id=ut.rndChr(16);
+	        $('#imageArea').append(template.render('imgTpl',dat));
+	        window.image_num++;
+	    },
+	    'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+            alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+        }
+    });
+    
+    $(document).ajaxError(onGlobalAjaxError);
+});
+</script>
+
+
+</body>
+</html>
