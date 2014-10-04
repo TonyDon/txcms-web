@@ -25,7 +25,7 @@ label.title , label.error{
 	width: 70px;
 	text-align: right;
 }
-label.error{display:block;clear:both;color:#DB0000;padding:0 0 0 80px;font-size:12px;text-align: left;width:99%;}
+label.error{display:block;clear:both;color:#DB0000;padding:0 0 0 80px;font-size:12px;text-align: left;width:99%;background:#FBFAE4}
 input.frm_input:hover,select.frm_select:hover{border-color:#4BA9E6;background-color:#ffffff;}
 input.frm_input:focus,select.frm_select:focus{background-color:#ffffff;border-color:#3EA3E5;color:#1A7FC0;}
 input.frm_input{
@@ -84,11 +84,11 @@ vertical-align: middle;
 	<em class="em_c1">请重输入登录密码，确保无误.</em>
 	<label for="reKey" class="error"></label>
 </div>
-<div class="col">
+<div class="col" id="captchaZone" style="display:none;">
 	<label for="captcha" class="title">验 证 码：</label>
-	<input type="text" id="captcha" name="captcha" value=""  class="frm_input notEmpty"  style="width:80px;">
-	<img id="vcode" class="vcode codeimg" src="../captcha/a" data-src="../captcha/">
-	<a href="#" id="refreshCaptcha">看不清,换一张</a>
+	<input type="text" id="captcha" name="captcha" value=""  class="frm_input notEmpty captcha"  style="width:80px;">
+	<img id="vcode" class="vcode codeimg" src="../static/image/blank.gif" data-src="../captcha/">
+	<a href="#" id="refreshCaptcha">不好认,换一张</a>
 	<label for="captcha" class="error"></label>
 </div>
 <div class="center">
@@ -117,24 +117,47 @@ vertical-align: middle;
 <script src="../static/js/jquery.validate.min.js"></script>
 <script src="../static/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="../static/js/messages_zh.js"></script>
+<script src="../static/js/jq.cookie.js"></script>
 <script src="../static/js/common.js"></script>
 <script src="../static/js/jq.md5.js"></script>
 <script>
+function validCaptcha(){
+	var cc_hash = $.cookie('cc_hash');
+	var cc_rc = $.cookie('cc_rc');
+	var ctext = $.md5(ut.lower($('#captcha').val())+cc_rc);
+	return cc_hash==ctext ;
+};
+
+
 $(function(){
 	var $rFrm = $("#regFrm");
+	
 	$('#refreshCaptcha').click(function(){
 		var jvcode = $('#vcode');
 		jvcode.attr('src', jvcode.data('src')+ut.rndChr(64));
 	});
+	
 	$.validator.addMethod("notEmpty", function(value, element) {
 		return (!value || $.trim(value)=='')?false:true;
 	}, '该项不能为空.');
+	
 	$.validator.addMethod("tel", function(value, element) {
 		return va.tel(value);
 	}, '手机号码填写错误,请检查.');
+	
 	$.validator.addMethod("krate", function(value, element) {
 		return (va.krate(value)>1);
 	}, '密码设置过于简单,请使用字母和数字混合设置.');
+	
+	$.validator.addMethod("captcha", function(value, element) {
+		return validCaptcha();
+	}, '验证码填写有误哦.');
+	
+	$('#reKey').one('click', function(e){
+		$('#refreshCaptcha').click();
+		$('#captchaZone').show();
+	});
+	
 	$rFrm.validate({
 		  rules: {
 			  tel: {
