@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册用户</title>
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/gray/easyui.css">
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
+<script src="../static/js/jquery-1.11.1.min.js"></script>
+<script src="../static/jqeasyui/jquery.easyui.min.js"></script>
+<script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
+
+<style>
+</style>
+</head>
+<body>
+
+
+
+
+
+<table id="user_data_table"></table>  
+
+
+<script>
+function parseModel(model){
+	var d = {};
+	d.total = model.page.totalCount;
+	d.rows  = model.page.data;
+	TXWEB.tb.datagrid("options").records=model.page.totalCount;
+	return d;
+};
+
+var TXWEB={};
+	TXWEB.tb = $('#user_data_table');
+
+	TXWEB.tb.datagrid({
+	method:'get',
+    title: '用户信息列表',  
+    iconCls: 'icon-save',
+    columns:[[
+    {field:'id',title:'ID 编号',},
+    {field:'name',title:'用户名',width:100},
+    {field:'tel',title:'电话号码',width:100}
+    ]],
+    idField: 'id',
+    width: 500,  
+    height: 350,
+    nowrap: false,  
+    striped: true, 
+    pagination: true,  
+    rownumbers: true,
+    singleSelect: false,  
+    remoteSort:false,
+    fitColumns:true,
+    showFooter:true,
+    sortName: 'id',  
+    sortOrder: 'asc', 
+    pageSize:5,
+    pageList:[5,10,20,50],
+    records:0,
+    toolbar: [{  
+        text: '添加',  
+        iconCls: 'icon-add',  
+        handler: function() {  
+        alert('添加数据');
+        }  
+    }, '-', {  
+        text: '保存',  
+        iconCls: 'icon-save',  
+        handler: function() {  
+        alert('保存数据'); 
+        }  
+    }],
+    onBeforeLoad:function(){
+
+    },
+    loader:function(param, succCall, err){
+    	var opts = TXWEB.tb.datagrid("options");
+    	var params = $.extend({pageNo:param.page, listSize:param.rows, records:opts.records}, param);
+    		$.ajax({
+    			type : opts.method,
+    			url : '/txcms-web/user/info/search.json',
+    			data : params,
+    			dataType : "json",
+    			success : function (model) {
+    				succCall(parseModel(model));
+    			},
+    			error : function () {
+    				err.apply(this, arguments);
+    			}
+    		});
+    }
+});
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
