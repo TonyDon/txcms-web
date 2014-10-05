@@ -25,10 +25,47 @@
 	p:defaultEncoding="utf-8"
 	p:maxInMemorySize="131072"
 	p:maxUploadSize="524288"
-	/> 
- 
+	/>
 
+
+	<bean id="myContentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManager">
+	<constructor-arg>
+		<array>
+			<!-- 以下策略存在顺序关系  -->
+			<!-- 使用路径扩展名视图展现策略 -->
+			<bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+				<constructor-arg>
+					<map>
+						<entry key="json" value="application/json" />
+						<entry key="html" value="text/html" />
+					</map>
+				</constructor-arg>
+			</bean>
+			<!-- 使用请求参数format=? 视图展现策略 -->
+			<bean class="org.springframework.web.accept.ParameterContentNegotiationStrategy">
+				<property name="parameterName" value="format" />
+				<constructor-arg>
+					<map>
+						<entry key="json" value="application/json" />
+						<entry key="html" value="text/html" />
+					</map>
+				</constructor-arg>
+			</bean>
+			<!-- 启用header Accept 信息识别视图展现策略  -->
+			<bean class="org.springframework.web.accept.HeaderContentNegotiationStrategy" />
+			<!-- 默认视图展现策略 -->
+			<bean class="org.springframework.web.accept.FixedContentNegotiationStrategy">
+				<constructor-arg value="text/html"/>
+			</bean>
+		</array>
+	</constructor-arg>
+	</bean>
+	
+	
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+<!-- 	
+		usage : contentNegotiationManager
+		more see : ContentNegotiationManagerFactoryBean
 		<property name="ignoreAcceptHeader" value="false" />
 		<property name="mediaTypes">
 			<map>
@@ -38,7 +75,9 @@
 			</map>
 		</property>
 		<property name="defaultContentType" value="text/html" />
-		<property name="favorParameter" value="false" />
+		<property name="favorParameter" value="false" /> 
+-->
+		<property name="contentNegotiationManager" ref="myContentNegotiationManager" />
 		<property name="viewResolvers">
 			<list>
 				<bean
