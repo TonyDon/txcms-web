@@ -41,7 +41,7 @@
 					</map>
 				</constructor-arg>
 			</bean>
-			<!-- 使用请求参数format=? 视图展现策略 -->
+			<!-- 使用请求参数format=? 视图展现策略 
 			<bean class="org.springframework.web.accept.ParameterContentNegotiationStrategy">
 				<property name="parameterName" value="format" />
 				<constructor-arg>
@@ -51,6 +51,7 @@
 					</map>
 				</constructor-arg>
 			</bean>
+			-->
 			<!-- 启用header Accept 信息识别视图展现策略  -->
 			<bean class="org.springframework.web.accept.HeaderContentNegotiationStrategy" />
 			<!-- 默认视图展现策略 -->
