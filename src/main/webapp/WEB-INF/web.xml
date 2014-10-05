@@ -5,8 +5,8 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-    classpath*:applicationContext.xml,
-    classpath*:txcms-mod-base.xml
+    classpath:applicationContext.xml,
+    classpath:txcms-mod-base.xml
     </param-value>
   </context-param>
   <listener>
