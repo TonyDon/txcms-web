@@ -29,7 +29,7 @@ function parseModel(model){
 	var d = {};
 	d.total = model.page.total;
 	d.rows  = model.page.datas;
-	TXWEB.tb.datagrid("options").records=model.page.totalCount;
+	TXWEB.tb.datagrid("options").records=d.total;
 	return d;
 };
 
