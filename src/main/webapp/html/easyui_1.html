@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>注册用户</title>
-<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/gray/easyui.css">
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
 <script src="../static/js/jquery-1.11.1.min.js"></script>
 <script src="../static/jqeasyui/jquery.easyui.min.js"></script>
@@ -76,7 +76,11 @@ var TXWEB={};
     },
     loader:function(param, succCall, err){
     	var opts = TXWEB.tb.datagrid("options");
-    	var params = $.extend({pageNo:param.page, listSize:param.rows, records:opts.records}, param);
+    	var pgno = param.page;
+    	var ls = param.rows;
+    	var cr = (pgno-1) * ls ;
+    	var params = $.extend({crow:cr, listSize:ls, records:opts.records, sord:opts.sortOrder, sidx:opts.sortName}, 
+    			param);
     		$.ajax({
     			type : opts.method,
     			url : '/txcms-web/user/info/search.json',
