@@ -8,13 +8,16 @@
 <script src="../static/js/jquery-1.11.1.min.js"></script>
 <script src="../static/jqeasyui/jquery.easyui.min.js"></script>
 <script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="../static/js/common.js"></script>
 
 <style>
 </style>
 </head>
 <body>
 
-
+<div id="error_dialog" title="错误信息">
+<ul id="err_list" style="display:none;padding:3px;word-break:break-all;word-wrap:break-word;line-height:18px;color:red;"></ul>
+</div>
 
 
 
@@ -89,12 +92,14 @@ var TXWEB={};
     			success : function (model) {
     				succCall(parseModel(model));
     			},
-    			error : function () {
-    				err.apply(this, arguments);
+    			error:function(xhr, ts){
+    				err();
     			}
     		});
     }
 });
+	
+$(document).ajaxError(onGlobalAjaxError);
 </script>
 
 
