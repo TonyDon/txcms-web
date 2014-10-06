@@ -93,7 +93,9 @@
         </property>
 		<property name="defaultViews">
 			<list>
-				<bean class="com.uuola.txweb.framework.view.json.MappingFastJsonView" />
+				<bean class="com.uuola.txweb.framework.view.json.MappingFastJsonView">
+					<property name="disableCaching" value="false"/>
+				</bean>
 				<!-- <bean class="com.uuola.txweb.framework.view.xml.XmlView">
 					<property name="marshaller">
 						<bean class="org.springframework.oxm.xstream.XStreamMarshaller"
