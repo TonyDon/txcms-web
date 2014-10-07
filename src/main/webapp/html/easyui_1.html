@@ -2,104 +2,191 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>注册用户</title>
+<title>easyui-demo-1</title>
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
 <script src="../static/js/jquery-1.11.1.min.js"></script>
 <script src="../static/jqeasyui/jquery.easyui.min.js"></script>
 <script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
 <script src="../static/js/common.js"></script>
-
+<script src="../static/js/jq.md5.js"></script>
 <style>
 </style>
 </head>
 <body>
 
-<div id="error_dialog" title="错误信息">
-<ul id="err_list" style="display:none;padding:3px;word-break:break-all;word-wrap:break-word;line-height:18px;color:red;"></ul>
-</div>
+	<div id="error_dialog" title="错误信息">
+		<ul id="err_list"
+			style="display: none; padding: 3px; word-break: break-all; word-wrap: break-word; line-height: 18px; color: red;"></ul>
+	</div>
 
 
 
-<table id="user_data_table"></table>  
+	<table id="user_data_table"></table>
 
+
+
+	<div id="userInfoAddWin" class="easyui-window" title="添加用户信息"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width: 350px; height: 280px; padding: 10px;">
+		<div style="padding:10px">
+	    <form id="userInfoAddFrm" method="post">
+				<table cellpadding="5">
+					<tr>
+						<td>会员名:</td>
+						<td><input class="easyui-textbox" type="text" name="name"
+							data-options="required:true"></td>
+					</tr>
+					<tr>
+						<td>会员邮箱:</td>
+						<td><input class="easyui-textbox" type="text" name="email"
+							data-options="required:true,validType:'email'"></td>
+					</tr>
+					<tr>
+						<td>移动电话:</td>
+						<td><input class="easyui-textbox" type="text" name="tel"
+							data-options="required:true"></td>
+					</tr>
+					<tr>
+						<td>默认密码:</td>
+						<td><input class="easyui-textbox" type="text" name="_passKey" id="passKey"
+							data-options="required:true"></td>
+					</tr>
+					<tr>
+						<td>验证码:</td>
+						<td><input class="easyui-textbox" type="text" name="captcha"
+							data-options="required:true"></td>
+					</tr>
+				</table>
+				<div style="text-align: center; padding: 5px">
+					<a href="javascript:void(0)" class="easyui-linkbutton"
+						data-options="iconCls:'icon-save'" onclick="USER_INFO.submitAddForm();">提 交</a>
+						&nbsp;&nbsp;&nbsp;&nbsp; 
+					<a href="javascript:void(0)"
+						class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+						onclick="USER_INFO.clearAddForm();">清 空</a>
+				</div>
+			</form>
+	    </div>
+	</div>
 
 <script>
-function parseModel(model){
-	var d = {};
-	d.total = model.page.total;
-	d.rows  = model.page.datas;
-	TXWEB.tb.datagrid("options").records=d.total;
-	return d;
-};
 
-var TXWEB={};
+	var USER_INFO = {};
+	USER_INFO.JQ_ADD_FORM = $('#userInfoAddFrm');
+	USER_INFO.initAdd = function() {
+		$('#userInfoAddWin').window('open');
+	};
+	USER_INFO.submitAddForm = function() {
+		this.JQ_ADD_FORM.form('submit', {
+			ajax:true,
+			queryParams:{r:ut.r()},
+			url:'/txcms-web/user/info/add.json',
+			onSubmit : function(params) {
+				params.passKey = $.md5($('#passKey').val());
+				return $(this).form('enableValidation').form('validate');
+			},
+			success : function(data) {
+				var res = jQuery.parseJSON(data)
+				if(res.errors && res.errors.length>0){
+					alert('添加失败，失败原因：\r\n'+ res.errors.join('\r\n'));
+				}else{
+					alert('添加成功！');
+				}
+			}
+		});
+	};
+	USER_INFO.clearAddForm = function() {
+		this.JQ_ADD_FORM.form('clear');
+	};
+
+	function parseModel(model) {
+		var d = {};
+		d.total = model.page.total;
+		d.rows = model.page.datas;
+		TXWEB.tb.datagrid("options").records = d.total;
+		return d;
+	};
+
+	var TXWEB = {};
 	TXWEB.tb = $('#user_data_table');
 
 	TXWEB.tb.datagrid({
-	method:'get',
-    title: '用户信息列表',  
-    iconCls: 'icon-save',
-    columns:[[
-    {field:'id',title:'ID 编号',},
-    {field:'name',title:'用户名',width:100},
-    {field:'tel',title:'电话号码',width:100}
-    ]],
-    idField: 'id',
-    width: 500,  
-    height: 350,
-    nowrap: false,  
-    striped: true, 
-    pagination: true,  
-    rownumbers: true,
-    singleSelect: false,  
-    remoteSort:false,
-    fitColumns:true,
-    showFooter:true,
-    sortName: 'id',  
-    sortOrder: 'asc', 
-    pageSize:5,
-    pageList:[5,10,20,50],
-    records:0,
-    toolbar: [{  
-        text: '添加',  
-        iconCls: 'icon-add',  
-        handler: function() {  
-        alert('添加数据');
-        }  
-    }, '-', {  
-        text: '保存',  
-        iconCls: 'icon-save',  
-        handler: function() {  
-        alert('保存数据'); 
-        }  
-    }],
-    onBeforeLoad:function(){
+		method : 'get',
+		title : '用户信息列表',
+		iconCls : 'icon-save',
+		columns : [ [ {
+			field : 'id',
+			title : 'ID 编号',
+		}, {
+			field : 'name',
+			title : '用户名',
+			width : 100
+		}, {
+			field : 'tel',
+			title : '电话号码',
+			width : 100
+		} ] ],
+		idField : 'id',
+		width : 500,
+		height : 350,
+		nowrap : false,
+		striped : true,
+		pagination : true,
+		rownumbers : true,
+		singleSelect : true,
+		remoteSort : false,
+		fitColumns : true,
+		showFooter : true,
+		sortName : 'id',
+		sortOrder : 'asc',
+		pageSize : 5,
+		pageList : [ 5, 10, 20, 50 ],
+		records : 0,
+		toolbar : [ {
+			text : '添加',
+			iconCls : 'icon-add',
+			handler : function() {
+				USER_INFO.initAdd();
+			}
+		}, '-', {
+			text : '保存',
+			iconCls : 'icon-save',
+			handler : function() {
+				alert('保存数据');
+			}
+		} ],
+		onBeforeLoad : function() {
 
-    },
-    loader:function(param, succCall, err){
-    	var opts = TXWEB.tb.datagrid("options");
-    	var pgno = param.page;
-    	var ls = param.rows;
-    	var cr = (pgno-1) * ls ;
-    	var params = $.extend({crow:cr, listSize:ls, records:opts.records, sord:opts.sortOrder, sidx:opts.sortName}, 
-    			param);
-    		$.ajax({
-    			type : opts.method,
-    			url : '/txcms-web/user/info/search.json',
-    			data : params,
-    			dataType : "json",
-    			success : function (model) {
-    				succCall(parseModel(model));
-    			},
-    			error:function(xhr, ts){
-    				err();
-    			}
-    		});
-    }
-});
-	
-$(document).ajaxError(onGlobalAjaxError);
+		},
+		loader : function(param, succCall, err) {
+			var opts = TXWEB.tb.datagrid("options");
+			var pgno = param.page;
+			var ls = param.rows;
+			var cr = (pgno - 1) * ls;
+			var params = $.extend({
+				crow : cr,
+				listSize : ls,
+				records : opts.records,
+				sord : opts.sortOrder,
+				sidx : opts.sortName
+			}, param);
+			$.ajax({
+				type : opts.method,
+				url : '/txcms-web/user/info/search.json',
+				data : params,
+				dataType : "json",
+				success : function(model) {
+					succCall(parseModel(model));
+				},
+				error : function(xhr, ts) {
+					err();
+				}
+			});
+		}
+	});
+
+	$(document).ajaxError(onGlobalAjaxError);
 </script>
 
 
