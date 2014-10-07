@@ -72,33 +72,7 @@
 
 <script>
 
-	var USER_INFO = {};
-	USER_INFO.JQ_ADD_FORM = $('#userInfoAddFrm');
-	USER_INFO.initAdd = function() {
-		$('#userInfoAddWin').window('open');
-	};
-	USER_INFO.submitAddForm = function() {
-		this.JQ_ADD_FORM.form('submit', {
-			ajax:true,
-			queryParams:{r:ut.r()},
-			url:'/txcms-web/user/info/add.json',
-			onSubmit : function(params) {
-				params.passKey = $.md5($('#passKey').val());
-				return $(this).form('enableValidation').form('validate');
-			},
-			success : function(data) {
-				var res = jQuery.parseJSON(data)
-				if(res.errors && res.errors.length>0){
-					alert('添加失败，失败原因：\r\n'+ res.errors.join('\r\n'));
-				}else{
-					alert('添加成功！');
-				}
-			}
-		});
-	};
-	USER_INFO.clearAddForm = function() {
-		this.JQ_ADD_FORM.form('clear');
-	};
+	
 
 	function parseModel(model) {
 		var d = {};
@@ -187,6 +161,38 @@
 	});
 
 	$(document).ajaxError(onGlobalAjaxError);
+	
+	
+	var USER_INFO = {};
+	USER_INFO.JQ_ADD_FORM = $('#userInfoAddFrm');
+	USER_INFO.initAdd = function() {
+		$('#userInfoAddWin').window('open');
+	};
+	USER_INFO.submitAddForm = function() {
+		this.JQ_ADD_FORM.form('submit', {
+			ajax:true,
+			queryParams:{r:ut.r()},
+			url:'/txcms-web/user/info/add.json',
+			onSubmit : function(params) {
+				params.passKey = $.md5($('#passKey').val());
+				return $(this).form('enableValidation').form('validate');
+			},
+			success : function(data) {
+				var res = jQuery.parseJSON(data)
+				if(res.errors && res.errors.length>0){
+					alert('添加失败，失败原因：\r\n'+ res.errors.join('\r\n'));
+				}else{
+					alert('添加成功！');
+					USER_INFO.clearAddForm();
+					$('#userInfoAddWin').window('close');
+					TXWEB.tb.datagrid('reload');
+				}
+			}
+		});
+	};
+	USER_INFO.clearAddForm = function() {
+		this.JQ_ADD_FORM.form('clear');
+	};
 </script>
 
 

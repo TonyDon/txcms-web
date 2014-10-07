@@ -336,16 +336,16 @@ function showErrorMsg(res, w, h){
 	list.empty(); 
 	if (res.errors) {
 		$.each(res.errors, function(index, value) {
-			list.append('<li>' + value + '</li>');
+			list.append('<li>' + value.replace(/\n/g,'<br/>') + '</li>');
 		});
 	}else if(res.exception){
 		list.html('<li>'+res.exception.replace(/\n/g,'<br/>')+'</li>');
 	}else {
-		list.html('<li>'+res+'</li>');
+		list.html('<li>'+res.replace(/\n/g,'<br/>')+'</li>');
 	}
 	list.show();
 	$("#error_dialog").dialog({
-		height:h||200,width:w||450,
+		height:h||200,width:w||450,resizable:true,
 		buttons:{'关闭': function() {
             $(this).dialog("close");
           }
