@@ -15,6 +15,11 @@
 </head>
 <body>
 
+	<div id="message_dialog" title="提示信息">
+		<div class="msg-content"
+			style="padding: 3px; word-break: break-all; word-wrap: break-word; line-height: 24px;"></div>
+	</div>
+
 	<div id="error_dialog" title="错误信息">
 		<ul id="err_list"
 			style="display: none; padding: 3px; word-break: break-all; word-wrap: break-word; line-height: 18px; color: red;"></ul>
@@ -124,10 +129,10 @@
 				USER_INFO.initAdd();
 			}
 		}, '-', {
-			text : '保存',
-			iconCls : 'icon-save',
+			text : '删除',
+			iconCls : 'icon-remove',
 			handler : function() {
-				alert('保存数据');
+				USER_INFO.del();
 			}
 		} ],
 		onBeforeLoad : function() {
@@ -192,6 +197,20 @@
 	};
 	USER_INFO.clearAddForm = function() {
 		this.JQ_ADD_FORM.form('clear');
+	};
+	USER_INFO.del = function(){
+		var row = TXWEB.tb.datagrid('getSelected');
+		if(!row){
+			showMessage('请单击需要删除的记录, 然后再进行删除.');
+		}else{
+			$.post('/txcms-web/user/info/'+row.id+'.json', '_method=delete', function(r){
+				if(r.num>0){
+					alert('删除成功！');
+				}
+				TXWEB.tb.datagrid('clearSelections');
+				TXWEB.tb.datagrid('reload');
+			});
+		}
 	};
 </script>
 
