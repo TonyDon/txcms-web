@@ -18,5 +18,13 @@
 <body>
 \${page.datas[0].tel} 解析值为 <br/>
 ${page.datas[0].tel}
+
+<c:if test='${not empty errors}'>
+<p style="color:red;">
+	 <c:forEach items="${errors}" var="error" >  
+              ${error}<br/>
+     </c:forEach>
+</p>
+</c:if>
 </body>
 </html>
