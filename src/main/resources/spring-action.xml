@@ -13,7 +13,7 @@
      http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 	<!--  拦截action异常并做后续处理  -->
-	<bean class="com.uuola.txweb.framework.resolver.WebAppExceptionResolver" p:order="1"/>
+	<bean class="com.uuola.txweb.framework.resolver.WebAppExceptionResolver" p:order="1" p:useLogger="true"/>
 	
 	<bean id="FileExtNameValidator"
 	      class="com.uuola.txcms.component.FileExtNameValidator"
