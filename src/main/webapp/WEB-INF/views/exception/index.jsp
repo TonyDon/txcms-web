@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>exception</title>
 <style>
-body{font-size:12px; font-family: Verdana, Arial;color:#000; background:#DFE7F5;padding:0;margin:0;overflow-x:hidden;}
-#tip{color:red;font-size:13px;display:block;width:100%;padding:9px;background:#B0C4E6}
+body{font-size:12px; font-family: Verdana, Arial;color:#000; background:#EAEAEA;padding:0;margin:0;overflow-x:hidden;}
+#tip{color:red;font-size:13px;display:block;width:100%;padding:5px;background:#DFE7F6;border-bottom:1px solid #C6D4EF}
 #tip a{color:#213B66;}
-#exception{border:2px solid #F3E16F;width:90%;margin:9px;display:none;background:#FEFDF6;padding:9px;line-height:24px;word-wrap:break-word;word-break;break-all;}
+#exception{border:1px solid #F3E16F;width:90%;margin:9px auto;display:none;background:#FEFEF4;padding:9px;line-height:24px;word-wrap:break-word;word-break;break-all;}
 </style>
 <script>
 function show(){
@@ -19,9 +19,11 @@ function show(){
 </script>
 </head>
 <body>
-<b id="tip"> 系统异常!  <a href="javascript:show();"> 查看堆栈信息  </a> </b>
-<div id="exception">
-	<c:out value="${exception }"></c:out>
+<b id="tip"> 系统异常!  <a href="javascript:show();"> 查看信息  </a> </b>
+<div style="align:center;width:100%;">
+	<div id="exception">
+		<c:out value="${exception}"></c:out>
+	</div>
 </div>
 </body>
 </html>
