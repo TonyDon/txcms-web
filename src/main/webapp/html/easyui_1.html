@@ -58,9 +58,9 @@
 							data-options="required:true"></td>
 					</tr>
 					<tr>
-						<td>验证码:</td>
+						<td id="captcha_tit">验证码:</td>
 						<td><input class="easyui-textbox" type="text" name="captcha"
-							data-options="required:true"></td>
+							data-options="required:false"></td>
 					</tr>
 				</table>
 				<div style="text-align: center; padding: 5px">
@@ -174,19 +174,31 @@
 		$('#userInfoAddWin').window('open');
 	};
 	USER_INFO.submitAddForm = function() {
-		this.JQ_ADD_FORM.form('submit', {
-			ajax:true,
-			queryParams:{r:ut.r()},
-			url:'/txcms-web/user/info/add.json',
+	this.JQ_ADD_FORM.form('submit', {
+			ajax : true,
+			queryParams : {
+				r : ut.r()
+			},
+			url : '/txcms-web/user/info/add.json',
 			onSubmit : function(params) {
 				params.passKey = $.md5($('#passKey').val());
 				return $(this).form('enableValidation').form('validate');
 			},
 			success : function(data) {
 				var res = jQuery.parseJSON(data)
-				if(res.errors && res.errors.length>0){
-					alert('添加失败，失败原因：\r\n'+ res.errors.join('\r\n'));
-				}else{
+				if (res.errors && res.errors.length > 0) {
+					var msg = [];
+					var errs = res.errors;
+					for ( var k in errs) {
+						var err = errs[k].split('@');
+						if (err.length == 2) {
+							msg.push($('#' + err[1] + '_tit').text() + err[0]);
+						} else {
+							msg.push(err[0]);
+						}
+					}
+					alert('添加失败，失败原因：\r\n' + msg.join('\r\n'));
+				} else {
 					alert('添加成功！');
 					USER_INFO.clearAddForm();
 					$('#userInfoAddWin').window('close');
@@ -198,18 +210,19 @@
 	USER_INFO.clearAddForm = function() {
 		this.JQ_ADD_FORM.form('clear');
 	};
-	USER_INFO.del = function(){
+	USER_INFO.del = function() {
 		var row = TXWEB.tb.datagrid('getSelected');
-		if(!row){
+		if (!row) {
 			showMessage('请单击需要删除的记录, 然后再进行删除.');
-		}else{
-			$.post('/txcms-web/user/info/'+row.id+'.json', '_method=delete', function(r){
-				if(r.num>0){
-					alert('删除成功！');
-				}
-				TXWEB.tb.datagrid('clearSelections');
-				TXWEB.tb.datagrid('reload');
-			});
+		} else {
+			$.post('/txcms-web/user/info/' + row.id + '.json',
+					'_method=delete', function(r) {
+						if (r.num > 0) {
+							alert('删除成功！');
+						}
+						TXWEB.tb.datagrid('clearSelections');
+						TXWEB.tb.datagrid('reload');
+					});
 		}
 	};
 </script>
