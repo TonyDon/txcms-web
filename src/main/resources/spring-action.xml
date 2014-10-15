@@ -25,7 +25,7 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/user/home/*" />
+			<mvc:mapping path="/user/**" />
 			<mvc:mapping path="/admin/*" />
 			<bean id="accessActionMethodInterceptor" class="com.uuola.txcms.interceptor.UserAccessActionInterceptor"></bean>
 		</mvc:interceptor>
