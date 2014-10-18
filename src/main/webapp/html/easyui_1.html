@@ -186,7 +186,7 @@
 			},
 			success : function(data) {
 				var res = jQuery.parseJSON(data)
-				if (res.errors && res.errors.length > 0) {
+				if (res.exception || res.errors && res.errors.length > 0) {
 					var msg = [];
 					var errs = res.errors;
 					for ( var k in errs) {
@@ -197,7 +197,10 @@
 							msg.push(err[0]);
 						}
 					}
-					alert('添加失败，失败原因：\r\n' + msg.join('\r\n'));
+					if(res.exception){
+						msg.push(res.exception.replace(/\r|\n/,'<br/>'));
+					}
+					showMessage('添加失败，失败原因：<br/>' + msg.join('<br/>'));
 				} else {
 					alert('添加成功！');
 					USER_INFO.clearAddForm();
