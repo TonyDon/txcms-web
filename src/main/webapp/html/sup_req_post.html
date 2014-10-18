@@ -330,7 +330,7 @@ $(function(){
 				dataType: "json",
 				success: function(data,textStatus, xhr){
 					if(data) {
-						if(data.errors.length==0) {
+						if(data.validErrors.length==0) {
 							showMessage('恭喜,信息提交成功, 正在审核中!');
 							ut.wait(function(){ut.reload('?t='+ut.r());},2000);
 						}else{

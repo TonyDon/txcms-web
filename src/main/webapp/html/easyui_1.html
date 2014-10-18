@@ -186,9 +186,9 @@
 			},
 			success : function(data) {
 				var res = jQuery.parseJSON(data)
-				if (res.exception || res.errors && res.errors.length > 0) {
+				if (res.exception || res.validErrors && res.validErrors.length > 0) {
 					var msg = [];
-					var errs = res.errors;
+					var errs = res.validErrors;
 					for ( var k in errs) {
 						var err = errs[k].split('@');
 						if (err.length == 2) {

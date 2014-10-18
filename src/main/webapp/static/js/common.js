@@ -334,8 +334,8 @@ function showMessage(htmlMsg, w, h){
 function showErrorMsg(res, w, h){
 	var list = $('#err_list');
 	list.empty(); 
-	if (res.errors) {
-		$.each(res.errors, function(index, value) {
+	if (res.validErrors) {
+		$.each(res.validErrors, function(index, value) {
 			list.append('<li>' + value.replace(/\n/g,'<br/>') + '</li>');
 		});
 	}else if(res.exception){
