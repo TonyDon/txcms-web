@@ -81,8 +81,8 @@
 
 	function parseModel(model) {
 		var d = {};
-		d.total = model.page.total;
-		d.rows = model.page.datas;
+		d.total = model.pageDTO.total;
+		d.rows = model.pageDTO.datas;
 		TXWEB.tb.datagrid("options").records = d.total;
 		return d;
 	};
