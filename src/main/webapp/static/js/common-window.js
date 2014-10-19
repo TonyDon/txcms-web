@@ -49,7 +49,22 @@ TxWebWin.alertWarn=function(msg, doFunc){
 TxWebWin.alertAsk=function(msg, doFunc){
 	$.messager.alert('提示消息', msg, 'question', doFunc);
 };
-
+// 初始化Window
+TxWebWin.initModel=function(id,tit,w,h){
+	var _jqObj = $('#'+id);
+	_jqObj.window({
+		title:tit|| 'Window',
+        width:w||550,
+        height:h||350,
+        modal:true,
+        closed:true,
+        iconCls:'icon-save',
+        onResize:function(){
+        	$(this).window('hcenter');
+        }
+    });
+    return _jqObj;
+};
 /***********************************
  * 对ajax异常消息框的封装
  * 处理服务器返回的各种错误

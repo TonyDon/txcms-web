@@ -18,11 +18,13 @@
 
 
 	<table id="user_data_table"></table>
+	
+	<div id="win1">aaa</div>
 
     <p><button id="confirmBtn">确认提示框</button></p>
     <p><button id="promptBtn">提示输入框</button></p>
     <p><button id="alertBtn">提示消息框</button></p>
-
+    <p><button id="modelWinBtn">模态窗口</button></p>
 	<div id="userInfoAddWin" class="easyui-window" title="添加用户信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width: 350px; height: 280px; padding: 10px;">
@@ -242,6 +244,12 @@ $(document).ajaxError(globalAjaxErrorHandler);
 			 TxWebWin.alertAsk('提示消息内容');
 			// TxWebWin.alertError('提示消息内容');
 		});
+		
+		$('#modelWinBtn').click(function(e){
+			$('#win1').window('open');
+		});
+		
+		TxWebWin.initModel('win1','窗口名称', 200, 90).window('open');
 	});
 </script>
 
