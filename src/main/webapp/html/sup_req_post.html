@@ -6,6 +6,8 @@
 <link href="../static/style/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 <link href="../static/style/common.css" rel="stylesheet">
 <link href="../static/uploadify/uploadify.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
 <style>
 .frm{
  padding:15px;margin:2px auto;
@@ -239,11 +241,14 @@ vertical-align: middle;
 </div>
 
 
-<script src="../static/js/jquery-1.10.1.min.js"></script>
+<script src="../static/js/jquery-1.11.1.min.js"></script>
 <script src="../static/js/jquery.validate.min.js"></script>
 <script src="../static/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="../static/js/messages_zh.js"></script>
+<script src="../static/jqeasyui/jquery.easyui.min.js"></script>
+<script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
 <script src="../static/js/common.js"></script>
+<script src="../static/js/common-window.js"></script>
 <script src="../static/js/address.js"></script>
 <script src="../static/js/template.js"></script>
 <script src="../static/uploadify/jquery.uploadify.min.js"></script>
@@ -316,7 +321,6 @@ $(function(){
     
     $rFrm.on('submit',function(event) {
 	     event.preventDefault();
-	     showLoading();
 		 var jqFrm = $(this);
 		 var action = jqFrm.attr('action') || '';
 		 if(action==''){
@@ -331,17 +335,16 @@ $(function(){
 				success: function(data,textStatus, xhr){
 					if(data) {
 						if(data.validErrors.length==0) {
-							showMessage('恭喜,信息提交成功, 正在审核中!');
+							TxWebWin.alert('恭喜,信息提交成功, 正在审核中!');
 							ut.wait(function(){ut.reload('?t='+ut.r());},2000);
 						}else{
-							showMessage(data.errors.join('<br/>'));
+							TxWebWin.alert(data.validErrors.join('<br/>'));
 							$('#refreshCaptcha').click();
 							$('#submitBtn').removeAttr('disabled').val('发 布');
 						}
 					}
 				},
 				complete: function(){
-					hideLoading();
 				}
 			});
 	   return false;
@@ -388,7 +391,7 @@ $(function(){
         }
     });
     
-    $(document).ajaxError(onGlobalAjaxError);
+    $(document).ajaxError(globalAjaxErrorHandler);
 });
 </script>
 

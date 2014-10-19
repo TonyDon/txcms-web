@@ -9,27 +9,19 @@
 <script src="../static/jqeasyui/jquery.easyui.min.js"></script>
 <script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
 <script src="../static/js/common.js"></script>
+<script src="../static/js/common-window.js"></script>
 <script src="../static/js/jq.md5.js"></script>
 <style>
 </style>
 </head>
 <body>
 
-	<div id="message_dialog" title="提示信息">
-		<div class="msg-content"
-			style="padding: 3px; word-break: break-all; word-wrap: break-word; line-height: 24px;"></div>
-	</div>
-
-	<div id="error_dialog" title="错误信息">
-		<ul id="err_list"
-			style="display: none; padding: 3px; word-break: break-all; word-wrap: break-word; line-height: 18px; color: red;"></ul>
-	</div>
-
-
 
 	<table id="user_data_table"></table>
 
-
+    <p><button id="confirmBtn">确认提示框</button></p>
+    <p><button id="promptBtn">提示输入框</button></p>
+    <p><button id="alertBtn">提示消息框</button></p>
 
 	<div id="userInfoAddWin" class="easyui-window" title="添加用户信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -76,7 +68,7 @@
 	</div>
 
 <script>
-
+$(document).ajaxError(globalAjaxErrorHandler);
 	
 
 	function parseModel(model) {
@@ -134,7 +126,7 @@
 			handler : function() {
 				USER_INFO.del();
 			}
-		} ],
+		}],
 		onBeforeLoad : function() {
 
 		},
@@ -165,7 +157,7 @@
 		}
 	});
 
-	$(document).ajaxError(onGlobalAjaxError);
+	
 	
 	
 	var USER_INFO = {};
@@ -200,7 +192,7 @@
 					if(res.exception){
 						msg.push(res.exception.replace(/\r|\n/,'<br/>'));
 					}
-					showMessage('添加失败，失败原因：<br/>' + msg.join('<br/>'));
+					TxWebWin.alertWarn('添加失败，失败原因：<br/>' + msg.join('<br/>'));
 				} else {
 					alert('添加成功！');
 					USER_INFO.clearAddForm();
@@ -228,6 +220,29 @@
 					});
 		}
 	};
+	
+	jQuery(function(){
+		$('#confirmBtn').click(function(e){
+			TxWebWin.confirm('确定要提交表单吗？', 
+				function(){
+					alert('提交表单');
+				}, function(){
+					alert('取消操作');
+			});
+		});
+		
+		$('#promptBtn').click(function(e){
+			TxWebWin.prompt('请输入名称：', function(input){
+				alert('您输入了:' + input);
+			}, function(){alert('您没有输入值');}
+			);
+		});
+		
+		$('#alertBtn').click(function(e){
+			 TxWebWin.alertAsk('提示消息内容');
+			// TxWebWin.alertError('提示消息内容');
+		});
+	});
 </script>
 
 
