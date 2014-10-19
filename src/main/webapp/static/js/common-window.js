@@ -79,7 +79,7 @@ function globalAjaxErrorHandler(event, xhr, settings, err){
 		return;
 	}
 	if(xhr.status == 403){// deny access.
-		var result = "403 拒绝访问.<br/>" + xhr.responseText ;
+		var result = "403 拒绝访问.\r\n" + (xhr.responseText);
 		showErrorMsg(result);
 		return;
 	}
@@ -132,7 +132,7 @@ function showErrorMsg(res){
 	}else if(res.exception){
 		emsg +=(res.exception.replace(/\r|\n/g,'<br/>'));
 	}else {
-		emsg +=(res.replace(/\r|\n/g,'<br/>'));
+		emsg +=(filter.clrxml(res).replace(/\r|\n/g,'<br/>'));
 	}
 	TxWebWin.alertError('<b style="color:red">错误信息：</b><br/><p id="error_msg_box">' + emsg +'</p>');
 };
