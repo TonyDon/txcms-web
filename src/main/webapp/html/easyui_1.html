@@ -210,7 +210,7 @@ $(document).ajaxError(globalAjaxErrorHandler);
 	USER_INFO.del = function() {
 		var row = TXWEB.tb.datagrid('getSelected');
 		if (!row) {
-			showMessage('请单击需要删除的记录, 然后再进行删除.');
+			TxWebWin.alert('请单击需要删除的记录, 然后再进行删除.');
 		} else {
 			$.post('/txcms-web/user/info/' + row.id + '.json',
 					'_method=delete', function(r) {

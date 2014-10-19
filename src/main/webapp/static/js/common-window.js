@@ -136,3 +136,9 @@ function showErrorMsg(res){
 	}
 	TxWebWin.alertError('<b style="color:red">错误信息：</b><br/><p id="error_msg_box">' + emsg +'</p>');
 };
+
+function initJQuery(){
+	if(window.jQuery){
+		jQuery(document).ajaxError(globalAjaxErrorHandler);
+	}
+};
