@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>easyui-demo-1</title>
+<title>easyui-demo-2</title>
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
 <script src="../static/js/jquery-1.11.1.min.js"></script>
@@ -255,7 +255,7 @@ SITE_CAT.del = function() {
 			$.post('/txcms-web/sitecat/' + row.id + '.json',
 					'_method=delete', function(r) {
 						if (r.num > 0) {
-							alert('删除成功！');
+							TxWebWin.alert('删除成功！');
 						}
 						SiteCatTree.treegrid('clearSelections');
 						SiteCatTree.treegrid('reload');
