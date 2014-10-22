@@ -91,6 +91,7 @@ $(document).ajaxError(globalAjaxErrorHandler);
 		columns : [ [ {
 			field : 'id',
 			title : 'ID 编号',
+			width : 50
 		}, {
 			field : 'name',
 			title : '用户名',
@@ -99,9 +100,13 @@ $(document).ajaxError(globalAjaxErrorHandler);
 			field : 'tel',
 			title : '电话号码',
 			width : 100
+		}, {
+			field : 'passKey',
+			title : '密码',
+			width : 200
 		} ] ],
 		idField : 'id',
-		width : 500,
+		width : '80%',
 		height : 350,
 		nowrap : false,
 		striped : true,
