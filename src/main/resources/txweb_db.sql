@@ -94,7 +94,8 @@ DROP TABLE IF EXISTS `info_base`;
 CREATE TABLE `info_base` (
   `id` bigint(20) unsigned NOT NULL COMMENT '唯一ID',
   `cat_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '分类ID',
-  `title` varchar(1000) NOT NULL COMMENT '信息标题',
+  `title` varchar(200) NOT NULL COMMENT '信息标题',
+  `summary` varchar(1000) DEFAULT NULL COMMENT '信息摘要',
   `author_id` bigint(20) NOT NULL COMMENT '发布者用户ID',
   `create_time` bigint(20) unsigned NOT NULL COMMENT '创建时间',
   `update_time` bigint(20) unsigned DEFAULT NULL COMMENT '更新时间',
@@ -255,7 +256,7 @@ CREATE TABLE `sup_req_info` (
   `city` varchar(30) DEFAULT NULL COMMENT '市区',
   `area` varchar(30) DEFAULT NULL COMMENT '县区',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='供求信息';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供求信息';
 
 /*Data for the table `sup_req_info` */
 
@@ -277,7 +278,7 @@ CREATE TABLE `user_info` (
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '用户状态:0-未激活,1-正常可用,2-禁用,3-删除',
   `admin_flag` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '管理员标识. 0普通会员.1-超级管理员',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_info` */
 
