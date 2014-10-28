@@ -260,6 +260,22 @@ CREATE TABLE `sup_req_info` (
 
 /*Data for the table `sup_req_info` */
 
+/*Table structure for table `sys_config` */
+
+DROP TABLE IF EXISTS `sys_config`;
+
+CREATE TABLE `sys_config` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` char(1) NOT NULL COMMENT '配置属性名',
+  `config_value` varchar(2000) NOT NULL COMMENT '配置值',
+  `config_type` varchar(30) NOT NULL COMMENT '配置值类型：string,number,list,array,json',
+  `general_class` varchar(100) DEFAULT NULL COMMENT '配置值通用class名称,针对 list, array, json',
+  `update_time` bigint(20) NOT NULL COMMENT '创建，更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_config` */
+
 /*Table structure for table `user_info` */
 
 DROP TABLE IF EXISTS `user_info`;
