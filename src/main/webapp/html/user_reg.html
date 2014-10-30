@@ -5,6 +5,8 @@
 <title>注册用户</title>
 <link href="../static/style/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 <link href="../static/style/common.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
 <style>
 .frm{
  padding:15px;margin:2px auto;
@@ -113,14 +115,19 @@ vertical-align: middle;
 <ul id="err_list" class="ui-state-highlight ui-corner-all" style="display:none;padding:3px;word-break:break-all;word-wrap:break-word;line-height:18px;color:red;"></ul>
 </div>
 
-<script src="../static/js/jquery-1.10.1.min.js"></script>
+<script src="../static/js/jquery-1.11.1.min.js"></script>
 <script src="../static/js/jquery.validate.min.js"></script>
 <script src="../static/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="../static/js/messages_zh.js"></script>
 <script src="../static/js/jq.cookie.js"></script>
+<script src="../static/jqeasyui/jquery.easyui.min.js"></script>
+<script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
 <script src="../static/js/common.js"></script>
+<script src="../static/js/common-window.js"></script>
 <script src="../static/js/jq.md5.js"></script>
 <script>
+initJQuery();
+
 function validCaptcha(){
 	var cc_hash = $.cookie('cc_hash');
 	var cc_rc = $.cookie('cc_rc');
@@ -190,7 +197,6 @@ $(function(){
     
     $rFrm.on('submit',function(event) {
 	     event.preventDefault();
-	     showLoading();
 		 var jqFrm = $(this);
 		 var action = jqFrm.attr('action') || '';
 		 if(action==''){
@@ -205,23 +211,19 @@ $(function(){
 				success: function(data,textStatus, xhr){
 					if(data) {
 						if(data.validErrors.length==0) {
-							showMessage('恭喜,注册成功!');
+							TxWebWin.alert('恭喜,注册成功!');
 							ut.wait(function(){ut.reload('?t='+ut.r());},2000);
 						}else{
-							showMessage(data.errors.join('<br/>'));
+							TxWebWin.alert(data.errors.join('<br/>'));
 							$('#refreshCaptcha').click();
 							$('#regBtn').removeAttr('disabled').val('注 册');
 						}
 					}
-				},
-				complete: function(){
-					hideLoading();
 				}
 			});
 	   return false;
 	 });
     
-    $(document).ajaxError(onGlobalAjaxError);
 });
 </script>
 
