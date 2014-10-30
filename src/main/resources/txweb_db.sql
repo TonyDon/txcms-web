@@ -281,7 +281,7 @@ CREATE TABLE `sys_config` (
 DROP TABLE IF EXISTS `user_info`;
 
 CREATE TABLE `user_info` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '唯一ID',
+  `id` bigint(20) unsigned NOT NULL COMMENT '唯一ID',
   `name` char(18) DEFAULT NULL COMMENT '用户名',
   `pass_key` varchar(128) NOT NULL COMMENT '用户密码',
   `tel` char(12) DEFAULT NULL COMMENT '手机号码',
@@ -297,6 +297,9 @@ CREATE TABLE `user_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_info` */
+
+insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (716616702,NULL,'7a464d650d47f98b8198cbe2b48b61751ac5fd576699e5b1fe19dbee2e8aacb753717d20f35cbc36','13911111111',NULL,NULL,NULL,1414683064187,NULL,NULL,0,0);
+insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (753614103,NULL,'83640bd09a772082c9c8d7930daadcb095160daa78765cf91b064ff42f0dab5753717d20f35cbc36','13809888888',NULL,NULL,NULL,1414683434171,NULL,NULL,0,0);
 
 /*Table structure for table `user_role` */
 
