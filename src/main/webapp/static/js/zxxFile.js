@@ -71,6 +71,7 @@ var ZXXFILE = {
 	//文件上传
 	funUploadFile: function() {
 		var self = this;	
+		var inputName = self.fileInput.name || 'file' ;
 		if (location.host.indexOf("sitepointstatic") >= 0) {
 			//非站点服务器上运行
 			return;	
@@ -104,7 +105,7 @@ var ZXXFILE = {
 					xhr.open("POST", self.url, true);
 					xhr.setRequestHeader("X_FILENAME", ut.enc(file.name));
 					var fd = new FormData();  
-		            fd.append("imageFile", file);
+		            fd.append(inputName, file);
 					xhr.send(fd);
 				}	
 			})(file);	
