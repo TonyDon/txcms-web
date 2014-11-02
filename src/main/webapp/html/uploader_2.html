@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>uploader-1</title>
+<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap-theme.min.css">
+<script src="../ctx.jsp"></script>
+<script src="../static/js/jquery-1.11.1.min.js"></script>
+<script src="../static/js/common.js"></script>
+<script src="../static/js/common-window.js"></script>
+<style>
+#uploader{
+	margin:90px;
+	width:50%;
+}
+</style>
+</head>
+<body>
+
+
+<form id="frm" method="post" enctype="multipart/form-data">
+选择图片:<input type="file" name="imageFile"/><br/>
+<button id="upBtn" class="btn btn-default">点击上传</button>
+</form>
+
+
+<script>
+$(function(){
+	$('#upBtn').click(function(){
+		var f = $('#frm');
+		f.attr('action', window.SrvCtxPath + '/uploader.jsp');
+		f.submit();
+	});
+});
+</script>
+</body>
+</html>
