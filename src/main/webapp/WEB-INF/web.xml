@@ -12,6 +12,9 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <listener>
+    <listener-class>com.uuola.commons.listener.WebContext</listener-class>
+  </listener>
 
   <filter>
         <filter-name>EncodingChar</filter-name>
