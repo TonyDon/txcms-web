@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>add info</title>
+<link rel="stylesheet" type="text/css" href="../static/style/common.css">
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
+<script src="../static/js/jquery-1.11.1.min.js"></script>
+<script src="../static/jqeasyui/jquery.easyui.min.js"></script>
+<script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="../ctx.jsp"></script>
+<script src="../static/js/common.js"></script>
+<script src="../static/js/common-window.js"></script>
+<script src="../static/js/jq.md5.js"></script>
+<style>
+</style>
+</head>
+<body>
+<div style="padding:10px;width:800px;text-align:center;">
+		<div class="easyui-panel"  title="添加信息" style="width:700px;margin:auto;">
+	    <form id="infoAddFrm" method="post">
+				<table cellpadding="5">
+					<tr>
+						<td id="name_tit">字典名称:</td>
+						<td><input class="easyui-textbox" type="text" name="name"
+							data-options="required:true"></td>
+					</tr>
+					<tr>
+						<td id="dictCode_tit">字典编码:</td>
+						<td><input class="easyui-textbox" type="text" name="dictCode"
+							data-options="required:true"></td>
+					</tr>
+					<tr>
+						<td id="dictValue_tit">字典值:</td>
+						<td><input class="easyui-textbox" type="text" name="dictValue"
+							data-options="required:true"></td>
+					</tr>
+					<tr>
+						<td>备注:</td>
+						<td><input class="easyui-textbox" type="text" name="remark"
+							data-options="required:false"></td>
+					</tr>
+				</table>
+				<div style="text-align: center; padding: 5px">
+					<a href="javascript:void(0)" class="easyui-linkbutton"
+						data-options="iconCls:'icon-save'" onclick="INFO.submitAddForm();">提 交</a>
+						&nbsp;&nbsp;&nbsp;&nbsp; 
+					<a href="javascript:void(0)"
+						class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+						onclick="INFO.clearAddForm();">清 空</a>
+				</div>
+			</form>
+	    </div>
+</div>
+<script>
+$(document).ajaxError(globalAjaxErrorHandler);
+
+	var INFO = {};
+	INFO.JQ_ADD_FORM = $('#infoAddFrm');
+	INFO.submitAddForm = function() {
+	this.JQ_ADD_FORM.form('submit', {
+			ajax : true,
+			queryParams : {
+				r : ut.r()
+			},
+			url : window.SrvCtxPath+'/info/add.json',
+			onSubmit : function(params) {
+				return $(this).form('enableValidation').form('validate');
+			},
+			success : function(data) {
+				var res = jQuery.parseJSON(data)
+				if (res.exception || res.validErrors && res.validErrors.length > 0) {
+					var msg = [];
+					var errs = res.validErrors;
+					for ( var k in errs) {
+						var err = errs[k].split('@');
+						if (err.length == 2) {
+							msg.push($('#' + err[1] + '_tit').text() + err[0]);
+						} else {
+							msg.push(err[0]);
+						}
+					}
+					if(res.exception){
+						msg.push(res.exception.replace(/\r|\n/,'<br/>'));
+					}
+					TxWebWin.alertWarn('添加失败，失败原因：<br/>' + msg.join('<br/>'));
+				} else {
+					alert('添加成功！');
+					INFO.clearAddForm();
+					$('#infoAddWin').window('close');
+				}
+			}
+		});
+	};
+
+	
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
