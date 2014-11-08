@@ -25,7 +25,7 @@
 	      p:commonExtNames="|jpg|png|gif|jpeg|doc|docx|xls|xlsx|ppt|pptx|flv|mp4|txt|zip|7z|rar|"
 	/>
 	 
-	<context:component-scan base-package="com.uuola.txcms.action"/>
+	<context:component-scan base-package="com.uuola.txcms.**.action"/>
 
 	<mvc:interceptors>
 		<mvc:interceptor>
