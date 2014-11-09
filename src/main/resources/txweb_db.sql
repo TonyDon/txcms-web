@@ -70,6 +70,30 @@ CREATE TABLE `bbs_subject` (
 
 /*Data for the table `bbs_subject` */
 
+/*Table structure for table `dict_config` */
+
+DROP TABLE IF EXISTS `dict_config`;
+
+CREATE TABLE `dict_config` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL COMMENT '字典名称',
+  `dict_code` char(64) NOT NULL COMMENT '字典CODE',
+  `dict_value` varchar(64) NOT NULL COMMENT '字典值',
+  `remark` varchar(100) DEFAULT NULL COMMENT '备注说明',
+  `update_time` bigint(20) unsigned NOT NULL COMMENT '创建时间戳，系统毫秒数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+/*Data for the table `dict_config` */
+
+insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (1,'是','TRUE_OR_FALSE','1','是/真/存在/有效，否/假/不存在/无效',1415446447000);
+insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (2,'否','TRUE_OR_FALSE','0','',1415446491000);
+insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (3,'未审核','INFO_STATE','0','info_base 信息状态',1415446580000);
+insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (4,'审核通过','INFO_STATE','1','',1415446625000);
+insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (5,'审核未通过','INFO_STATE','2','',1415446654000);
+insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (6,'文本资讯','INFO_TYPE','0','info_base 信息类型',1415446702000);
+insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (7,'超链接跳转','INFO_TYPE','1','',1415446731000);
+
 /*Table structure for table `function_cfg` */
 
 DROP TABLE IF EXISTS `function_cfg`;
@@ -92,7 +116,7 @@ CREATE TABLE `function_cfg` (
 DROP TABLE IF EXISTS `info_base`;
 
 CREATE TABLE `info_base` (
-  `id` bigint(20) unsigned NOT NULL COMMENT '唯一ID',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '唯一ID',
   `cat_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '分类ID',
   `title` varchar(200) NOT NULL COMMENT '信息标题',
   `summary` varchar(1000) DEFAULT NULL COMMENT '信息摘要',
@@ -150,6 +174,31 @@ CREATE TABLE `info_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `info_tags` */
+
+/*Table structure for table `product_union` */
+
+DROP TABLE IF EXISTS `product_union`;
+
+CREATE TABLE `product_union` (
+  `id` bigint(20) unsigned NOT NULL COMMENT 'seq id',
+  `cat_name` char(16) NOT NULL COMMENT '所属类目名称',
+  `title` varchar(100) NOT NULL COMMENT '标题',
+  `img_url` varchar(1000) DEFAULT NULL COMMENT '图片地址',
+  `src_site` varchar(100) DEFAULT NULL COMMENT '原站点',
+  `goto_url` varchar(1000) DEFAULT NULL COMMENT '推广跳转地址',
+  `off_rate` varchar(10) DEFAULT NULL COMMENT '页面折扣',
+  `sales` varchar(10) DEFAULT NULL COMMENT '已购买数',
+  `org_price` decimal(9,2) DEFAULT NULL COMMENT '原价格',
+  `curr_price` decimal(9,2) DEFAULT NULL COMMENT '当前售价',
+  `rebate` decimal(9,5) DEFAULT NULL COMMENT '返利率如:0.05',
+  `click_num` bigint(20) NOT NULL DEFAULT '0' COMMENT '点击次数',
+  `create_time` bigint(20) NOT NULL COMMENT '创建时间',
+  `update_time` bigint(20) NOT NULL COMMENT '更新时间',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否标记删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `product_union` */
 
 /*Table structure for table `role_cfg` */
 
@@ -266,22 +315,29 @@ DROP TABLE IF EXISTS `sys_config`;
 
 CREATE TABLE `sys_config` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` char(1) NOT NULL COMMENT '配置属性名',
-  `config_value` varchar(2000) NOT NULL COMMENT '配置值',
-  `config_type` varchar(30) NOT NULL COMMENT '配置值类型：string,number,list,array,json',
+  `name` char(64) NOT NULL COMMENT '配置属性名',
+  `sys_value` varchar(2000) NOT NULL COMMENT '配置值',
+  `sys_type` varchar(30) NOT NULL COMMENT '配置值类型：string,number,list,array,json',
   `general_class` varchar(100) DEFAULT NULL COMMENT '配置值通用class名称,针对 list, array, json',
   `update_time` bigint(20) NOT NULL COMMENT '创建，更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_config` */
+
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`) values (1,'need.very.rich','100000','number','',1415434293000);
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`) values (2,'a.b.c.d.e','[1,2,3,4]','array','',1415434532000);
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`) values (3,'hello.kit','{\'a\':1,\'b\':2}','json','',1415434648000);
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`) values (4,'fasfasf','asfasf','string','',1415434689000);
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`) values (5,'uuola.site.domain','uuola.com','string','',1415435628000);
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`) values (6,'asfasf','asf','string','',1415435637000);
 
 /*Table structure for table `user_info` */
 
 DROP TABLE IF EXISTS `user_info`;
 
 CREATE TABLE `user_info` (
-  `id` bigint(20) unsigned NOT NULL COMMENT '唯一ID',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '唯一ID',
   `name` char(18) DEFAULT NULL COMMENT '用户名',
   `pass_key` varchar(128) NOT NULL COMMENT '用户密码',
   `tel` char(12) DEFAULT NULL COMMENT '手机号码',
@@ -294,12 +350,13 @@ CREATE TABLE `user_info` (
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '用户状态:0-未激活,1-正常可用,2-禁用,3-删除',
   `admin_flag` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '管理员标识. 0普通会员.1-超级管理员',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10003 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_info` */
 
-insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (716616702,NULL,'7a464d650d47f98b8198cbe2b48b61751ac5fd576699e5b1fe19dbee2e8aacb753717d20f35cbc36','13911111111',NULL,NULL,NULL,1414683064187,NULL,NULL,0,0);
-insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (753614103,NULL,'83640bd09a772082c9c8d7930daadcb095160daa78765cf91b064ff42f0dab5753717d20f35cbc36','13809888888',NULL,NULL,NULL,1414683434171,NULL,NULL,0,0);
+insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (10000,'斯蒂芬111','a79287adddb3bdb3a5d02f0b1dfb08172dc063000ec62c0d8fd6ed71016cd8a253717d20f35cbc36','1111111111',NULL,'dfasf@sf.cn',NULL,1414840041328,NULL,NULL,0,0);
+insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (10001,'sdfasdf','6363ae96bfff660026cd65bff2cb0c27a6f22b1769d6527aeaa3ea57cf6592e153717d20f35cbc36','1111',NULL,'asf@sdf.cn',NULL,1414840055125,NULL,NULL,0,0);
+insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (10002,'dsaf','8c781ca3b5b6cc3d42a3041475c57ae647a2e7414e12b298e1f5d749efabc6a953717d20f35cbc36','af',NULL,'sadf@sf.cn',NULL,1415426043828,NULL,NULL,0,0);
 
 /*Table structure for table `user_role` */
 
