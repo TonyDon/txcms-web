@@ -6,40 +6,57 @@
 <link rel="stylesheet" type="text/css" href="../static/style/common.css">
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
-<script src="../static/js/jquery-1.11.1.min.js"></script>
-<script src="../static/jqeasyui/jquery.easyui.min.js"></script>
-<script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
-<script src="../ctx.jsp"></script>
-<script src="../static/js/common.js"></script>
-<script src="../static/js/common-window.js"></script>
-<script src="../static/js/jq.md5.js"></script>
 <style>
+.w650{width:650px;}
+.h50{height:50px;}
 </style>
 </head>
 <body>
 <div style="padding:10px;width:800px;text-align:center;">
-		<div class="easyui-panel"  title="添加信息" style="width:700px;margin:auto;">
+		<div id="infoAddPanle" class="easyui-panel"  title="添加信息" style="width:750px;height:1000px;margin:auto; text-align:left;">
 	    <form id="infoAddFrm" method="post">
 				<table cellpadding="5">
 					<tr>
-						<td id="name_tit">字典名称:</td>
-						<td><input class="easyui-textbox" type="text" name="name"
+						<td id="title_tit">资讯标题:</td>
+						<td><input class="easyui-validatebox w650 texta" type="text" name="title"
 							data-options="required:true"></td>
 					</tr>
 					<tr>
-						<td id="dictCode_tit">字典编码:</td>
-						<td><input class="easyui-textbox" type="text" name="dictCode"
-							data-options="required:true"></td>
+						<td id="summary_tit">资讯摘要:</td>
+						<td><textarea class="w650 h50 texta" type="text" name="summary"></textarea>
 					</tr>
 					<tr>
-						<td id="dictValue_tit">字典值:</td>
-						<td><input class="easyui-textbox" type="text" name="dictValue"
-							data-options="required:true"></td>
+						<td id="infoType_tit">资讯类型:</td>
+						<td>
+							<select id="infoType" name="infoType" style="width:100px;"></select>
+						</td>
 					</tr>
 					<tr>
-						<td>备注:</td>
-						<td><input class="easyui-textbox" type="text" name="remark"
-							data-options="required:false"></td>
+						<td id="isPic_tit">有图文:</td>
+						<td><select name="isPic" style="width:50px;" size="2">
+								<option value="0">否</option>
+								<option value="1">是</option></td>
+					</tr>
+					<tr>
+						<td id="isVideo_tit">有视频:</td>
+						<td><select name="isVideo" style="width:50px;" size="2">
+								<option value="0">否</option>
+								<option value="1">是</option></td>
+					</tr>
+					<tr>
+						<td id="picUrl_tit">主图地址:</td>
+						<td><input class="w650 texta" type="text" name="picUrl"></td>
+					</tr>
+					<tr>
+						<td id="content_tit">资讯内容:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div style="width:95%; height: 350px; margin: auto; display: block; text-align: left;">
+								<script id="editor" name="content" type="text/plain"></script>
+							</div>
+						</td>
 					</tr>
 				</table>
 				<div style="text-align: center; padding: 5px">
@@ -53,9 +70,32 @@
 			</form>
 	    </div>
 </div>
+
+
+<script src="../static/js/jquery-1.11.1.min.js"></script>
+<script src="../ctx.jsp"></script>
+<script src="../static/jqeasyui/jquery.easyui.min.js"></script>
+<script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="../static/ueditor/ueditor.config.js"></script>
+<script src="../static/ueditor/ueditor.all.min.js"></script>
+<script src="../static/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="../static/js/common.js"></script>
+<script src="../static/js/common-window.js"></script>
+<script src="../static/js/common-form.js"></script>
+<script src="../static/js/jq.md5.js"></script>
 <script>
 $(document).ajaxError(globalAjaxErrorHandler);
 
+function setHeight(){
+    var c = $('#infoAddPanle');
+    var p = c.layout('panel','center');    // get the center panel
+    var oldHeight = p.panel('panel').outerHeight();
+    p.panel('resize', {height:'auto'});
+    var newHeight = p.panel('panel').outerHeight();
+    c.layout('resize',{
+        height: (c.height() + newHeight - oldHeight)
+    });
+};
 	var INFO = {};
 	INFO.JQ_ADD_FORM = $('#infoAddFrm');
 	INFO.submitAddForm = function() {
@@ -93,6 +133,23 @@ $(document).ajaxError(globalAjaxErrorHandler);
 			}
 		});
 	};
+
+	var ue = UE.getEditor('editor');
+	
+	$(function(){
+		$('#infoType').txwebInitSelect({
+			'url' : window.SrvCtxPath+'/config/dict/jsonp',
+			'params' : {'dictCode':'INFO_TYPE'},
+			'selectedIndex' : 0,
+			'callfunc':function(data, val){
+				console.log(val);
+			},
+			'valueName':'dictValue',
+			'textName':'name'
+		});
+	});
+	
+
 
 	
 </script>

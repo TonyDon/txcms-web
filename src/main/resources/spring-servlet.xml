@@ -52,8 +52,9 @@
 				</constructor-arg>
 			</bean>
 			-->
-			<!-- 启用header Accept 信息识别视图展现策略  -->
+			<!-- 启用header Accept 信息识别视图展现策略 -->
 			<bean class="org.springframework.web.accept.HeaderContentNegotiationStrategy" />
+			
 			<!-- 默认视图展现策略 -->
 			<bean class="org.springframework.web.accept.FixedContentNegotiationStrategy">
 				<constructor-arg value="text/html"/>
@@ -128,11 +129,11 @@
 		<property name="messageConverters">
 			<list>
 				<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
-					<property name="supportedMediaTypes">
+<!-- 					<property name="supportedMediaTypes">
 						<list>
 							<value>application/json;charset=UTF-8</value>
 						</list>
-					</property>
+					</property> -->
 				</bean>
 				<bean class="org.springframework.http.converter.FormHttpMessageConverter" />
 				<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
@@ -142,6 +143,7 @@
 						<list>
 							<value>text/html;charset=UTF-8</value>
 							<value>text/plain;charset=UTF-8</value>
+							<value>text/javascript;charset=UTF-8</value>
 						</list>
 					</property>
 					<property name="writeAcceptCharset" value="false"/>
