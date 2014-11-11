@@ -103,6 +103,7 @@ var ZXXFILE = {
 		
 					// 开始上传
 					xhr.open("POST", self.url, true);
+					xhr.setRequestHeader("Accept", "text/html,text/javascript,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
 					xhr.setRequestHeader("X_FILENAME", ut.enc(file.name));
 					var fd = new FormData();  
 		            fd.append(inputName, file);
