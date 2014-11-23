@@ -13,35 +13,39 @@
 </head>
 <body>
 <div style="padding:10px;width:800px;text-align:center;">
-		<div id="infoAddPanle" class="easyui-panel"  title="添加信息" style="width:750px;height:1000px;margin:auto; text-align:left;">
-	    <form id="infoAddFrm" method="post">
+		<div id="infoAddPanle" class="easyui-panel" title="添加信息"
+			style="width: 750px; height: 1000px; margin: auto; text-align: left;">
+			<form id="infoAddFrm" method="post">
 				<table cellpadding="5">
 					<tr>
 						<td id="title_tit">资讯标题:</td>
-						<td><input class="easyui-validatebox w650 texta" type="text" name="title"
-							data-options="required:true"></td>
+						<td><input class="easyui-validatebox w650 texta" type="text"
+							name="title" data-options="required:true"></td>
 					</tr>
 					<tr>
 						<td id="summary_tit">资讯摘要:</td>
-						<td><textarea class="w650 h50 texta" type="text" name="summary"></textarea>
+						<td><textarea class="w650 h50 texta" type="text"
+								name="summary"></textarea>
 					</tr>
 					<tr>
-						<td id="infoType_tit">资讯类型:</td>
-						<td>
-							<select id="infoType" name="infoType" style="width:100px;"></select>
+						<td colspan="2">
+						<span id="infoType_tit">资讯类型:</span> 
+						<select id="infoType" name="infoType" style="width: 100px; height: 50px;" size="3"></select>
+						 &nbsp;&nbsp; 
+						<span id="isPic_tit">有图文:</span>
+						<select name="isPic" style="width: 50px; height: 50px;" size="3">
+								<option value="">--</option>
+								<option value="0">否</option>
+								<option value="1">是</option>
+						</select> 
+						&nbsp;&nbsp; 
+						<span id="isVideo_tit">有视频:</span> 
+						<select name="isVideo" style="width: 50px; height: 50px;" size="3">
+								<option value="">--</option>
+								<option value="0">否</option>
+								<option value="1">是</option>
+						</select>
 						</td>
-					</tr>
-					<tr>
-						<td id="isPic_tit">有图文:</td>
-						<td><select name="isPic" style="width:50px;" size="2">
-								<option value="0">否</option>
-								<option value="1">是</option></td>
-					</tr>
-					<tr>
-						<td id="isVideo_tit">有视频:</td>
-						<td><select name="isVideo" style="width:50px;" size="2">
-								<option value="0">否</option>
-								<option value="1">是</option></td>
 					</tr>
 					<tr>
 						<td id="picUrl_tit">主图地址:</td>
@@ -52,24 +56,27 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td colspan="2">
-							<div style="width:95%; height: 350px; margin: auto; display: block; text-align: left;">
+						<td colspan="2" style="height:400px;">
+							<div
+								style="width: 95%; margin: auto; display: block; text-align: left;">
 								<script id="editor" name="content" type="text/plain"></script>
 							</div>
 						</td>
 					</tr>
+					<tr>
+					<td colspan="2"></td>
+					</tr>
 				</table>
-				<div style="text-align: center; padding: 5px">
+				<div style="text-align:center;padding:5px;clear:both;display:block;">
 					<a href="javascript:void(0)" class="easyui-linkbutton"
-						data-options="iconCls:'icon-save'" onclick="INFO.submitAddForm();">提 交</a>
-						&nbsp;&nbsp;&nbsp;&nbsp; 
-					<a href="javascript:void(0)"
+						data-options="iconCls:'icon-save'" onclick="INFO.submitAddForm();">提
+						交</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:void(0)"
 						class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
 						onclick="INFO.clearAddForm();">清 空</a>
 				</div>
 			</form>
-	    </div>
-</div>
+		</div>
+	</div>
 
 
 <script src="../static/js/jquery-1.11.1.min.js"></script>
@@ -128,13 +135,15 @@ function setHeight(){
 				} else {
 					alert('添加成功！');
 					INFO.clearAddForm();
-					$('#infoAddWin').window('close');
 				}
 			}
 		});
 	};
-
-	var ue = UE.getEditor('editor');
+	INFO.clearAddForm = function() {
+		this.JQ_ADD_FORM.form('clear');
+	};
+	
+	var ue = UE.getEditor('editor',{'initialFrameHeight':300});
 	
 	$(function(){
 		$('#infoType').txwebInitSelect({
@@ -145,7 +154,8 @@ function setHeight(){
 				console.log(val);
 			},
 			'valueName':'dictValue',
-			'textName':'name'
+			'textName':'name',
+			'defaultText':'--'
 		});
 	});
 	
