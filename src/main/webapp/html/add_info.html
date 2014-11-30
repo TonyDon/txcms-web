@@ -18,6 +18,7 @@
 <form id="infoAddFrm" method="post">
 <div class="easyui-tabs" style="width:780px;height:auto;">
 			<div title="信息分类选择" style="padding: 10px">
+			    <p id="siteCat_tip" class="bg-warning">提示：请选择叶子分类发布信息.</p>
 				<div class="form-group">
 					<label id="siteCat_tit">选择子分类：<span id="selectedCat"></span></label>
 					<input type="hidden" id="catId" name="catId" value=""/>
@@ -210,6 +211,9 @@ $(document).ajaxError(globalAjaxErrorHandler);
 						if(node.attributes['nodeNum']===0){
 							$('#catId').val(node.id);
 							$('#selectedCat').text(node.text);
+							$('#siteCat_tip').hide();
+						}else{
+							$('#siteCat_tip').show();
 						}
 					}
 				});
