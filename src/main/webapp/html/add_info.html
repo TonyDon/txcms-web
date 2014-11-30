@@ -18,7 +18,11 @@
 <form id="infoAddFrm" method="post">
 <div class="easyui-tabs" style="width:780px;height:auto;">
 			<div title="信息分类选择" style="padding: 10px">
-			aafaf
+				<div class="form-group">
+					<label id="siteCat_tit">选择子分类：<span id="selectedCat"></span></label>
+					<input type="hidden" id="catId" name="catId" value=""/>
+					<ul id="siteCat" class="easyui-tree"></ul>
+				</div>
 			</div>
 			<div title="标签设置" style="padding: 10px">
 			This is the help content.
@@ -98,6 +102,7 @@
 <script>
 $(document).ajaxError(globalAjaxErrorHandler);
 
+	
 	function setHeight(){
 	    var c = $('#infoAddPanle');
 	    var p = c.layout('panel','center');    // get the center panel
@@ -150,24 +155,83 @@ $(document).ajaxError(globalAjaxErrorHandler);
 	};
 	
 	var ue = UE.getEditor('editor',{'initialFrameHeight':350});
+
 	
-	$(function(){
+
+	function initSiteCatTree() {
+		var siteCat = $('#siteCat');
+		siteCat.tree({
+					method : 'get',
+					url : window.SrvCtxPath + '/sitecat/treelist.json',
+					sortName : 'id',
+					sortOrder : 'asc',
+					pageSize : 50,
+					records : 0,
+					loader : function(param, succCall, err) {
+						var opts = siteCat.tree("options");
+						var rid = param.id || 0;
+						var params = $.extend({
+							rid : rid,
+							crow : 0,
+							listSize : opts.pageSize,
+							records : opts.records,
+							sord : opts.sortOrder,
+							sidx : opts.sortName
+						}, param);
+						$.ajax({
+									type : opts.method,
+									url : window.SrvCtxPath + '/sitecat/treelist.json',
+									data : params,
+									dataType : "json",
+									success : function(model) {
+										var ds = model.pageDTO.datas;
+										for ( var k in ds) {
+											var rid = ds[k].rid;
+											var nodeNum = ds[k].nodeNum;
+											ds[k]._parentId = rid; //这里必须用_parentId关联父ID
+											ds[k].text = ds[k].name;
+											ds[k].attributes = {'nodeNum':nodeNum};
+											if (nodeNum > 0) {
+												ds[k].state = 'closed';
+											} else {
+												ds[k].state = 'open';
+											}
+										}
+										var d = $.extend(ds, {});
+										siteCat.tree("options").records = model.pageDTO.total;
+										succCall(d);
+									},
+									error : function(xhr, ts) {
+										err();
+									}
+								});
+					},
+					onClick: function(node){
+						if(node.attributes['nodeNum']===0){
+							$('#catId').val(node.id);
+							$('#selectedCat').text(node.text);
+						}
+					}
+				});
+	};
+
+	$(function() {
 		$('#infoType').txwebInitSelect({
-			'url' : window.SrvCtxPath+'/config/dict/jsonp',
-			'params' : {'dictCode':'INFO_TYPE'},
+			'url' : window.SrvCtxPath + '/config/dict/jsonp',
+			'params' : {
+				'dictCode' : 'INFO_TYPE'
+			},
 			'selectedIndex' : -1,
-			'callfunc':function(data, val){
+			'callfunc' : function(data, val) {
 				console.log(val);
 			},
-			'valueName':'dictValue',
-			'textName':'name',
-			'defaultText':'--'
+			'valueName' : 'dictValue',
+			'textName' : 'name',
+			'defaultText' : '--'
 		});
+
+		initSiteCatTree();
 	});
-	
-
-
-	
 </script>
 
 
