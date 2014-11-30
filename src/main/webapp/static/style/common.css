@@ -6,7 +6,7 @@ li{list-style:none;}
 a{color:#002E82;text-decoration:none;}
 a:hover{color:#E52A00;text-decoration:none;}
 .texta{border:1px #A5ACB2 solid;padding:1px;background:url('http://img03.taobaocdn.com/imgextra/i3/152137799/T2QU15XkBaXXXXXXXX_!!152137799.png') repeat-x;}
-input.texta{height:21px;}
+input.texta{height:26px;}
 .codeimg{cursor:pointer;}
 #page{padding:2px;margin:5px;clear:both;line-height:24px;width:100%;background:#F8F9D1;text-align:center;}
 .opacity{-moz-opacity:0.5;opacity:0.5;filter:alpha(opacity=50);filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);}

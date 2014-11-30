@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>add info</title>
 <link rel="stylesheet" type="text/css" href="../static/style/common.css">
+<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap-theme.css">
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/icon.css">
 <style>
@@ -12,71 +14,67 @@
 </style>
 </head>
 <body>
-<div style="padding:10px;width:800px;text-align:center;">
-		<div id="infoAddPanle" class="easyui-panel" title="添加信息"
-			style="width: 750px; height: 1000px; margin: auto; text-align: left;">
-			<form id="infoAddFrm" method="post">
-				<table cellpadding="5">
-					<tr>
-						<td id="title_tit">资讯标题:</td>
-						<td><input class="easyui-validatebox w650 texta" type="text"
-							name="title" data-options="required:true"></td>
-					</tr>
-					<tr>
-						<td id="summary_tit">资讯摘要:</td>
-						<td><textarea class="w650 h50 texta" type="text"
-								name="summary"></textarea>
-					</tr>
-					<tr>
-						<td colspan="2">
-						<span id="infoType_tit">资讯类型:</span> 
-						<select id="infoType" name="infoType" style="width: 100px; height: 50px;" size="3"></select>
-						 &nbsp;&nbsp; 
-						<span id="isPic_tit">有图文:</span>
-						<select name="isPic" style="width: 50px; height: 50px;" size="3">
-								<option value="">--</option>
-								<option value="0">否</option>
-								<option value="1">是</option>
-						</select> 
-						&nbsp;&nbsp; 
-						<span id="isVideo_tit">有视频:</span> 
-						<select name="isVideo" style="width: 50px; height: 50px;" size="3">
-								<option value="">--</option>
-								<option value="0">否</option>
-								<option value="1">是</option>
-						</select>
-						</td>
-					</tr>
-					<tr>
-						<td id="picUrl_tit">主图地址:</td>
-						<td><input class="w650 texta" type="text" name="picUrl"></td>
-					</tr>
-					<tr>
-						<td id="content_tit">资讯内容:</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td colspan="2" style="height:400px;">
-							<div
-								style="width: 95%; margin: auto; display: block; text-align: left;">
-								<script id="editor" name="content" type="text/plain"></script>
-							</div>
-						</td>
-					</tr>
-					<tr>
-					<td colspan="2"></td>
-					</tr>
-				</table>
-				<div style="text-align:center;padding:5px;clear:both;display:block;">
-					<a href="javascript:void(0)" class="easyui-linkbutton"
-						data-options="iconCls:'icon-save'" onclick="INFO.submitAddForm();">提
-						交</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:void(0)"
-						class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
-						onclick="INFO.clearAddForm();">清 空</a>
+<div style="padding:5px;width:800px;text-align:center;">
+<form id="infoAddFrm" method="post">
+<div class="easyui-tabs" style="width:780px;height:auto;">
+ 
+			<div title="信息分类选择" style="padding: 10px">
+			aafaf
+			</div>
+			<div title="标签设置" style="padding: 10px">
+			This is the help content.
+			</div>
+			<div title="图片设置" style="padding: 10px">
+			This is the help content.
+			</div>
+			<div title="基本信息输入" style="padding:50px">
+				<div class="form-group">
+								<label id="title_tit">资讯标题:</label>
+								<input class="easyui-validatebox form-control w650 texta" type="text" name="title" data-options="required:true">
 				</div>
-			</form>
+				<div class="form-group">
+								<label id="summary_tit">资讯摘要:</label>
+								<textarea class="w650 h50 form-control texta" type="text" name="summary"></textarea>
+				</div>
+				<div class="form-group">
+								<label id="infoType_tit">资讯类型:</label>
+								<select id="infoType" name="infoType" class="form-control" style="width:100px;"></select>
+								<label id="isPic_tit">有图文:</label>
+								<select class="form-control" name="isPic" style="width:100px;">
+										<option value="">--</option>
+										<option value="0">否</option>
+										<option value="1">是</option>
+								</select>
+								<label id="isVideo_tit">有视频:</label> 
+								<select  class="form-control" name="isVideo" style="width: 100px;">
+										<option value="">--</option>
+										<option value="0">否</option>
+										<option value="1">是</option>
+								</select>
+				</div>
+				<div class="form-group">
+								<label id="picUrl_tit">主图地址:</label>
+								<input class="w650 form-control texta" type="text" name="picUrl">
+				</div>
+			</div>
+			<div id="infoAddPanle" title="信息内容输入" style="height: auto; margin: auto; padding:9px; text-align: left;">
+			   <div class="form-group">
+							<label id="content_tit">文章内容:</label>
+							<div style="width: 95%; height: 500px; margin: auto; display: block; text-align: left;">
+									<script id="editor" name="content" type="text/plain"></script>
+							</div>
+				</div>
+			</div>
 		</div>
-	</div>
+					<div
+						style="text-align: center; padding: 5px; clear: both; display: block;">
+						<a href="javascript:void(0)" class="btn btn-primary" role="button"
+							onclick="INFO.submitAddForm();">提 交</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="javascript:void(0)" class="btn btn-danger" role="button"
+							onclick="INFO.clearAddForm();">清 空</a>
+					</div>
+				</form>
+</div>
 
 
 <script src="../static/js/jquery-1.11.1.min.js"></script>
@@ -90,19 +88,21 @@
 <script src="../static/js/common-window.js"></script>
 <script src="../static/js/common-form.js"></script>
 <script src="../static/js/jq.md5.js"></script>
+<script src="../static/bootstrap/js/bootstrap.js"></script>
 <script>
 $(document).ajaxError(globalAjaxErrorHandler);
 
-function setHeight(){
-    var c = $('#infoAddPanle');
-    var p = c.layout('panel','center');    // get the center panel
-    var oldHeight = p.panel('panel').outerHeight();
-    p.panel('resize', {height:'auto'});
-    var newHeight = p.panel('panel').outerHeight();
-    c.layout('resize',{
-        height: (c.height() + newHeight - oldHeight)
-    });
-};
+	function setHeight(){
+	    var c = $('#infoAddPanle');
+	    var p = c.layout('panel','center');    // get the center panel
+	    var oldHeight = p.panel('panel').outerHeight();
+	    p.panel('resize', {height:'auto'});
+	    var newHeight = p.panel('panel').outerHeight();
+	    c.layout('resize',{
+	        height: (c.height() + newHeight - oldHeight)
+	    });
+	};
+	
 	var INFO = {};
 	INFO.JQ_ADD_FORM = $('#infoAddFrm');
 	INFO.submitAddForm = function() {
@@ -143,7 +143,7 @@ function setHeight(){
 		this.JQ_ADD_FORM.form('clear');
 	};
 	
-	var ue = UE.getEditor('editor',{'initialFrameHeight':300});
+	var ue = UE.getEditor('editor',{'initialFrameHeight':350});
 	
 	$(function(){
 		$('#infoType').txwebInitSelect({
