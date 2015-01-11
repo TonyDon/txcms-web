@@ -73,7 +73,9 @@
 			   <div class="form-group">
 							<label id="content_tit">文章内容:</label>
 							<div style="width: 95%; height: 500px; margin: auto; display: block; text-align: left;">
-									<script id="editor" name="content" type="text/plain"></script>
+									<textarea  id="editor" name="content" style="width:100%;height:400px;visibility:hidden;">
+									请输入文本内容..
+									</textarea>
 							</div>
 				</div>
 			</div>
@@ -92,9 +94,8 @@
 <script src="../ctx.jsp"></script>
 <script src="../static/jqeasyui/jquery.easyui.min.js"></script>
 <script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
-<script src="../static/ueditor/ueditor.config.js"></script>
-<script src="../static/ueditor/ueditor.all.min.js"></script>
-<script src="../static/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="../static/keditor/kindeditor-min.js"></script>
+<script src="../static/keditor/lang/zh_CN.js"></script>
 <script src="../static/js/common.js"></script>
 <script src="../static/js/common-window.js"></script>
 <script src="../static/js/common-form.js"></script>
@@ -102,18 +103,6 @@
 <script src="../static/bootstrap/js/bootstrap.js"></script>
 <script>
 $(document).ajaxError(globalAjaxErrorHandler);
-
-	
-	function setHeight(){
-	    var c = $('#infoAddPanle');
-	    var p = c.layout('panel','center');    // get the center panel
-	    var oldHeight = p.panel('panel').outerHeight();
-	    p.panel('resize', {height:'auto'});
-	    var newHeight = p.panel('panel').outerHeight();
-	    c.layout('resize',{
-	        height: (c.height() + newHeight - oldHeight)
-	    });
-	};
 	
 	var INFO = {};
 	INFO.JQ_ADD_FORM = $('#infoAddFrm');
@@ -155,7 +144,6 @@ $(document).ajaxError(globalAjaxErrorHandler);
 		this.JQ_ADD_FORM.form('clear');
 	};
 	
-	var ue = UE.getEditor('editor',{'initialFrameHeight':350});
 
 	
 
@@ -219,6 +207,13 @@ $(document).ajaxError(globalAjaxErrorHandler);
 				});
 	};
 
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			allowFileManager : true
+		});
+	});
+	
 	$(function() {
 		$('#infoType').txwebInitSelect({
 			'url' : window.SrvCtxPath + '/config/dict/jsonp',
