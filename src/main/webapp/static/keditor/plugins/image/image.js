@@ -206,7 +206,7 @@ KindEditor.plugin('image', function(K) {
 						K(".ke-refresh-btn", div).click();
 					}
 				} else {
-					alert(data.message);
+					alert(data.message || data.exception);
 				}
 			},
 			afterError : function(html) {

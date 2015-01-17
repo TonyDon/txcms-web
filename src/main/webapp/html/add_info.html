@@ -210,7 +210,10 @@ $(document).ajaxError(globalAjaxErrorHandler);
 	var editor;
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="content"]', {
-			allowFileManager : true
+			allowFileManager : true,
+			uploadJson: window.SrvCtxPath + '/uploader/image.json',
+			filePostName : 'imageFile',
+			extraFileUploadParams : {'needThumb':true}
 		});
 	});
 	
