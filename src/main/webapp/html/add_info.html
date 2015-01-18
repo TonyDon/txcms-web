@@ -211,8 +211,8 @@ $(document).ajaxError(globalAjaxErrorHandler);
 	KindEditor.ready(function(K) {
 		editor = K.create('textarea[name="content"]', {
 			allowFileManager : true,
-			uploadJson: window.SrvCtxPath + '/uploader/image.json',
-			filePostName : 'imageFile',
+			uploadJson: window.SrvCtxPath + '/uploader/store.json',
+			filePostName : 'mpfile',
 			extraFileUploadParams : {'needThumb':true}
 		});
 	});
