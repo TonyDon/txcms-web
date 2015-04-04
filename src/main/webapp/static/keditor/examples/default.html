@@ -19,8 +19,8 @@
 			KindEditor.ready(function(K) {
 				editor = K.create('textarea[name="content"]', {
 					allowFileManager : true,
-					uploadJson: '/txcms-web/uploader/image.json',
-					filePostName : 'imageFile'
+					uploadJson: '/txcms-web/uploader/store.json',
+					filePostName : 'mpfile'
 				});
 				K('input[name=getHtml]').click(function(e) {
 					alert(editor.html());
