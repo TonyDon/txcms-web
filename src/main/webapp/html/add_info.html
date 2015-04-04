@@ -104,6 +104,16 @@
 <script>
 $(document).ajaxError(globalAjaxErrorHandler);
 	
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			allowFileManager : true,
+			uploadJson: window.SrvCtxPath + '/uploader/store.json',
+			filePostName : 'mpfile',
+			extraFileUploadParams : {'needThumb':true}
+		});
+	});
+
 	var INFO = {};
 	INFO.JQ_ADD_FORM = $('#infoAddFrm');
 	INFO.submitAddForm = function() {
@@ -114,6 +124,7 @@ $(document).ajaxError(globalAjaxErrorHandler);
 			},
 			url : window.SrvCtxPath+'/info/add.json',
 			onSubmit : function(params) {
+				$('#editor').val(editor.html());
 				return $(this).form('enableValidation').form('validate');
 			},
 			success : function(data) {
@@ -142,6 +153,7 @@ $(document).ajaxError(globalAjaxErrorHandler);
 	};
 	INFO.clearAddForm = function() {
 		this.JQ_ADD_FORM.form('clear');
+		editor.html('');
 	};
 	
 
@@ -207,15 +219,7 @@ $(document).ajaxError(globalAjaxErrorHandler);
 				});
 	};
 
-	var editor;
-	KindEditor.ready(function(K) {
-		editor = K.create('textarea[name="content"]', {
-			allowFileManager : true,
-			uploadJson: window.SrvCtxPath + '/uploader/store.json',
-			filePostName : 'mpfile',
-			extraFileUploadParams : {'needThumb':true}
-		});
-	});
+
 	
 	$(function() {
 		$('#infoType').txwebInitSelect({

@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 <title>exception</title>
 <style>
 body{font-size:12px; font-family: Verdana, Arial;color:#000; background:#EAEAEA;padding:0;margin:0;overflow-x:hidden;}
