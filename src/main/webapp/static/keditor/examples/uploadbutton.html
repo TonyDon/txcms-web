@@ -9,12 +9,13 @@
 			KindEditor.ready(function(K) {
 				var uploadbutton = K.uploadbutton({
 					button : K('#uploadButton')[0],
-					fieldName : 'imgFile',
-					url : '../php/upload_json.php?dir=file',
+					fieldName : 'mpfile',
+					url : '/txcms-web/uploader/store.json?dir=file&needThumb=true',
 					afterUpload : function(data) {
 						if (data.error === 0) {
 							var url = K.formatUrl(data.url, 'absolute');
 							K('#url').val(url);
+							alert('上传成功！');
 						} else {
 							alert(data.message);
 						}
@@ -31,7 +32,7 @@
 	</head>
 	<body>
 		<div class="upload">
-			<input class="ke-input-text" type="text" id="url" value="" readonly="readonly" /> <input type="button" id="uploadButton" value="Upload" />
+			<input class="ke-input-text" type="text" id="url" value="" readonly="readonly" style="width:240px;"/> <input type="button" id="uploadButton" value="Upload" />
 		</div>
 	</body>
 </html>
