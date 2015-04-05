@@ -39,17 +39,20 @@
   background-color: #ffffff;
 }
 .combo {
-  border-color: #D3D3D3;
+  border-color: #D4D4D4;
   background-color: #fff;
 }
 .combo-arrow {
-  background-color: #f3f3f3;
+  background-color: #F2F2F2;
 }
 .combo-arrow-hover {
-  background-color: #e2e2e2;
+  background-color: #e6e6e6;
 }
 .combo-arrow:hover {
-  background-color: #e2e2e2;
+  background-color: #e6e6e6;
+}
+.combo .textbox-icon-disabled:hover {
+  cursor: default;
 }
 .textbox-invalid {
   border-color: #ffa8a8;

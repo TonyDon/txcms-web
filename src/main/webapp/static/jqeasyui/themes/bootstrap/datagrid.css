@@ -179,7 +179,7 @@
 .datagrid-view .datagrid-editable-input {
   margin: 0;
   padding: 2px 4px;
-  border: 1px solid #D3D3D3;
+  border: 1px solid #D4D4D4;
   font-size: 12px;
   outline-style: none;
   -moz-border-radius: 0 0 0 0;
@@ -205,35 +205,35 @@
 }
 .datagrid-header,
 .datagrid-td-rownumber {
-  background-color: #fafafa;
-  background: -webkit-linear-gradient(top,#fdfdfd 0,#f5f5f5 100%);
-  background: -moz-linear-gradient(top,#fdfdfd 0,#f5f5f5 100%);
-  background: -o-linear-gradient(top,#fdfdfd 0,#f5f5f5 100%);
-  background: linear-gradient(to bottom,#fdfdfd 0,#f5f5f5 100%);
+  background-color: #F2F2F2;
+  background: -webkit-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+  background: -moz-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+  background: -o-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+  background: linear-gradient(to bottom,#ffffff 0,#F2F2F2 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fdfdfd,endColorstr=#f5f5f5,GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#F2F2F2,GradientType=0);
 }
 .datagrid-cell-rownumber {
-  color: #000000;
+  color: #333;
 }
 .datagrid-resize-proxy {
-  background: #bfbfbf;
+  background: #bbb;
 }
 .datagrid-mask {
   background: #ccc;
 }
 .datagrid-mask-msg {
-  border-color: #D3D3D3;
+  border-color: #D4D4D4;
 }
 .datagrid-toolbar,
 .datagrid-pager {
-  background: #fafafa;
+  background: #F5F5F5;
 }
 .datagrid-header,
 .datagrid-toolbar,
 .datagrid-pager,
 .datagrid-footer-inner {
-  border-color: #ddd;
+  border-color: #e6e6e6;
 }
 .datagrid-header td,
 .datagrid-body td,
@@ -243,20 +243,20 @@
 .datagrid-htable,
 .datagrid-btable,
 .datagrid-ftable {
-  color: #000000;
+  color: #333;
   border-collapse: separate;
 }
 .datagrid-row-alt {
-  background: #fafafa;
+  background: #F5F5F5;
 }
 .datagrid-row-over,
 .datagrid-header td.datagrid-header-over {
-  background: #e2e2e2;
-  color: #000000;
+  background: #e6e6e6;
+  color: #00438a;
   cursor: default;
 }
 .datagrid-row-selected {
-  background: #0092DC;
+  background: #0081c2;
   color: #fff;
 }
 .datagrid-row-editing .textbox,
