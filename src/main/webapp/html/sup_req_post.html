@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>发布供求信息</title>
-<link href="../static/style/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="../static/style/common.css" rel="stylesheet">
 <link href="../static/uploadify/uploadify.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../static/jqeasyui/themes/default/easyui.css">
@@ -221,8 +221,8 @@ vertical-align: middle;
 	<label for="captcha" class="error"></label>
 </div>
 <div class="center">
- <input id="submitBtn" type="button" value="发 布" class="button orange "/>
- <input type="button"  id="resetBtn" value="重 填" class="button gray" onclick="ut.reload('?t='+ut.r());"/>
+ <input id="submitBtn" type="button" value="发 布" class="btn btn-primary"/>
+ <input type="button"  id="resetBtn" value="重 填" class="btn btn-default" onclick="ut.reload('?t='+ut.r());"/>
 </div>
 </form>
 </div>
@@ -243,7 +243,6 @@ vertical-align: middle;
 
 <script src="../static/js/jquery-1.11.1.min.js"></script>
 <script src="../static/js/jquery.validate.min.js"></script>
-<script src="../static/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="../static/js/messages_zh.js"></script>
 <script src="../static/jqeasyui/jquery.easyui.min.js"></script>
 <script src="../static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
@@ -252,6 +251,7 @@ vertical-align: middle;
 <script src="../static/js/address.js"></script>
 <script src="../static/js/template.js"></script>
 <script src="../static/uploadify/jquery.uploadify.min.js"></script>
+<script src="../ctx.jsp"></script>
 
 <script id="imgTpl" type="text/html">
  <div id="upimg_{%=img.id%}">
@@ -261,6 +261,7 @@ vertical-align: middle;
 </script>
 
 <script>
+var ctxp = window.SrvCtxPath;
 function deleteImage(id, src){
 	var res = src || '';
 	$('#upimg_'+id).remove();
@@ -268,7 +269,8 @@ function deleteImage(id, src){
 	if(res==''){
 		return;
 	}
-	$.post('../uploader/image',{_method:'delete',imageUrl:res},function(res){
+	res = res.replace(ctxp, '');
+	$.post('../uploader/remove',{_method:'delete',url:res},function(res){
 		alert('删除成功!');
 	});
 };
@@ -351,12 +353,19 @@ $(function(){
 	 });
     addressInit('province', 'city', 'area');
     
+    
+    function getThumbImgUrl(orgImgUrl){
+    	var extName = orgImgUrl.substring(orgImgUrl.lastIndexOf('.')+1);
+    	var prefix = orgImgUrl.substring(0, orgImgUrl.lastIndexOf('.'));
+    	return [prefix, '100', extName].join('.');
+    };
+    
     $('#image_upload').uploadify({
         'swf'      : '../static/uploadify/uploadify.swf',
-        'uploader' : '../uploader/image',
-        'fileObjName' : 'imageFile',
+        'uploader' : '../uploader/store.json',
+        'fileObjName' : 'mpfile',
         'method'   : 'post',
-        'formData' : { '_r' : ut.r() },
+        'formData' : { '_r' : ut.r() , 'needThumb': true, 'dir':'image'},
         'queueID'  : 'fileQueue',
         'fileTypeDesc' : '图片文件',
         'fileTypeExts' : '*.gif; *.jpg; *.png',
@@ -378,10 +387,11 @@ $(function(){
 	    		// log.trace(upload image error);
 	    		return;
 	    	}
+	    	var jdat = $.parseJSON(data);
 	    	var dat={};
 	    	dat.img={};
-	    	dat.img.src=data;
-	    	dat.img.thumb_src='..' + data +'.w1.thumb';
+	    	dat.img.src=jdat.url;
+	    	dat.img.thumb_src= getThumbImgUrl(jdat.url);
 	    	dat.img.id=ut.rndChr(16);
 	        $('#imageArea').append(template.render('imgTpl',dat));
 	        window.image_num++;
