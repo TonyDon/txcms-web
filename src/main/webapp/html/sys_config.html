@@ -53,6 +53,11 @@
 						<td><input class="easyui-textbox" type="text" name="generalClass"
 							data-options="required:false"></td>
 					</tr>
+					<tr>
+						<td>备 注:</td>
+						<td><input class="easyui-textbox" type="text" name="remark"
+							data-options="required:true"></td>
+					</tr>
 				</table>
 				<div style="text-align: center; padding: 5px">
 					<a href="javascript:void(0)" class="easyui-linkbutton"
@@ -92,7 +97,7 @@ $(document).ajaxError(globalAjaxErrorHandler);
 		}, {
 			field : 'name',
 			title : '参数名称',
-			width : 100
+			width : 150
 		}, {
 			field : 'sysValue',
 			title : '参数值',
@@ -100,15 +105,15 @@ $(document).ajaxError(globalAjaxErrorHandler);
 		}, {
 			field : 'sysType',
 			title : '参数类型',
-			width : 200
+			width : 100
 		}, {
 			field : 'generalClass',
 			title : '转换类名',
-			width : 200
+			width : 150
 		}, {
 			field : 'updateTime',
 			title : '更新时间',
-			width : 200,
+			width : 150,
 			formatter:function(value,row,index){
 				if (row.updateTime){
 					return ut.parseDate(row.updateTime);
@@ -116,6 +121,10 @@ $(document).ajaxError(globalAjaxErrorHandler);
 					return '-';
 				}
 			}
+		}, {
+			field : 'remark',
+			title : '备注',
+			width : 200
 		}  ] ],
 		idField : 'id',
 		width : '80%',
