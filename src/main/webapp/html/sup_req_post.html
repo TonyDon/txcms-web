@@ -393,7 +393,7 @@ $(function(){
 	    	dat.img.src=jdat.url;
 	    	dat.img.thumb_src= getThumbImgUrl(jdat.url);
 	    	dat.img.id=ut.rndChr(16);
-	        $('#imageArea').append(template.render('imgTpl',dat));
+	        $('#imageArea').append(template('imgTpl',dat));
 	        window.image_num++;
 	    },
 	    'onUploadError' : function(file, errorCode, errorMsg, errorString) {
