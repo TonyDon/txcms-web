@@ -155,7 +155,7 @@ $(function(){
 				complete :function(xhr, textStatus){
 					    PAGE_EL.login_pass.val('');
 					    if(PAGE_EL.login_flag==0){
-						    PAGE_EL.refresh_captcha.click();
+					    	PAGE_EL.vcode_group.addClass('hidden');
 							PAGE_EL.login_submit_btn.removeAttr('disabled');
 							PAGE_EL.login_submit_btn.text('确 定');
 					    }
