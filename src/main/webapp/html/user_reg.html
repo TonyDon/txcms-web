@@ -125,6 +125,7 @@ vertical-align: middle;
 <script src="../static/js/common.js"></script>
 <script src="../static/js/common-window.js"></script>
 <script src="../static/js/jq.md5.js"></script>
+<script src="../static/js/jq.sha1.js"></script>
 <script>
 initJQuery();
 
@@ -190,7 +191,7 @@ $(function(){
 		if(!$rFrm.valid() ) {
 			return false;
 		}
-		$('#passKey').val($.md5($('#key').val()));
+		$('#passKey').val($.sha1($('#key').val()));
 		$(this).attr('disabled','disabled').val('正在处理, 请稍后...');
 		$rFrm.submit();
    });
