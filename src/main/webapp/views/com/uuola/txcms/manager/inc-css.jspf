@@ -1,0 +1,9 @@
+<%@ page pageEncoding="UTF-8" %>
+<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${ut:getCtxPath()}/static/manager/css/metisMenu.css" rel="stylesheet" type="text/css">
+<link href="${ut:getCtxPath()}/static/manager/css/sb-admin-2.css" rel="stylesheet" type="text/css">
+<link href="${ut:getCtxPath()}/static/manager/css/font-awesome.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+        <script src="${ut:getCtxPath()}/static/js/html5shiv.js"></script>
+        <script src="${ut:getCtxPath()}/static/js/respond.min.js"></script>
+<![endif]-->

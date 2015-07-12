@@ -10,14 +10,7 @@
 <title>控制台</title>
 <meta content="" name="keywords">
 <meta content="" name="description">
-<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="${ut:getCtxPath()}/static/manager/css/metisMenu.css" rel="stylesheet" type="text/css">
-<link href="${ut:getCtxPath()}/static/manager/css/sb-admin-2.css" rel="stylesheet" type="text/css">
-<link href="${ut:getCtxPath()}/static/manager/css/font-awesome.css" rel="stylesheet" type="text/css">
-<!--[if lt IE 9]>
-        <script src="${ut:getCtxPath()}/static/js/html5shiv.js"></script>
-        <script src="${ut:getCtxPath()}/static/js/respond.min.js"></script>
-<![endif]-->
+<%@include file="inc-css.jspf" %>
 <style>
 
 </style>
@@ -181,16 +174,8 @@
     	 	系统版本：txcms version 1.0.0-20150721170112938
     	 </div>
     </footer>
-<script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js"></script>
-<script src="${ut:getCtxPath()}/static/bootstrap/js/bootstrap.min.js"></script>
-<script src="${ut:getCtxPath()}/static/manager/js/metisMenu.js"></script>
-<script src="${ut:getCtxPath()}/static/manager/js/sb-admin-2.js"></script>
-<script src="${ut:getCtxPath()}/static/js/common.js"></script>
-<script src="${ut:getCtxPath()}/static/js/jq.md5.js"></script>
-<script src="${ut:getCtxPath()}/static/js/jq.sha1.js"></script>
-<script src="${ut:getCtxPath()}/static/js/jq.cookie.js"></script>
-<script src="${ut:getCtxPath()}/static/jqvalidate/jquery.validate.js"></script>
-<script src="${ut:getCtxPath()}/static/jqvalidate/messages_zh.js"></script>
+
+<%@include file="inc-js.jspf" %>
 <script>
 var PAGE_DEF ={
 		logoutUrl : window.ctx + '/manager/console/logout',

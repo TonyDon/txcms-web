@@ -1,0 +1,11 @@
+<%@ page pageEncoding="UTF-8" %>
+<script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.js"></script>
+<script src="${ut:getCtxPath()}/static/bootstrap/js/bootstrap.js"></script>
+<script src="${ut:getCtxPath()}/static/manager/js/metisMenu.js"></script>
+<script src="${ut:getCtxPath()}/static/manager/js/sb-admin-2.js"></script>
+<script src="${ut:getCtxPath()}/static/js/common.js"></script>
+<script src="${ut:getCtxPath()}/static/js/jq.md5.js"></script>
+<script src="${ut:getCtxPath()}/static/js/jq.sha1.js"></script>
+<script src="${ut:getCtxPath()}/static/js/jq.cookie.js"></script>
+<script src="${ut:getCtxPath()}/static/jqvalidate/jquery.validate.js"></script>
+<script src="${ut:getCtxPath()}/static/jqvalidate/messages_zh.js"></script>
