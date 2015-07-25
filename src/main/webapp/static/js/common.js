@@ -95,7 +95,7 @@ var ut = {
        var pt =[fp,pre,rt.join(''),' <a href="javascript:;">共',pc,'页</a> ', nex, ep, go].join('') ;
         ut.html(pgid, pt);
 },
-	r:function(){return Math.random();},
+	r:function(){return Math.random()*100;},
 	rndint:function(b,e){return parseInt( b + parseInt( Math.random()*(e-b) ) );},
 	doxCall:function(url,func){ 
         $.ajax({cache:false,url:url,dataType:"jsonp",jsonp:"jsonpcall",

@@ -170,8 +170,9 @@
     </div>
     <!-- /#wrapper -->
     <footer>
-    	 <div>
-    	 	系统版本：txcms version 1.0.0-20150721170112938
+    	 <div style="padding:1em 0 1em 0; text-align:right;">
+    	 	<div>当前时间：<span id="sess-curr-time"></span> </div>
+    	 	<div>系统版本：txcms version 1.0.0-20150721170112938 </div>
     	 </div>
     </footer>
 
@@ -179,14 +180,37 @@
 <script>
 var PAGE_DEF ={
 		logoutUrl : window.ctx + '/manager/console/logout',
-		console_logout : $('#console_logout')
+		sessCheckUrl : window.ctx + '/manager/console/session_check',
+		loginUrl : window.ctx + '/manager/verify/login',
+		console_logout : $('#console_logout'),
+		sess_curr_time : $('#sess-curr-time'),
+		sess_check_timer : null
 };
 
+
+
+function SessCheck()
+{
+	$.get(PAGE_DEF.sessCheckUrl+"?t="+ut.r(), function(r){
+		var t = String(r);
+		if(t.indexOf('error')>-1){
+			if(null != PAGE_DEF.sess_check_timer){
+				clearInterval(PAGE_DEF.sess_check_timer);
+			}
+			ut.reload(PAGE_DEF.loginUrl+'?t='+ut.r());
+		}else{
+			PAGE_DEF.sess_curr_time.text(ut.parseDate(Number($.trim(t)), 16));
+		}
+	});
+};
+ 
 $(function(){
 	
 	PAGE_DEF.console_logout.click(function(){
 		ut.reload(PAGE_DEF.logoutUrl+"?t="+ut.r());
 	});
+	SessCheck();
+	PAGE_DEF.sess_check_timer = setInterval("SessCheck()",10000);
 	
 });
 </script>
