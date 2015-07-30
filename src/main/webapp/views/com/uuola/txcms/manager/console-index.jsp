@@ -33,7 +33,7 @@
             
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                	<span style="color:#ACACAC">当前登录帐号：</span><span>${admin.name }</span>
+                	<span style="color:#ACACAC">当前登录帐号：</span><span id="admin_name"></span>
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
@@ -184,6 +184,7 @@ var PAGE_DEF ={
 		loginUrl : window.ctx + '/manager/verify/login',
 		console_logout : $('#console_logout'),
 		sess_curr_time : $('#sess-curr-time'),
+		admin_name : $('#admin_name'),
 		sess_check_timer : null
 };
 
@@ -199,7 +200,8 @@ function SessCheck()
 			}
 			ut.reload(PAGE_DEF.loginUrl+'?t='+ut.r());
 		}else{
-			PAGE_DEF.sess_curr_time.text(ut.parseDate(Number($.trim(t)), 16));
+			PAGE_DEF.admin_name.text(t);
+			PAGE_DEF.sess_curr_time.text(ut.parseDate((new Date()).getTime(), 16));
 		}
 	});
 };
