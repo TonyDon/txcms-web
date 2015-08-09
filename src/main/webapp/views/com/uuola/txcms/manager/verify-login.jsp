@@ -8,15 +8,12 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>TXCMS 管理平台登录</title>
-<meta content="" name="keywords">
-<meta content="" name="description">
 <%@include file="inc-css.jspf" %>
 <style>
 .none{display:none;}
 label.error{margin:0.2em 1.2em;}
 #vcode{width:100%;height:4em;margin-top:0.1em;border:1px solid #DDDDDD;}
 </style>
-<script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
 <body>
 	<div class="container">
