@@ -25,6 +25,7 @@ function SessCheck()
 PAGE_DEF.NAV={};
 // 配置导航菜单连接
 PAGE_DEF.NAV.hrefs = {
+		'console_main' : '/manager/console',
 		'console_logout' : '/manager/console/logout',
 		'app_sysconfig' : '/manager/app/sysconfig' 
 };
