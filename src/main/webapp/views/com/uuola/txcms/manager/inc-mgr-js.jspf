@@ -31,7 +31,14 @@ PAGE_DEF.NAV.hrefs = {
 PAGE_DEF.NAV.Goto=function(hrefId){
 	var href =  PAGE_DEF.NAV.hrefs[hrefId];
 	if(href){
-		ut.reload(window.ctx + PAGE_DEF.NAV.hrefs[hrefId] + '?t=' + ut.r());
+		ut.reload(window.ctx + PAGE_DEF.NAV.hrefs[hrefId] + '?t=' + ut.r() + "&navHrefId=" + hrefId);
+	}
+};
+// 设置当前活动导航菜单显示
+PAGE_DEF.NAV.SetActive=function(){
+	var currHrefId = ut.get('navHrefId');
+	if(currHrefId!=''){
+		$('#'+currHrefId).addClass('active');
 	}
 };
 
@@ -46,6 +53,8 @@ $(function(){
 			PAGE_DEF.NAV.Goto(hrefId);
 		}
 	});
+	
+	PAGE_DEF.NAV.SetActive();
 	
 });
 </script>

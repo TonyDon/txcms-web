@@ -1,4 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
+<link href="${ut:getCtxPath()}/static/jqeasyui/themes/bootstrap/easyui.css" rel="stylesheet" type="text/css">
+<link href="${ut:getCtxPath()}/static/jqeasyui/themes/icon.css" rel="stylesheet" type="text/css"> 
 <link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${ut:getCtxPath()}/static/manager/css/metisMenu.css" rel="stylesheet" type="text/css">
 <link href="${ut:getCtxPath()}/static/manager/css/sb-admin-2.css" rel="stylesheet" type="text/css">
@@ -7,5 +9,3 @@
         <script src="${ut:getCtxPath()}/static/js/html5shiv.js"></script>
         <script src="${ut:getCtxPath()}/static/js/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="${ut:getCtxPath()}/static/jqeasyui/themes/bootstrap/easyui.css">
-<link rel="stylesheet" type="text/css" href="${ut:getCtxPath()}/static/jqeasyui/themes/icon.css">

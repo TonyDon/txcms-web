@@ -91,11 +91,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> 微信集成<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a class="active" href="#">公众号接入</a>
+                                    <a href="#">公众号接入</a>
                                 </li>
                                 <li>
                                     <a href="#">微信用户</a>
@@ -103,11 +103,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> 待扩展功能<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a class="active" href="#">功能1</a>
+                                    <a href="#">功能1</a>
                                 </li>
                                 <li>
                                     <a href="#">功能2</a>

@@ -19,9 +19,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="page-header">系统参数管理</h4>
+                        <h4 class="page-header">系统设置/系统参数管理</h4>
                         	<table id="user_data_table"></table>
-                        	<div id="win1">aaa</div>
 						    <div id="sysConfigAddWin" class="easyui-window" title="添加用户信息"
 								data-options="modal:true,closed:true,iconCls:'icon-save'"
 								style="width: 380px; height: 280px; padding: 10px;">
