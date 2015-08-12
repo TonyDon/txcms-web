@@ -59,11 +59,10 @@
 											</tr>
 										</table>
 										<div style="text-align: center; padding: 5px">
-											<a href="javascript:void(0)" class="easyui-linkbutton"
-												data-options="iconCls:'icon-save'" onclick="SYS_CONFIG.submitAddForm();">提 交</a>
+											<a href="javascript:void(0)" class="btn btn-primary"
+												onclick="SYS_CONFIG.submitAddForm();">提 交</a>
 												&nbsp;&nbsp;&nbsp;&nbsp; 
-											<a href="javascript:void(0)"
-												class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+											<a href="javascript:void(0)"class="btn btn-warning"
 												onclick="SYS_CONFIG.clearAddForm();">清 空</a>
 										</div>
 									</form>
