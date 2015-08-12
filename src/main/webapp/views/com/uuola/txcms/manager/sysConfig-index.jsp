@@ -15,7 +15,7 @@
         <%@include file="inc-nav.jspf" %>
 
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" class="easyui-style">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -23,10 +23,10 @@
                         	<table id="user_data_table"></table>
 						    <div id="sysConfigAddWin" class="easyui-window" title="添加用户信息"
 								data-options="modal:true,closed:true,iconCls:'icon-save'"
-								style="width: 380px; height: 280px; padding: 10px;">
+								style="width: 380px; height:auto; padding: 10px;">
 								<div style="padding:10px">
 							    <form id="sysConfigAddFrm" method="post">
-										<table cellpadding="5">
+										<table cellpadding="5" class="table table-striped table-bordered table-hover">
 											<tr>
 												<td id="name_tit">参数名称:</td>
 												<td><input class="easyui-textbox" type="text" name="name"
@@ -39,7 +39,7 @@
 											</tr>
 											<tr>
 												<td id="sysType_tit">参数类型:</td>
-												<td><select name="sysType" class="easyui-combobox" data-options="required:true">
+												<td><select name="sysType" data-options="required:true">
 														<option value="string">string</option>
 														<option value="number">number</option>
 														<option value="list">list</option>
@@ -106,7 +106,7 @@ TXWEB.tb.datagrid({
 	columns : [ [ {
 		field : 'id',
 		title : 'ID 编号',
-		width : 50
+		width : 80
 	}, {
 		field : 'name',
 		title : '参数名称',
@@ -141,7 +141,7 @@ TXWEB.tb.datagrid({
 	}  ] ],
 	idField : 'id',
 	width : '100%',
-	height : 450,
+	height : 'auto',
 	nowrap : false,
 	striped : true,
 	pagination : true,

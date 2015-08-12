@@ -118,5 +118,14 @@ UUID.rand = function(max){
 // end of UUID class file
 
 function GetUUID(){
-return (new UUID()).toString();
+	return (new UUID()).toString();
 };
+
+// $.uuid();
+if(window.jQuery){
+	(function($) {
+		$.uuid = function() {
+		return GetUUID();
+		};
+	})(jQuery);
+}
