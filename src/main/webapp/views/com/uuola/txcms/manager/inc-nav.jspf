@@ -65,7 +65,7 @@
                                     <a id="app_sysconfig" href="#">参数维护</a>
                                 </li>
                                 <li>
-                                    <a href="#">字典维护</a>
+                                    <a id="app_dictconfig" href="#">字典维护</a>
                                 </li>
                                 <li>
                                     <a href="#">缓存管理</a>

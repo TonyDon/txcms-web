@@ -27,7 +27,8 @@ PAGE_DEF.NAV={};
 PAGE_DEF.NAV.hrefs = {
 		'console_main' : '/manager/console',
 		'console_logout' : '/manager/console/logout',
-		'app_sysconfig' : '/manager/app/sysconfig' 
+		'app_sysconfig' : '/manager/app/sysconfig',
+		'app_dictconfig' : '/manager/app/dictconfig' 
 };
 PAGE_DEF.NAV.Goto=function(hrefId){
 	var href =  PAGE_DEF.NAV.hrefs[hrefId];
