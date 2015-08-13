@@ -16,7 +16,7 @@
 }
 
 .datagrid-row, .datagrid-header-row {
-	height: 32px;
+	height: 35px;
 }
 
 .combo-p {
