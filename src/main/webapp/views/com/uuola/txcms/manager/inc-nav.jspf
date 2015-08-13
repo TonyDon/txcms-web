@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="console_main" class="navbar-brand" href="javascript:;">TXCMS 后台管理系统</a>
+                <a id="console_main" class="navbar-brand" href="javascript:;">后台管理系统</a>
             </div>
             <!-- /.navbar-header -->
             
