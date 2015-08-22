@@ -23,12 +23,14 @@ function SessCheck()
 	});
 };
 PAGE_DEF.NAV={};
-// 配置导航菜单连接
+// 配置导航菜单连接和 href对应ID关联
 PAGE_DEF.NAV.hrefs = {
 		'console_main' : '/manager/console',
 		'console_logout' : '/manager/console/logout',
 		'app_sysconfig' : '/manager/app/sysconfig',
-		'app_dictconfig' : '/manager/app/dictconfig' 
+		'app_dictconfig' : '/manager/app/dictconfig',
+		'app_sitecat' : '/manager/app/sitecat',
+		'app_cmsinfo_addpage' : '/manager/app/cmsinfo/addpage'
 };
 PAGE_DEF.NAV.Goto=function(hrefId){
 	var href =  PAGE_DEF.NAV.hrefs[hrefId];

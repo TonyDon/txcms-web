@@ -6,6 +6,7 @@
 <script src="${ut:getCtxPath()}/static/manager/js/sb-admin-2.js"></script>
 <script src="${ut:getCtxPath()}/static/js/common.js"></script>
 <script src="${ut:getCtxPath()}/static/js/common-window.js"></script>
+<script src="${ut:getCtxPath()}/static/js/common-form.js"></script>
 <script src="${ut:getCtxPath()}/static/js/jq.md5.js"></script>
 <script src="${ut:getCtxPath()}/static/js/jq.sha1.js"></script>
 <script src="${ut:getCtxPath()}/static/js/jq.cookie.js"></script>
