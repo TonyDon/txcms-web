@@ -155,12 +155,14 @@ TXWEB.tb.datagrid({
 	pageList : [ 5, 10, 20, 50 ],
 	records : 0,
 	toolbar : [ {
+		id : 'add_btn',
 		text : '添加',
 		iconCls : 'icon-add',
 		handler : function() {
 			SYS_CONFIG.initAdd();
 		}
 	}, '-', {
+		id : 'del_btn',
 		text : '删除',
 		iconCls : 'icon-remove',
 		handler : function() {
