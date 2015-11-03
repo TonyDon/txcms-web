@@ -7,8 +7,7 @@ var PAGE_DEF ={
 		admin_name : $('#admin_name'),
 		sess_check_timer : null
 };
-function SessCheck()
-{
+function SessCheck(){
 	$.get(PAGE_DEF.sessCheckUrl+"?t="+ut.r(), function(r){
 		var t = String(r);
 		if(t.indexOf('error')>-1){
@@ -30,7 +29,9 @@ PAGE_DEF.NAV.hrefs = {
 		'app_sysconfig' : '/manager/app/sysconfig',
 		'app_dictconfig' : '/manager/app/dictconfig',
 		'app_sitecat' : '/manager/app/sitecat',
-		'app_cmsinfo_addpage' : '/manager/app/cmsinfo/addpage'
+		'app_cmsinfo_addpage' : '/manager/app/cmsinfo/addpage',
+		'app_webgame_addpage' : '/manager/app/webgame/addpage',
+		'app_webgame_list' : '/manager/app/webgame/list'
 };
 PAGE_DEF.NAV.Goto=function(hrefId){
 	var href =  PAGE_DEF.NAV.hrefs[hrefId];
