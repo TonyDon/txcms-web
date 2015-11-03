@@ -34,6 +34,10 @@
 			<mvc:mapping path="/uploader/**" />
 			<bean id="accessActionMethodInterceptor" class="com.uuola.txcms.interceptor.UserAccessActionInterceptor"></bean>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean id="baseActionViewInterceptor" class="com.uuola.txweb.framework.interceptor.BaseActionViewInterceptor"></bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 </beans>
