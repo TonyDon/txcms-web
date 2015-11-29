@@ -8,6 +8,7 @@
 </head>
 <body>
 ${show}<br/>
-${seqId}
+${seqId}<br/>
+${stackInfo }
 </body>
 </html>
