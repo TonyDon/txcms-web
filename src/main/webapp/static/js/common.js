@@ -197,17 +197,6 @@ ut.hashPassKey = function(pass, token){
 	}
 	return "";
 };
-// 客户端验证输入验证是否正确
-ut.validCaptcha = function(vc) {
-	if (window.jQuery) {
-		var cc_hash = $.cookie('cc_hash');
-		var cc_rc = $.cookie('cc_rc');
-		var ctext = $.md5(ut.lower(vc) + cc_rc);
-		return (cc_hash == ctext) ? true : false;
-	} else {
-		return false;
-	}
-};
 var va={
     tint:function(s){return (/^[0-9\-]{1,2}$/).test(s);},
     mint:function(s){return (/^[0-9\-]{1,5}$/).test(s);},
