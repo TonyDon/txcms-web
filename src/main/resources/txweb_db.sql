@@ -82,7 +82,7 @@ CREATE TABLE `dict_config` (
   `remark` varchar(100) DEFAULT NULL COMMENT '备注说明',
   `update_time` bigint(20) unsigned NOT NULL COMMENT '创建时间戳，系统毫秒数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `dict_config` */
 
@@ -95,6 +95,7 @@ insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update
 insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (7,'超链接跳转','INFO_TYPE','1','',1415446731000);
 insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (8,'hellokit','HELLO_KIT','1','1',1416731050000);
 insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (9,'dsf','sdf','sdf','df',1427005547000);
+insert  into `dict_config`(`id`,`name`,`dict_code`,`dict_value`,`remark`,`update_time`) values (10,'测试1','TANG1','1','1',1451134995000);
 
 /*Table structure for table `function_cfg` */
 
@@ -133,7 +134,7 @@ CREATE TABLE `info_base` (
   `info_state` tinyint(2) NOT NULL DEFAULT '0' COMMENT '信息状态; 0-未审核; 1-通过 ; 2- 未通过; ',
   `is_delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除；0-未删除 ； 1-标记删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 /*Data for the table `info_base` */
 
@@ -170,6 +171,12 @@ insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_tim
 insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (33,25,'激动人心！iPhone 7最大变化来了','iPhone 6上凸出的摄像头备受用户吐槽，随着技术的发展，相信在下下一代iPhone上苹果应该不会这么干了。',-1,1428149068000,NULL,NULL,0,1,1,'http://www.valuewalk.com/wp-content/uploads/2014/09/iPhone-7.jpg',0,0);
 insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (34,3,'asdfsd','fsdfsfd',-1,1429408674000,NULL,NULL,0,0,0,'',0,0);
 insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (35,11,'如何不花钱找到用户痛点','找用户痛点说难也难，说易也易，只要找到方法、妙招就能迎刃而解，火速围观3位互联网创业高手各自狠招。',-1,1429444337000,NULL,NULL,0,1,0,'/txcms-web/upfile/image/2015/04/19/E/EgLW1TOt_14cd1848aa0_29d6e.jpg',0,0);
+insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (36,3,'sdfas','fsadf',-1,1436277903000,NULL,NULL,1,0,0,'',0,0);
+insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (37,3,'sadf','sadfasf',-1,1440230408000,NULL,NULL,0,0,0,'',0,0);
+insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (38,16,'asddddddddddd','ddddddd',-1,1440230585000,NULL,NULL,1,0,0,'',0,0);
+insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (39,24,'CMS内容管理/新增文章','CMS内容管理/新增文章',-1,1440238202000,NULL,NULL,0,0,0,'',0,0);
+insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (40,9,'CMS内容管理/新增文章','CMS内容管理/新增文章',-1,1440238298000,NULL,NULL,0,1,0,'',0,0);
+insert  into `info_base`(`id`,`cat_id`,`title`,`summary`,`author_id`,`create_time`,`update_time`,`last_operator_id`,`info_type`,`is_pic`,`is_video`,`pic_url`,`info_state`,`is_delete`) values (41,28,'dasfas','dfasdfsdf',-1,1451137524000,NULL,NULL,0,0,0,'',0,0);
 
 /*Table structure for table `info_content` */
 
@@ -207,6 +214,12 @@ insert  into `info_content`(`info_id`,`content`) values (32,'Watch影响iPhone\r
 insert  into `info_content`(`info_id`,`content`) values (33,'iPhone 6上凸出的摄像头备受用户吐槽，随着技术的发展，相信在下下一代iPhone上苹果应该不会这么干了。\r\n<p>\r\n	今天外媒曝光了苹果最新的专利技术，该技术可以让前后摄像头公用一个图像传感器，达到节省空间的需求，进而彻底不让后置摄像头凸出来。\r\n</p>\r\n<p>\r\n	具体来说，这项技术是使用了光线折射的原理，让前后摄像头射入的光线直接折射到同一个图像传感器上，达到共用的目的。\r\n</p>\r\n<p>\r\n	此外，这份专利文件中还提到了可通过机械控制的反光镜，其目的就是为了实现光线的折射，这样一来，传感器就不需要直接安装在镜头后方，从而降低整个镜头模组的厚度。\r\n</p>\r\n<p>\r\n	值得一提的是，由于前后摄像头共用传感器，前置摄像头将达到后置摄像头的像素水平，拍照效果必然有进一步提升。\r\n</p>\r\n<p>\r\n	在iPhone 6S上我们应该是很难看到这个技术了，最早也要到iPhone 7上才行。\r\n</p>\r\n<p align=\"center\">\r\n	<img alt=\"激动人心！iPhone 7最大变化来了\" src=\"http://images.takungpao.com/2015/0403/20150403070957193.jpg\" />\r\n</p>\r\n<p class=\"pictext\" align=\"center\">\r\n	&nbsp;\r\n</p>\r\n<p class=\"pictext\">\r\n	&nbsp;\r\n</p>\r\n<p align=\"center\">\r\n	<img alt=\"激动人心！iPhone 7最大变化来了\" src=\"http://images.takungpao.com/2015/0403/20150403070957463.jpg\" />\r\n</p>\r\n<p>\r\n	&nbsp;\r\n</p>\r\n<p>\r\n	&nbsp;\r\n</p>\r\n<p align=\"center\">\r\n	<img alt=\"激动人心！iPhone 7最大变化来了\" src=\"http://images.takungpao.com/2015/0403/20150403070957663.jpg\" />\r\n</p>\r\n<p class=\"pictext\" align=\"center\">\r\n	&nbsp;\r\n</p>\r\n<p class=\"pictext\">\r\n	&nbsp;\r\n</p>\r\n<p align=\"center\">\r\n	<img alt=\"激动人心！iPhone 7最大变化来了\" src=\"http://images.takungpao.com/2015/0403/20150403070957331.jpg\" />\r\n</p>\r\n<p>\r\n	&nbsp;\r\n</p>\r\n<p align=\"center\">\r\n	<img alt=\"激动人心！iPhone 7最大变化来了\" src=\"http://images.takungpao.com/2015/0403/20150403070957221.jpg\" />\r\n</p>\r\n<p class=\"pictext\" align=\"center\">\r\n	&nbsp;\r\n</p>\r\n<p class=\"pictext\">\r\n	&nbsp;\r\n</p>\r\n<p align=\"center\">\r\n	<img alt=\"激动人心！iPhone 7最大变化来了\" src=\"http://images.takungpao.com/2015/0403/20150403070957991.jpg\" />\r\n</p>');
 insert  into `info_content`(`info_id`,`content`) values (34,'<p>\r\n	请输入文本内容..sdfsdf\r\n</p>\r\n<p>\r\n	asfsfsadfsf<img src=\"/txcms-web/upfile/image/2015/04/19/V/mtl0Bter_14ccf651b2e_1742e.jpg\" alt=\"\" /> \r\n</p>');
 insert  into `info_content`(`info_id`,`content`) values (35,'<p>\r\n	如何不花钱找到用户痛点？\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	2015年，金错刀频道会启动一个创业公益项目——《创业狠问答》。创业过程中，找用户痛点是做产品的关键环节，也是创始人的必修课。我与很多创始人聊天，如何快速高效找到用户真实痛点是困扰他们的一大难题。说难也难，说易也易，只要找到方法、妙招就能迎刃而解。今天，我们来围观3位互联网创业高手各自找痛点的狠招。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	狠问题\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	@张蕾：我来自传统自行车行业，最近打算做一款智能自行车。尽管我深谙自行车行业现象及玩法，但智能自行车对我而言完全是一个陌生的领域，而且不如百度、乐视、700Bike等互联网公司精通用户运营，一时之间找不到合适发力点。产品定义是做产品的核心环节，也是最大难点，我想知道有哪些狠招可助我duang一下找到用户痛点。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	狠回答\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	1、蔺德刚：性用品如何找痛点，靠数据！\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	蔺德刚（春水堂创始人）说：\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	我总结找用户痛点有四大路径：\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	一是数据，通过深度阅读数据可以发现很多用户需求，我们曾在聚划算做过一次活动，我花一晚上看用户评论，300条用户评论基本在20、30字以内，有人说震动给力，有人说尺寸合适，有人说包装隐蔽性好......我一一拆解评论要素并归纳总结，最终发现用户购买震动器的核心关注点，所以用户数据深度分析尤为重要。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	二是主动调研，问卷的劣势是容易受制于问卷本身，如果未涉及产品建议，用户调研将大打折扣；同时问卷逻辑性较强，比如一份问卷设定30个问题，用户填到第20个问题时开始懈怠，胡乱回答后10个问题时有发生。尽管如此，我认为问卷仍是一种找痛点的重要途径。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	三是与用户直接交流，包括面对面聊天和在线答疑。交流过程中的发散性问题可避免受制于问卷，意外收获往往来自非设定问题，即闲聊也能产生价值。我认为最靠谱的方式是与目标用户进行真实交流，用户对产品体验有直观感受，而一对一深度交流效果最佳。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	四是细心观察用户行为，比如当用户经过奶粉柜台时，零售商必须留意用户关注点和忽略点。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	2、李晓亮：先搞定会抱怨的用户，他们最有价值\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	李晓亮（麦开创始人）说：\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	我们最常用的找痛点狠招是加一些用户为好友，尤其是接触过程中产生爆点的用户，然后解决他们的问题，他们自然成为我们的忠实粉丝。在后期产品研发和思维碰撞过程中，我们会与他们持续沟通，听取他们对产品的意见和反馈，因为会抱怨的用户通常会给你提出建设性意见，他们之所以抱怨无非几方面原因。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	一是他们想深度体验你的产品，如果不想体验你的产品，认为你的产品不好用，他可能就仍在一边不再抱怨，他们觉得需要产品但又不充分满足需求才会抱怨。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	二是抱怨说明他们是相对挑剔的人，如果产品能满足抱怨人群的需求，普通用户更容易满足。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	三是容易抱怨的用户一般拥有更强的信息扩散能力，帮助他们解决问题以后，他们也愿意在社交平台分享。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	四是在产品调研阶段，有些用户不一定愿意认认真真告诉你真实想法，而会抱怨的用户通常起到“领头羊”作用，你对产品方向有任何构想，他们都会告诉你想法是否行得通，会把各种各样的想法滔滔不绝地告诉你。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	3、王治全：通过微信群返积分方式挖掘痛点\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	王治全（大朴网创始人）说：\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	我们主要通过微信群直接与用户互动的方式来挖掘痛点。一款产品推出后，可能存在未知问题，我们通过活动找测试用户，把他们拉进微信群，用户购买使用后吐槽产品或提出意见，我们以积分的形式全部退还给他们，而不是直接退现金，这样才能筛选出真正对产品感兴趣的用户，因为产品不可能适合所有用户，没有需求的用户一定不买。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	后期我们与筛选出来的用户保持紧密联系与互动。比如用户在微信群中提出问题，如果问题戳中人心，自然有人予以回应，同时带动其他用户响应、参与。我认为找痛点的核心是让用户活跃起来，通过观察用户行为和评论，第一时间发现用户对产品的真实想法，很多用户习惯于提供解决方案而不是说出自身使用习惯，分析问题本质来找到用户痛点。\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	另外，把自己当成超级用户，反复使用产品，发现使用过程中的最大阻碍和最不舒服之处，一一记录下来，也是找痛点的一大妙招。\r\n</p>');
+insert  into `info_content`(`info_id`,`content`) values (36,'<p>\r\n	asdfsdfsdf\r\n</p>\r\n<p>\r\n	sdf\r\n</p>\r\n<p>\r\n	asdfasdf\r\n</p>\r\n<br />');
+insert  into `info_content`(`info_id`,`content`) values (37,'请输入文本内容..asdfasdf');
+insert  into `info_content`(`info_id`,`content`) values (38,'sadfsfsdf斯蒂芬斯蒂芬<br />');
+insert  into `info_content`(`info_id`,`content`) values (39,'请输入文本内容..\r\n<h4 class=\"page-header\">\r\n	CMS内容管理/新增文章\r\n</h4>');
+insert  into `info_content`(`info_id`,`content`) values (40,'<img src=\"/txcms-web/upfile/image/2015/08/22/n/LqjHVZ59_14f54e3fb9e_177a0.jpg\" alt=\"\" />');
+insert  into `info_content`(`info_id`,`content`) values (41,'<p>\r\n	请输入文本内容..asdfasdf\r\n</p>\r\n<p>\r\n	sdf\r\n</p>\r\n<p>\r\n	asdf\r\n</p>\r\n<p>\r\n	as\r\n</p>\r\n<p>\r\n	fasdf\r\n</p>');
 insert  into `info_content`(`info_id`,`content`) values (11111,'11');
 
 /*Table structure for table `info_tag_relation` */
@@ -292,13 +305,12 @@ CREATE TABLE `site_cat` (
   `node_num` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '下级节点个数',
   `site_type` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '站点类型;0-资讯;1-供求;2-商铺;3-站点推广;4-友情链接;5-其他',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 /*Data for the table `site_cat` */
 
-insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (1,'母婴',0,'1-',1,1,3,1);
+insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (1,'母婴',0,'1-',1,1,2,1);
 insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (3,'备孕',1,'1-3-',2,1,0,1);
-insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (4,'母婴知识',1,'1-4-',3,1,0,1);
 insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (6,'培育学习',0,'6-',2,1,8,1);
 insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (7,'孕期胎教',6,'6-7-',3,1,0,1);
 insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (9,'家庭教育',6,'6-9-',4,1,0,1);
@@ -312,11 +324,10 @@ insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node
 insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (18,'亲子生活',0,'18-',3,1,2,1);
 insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (19,'美食DIY',18,'18-19-',1,1,0,1);
 insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (20,'亲子游玩',18,'18-20-',4,1,0,1);
-insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (21,'亲子阅读',0,'21-',4,1,3,1);
-insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (22,'儿童心理',21,'21-22-',1,1,0,1);
-insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (23,'关系处理',21,'21-23-',2,1,0,1);
-insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (24,'好书推荐',21,'21-24-',3,1,1,1);
-insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (25,'aaa',24,'21-24-25-',1,1,0,1);
+insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (24,'aaa',0,'24-',1,1,1,1);
+insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (26,'kmklm',24,'24-26-',1,1,0,1);
+insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (27,'bbb',0,'0-27-',1,1,1,1);
+insert  into `site_cat`(`id`,`name`,`rid`,`cat_path`,`disp_order`,`status`,`node_num`,`site_type`) values (28,'fsdfasf',27,'0-27-28-',1,1,0,1);
 
 /*Table structure for table `site_cat_level` */
 
@@ -368,11 +379,13 @@ CREATE TABLE `sup_req_info` (
   `city` varchar(30) DEFAULT NULL COMMENT '市区',
   `area` varchar(30) DEFAULT NULL COMMENT '县区',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='供求信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='供求信息';
 
 /*Data for the table `sup_req_info` */
 
 insert  into `sup_req_info`(`id`,`title`,`cat_id`,`create_time`,`update_time`,`expire_time`,`user_id`,`view_num`,`info_type`,`contact_tel`,`contact_mail`,`contact_addr`,`contact_qq`,`contact_website`,`contact_name`,`org_name`,`info_tag`,`message`,`publish_type`,`has_image`,`has_video`,`image_urls`,`video_url`,`status`,`disp_order`,`province`,`city`,`area`) values (1,'fdasdfsdf',0,1428216062000,NULL,1426513094704,0,0,0,'13811111111','sdfsafd@sdf.cn','safsafasfd','1111111','','asdfsdf','','','asdfsadfsadfsaf\r\nasdfasdfsadf',0,0,0,'/txcms-web/upfile/image/2015/04/05/Z/B6XUcppw_14c884f6d77_1742e.jpg','',0,0,'湖北','武汉市','洪山区');
+insert  into `sup_req_info`(`id`,`title`,`cat_id`,`create_time`,`update_time`,`expire_time`,`user_id`,`view_num`,`info_type`,`contact_tel`,`contact_mail`,`contact_addr`,`contact_qq`,`contact_website`,`contact_name`,`org_name`,`info_tag`,`message`,`publish_type`,`has_image`,`has_video`,`image_urls`,`video_url`,`status`,`disp_order`,`province`,`city`,`area`) values (2,'dfsdf',0,1436276479000,NULL,1434573511704,0,0,0,'13916811111','','dfsdf','11221','http://www.uuola.com','asdfsadf','','','asdfasfsaf',0,0,0,'/txcms-web/upfile/image/2015/07/07/P/m1poLP0x_14e68bde680_12bcb.jpg','',0,0,'新疆','塔城地区','乌苏市');
+insert  into `sup_req_info`(`id`,`title`,`cat_id`,`create_time`,`update_time`,`expire_time`,`user_id`,`view_num`,`info_type`,`contact_tel`,`contact_mail`,`contact_addr`,`contact_qq`,`contact_website`,`contact_name`,`org_name`,`info_tag`,`message`,`publish_type`,`has_image`,`has_video`,`image_urls`,`video_url`,`status`,`disp_order`,`province`,`city`,`area`) values (3,'fsfsfsdfsdf',0,1436276718000,NULL,1434573750704,0,0,1,'13916811111','asf@gmail.com','safasdf','','','sadfasdf','','','afasdfdsafasdfasdf',0,0,0,'','',0,0,'新疆','乌鲁木齐市','市辖区');
 
 /*Table structure for table `sys_config` */
 
@@ -387,7 +400,7 @@ CREATE TABLE `sys_config` (
   `update_time` bigint(20) NOT NULL COMMENT '创建，更新时间',
   `remark` varchar(100) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_config` */
 
@@ -401,6 +414,10 @@ insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`up
 insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`,`remark`) values (8,'tangxiaodong.ceo','100','number','',1436108475000,NULL);
 insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`,`remark`) values (9,'weixin.uuola.token','asdfasdfsafsaf','string','',1436108573000,NULL);
 insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`,`remark`) values (10,'weixin.uuola.access','asdfasfsdfasf','string','',1436109153000,'微信');
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`,`remark`) values (11,'asdf','asf','string','',1439100678000,'sadf');
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`,`remark`) values (12,'asdf','asdf','json','sadf',1439380669000,'sdf');
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`,`remark`) values (13,'tangxiaodong','111','number','',1439385366000,'saf');
+insert  into `sys_config`(`id`,`name`,`sys_value`,`sys_type`,`general_class`,`update_time`,`remark`) values (14,'aa','bb','string','sdf',1440324911000,'sf');
 
 /*Table structure for table `user_info` */
 
@@ -420,12 +437,15 @@ CREATE TABLE `user_info` (
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '用户状态:0-未激活,1-正常可用,2-禁用,3-删除',
   `admin_flag` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '管理员标识. 0普通会员.1-超级管理员',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10002 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10005 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_info` */
 
 insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (10000,'斯蒂芬111','a79287adddb3bdb3a5d02f0b1dfb08172dc063000ec62c0d8fd6ed71016cd8a253717d20f35cbc36','1111111111',NULL,'dfasf@sf.cn',NULL,1414840041328,NULL,NULL,0,0);
 insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (10001,'sdfasdf','6363ae96bfff660026cd65bff2cb0c27a6f22b1769d6527aeaa3ea57cf6592e153717d20f35cbc36','1111',NULL,'asf@sdf.cn',NULL,1414840055125,NULL,NULL,0,0);
+insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (10002,NULL,'7a464d650d47f98b8198cbe2b48b61751ac5fd576699e5b1fe19dbee2e8aacb753717d20f35cbc36','13911111111',NULL,NULL,NULL,1436277701828,NULL,NULL,0,0);
+insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (10003,'tangxiaodong','adadf95e3ae701bce86ac94257feef405f3b0d0af942c08cc40672178287229e57bde577b6014f7353717d20f35cbc36','13816811111',NULL,NULL,NULL,1436679034234,NULL,NULL,0,1);
+insert  into `user_info`(`id`,`name`,`pass_key`,`tel`,`qq`,`email`,`gender`,`create_time`,`update_time`,`city_code`,`status`,`admin_flag`) values (10004,NULL,'163ad7f46c0893aa5f3895ffc9a535a7add40f02cf6a2ae5db7469125c1c9e0b971b57ceb041ec2653717d20f35cbc36','13911111112',NULL,NULL,NULL,1440233571796,NULL,NULL,0,0);
 
 /*Table structure for table `user_role` */
 
