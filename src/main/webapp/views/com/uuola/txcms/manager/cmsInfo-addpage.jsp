@@ -56,8 +56,8 @@
 													style="width: 100px;"></select>
 											</div>
 											<div class="col-md-4">
-												<label id="isPic_tit">有图文:</label> <select
-													class="form-control input-sm" name="isPic"
+												<label id="hasPic_tit">有图文:</label> <select
+													class="form-control input-sm" name="hasPic"
 													style="width: 100px;">
 													<option value="">--</option>
 													<option value="0">否</option>
@@ -65,8 +65,8 @@
 												</select>
 											</div>
 											<div class="col-md-4">
-												<label id="isVideo_tit">有视频:</label> <select
-													class="form-control input-sm" name="isVideo"
+												<label id="hasVideo_tit">有视频:</label> <select
+													class="form-control input-sm" name="hasVideo"
 													style="width: 100px;">
 													<option value="">--</option>
 													<option value="0">否</option>
