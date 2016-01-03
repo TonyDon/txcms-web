@@ -11,12 +11,14 @@
     System.out.println(request.getHeader("webinfo"));
     MutiFileUpload sfu = new MutiFileUpload();
 	sfu.setEncoding("utf-8");
-    //sfu.setSizeMax(516120);
+    sfu.setSizeMax(1024);
     sfu.setSizeThreshold(1<<18);
 	sfu.parseRequest(request);
 	System.out.println("sfu: " + sfu.getParameter("aaa"));  
 	System.out.println("sfu: " + sfu.getParameter("bbb")); 
 	System.out.println("sfu: file " +  sfu.getFiles().size()); 
 	out.println(sfu.getFiles().size());
+	out.println(sfu.getFiles().get(0).getName());
+	out.println(request.getContentLength());
 %>
 <%=sfu.getParameter("aaa")%>
