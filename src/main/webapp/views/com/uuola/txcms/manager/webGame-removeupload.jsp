@@ -6,17 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>game zip upload remove</title>
+<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <style>
-body{font-size:12px;}
+body{margin:0;padding:0;}
 </style>
 </head>
 <body>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
+<p class="alert bg-info"> 删除成功！1s后返回上传页面...</p>
 <script>
-(function(){
-	alert('删除成功!');
-	location.href= window.ctx + '/manager/app/webgame/initupload?jscallback=${jscallback}&t=' + Math.random()
-})();
+setTimeout(function(){
+	try{
+		window.parent.window.${param.jscallback }('', '', '');
+	}catch(e){
+	}
+	location.href= window.ctx + '/manager/app/webgame/initupload?jscallback=${param.jscallback}&t=' + Math.random()
+}, 800);
 </script>
 </body>
 </html>
