@@ -29,10 +29,10 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/user/**" />
-			<mvc:mapping path="/admin/*" />
-			<mvc:mapping path="/uploader/**" />
-			<bean id="accessActionMethodInterceptor" class="com.uuola.txcms.interceptor.UserAccessActionInterceptor"></bean>
+			<mvc:mapping path="/manager/app/**" />
+			<bean id="managerAccessActionInterceptor" class="com.uuola.txcms.interceptor.ManagerAccessActionInterceptor">
+				<property name="redirectUrl" value="/manager/verify/login?from=access.interceptor"/>
+			</bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/h5gfile/**/index.html" />
