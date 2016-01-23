@@ -10,5 +10,6 @@
 ${show}<br/>
 ${seqId}<br/>
 ${stackInfo }
+${test.infoBase.id }
 </body>
 </html>
