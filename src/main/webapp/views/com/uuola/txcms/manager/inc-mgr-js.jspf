@@ -29,6 +29,7 @@ PAGE_DEF.NAV.hrefs = {
 		'app_sysconfig' : '/manager/app/sysconfig',
 		'app_dictconfig' : '/manager/app/dictconfig',
 		'app_sitecat' : '/manager/app/sitecat',
+		'app_cmsinfo' : '/manager/app/cmsinfo',
 		'app_cmsinfo_addpage' : '/manager/app/cmsinfo/addpage',
 		'app_webgame_addpage' : '/manager/app/webgame/addpage',
 		'app_webgame' : '/manager/app/webgame'

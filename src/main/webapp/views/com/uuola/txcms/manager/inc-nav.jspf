@@ -47,7 +47,7 @@
                                     <a id="app_sitecat" href="#">类别管理</a>
                                 </li>
                                 <li>
-                                    <a id="app_cmsinfo_list" href="#">文章管理</a>
+                                    <a id="app_cmsinfo" href="#">内容管理</a>
                                 </li>
                                 <li>
                                     <a id="app_cmsinfo_addpage"  href="#">新增文章</a>
