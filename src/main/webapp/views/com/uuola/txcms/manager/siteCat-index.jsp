@@ -29,7 +29,7 @@
 								<form id="sitecatAddFrm" method="post">
 									<table cellpadding="5"  class="table table-striped table-bordered table-hover">
 										<tr>
-											<td>类目名:</td>
+											<td id="name_tit">类目名:</td>
 											<td><input class="easyui-textbox" type="text"
 												name="name" data-options="required:true"></td>
 										</tr>
