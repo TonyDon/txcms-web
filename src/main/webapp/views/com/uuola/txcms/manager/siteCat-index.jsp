@@ -44,9 +44,10 @@
 												name="status" data-options="required:true"></td>
 										</tr>
 										<tr>
-											<td id="captcha_tit">站点类型:</td>
-											<td><input class="easyui-textbox" type="text"
-												name="siteType" data-options="required:true"></td>
+											<td>站点类型:</td>
+											<td><select id="siteType" name="siteType" class="easyui-validatebox" 
+												data-options="required:true"></select>
+											</td>
 										</tr>
 									</table>
 									<div style="text-align: center; padding: 5px">
@@ -275,6 +276,22 @@
 							});
 				}
 		};
+		
+		$(function(){
+			$('#siteType').txwebInitSelect({
+				'url' : window.ctx + '/manager/app/dictconfig/jsonp',
+				'params' : {
+					'dictCode' : 'SITE_TYPE'
+				},
+				'selectedIndex' : -1,
+				'callfunc' : function(data, val) {
+					console.log(val);
+				},
+				'valueName' : 'dictValue',
+				'textName' : 'name',
+				'defaultText' : '--'
+			});
+		});
 	</script>
 </body>
 </html>

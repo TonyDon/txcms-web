@@ -48,7 +48,7 @@
 											</tr>
 											<tr>
 												<td id="sysType_tit">参数类型:</td>
-												<td><select name="sysType" data-options="required:true">
+												<td><select name="sysType" class="easyui-validatebox" data-options="required:true">
 														<option value="string">string</option>
 														<option value="number">number</option>
 														<option value="list">list</option>
