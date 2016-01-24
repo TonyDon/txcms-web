@@ -117,8 +117,7 @@
 											</tr>
 										</table>
 										<div style="text-align: center; padding: 5px">
-											<a href="javascript:void(0)" class="btn btn-primary"
-												onclick="SYS_CONFIG.submitEditForm();">提 交</a>
+											<a href="javascript:void(0)" class="btn btn-primary" onclick="SYS_CONFIG.submitEditForm();">提 交</a>
 										</div>
 									</form>
 							    </div>

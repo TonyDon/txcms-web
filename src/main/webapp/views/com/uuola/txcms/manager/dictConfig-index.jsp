@@ -20,6 +20,19 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<h4 class="page-header">系统设置/字典参数管理</h4>
+						<div style="padding:0 0 0.5em 0;">
+                        	<form id="queryFrm" class="form-inline">
+                        		<div class="form-group">
+                        		<label for="name">字典名称：</label>
+                        		<input type="text" id="q_name" name="name"  class="form-control input-sm">
+                        		</div>
+                        		<div class="form-group">
+                        		<label for="dictCode">字典编码：</label>
+                        		<input type="text" id="q_dictCode" name="dictCode"  class="form-control input-sm">
+                        		</div>
+                        		<button id="queryBtn" type="button" class="btn btn-info btn-sm">搜索</button>
+                        	</form>
+                        	</div>
 						<table id="user_data_table"></table>
 						<div id="dictConfigAddWin" class="easyui-window" title="添加字典配置"
 							data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -59,6 +72,41 @@
 								</form>
 							</div>
 						</div>
+						<!-- 编辑字典参数 -->
+						<div id="dictConfigEditWin" class="easyui-window" title="编辑字典参数"
+							data-options="modal:true,closed:true,iconCls:'icon-save'"
+							style="width: 380px; height:auto; padding: 10px;">
+							<div style="padding: 10px">
+								<form id="dictConfigEditFrm" method="post">
+									<input type="hidden" id="dictconfigId" name="id" value="">
+									<table cellpadding="5" class="table table-striped table-bordered table-hover">
+										<tr>
+											<td id="name_tit">字典名称:</td>
+											<td><input class="easyui-textbox" type="text"
+												name="name" data-options="required:true"></td>
+										</tr>
+										<tr>
+											<td id="dictCode_tit">字典编码:</td>
+											<td><input class="easyui-textbox" type="text"
+												name="dictCode" data-options="required:true"></td>
+										</tr>
+										<tr>
+											<td id="dictValue_tit">字典值:</td>
+											<td><input class="easyui-textbox" type="text"
+												name="dictValue" data-options="required:true"></td>
+										</tr>
+										<tr>
+											<td>备注:</td>
+											<td><input class="easyui-textbox" type="text"
+												name="remark" data-options="required:false"></td>
+										</tr>
+									</table>
+									<div style="text-align: center; padding: 5px">
+										<a href="javascript:void(0)" class="btn btn-primary" onclick="DICT_CONFIG.submitEditForm();">提 交</a>
+									</div>
+								</form>
+							</div>
+						</div>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
@@ -93,7 +141,7 @@ TXWEB.tb = $('#user_data_table');
 
 TXWEB.tb.datagrid({
 	method : 'get',
-	title : '系统参数列表',
+	title : '字典参数列表',
 	iconCls : 'icon-save',
 	columns : [ [ {
 		field : 'id',
@@ -102,15 +150,15 @@ TXWEB.tb.datagrid({
 	}, {
 		field : 'name',
 		title : '字典名称',
-		width : 100
+		width : 150
 	}, {
 		field : 'dictCode',
 		title : '字典编码',
-		width : 100
+		width : 150
 	}, {
 		field : 'dictValue',
 		title : '字典值',
-		width : 200
+		width : 50
 	}, {
 		field : 'remark',
 		title : '备注',
@@ -118,7 +166,7 @@ TXWEB.tb.datagrid({
 	}, {
 		field : 'updateTime',
 		title : '更新时间',
-		width : 200,
+		width : 150,
 		formatter:function(value,row,index){
 			if (row.updateTime){
 				return ut.parseDate(row.updateTime);
@@ -155,9 +203,24 @@ TXWEB.tb.datagrid({
 		handler : function() {
 			DICT_CONFIG.del();
 		}
+	}, '-', {
+		id : 'edit_btn',
+		text:'编辑',
+		iconCls : 'icon-edit',
+		handler : function(){
+			DICT_CONFIG.initEdit();
+		}
 	}],
 	onBeforeLoad : function() {
-
+		TXWEB.tb.datagrid('clearSelections');
+	},
+	queryParams : {
+		name : function(){
+			return $('#q_name').val();
+		},
+		dictCode : function(){
+			return $('#q_dictCode').val();
+		}
 	},
 	loader : function(param, succCall, err) {
 		var opts = TXWEB.tb.datagrid("options");
@@ -191,16 +254,21 @@ TXWEB.tb.datagrid({
 
 var DICT_CONFIG = {};
 DICT_CONFIG.JQ_ADD_FORM = $('#dictConfigAddFrm');
+DICT_CONFIG.JQ_EDIT_FORM = $('#dictConfigEditFrm');
+DICT_CONFIG.JQ_ADD_WIN = $('#dictConfigAddWin');
+DICT_CONFIG.JQ_EDIT_WIN = $('#dictConfigEditWin');
+
 DICT_CONFIG.initAdd = function() {
-	$('#dictConfigAddWin').window('open');
+	DICT_CONFIG.JQ_ADD_WIN.window('open');
 };
+
 DICT_CONFIG.submitAddForm = function() {
 this.JQ_ADD_FORM.form('submit', {
 		ajax : true,
 		queryParams : {
 			r : ut.r()
 		},
-		url : window.ctx +'/manager/app/dictconfig/add.json',
+		url : window.ctx +'/manager/app/dictconfig/post.json',
 		onSubmit : function(params) {
 			return $(this).form('enableValidation').form('validate');
 		},
@@ -230,25 +298,80 @@ this.JQ_ADD_FORM.form('submit', {
 		}
 	});
 };
+
 DICT_CONFIG.clearAddForm = function() {
 	this.JQ_ADD_FORM.form('clear');
 };
+
 DICT_CONFIG.del = function() {
 	var row = TXWEB.tb.datagrid('getSelected');
 	if (!row) {
 		TxWebWin.alert('请单击需要删除的记录, 然后再进行删除.');
 	} else {
-		$.post(window.ctx +'/manager/app/dictconfig/' + row.id + '.json',
-				'_method=delete', function(r) {
-					if (r.num > 0) {
-						alert('删除成功！');
-					}
-					TXWEB.tb.datagrid('clearSelections');
-					TXWEB.tb.datagrid('reload');
-				});
+		TxWebWin.confirm('确认删除当前记录吗?['+row.name+']', function(){
+			$.post(window.ctx +'/manager/app/dictconfig/' + row.id + '.json', '_method=delete', function(r) {
+				TXWEB.tb.datagrid('reload');
+			});
+		});
 	}
 };
 
+DICT_CONFIG.initEdit = function() {
+	var row = TXWEB.tb.datagrid('getSelected');
+	if (!row) {
+		TxWebWin.alert('请单击需要编辑的记录.');
+	} else {
+		$.get(window.ctx+'/manager/app/dictconfig/' + row.id + '.json', function(data) {
+			DICT_CONFIG.JQ_EDIT_FORM.form('load', data.dictConfig);
+			DICT_CONFIG.JQ_EDIT_WIN.window('open');
+		});
+	}
+};
+
+DICT_CONFIG.submitEditForm = function() {
+	var id = $('#dictconfigId').val();
+	this.JQ_EDIT_FORM.form('submit', {
+			ajax : true,
+			queryParams : {
+				r : ut.r()
+			},
+			url : window.ctx+'/manager/app/dictconfig/'+id+'.json?_method=put',
+			onSubmit : function(params) {
+				return $(this).form('enableValidation').form('validate');
+			},
+			success : function(data) {
+				var res = jQuery.parseJSON(data)
+				if (res.exception || res.validErrors && res.validErrors.length > 0) {
+					var msg = [];
+					var errs = res.validErrors;
+					for ( var k in errs) {
+						var err = errs[k].split('@');
+						if (err.length == 2) {
+							msg.push($('#' + err[1] + '_tit').text() + err[0]);
+						} else {
+							msg.push(err[0]);
+						}
+					}
+					if(res.exception){
+						msg.push(res.exception.replace(/\r|\n/,'<br/>'));
+					}
+					TxWebWin.alertWarn('编辑失败，失败原因：<br/>' + msg.join('<br/>'));
+				} else {
+					alert('编辑成功！');
+					DICT_CONFIG.JQ_EDIT_FORM.form('clear');
+					DICT_CONFIG.JQ_EDIT_WIN.window('close');
+					TXWEB.tb.datagrid('reload');
+				}
+			}
+		});
+	};
+	
+jQuery(function(){
+	
+	$('#queryBtn').click(function(){
+		TXWEB.tb.datagrid('reload');
+	});
+});
 </script>
 </body>
 </html>
