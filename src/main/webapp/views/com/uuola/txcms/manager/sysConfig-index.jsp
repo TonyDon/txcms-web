@@ -30,7 +30,7 @@
                         	</form>
                         	</div>
                         	<table id="user_data_table"></table>
-						    <div id="sysConfigAddWin" class="easyui-window" title="添加用户信息"
+						    <div id="sysConfigAddWin" class="easyui-window" title="添加参数信息"
 								data-options="modal:true,closed:true,iconCls:'icon-save'"
 								style="width: 380px; height:auto; padding: 10px;">
 								<div style="padding:10px">
@@ -73,6 +73,53 @@
 												&nbsp;&nbsp;&nbsp;&nbsp; 
 											<a href="javascript:void(0)"class="btn btn-warning"
 												onclick="SYS_CONFIG.clearAddForm();">清 空</a>
+										</div>
+									</form>
+							    </div>
+							</div>
+							<!-- 更新参数信息表单 -->
+							<div id="sysConfigEditWin" class="easyui-window" title="编辑参数信息"
+								data-options="modal:true,closed:true,iconCls:'icon-save'"
+								style="width: 380px; height:auto; padding: 10px;">
+								<div style="padding:10px">
+							    <form id="sysConfigEditFrm" method="post">
+							    	<input type="hidden" id="sysconfigFrmMethod" name="_method" value="put">
+							    	<input type="hidden" id="sysconfigId" name="id" value="">
+										<table cellpadding="5" class="table table-striped table-bordered table-hover">
+											<tr>
+												<td id="name_tit">参数名称:</td>
+												<td><input class="easyui-textbox" type="text" name="name"
+													data-options="required:true"></td>
+											</tr>
+											<tr>
+												<td id="sysValue_tit">参数值:</td>
+												<td><input class="easyui-textbox" type="text" name="sysValue"
+													data-options="required:true"></td>
+											</tr>
+											<tr>
+												<td id="sysType_tit">参数类型:</td>
+												<td><select name="sysType" data-options="required:true">
+														<option value="string">string</option>
+														<option value="number">number</option>
+														<option value="list">list</option>
+														<option value="array">array</option>
+														<option value="json">json</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td>转换类:</td>
+												<td><input class="easyui-textbox" type="text" name="generalClass"
+													data-options="required:false"></td>
+											</tr>
+											<tr>
+												<td>备 注:</td>
+												<td><input class="easyui-textbox" type="text" name="remark"
+													data-options="required:true"></td>
+											</tr>
+										</table>
+										<div style="text-align: center; padding: 5px">
+											<a href="javascript:void(0)" class="btn btn-primary"
+												onclick="SYS_CONFIG.submitEditForm();">提 交</a>
 										</div>
 									</form>
 							    </div>
@@ -177,6 +224,13 @@ TXWEB.tb.datagrid({
 		handler : function() {
 			SYS_CONFIG.del();
 		}
+	}, '-', {
+		id : 'edit_btn',
+		text:'编辑',
+		iconCls : 'icon-edit',
+		handler : function(){
+			SYS_CONFIG.initEdit();
+		}
 	}],
 	onBeforeLoad : function() {
 		TXWEB.tb.datagrid('clearSelections');
@@ -215,8 +269,12 @@ TXWEB.tb.datagrid({
 
 var SYS_CONFIG = {};
 SYS_CONFIG.JQ_ADD_FORM = $('#sysConfigAddFrm');
+SYS_CONFIG.JQ_EDIT_FORM = $('#sysConfigEditFrm');
+SYS_CONFIG.JQ_ADD_WIN = $('#sysConfigAddWin');
+SYS_CONFIG.JQ_EDIT_WIN = $('#sysConfigEditWin');
+
 SYS_CONFIG.initAdd = function() {
-	$('#sysConfigAddWin').window('open');
+	SYS_CONFIG.JQ_ADD_WIN.window('open');
 };
 SYS_CONFIG.submitAddForm = function() {
 this.JQ_ADD_FORM.form('submit', {
@@ -224,7 +282,7 @@ this.JQ_ADD_FORM.form('submit', {
 		queryParams : {
 			r : ut.r()
 		},
-		url : window.ctx+'/manager/app/sysconfig/add.json',
+		url : window.ctx+'/manager/app/sysconfig/post.json',
 		onSubmit : function(params) {
 			return $(this).form('enableValidation').form('validate');
 		},
@@ -247,16 +305,18 @@ this.JQ_ADD_FORM.form('submit', {
 				TxWebWin.alertWarn('添加失败，失败原因：<br/>' + msg.join('<br/>'));
 			} else {
 				alert('添加成功！');
-				SYS_CONFIG.clearAddForm();
-				$('#sysConfigAddWin').window('close');
+				SYS_CONFIG.JQ_ADD_FORM.form('clear');
+				SYS_CONFIG.JQ_ADD_WIN.window('close');
 				TXWEB.tb.datagrid('reload');
 			}
 		}
 	});
 };
+
 SYS_CONFIG.clearAddForm = function() {
 	this.JQ_ADD_FORM.form('clear');
 };
+
 SYS_CONFIG.del = function() {
 	var row = TXWEB.tb.datagrid('getSelected');
 	if (!row) {
@@ -270,6 +330,56 @@ SYS_CONFIG.del = function() {
 	}
 };
 
+SYS_CONFIG.initEdit = function() {
+	var row = TXWEB.tb.datagrid('getSelected');
+	if (!row) {
+		TxWebWin.alert('请单击需要编辑的记录.');
+	} else {
+		$.get(window.ctx+'/manager/app/sysconfig/' + row.id + '.json', function(data) {
+			SYS_CONFIG.JQ_EDIT_FORM.form('load', data.sysConfig);
+			SYS_CONFIG.JQ_EDIT_WIN.window('open');
+		});
+	}
+};
+
+SYS_CONFIG.submitEditForm = function() {
+	var id = $('#sysconfigId').val();
+	this.JQ_EDIT_FORM.form('submit', {
+			ajax : true,
+			queryParams : {
+				r : ut.r()
+			},
+			url : window.ctx+'/manager/app/sysconfig/'+id+'.json?_method=put',
+			onSubmit : function(params) {
+				return $(this).form('enableValidation').form('validate');
+			},
+			success : function(data) {
+				var res = jQuery.parseJSON(data)
+				if (res.exception || res.validErrors && res.validErrors.length > 0) {
+					var msg = [];
+					var errs = res.validErrors;
+					for ( var k in errs) {
+						var err = errs[k].split('@');
+						if (err.length == 2) {
+							msg.push($('#' + err[1] + '_tit').text() + err[0]);
+						} else {
+							msg.push(err[0]);
+						}
+					}
+					if(res.exception){
+						msg.push(res.exception.replace(/\r|\n/,'<br/>'));
+					}
+					TxWebWin.alertWarn('编辑失败，失败原因：<br/>' + msg.join('<br/>'));
+				} else {
+					alert('编辑成功！');
+					SYS_CONFIG.JQ_EDIT_FORM.form('clear');
+					SYS_CONFIG.JQ_EDIT_WIN.window('close');
+					TXWEB.tb.datagrid('reload');
+				}
+			}
+		});
+	};
+	
 jQuery(function(){
 	
 	$('#queryBtn').click(function(){
