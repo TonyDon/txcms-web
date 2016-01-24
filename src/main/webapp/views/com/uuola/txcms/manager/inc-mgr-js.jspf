@@ -31,7 +31,7 @@ PAGE_DEF.NAV.hrefs = {
 		'app_sitecat' : '/manager/app/sitecat',
 		'app_cmsinfo_addpage' : '/manager/app/cmsinfo/addpage',
 		'app_webgame_addpage' : '/manager/app/webgame/addpage',
-		'app_webgame_list' : '/manager/app/webgame/list'
+		'app_webgame' : '/manager/app/webgame'
 };
 PAGE_DEF.NAV.Goto=function(hrefId){
 	var href =  PAGE_DEF.NAV.hrefs[hrefId];
