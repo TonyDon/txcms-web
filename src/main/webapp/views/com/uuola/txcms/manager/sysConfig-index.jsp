@@ -161,11 +161,11 @@ TXWEB.tb.datagrid({
 	columns : [ [ {
 		field : 'id',
 		title : 'ID 编号',
-		width : 80
+		width : 50
 	}, {
 		field : 'name',
 		title : '参数名称',
-		width : 150
+		width : 180
 	}, {
 		field : 'sysValue',
 		title : '参数值',
@@ -173,11 +173,11 @@ TXWEB.tb.datagrid({
 	}, {
 		field : 'sysType',
 		title : '参数类型',
-		width : 100
+		width : 50
 	}, {
 		field : 'generalClass',
 		title : '转换类名',
-		width : 150
+		width : 100
 	}, {
 		field : 'updateTime',
 		title : '更新时间',
@@ -192,7 +192,7 @@ TXWEB.tb.datagrid({
 	}, {
 		field : 'remark',
 		title : '备注',
-		width : 200
+		width : 100
 	}  ] ],
 	idField : 'id',
 	width : '100%',
