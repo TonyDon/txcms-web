@@ -83,7 +83,6 @@
 								style="width: 380px; height:auto; padding: 10px;">
 								<div style="padding:10px">
 							    <form id="sysConfigEditFrm" method="post">
-							    	<input type="hidden" id="sysconfigFrmMethod" name="_method" value="put">
 							    	<input type="hidden" id="sysconfigId" name="id" value="">
 										<table cellpadding="5" class="table table-striped table-bordered table-hover">
 											<tr>
