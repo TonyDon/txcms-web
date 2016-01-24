@@ -20,7 +20,7 @@ TxWebWin.confirm=function(ask, okFunc, cancelFunc){
 };
 //弹出输入框
 TxWebWin.prompt=function(msg, doFunc, emptyFunc){
-	 $.messager.prompt('输入提示', msg, function(r){
+	 $.messager.prompt('操作提示', msg, function(r){
 		 if (r){
 		 	if( typeof(doFunc) == 'function'){
 		 		doFunc(r);

@@ -126,7 +126,7 @@
 
 	<script>
 		initJQuery();
-		
+		var h5gameTopCid = 30 ;
 		// 配置编辑器上传功能
 		var editor;
 		KindEditor.ready(function(K) {
@@ -196,7 +196,7 @@
 						records : 0,
 						loader : function(param, succCall, err) {
 							var opts = siteCat.tree("options");
-							var rid = param.id || 30;
+							var rid = param.id || h5gameTopCid;
 							var params = $.extend({
 								rid : rid,
 								crow : 0,

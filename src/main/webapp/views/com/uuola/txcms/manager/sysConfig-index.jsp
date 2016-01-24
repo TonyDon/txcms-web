@@ -20,6 +20,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="page-header">系统设置/系统参数管理</h4>
+                        	<div style="padding:0 0 0.5em 0;">
+                        	<form id="queryFrm" class="form-inline">
+                        		<div class="form-group">
+                        		<label for="name">参数名称：</label>
+                        		<input type="text" id="name" name="name"  class="form-control input-sm">
+                        		</div>
+                        		<button id="queryBtn" type="button" class="btn btn-info btn-sm">搜索</button>
+                        	</form>
+                        	</div>
                         	<table id="user_data_table"></table>
 						    <div id="sysConfigAddWin" class="easyui-window" title="添加用户信息"
 								data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -170,7 +179,12 @@ TXWEB.tb.datagrid({
 		}
 	}],
 	onBeforeLoad : function() {
-
+		TXWEB.tb.datagrid('clearSelections');
+	},
+	queryParams : {
+		name : function(){
+			return $('#name').val();
+		}
 	},
 	loader : function(param, succCall, err) {
 		var opts = TXWEB.tb.datagrid("options");
@@ -248,16 +262,20 @@ SYS_CONFIG.del = function() {
 	if (!row) {
 		TxWebWin.alert('请单击需要删除的记录, 然后再进行删除.');
 	} else {
-		$.post(window.ctx+'/manager/app/sysconfig/' + row.id + '.json',
-				'_method=delete', function(r) {
-					if (r.num > 0) {
-						alert('删除成功！');
-					}
-					TXWEB.tb.datagrid('clearSelections');
-					TXWEB.tb.datagrid('reload');
-				});
+		TxWebWin.confirm('确认删除当前记录吗?['+row.name+']', function(){
+			$.post(window.ctx+'/manager/app/sysconfig/' + row.id + '.json', '_method=delete', function(r) {
+						TXWEB.tb.datagrid('reload');
+			});
+		});
 	}
 };
+
+jQuery(function(){
+	
+	$('#queryBtn').click(function(){
+		TXWEB.tb.datagrid('reload');
+	});
+});
 </script>
 </body>
 </html>
