@@ -58,3 +58,18 @@ jQuery.fn.txwebInitSelect = function(options) {
 		}
 	});
 };
+
+/**
+ * 返回json数组格式的表单数据
+ * 已剔除没有值的参数名
+ */
+jQuery.fn.parseFormJsonData = function(options){
+	var datas = this.serializeArray();
+	var json = {};
+	jQuery.each(datas, function(i, e){
+		  if(e.value!=''){
+			  json[e.name]=e.value;
+		  }
+	});
+	return json;
+};

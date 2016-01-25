@@ -71,6 +71,8 @@
 		
 		var TXWEB = {};
 		TXWEB.tb = $('#data_grid');
+		TXWEB.queryFrm = $('#queryFrm');
+		
 		TXWEB.tb.datagrid({
 			method : 'get',
 			title : '信息列表',
@@ -168,11 +170,6 @@
 			onBeforeLoad : function() {
 				TXWEB.tb.datagrid('clearSelections');
 			},
-			queryParams : {
-				title : function(){
-					return $('#q_title').val();
-				}
-			},
 			loader : function(param, succCall, err) {
 				var opts = TXWEB.tb.datagrid("options");
 				var pgno = param.page;
@@ -184,7 +181,7 @@
 					records : opts.records,
 					sord : opts.sortOrder,
 					sidx : opts.sortName
-				}, param);
+				}, param, TXWEB.queryFrm.parseFormJsonData('#queryFrm'));
 				$.ajax({
 					type : opts.method,
 					url : window.ctx+'/manager/app/cmsinfo/search.json',
