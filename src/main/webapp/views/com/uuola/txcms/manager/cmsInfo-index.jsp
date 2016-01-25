@@ -37,8 +37,9 @@
                         		</div>
                         		<button id="queryBtn" type="button" class="btn btn-info btn-sm">搜索</button>
                         	</form>
-                        	</div>
-						<table id="user_data_table"></table>
+                        </div>
+						<table id="data_grid"></table>
+						<div style="padding:0 0 0.5em 0;"></div>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
@@ -60,7 +61,151 @@
 
 	<script>
 		initJQuery();
+		function parseModel(model) {
+			var d = {};
+			d.total = model.pageDTO.total;
+			d.rows = model.pageDTO.datas;
+			TXWEB.tb.datagrid("options").records = d.total;
+			return d;
+		};
+		
+		var TXWEB = {};
+		TXWEB.tb = $('#data_grid');
+		TXWEB.tb.datagrid({
+			method : 'get',
+			title : '信息列表',
+			iconCls : 'icon-save',
+			columns : [ [ {
+				field : 'id',
+				title : 'ID 编号',
+				width : 50
+			},{
+				field : 'catId',
+				title : '分类ID',
+				width : 50
+			}, {
+				field : 'title',
+				title : '信息标题',
+				width : 180
+			}, {
+				field : 'authorId',
+				title : '发布者ID',
+				width : 100
+			}, {
+				field : 'hasPic',
+				title : '有图',
+				width : 30
+			},{
+				field : 'hasVideo',
+				title : '有视频',
+				width : 30
+			}, {
+				field : 'infoType',
+				title : '信息类型',
+				width : 35
+			},{
+				field : 'infoState',
+				title : '信息状态',
+				width : 35
+			},{
+				field : 'isDelete',
+				title : '删除标识',
+				width : 40
+			}, {
+				field : 'updateTime',
+				title : '更新时间',
+				width : 120,
+				formatter:function(value,row,index){
+					if (row.updateTime){
+						return ut.parseDate(row.updateTime);
+					} else {
+						return '-';
+					}
+				}
+			},{
+				field : 'createTime',
+				title : '创建时间',
+				width : 120,
+				formatter:function(value,row,index){
+					if (row.createTime){
+						return ut.parseDate(row.createTime);
+					} else {
+						return '-';
+					}
+				}
+			} ] ],
+			idField : 'id',
+			width : '100%',
+			height : 'auto',
+			nowrap : true,
+			striped : true,
+			pagination : true,
+			rownumbers : true,
+			singleSelect : true,
+			remoteSort : false,
+			fitColumns : true,
+			showFooter : true,
+			sortName : 'id',
+			sortOrder : 'asc',
+			pageSize : 10,
+			pageList : [10, 20, 50],
+			records : 0,
+			toolbar : [ {
+				id : 'del_btn',
+				text : '删除',
+				iconCls : 'icon-remove',
+				handler : function() {
 
+				}
+			}, '-', {
+				id : 'edit_btn',
+				text:'编辑',
+				iconCls : 'icon-edit',
+				handler : function(){
+
+				}
+			}],
+			onBeforeLoad : function() {
+				TXWEB.tb.datagrid('clearSelections');
+			},
+			queryParams : {
+				title : function(){
+					return $('#q_title').val();
+				}
+			},
+			loader : function(param, succCall, err) {
+				var opts = TXWEB.tb.datagrid("options");
+				var pgno = param.page;
+				var ls = param.rows;
+				var cr = (pgno - 1) * ls;
+				var params = $.extend({
+					crow : cr,
+					listSize : ls,
+					records : opts.records,
+					sord : opts.sortOrder,
+					sidx : opts.sortName
+				}, param);
+				$.ajax({
+					type : opts.method,
+					url : window.ctx+'/manager/app/cmsinfo/search.json',
+					data : params,
+					dataType : "json",
+					success : function(model) {
+						succCall(parseModel(model));
+					},
+					error : function(xhr, ts) {
+						err();
+					}
+				});
+			}
+		});
+		
+		jQuery(function(){
+			$('#queryBtn').click(function(){
+				TXWEB.tb.datagrid('reload');
+			});
+		});
+		
 	</script>
 </body>
 </html>
