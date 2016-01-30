@@ -148,7 +148,7 @@
 			fitColumns : true,
 			showFooter : true,
 			sortName : 'id',
-			sortOrder : 'asc',
+			sortOrder : 'desc',
 			pageSize : 10,
 			pageList : [10, 20, 50],
 			records : 0,
