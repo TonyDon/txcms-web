@@ -79,6 +79,7 @@
 			iconCls : 'icon-save',
 			columns : [ [ {
 				field : 'id',
+				checkbox : true,
 				title : 'ID 编号',
 				width : 50
 			},{
@@ -143,7 +144,7 @@
 			striped : true,
 			pagination : true,
 			rownumbers : true,
-			singleSelect : true,
+			singleSelect : false,
 			remoteSort : false,
 			fitColumns : true,
 			showFooter : true,
