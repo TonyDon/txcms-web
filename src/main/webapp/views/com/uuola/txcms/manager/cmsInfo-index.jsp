@@ -104,23 +104,23 @@
 			}, {
 				field : 'authorId',
 				title : '发布者ID',
-				width : 100
+				width : 80
 			}, {
 				field : 'hasPic',
 				title : '有图',
-				width : 30
+				width : 35
 			},{
 				field : 'hasVideo',
 				title : '有视频',
-				width : 30
+				width : 35
 			}, {
 				field : 'infoType',
 				title : '信息类型',
-				width : 35
+				width : 38
 			},{
 				field : 'infoState',
 				title : '信息状态',
-				width : 35
+				width : 38
 			},{
 				field : 'isDelete',
 				title : '删除标识',
