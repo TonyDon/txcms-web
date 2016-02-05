@@ -72,6 +72,10 @@
 		var TXWEB = {};
 		TXWEB.tb = $('#data_grid');
 		TXWEB.queryFrm = $('#queryFrm');
+		TXWEB.infoIdNavTmpl = '<a href="@ctx/info/view?id=@id&m=cmsInfo" target="_info_view">@id</a>';
+		TXWEB.GetInfoIdNav = function(id){
+			return TXWEB.infoIdNavTmpl.replace(/@id/g, id).replace(/@ctx/, window.ctx);
+		};
 		
 		TXWEB.tb.datagrid({
 			method : 'get',
@@ -80,9 +84,16 @@
 			columns : [ [ {
 				field : 'id',
 				checkbox : true,
-				title : 'ID 编号',
+				title : '',
 				width : 50
-			},{
+			}, {
+				field : '_ID_CODE_',
+				title : 'ID编号',
+				width : 100,
+				formatter:function(value,row,index){
+					return TXWEB.GetInfoIdNav(row.id);
+				}
+			}, {
 				field : 'catId',
 				title : '分类ID',
 				width : 50
@@ -136,7 +147,7 @@
 						return '-';
 					}
 				}
-			} ] ],
+			}] ],
 			idField : 'id',
 			width : '100%',
 			height : 'auto',
