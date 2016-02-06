@@ -79,6 +79,10 @@
 										<label id="picUrl_tit">主图地址:</label> <input
 											class="w650 form-control texta" type="text" name="picUrl">
 									</div>
+									<div class="form-group">
+										<label id="siteUrl_tit">跳转地址:</label> <input
+											class="w650 form-control texta" type="text" name="siteUrl">
+									</div>
 								</div>
 								<div id="infoAddPanle" title="信息内容输入"
 									style="height: auto; margin: auto; padding: 9px; text-align: left;">
