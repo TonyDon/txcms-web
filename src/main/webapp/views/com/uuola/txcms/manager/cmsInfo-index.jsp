@@ -35,6 +35,13 @@
                         		<label for="id">ID编号：</label>
                         		<input type="text" id="q_id" name="id"  class="form-control input-sm">
                         		</div>
+                        		<div class="form-group">
+                        		<label for="id">删除：</label>
+							      <select id="q_is_delete" name="isDelete">
+							      <option value="1">是</option>
+							      <option value="0" selected="selected">否</option>
+							      </select>
+                        		</div>
                         		<button id="queryBtn" type="button" class="btn btn-info btn-sm">搜索</button>
                         	</form>
                         </div>
