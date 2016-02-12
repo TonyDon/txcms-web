@@ -83,6 +83,7 @@
 		TXWEB.GetInfoIdNav = function(id){
 			return TXWEB.infoIdNavTmpl.replace(/@id/g, id).replace(/@ctx/, window.ctx);
 		};
+	
 		
 		TXWEB.tb.datagrid({
 			method : 'get',
@@ -176,7 +177,7 @@
 				text : '删除',
 				iconCls : 'icon-remove',
 				handler : function() {
-
+					CMS_INFO.del();
 				}
 			}, '-', {
 				id : 'edit_btn',
@@ -215,6 +216,21 @@
 				});
 			}
 		});
+		
+		var CMS_INFO={};
+		CMS_INFO.del=function(){
+			var row = TXWEB.tb.datagrid('getChecked');
+			if (!row || row.length==0) {
+				TxWebWin.alert('请选择需要删除的记录, 然后再进行删除.');
+			} else {
+				TxWebWin.confirm('确认删除当前记录吗?[共'+row.length+'条]', function(){
+					var ids = ut.dec(jQuery.param({'ids':ArrayUtil.getValueArray(row)}));
+					$.post(window.ctx+'/manager/app/cmsinfo/markdelete.json', ids, function(r) {
+								TXWEB.tb.datagrid('reload');
+					});
+				});
+			}
+		};
 		
 		jQuery(function(){
 			$('#queryBtn').click(function(){

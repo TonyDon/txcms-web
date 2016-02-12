@@ -73,3 +73,46 @@ jQuery.fn.parseFormJsonData = function(options){
 	});
 	return json;
 };
+
+var ArrayUtil = {};
+/**
+ * 提取array中的ID值，返回多个ID值的连接串
+ * 可指定连接串字符：concatChar，默认: , 
+ * 可指定ARRAY中的ID名称：idName, 默认: id
+ */
+ArrayUtil.getKeyConcatText=function(arr, concatChar, key){
+	var vs = ArrayUtil.getValueArray(arr, key);
+	return vs.join(concatChar || ',');
+};
+
+/**
+ * 将array数组中的JSON名称为IDNAME的值转换为查询地址串文本，查询名称以queryName开头使用[n]标注多个值
+ */
+ArrayUtil.getQueryText = function(arr, queryName, idName) {
+	var vs = ArrayUtil.getValueArray(arr, idName);
+	var qt = [];
+	var qn = queryName || 'id';
+	for ( var k in vs) {
+		qt.push( (qn+'[' + k + ']=')+encodeURIComponent(String(vs[k])));
+	}
+	return qt.join('&');
+};
+
+/**
+ * 从一个数组中提取JSON属性为idName的值作为新数组返回
+ */
+ArrayUtil.getValueArray=function(arr, key){
+	if(!jQuery.isArray(arr)){
+		alert('不是数组对象');
+		return [];
+	}
+	var idkey = key || 'id';
+	var vs = [];
+	for(var k in arr){
+		var idval = arr[k][idkey];
+		if(idval!=='undefined'){
+			vs.push(idval);
+		}
+	}
+	return vs;
+};
