@@ -79,7 +79,7 @@
 		var TXWEB = {};
 		TXWEB.tb = $('#data_grid');
 		TXWEB.queryFrm = $('#queryFrm');
-		TXWEB.infoIdNavTmpl = '<a href="@ctx/info/view?id=@id&m=cmsInfo" target="_info_view">@id</a>';
+		TXWEB.infoIdNavTmpl = '<a href="./cmsinfo/view?id=@id&m=cmsInfo" target="_info_view">@id</a>';
 		TXWEB.GetInfoIdNav = function(id){
 			return TXWEB.infoIdNavTmpl.replace(/@id/g, id).replace(/@ctx/, window.ctx);
 		};
