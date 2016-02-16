@@ -186,6 +186,13 @@
 				handler : function(){
 
 				}
+			}, '-', {
+				id : 'edit_btn',
+				text:'更新状态',
+				iconCls : 'icon-edit',
+				handler : function(){
+					CMS_INFO.initModiState();
+				}
 			}],
 			onBeforeLoad : function() {
 				TXWEB.tb.datagrid('clearSelections');
@@ -226,6 +233,20 @@
 				TxWebWin.confirm('确认删除当前记录吗?[共'+row.length+'条]', function(){
 					var ids = ut.dec(jQuery.param({'ids':ArrayUtil.getValueArray(row)}));
 					$.post(window.ctx+'/manager/app/cmsinfo/markdelete.json', ids, function(r) {
+								TXWEB.tb.datagrid('reload');
+					});
+				});
+			}
+		};
+		
+		CMS_INFO.initModiState=function(){
+			var row = TXWEB.tb.datagrid('getChecked');
+			if (!row || row.length==0) {
+				TxWebWin.alert('请选择需要更新的记录, 然后再进行操作.');
+			} else {
+				TxWebWin.confirm('确认更新当前记录吗?[共'+row.length+'条]', function(){
+					var params = ut.dec(jQuery.param({'ids':ArrayUtil.getValueArray(row), 'state':1}));
+					$.post(window.ctx+'/manager/app/cmsinfo/infostate.json', params, function(r) {
 								TXWEB.tb.datagrid('reload');
 					});
 				});
