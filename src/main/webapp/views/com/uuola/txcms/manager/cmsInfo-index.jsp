@@ -37,10 +37,14 @@
                         		</div>
                         		<div class="form-group">
                         		<label for="id">删除：</label>
-							      <select id="q_is_delete" name="isDelete">
+							      <select id="q_is_delete" name="isDelete" class="form-control input-sm">
 							      <option value="1">是</option>
 							      <option value="0" selected="selected">否</option>
 							      </select>
+                        		</div>
+                        		<div class="form-group">
+                        		<label for="id">状态：</label>
+							      <select id="q_info_state" name="infoState"  class="form-control input-sm"></select>
                         		</div>
                         		<button id="queryBtn" type="button" class="btn btn-info btn-sm">搜索</button>
                         	</form>
@@ -55,7 +59,26 @@
 			<!-- /.container-fluid -->
 		</div>
         <!-- /#page-wrapper -->
-
+        
+        <div id="modiStateWin" class="easyui-window" title="编辑信息状态"
+								data-options="modal:true,closed:true,iconCls:'icon-save'"
+								style="width: 380px; height:auto; padding: 10px;">
+								<div style="padding:10px">
+							    <form id="modiStateFrm" method="post">
+										<table cellpadding="5" class="table table-striped table-bordered table-hover">
+											<tr>
+												<td id="infoState_tit">信息状态:</td>
+												<td>
+												<select id="modiInfoState" class="form-control input-sm easyui-validatebox" style="width: 100px;" data-options="required:true"></select>
+												</td>
+											</tr>
+										</table>
+										<div style="text-align: center; padding: 5px">
+											<a href="javascript:void(0)" class="btn btn-primary" onclick="CMS_INFO.doModiState();">更 新</a>
+										</div>
+									</form>
+							    </div>
+		</div>
 </div>
 <!-- /#wrapper -->
 
@@ -108,7 +131,7 @@
 			}, {
 				field : 'title',
 				title : '信息标题',
-				width : 180
+				width : 200
 			}, {
 				field : 'authorId',
 				title : '发布者ID',
@@ -116,27 +139,27 @@
 			}, {
 				field : 'hasPic',
 				title : '有图',
-				width : 35
+				width : 55
 			},{
 				field : 'hasVideo',
 				title : '有视频',
-				width : 35
+				width : 55
 			}, {
 				field : 'infoType',
 				title : '信息类型',
-				width : 38
+				width : 55
 			},{
 				field : 'infoState',
 				title : '信息状态',
-				width : 38
+				width : 55
 			},{
 				field : 'isDelete',
 				title : '删除标识',
-				width : 40
+				width : 55
 			}, {
 				field : 'updateTime',
 				title : '更新时间',
-				width : 120,
+				width : 150,
 				formatter:function(value,row,index){
 					if (row.updateTime){
 						return ut.parseDate(row.updateTime);
@@ -147,7 +170,7 @@
 			},{
 				field : 'createTime',
 				title : '创建时间',
-				width : 120,
+				width : 150,
 				formatter:function(value,row,index){
 					if (row.createTime){
 						return ut.parseDate(row.createTime);
@@ -165,7 +188,7 @@
 			rownumbers : true,
 			singleSelect : false,
 			remoteSort : false,
-			fitColumns : true,
+			fitColumns : false,
 			showFooter : true,
 			sortName : 'id',
 			sortOrder : 'desc',
@@ -225,6 +248,9 @@
 		});
 		
 		var CMS_INFO={};
+		CMS_INFO.JQ_MODISTATE_WIN = $('#modiStateWin');
+		CMS_INFO.JQ_MODISTATE_FORM = $('#modiStateFrm');
+		
 		CMS_INFO.del=function(){
 			var row = TXWEB.tb.datagrid('getChecked');
 			if (!row || row.length==0) {
@@ -244,21 +270,45 @@
 			if (!row || row.length==0) {
 				TxWebWin.alert('请选择需要更新的记录, 然后再进行操作.');
 			} else {
-				TxWebWin.confirm('确认更新当前记录吗?[共'+row.length+'条]', function(){
-					var params = ut.dec(jQuery.param({'ids':ArrayUtil.getValueArray(row), 'state':1}));
-					$.post(window.ctx+'/manager/app/cmsinfo/infostate.json', params, function(r) {
-								TXWEB.tb.datagrid('reload');
-					});
-				});
+				CMS_INFO.JQ_MODISTATE_WIN.window('open');
 			}
 		};
 		
-		jQuery(function(){
-			$('#queryBtn').click(function(){
+		CMS_INFO.doModiState=function(){
+			var row = TXWEB.tb.datagrid('getChecked');
+			var state = $('#modiInfoState').val();
+			if (CMS_INFO.JQ_MODISTATE_FORM.form('enableValidation').form('validate')) {
+				TxWebWin.confirm('确认更新当前记录吗?[共' + row.length + '条]', function() {
+							var params = ut.dec(jQuery.param({
+								'ids' : ArrayUtil.getValueArray(row),
+								'state' : state
+							}));
+							$.post(window.ctx + '/manager/app/cmsinfo/infostate.json', params, function(r) {
+										TXWEB.tb.datagrid('reload');
+										CMS_INFO.JQ_MODISTATE_WIN.window('close');
+							});
+				});
+			}
+		};
+
+		jQuery(function() {
+			$('#queryBtn').click(function() {
 				TXWEB.tb.datagrid('reload');
 			});
+			$('#modiInfoState,#q_info_state').txwebInitSelect({
+				'url' : window.ctx + '/manager/app/dictconfig/jsonp',
+				'params' : {
+					'dictCode' : 'INFO_STATE'
+				},
+				'selectedIndex' : -1,
+				'callfunc' : function(data, val) {
+					console.log(val);
+				},
+				'valueName' : 'dictValue',
+				'textName' : 'name',
+				'defaultText' : '--'
+			});
 		});
-		
 	</script>
 </body>
 </html>
