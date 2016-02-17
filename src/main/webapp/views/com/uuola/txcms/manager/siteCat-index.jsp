@@ -266,8 +266,7 @@
 				if (!row) {
 					TxWebWin.alert('请单击需要删除的记录, 然后再进行删除.');
 				} else {
-					$.post(window.ctx + '/manager/app/sitecat/' + row.id + '.json',
-							'_method=delete', function(r) {
+					$.post(window.ctx + '/manager/app/sitecat/' + row.id + '.json', '_method=delete', function(r) {
 								if (r.num > 0) {
 									TxWebWin.alert('删除成功！');
 								}
@@ -280,13 +279,7 @@
 		$(function(){
 			$('#siteType').txwebInitSelect({
 				'url' : window.ctx + '/manager/app/dictconfig/jsonp',
-				'params' : {
-					'dictCode' : 'SITE_TYPE'
-				},
-				'selectedIndex' : -1,
-				'callfunc' : function(data, val) {
-					console.log(val);
-				},
+				'params' : {'dictCode' : 'SITE_TYPE'},
 				'valueName' : 'dictValue',
 				'textName' : 'name',
 				'defaultText' : '--'
