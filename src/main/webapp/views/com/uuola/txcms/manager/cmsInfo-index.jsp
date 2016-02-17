@@ -37,10 +37,7 @@
                         		</div>
                         		<div class="form-group">
                         		<label for="id">删除：</label>
-							      <select id="q_is_delete" name="isDelete" class="form-control input-sm">
-							      <option value="1">是</option>
-							      <option value="0" selected="selected">否</option>
-							      </select>
+							      <select id="q_is_delete" name="isDelete" class="form-control input-sm"></select>
                         		</div>
                         		<div class="form-group">
                         		<label for="id">状态：</label>
@@ -106,6 +103,10 @@
 		TXWEB.GetInfoIdNav = function(id){
 			return TXWEB.infoIdNavTmpl.replace(/@id/g, id).replace(/@ctx/, window.ctx);
 		};
+		TXWEB.boolTmpl = {
+				'0':'<span class="bool-false" style="color:red;">×</span>' ,
+				'1':'<span class="bool-true"  style="color:blue;">√</span>'
+		};
 	
 		
 		TXWEB.tb.datagrid({
@@ -139,11 +140,17 @@
 			}, {
 				field : 'hasPic',
 				title : '有图',
-				width : 55
+				width : 55,
+				formatter : function(v,r,i){ 
+					return TXWEB.boolTmpl[String(v)];
+				}
 			},{
 				field : 'hasVideo',
 				title : '有视频',
-				width : 55
+				width : 55,
+				formatter : function(v,r,i){ 
+					return TXWEB.boolTmpl[String(v)];
+				}
 			}, {
 				field : 'infoType',
 				title : '信息类型',
@@ -154,8 +161,11 @@
 				width : 55
 			},{
 				field : 'isDelete',
-				title : '删除标识',
-				width : 55
+				title : '是否删除',
+				width : 55 ,
+				formatter : function(v,r,i){ 
+					return TXWEB.boolTmpl[String(v)];
+				}
 			}, {
 				field : 'updateTime',
 				title : '更新时间',
@@ -297,13 +307,14 @@
 			});
 			$('#modiInfoState,#q_info_state').txwebInitSelect({
 				'url' : window.ctx + '/manager/app/dictconfig/jsonp',
-				'params' : {
-					'dictCode' : 'INFO_STATE'
-				},
-				'selectedIndex' : -1,
-				'callfunc' : function(data, val) {
-					console.log(val);
-				},
+				'params' : {'dictCode' : 'INFO_STATE'},
+				'valueName' : 'dictValue',
+				'textName' : 'name',
+				'defaultText' : '--'
+			});
+			$('#q_is_delete').txwebInitSelect({
+				'url' : window.ctx + '/manager/app/dictconfig/jsonp',
+				'params' : {'dictCode' : 'TRUE_OR_FALSE'},
 				'valueName' : 'dictValue',
 				'textName' : 'name',
 				'defaultText' : '--'
