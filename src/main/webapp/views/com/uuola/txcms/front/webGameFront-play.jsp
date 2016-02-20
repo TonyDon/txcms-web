@@ -11,13 +11,11 @@
 <link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
-#h5gIframe {
-    	height:500px;
+#tgzone{
+	height:3em;background:#5E5E5E;border-top:0.1em solid #333;
 }
-@media screen and (max-device-width: 600px) {
-    	#h5gIframe {
-    		height:100%;
-    	}
+#h5gIframe {
+        height:45em;
 }
 </style>
 </head>
@@ -25,16 +23,10 @@
 <c:if test="${not empty infoDTO.infoBase.siteUrl}">
 	<iframe src="about:blank;" id="h5gIframe" style="width:100%;border:0;margin:0;padding:0;" allowtransparency="true"></iframe>
 </c:if>
-<br/>a
-<br/>a
-<br/>a
-<br/>a
-<br/>a
-<br/>a
-<br/>a
-<br/>a
+<div id="tgzone">--推广区域--</div>
 <script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.js"></script>
 <script>
+
 jQuery(function(){
 	$('#h5gIframe').attr('src', window.ctx + '${infoDTO.infoBase.siteUrl}/index.html?T=' + Math.random() * 1000 + '&frwahash=${frwahash}');
 });
