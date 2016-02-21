@@ -12,10 +12,11 @@
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
 #tgzone{
-	height:3em;background:#5E5E5E;border-top:0.1em solid #333;
+	height:3em;background:#5E5E5E;border-top:0.1em solid #333;display:block;
 }
 #h5gIframe {
         height:45em;
+        z-index:-100;
 }
 </style>
 </head>
@@ -26,7 +27,6 @@
 <div id="tgzone">--推广区域--</div>
 <script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.js"></script>
 <script>
-
 jQuery(function(){
 	$('#h5gIframe').attr('src', window.ctx + '${infoDTO.infoBase.siteUrl}/index.html?T=' + Math.random() * 1000 + '&frwahash=${frwahash}');
 });
