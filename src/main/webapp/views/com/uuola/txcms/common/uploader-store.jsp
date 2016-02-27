@@ -21,7 +21,7 @@
 		</div>  
 		<button type="button" class="btn btn-info  btn-sm" onclick="backToUpload('${param.jscallback }');">返回重新上传</button>
 	<%}else{%>
-		<div class="alert bg-success"><p>上传成功！当前存储路径： </p><h4>${url}</h4> </div>
+		<div class="alert bg-success"><p>上传成功！当前存储路径： </p><h5>${url}</h5> </div>
 		<div class="row">
 			<div class="col-sm-2">
 			<button type="button" onclick="deleteUploadFile('${param.jscallback}','${url}');" class="btn btn-warning btn-sm">删除文件</button>
