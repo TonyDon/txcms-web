@@ -44,6 +44,7 @@
 	function deleteUploadFile(callback, url){
 		$.post(window.ctx + '/uploader/remove?url='+url , "_method=delete", function(x){
 			if(x){
+				window.parent.window.${param.jscallback }('', '', '');
 				location.href= window.ctx + '/uploader?jscallback='+ callback +'&t=' + Math.random();
 			}else{
 				alert(x + '删除遇到错误!');
