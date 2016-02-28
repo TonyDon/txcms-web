@@ -10,16 +10,17 @@
 <title>TXCMS 管理平台登录</title>
 <%@include file="inc-css.jspf" %>
 <style>
+body{padding:5em 0;}
 .none{display:none;}
 label.error{margin:0.2em 1.2em;}
 #vcode{width:100%;height:4em;margin-top:0.1em;border:1px solid #DDDDDD;}
 </style>
 </head>
 <body>
-	<div class="container">
+<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<div class="login-panel panel panel-default">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">登录管理平台</h3>
 					</div>
@@ -37,7 +38,7 @@ label.error{margin:0.2em 1.2em;}
 								</div>
 								<div class="form-group hidden" id="vcode_group">
 									<input class="form-control" placeholder="请输入图片中的字符" id="login_captcha" name="captcha" type="text" value="">
-									<img id="vcode" class="vcode codeimg" src="${ut:getCtxPath()}/static/image/blank.gif" data-src="${ut:getCtxPath()}/captcha/a">
+									<img id="vcode" class="vcode codeimg" src="${ut:getCtxPath()}/static/image/blank.gif" data-src="${ut:getCtxPath()}/captcha/vcode.png">
 	                                <a href="javascript:void();" id="refresh_captcha">不好识别, 换一张</a>
 	                                <label for="login_captcha" class="error none"></label>
 								</div>
@@ -53,7 +54,7 @@ label.error{margin:0.2em 1.2em;}
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
 
 <%@include file="inc-js.jspf" %>
 <script>
@@ -140,7 +141,6 @@ $(function(){
 			});
 	   return false;
 	 });
-	
 });
 </script>
 </body>
