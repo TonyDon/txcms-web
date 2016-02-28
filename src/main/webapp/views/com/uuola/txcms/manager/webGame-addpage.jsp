@@ -130,7 +130,6 @@
 <%@include file="inc-mgr-js.jspf" %>
 <script src="${ut:getCtxPath()}/static/keditor/kindeditor-min.js"></script>
 <script src="${ut:getCtxPath()}/static/keditor/lang/zh_CN.js"></script>
-<script src="${ut:getCtxPath()}/static/layer/layer.js"></script>
 
 	<script>
 		initJQuery();

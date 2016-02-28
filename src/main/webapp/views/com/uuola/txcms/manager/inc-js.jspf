@@ -14,3 +14,4 @@
 <script src="${ut:getCtxPath()}/static/jqvalidate/messages_zh.js"></script>
 <script src="${ut:getCtxPath()}/static/jqeasyui/jquery.easyui.min.js"></script>
 <script src="${ut:getCtxPath()}/static/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="${ut:getCtxPath()}/static/layer/layer.js"></script>
