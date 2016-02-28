@@ -76,8 +76,15 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label id="picUrl_tit">主图地址:</label> <input
-											class="w650 form-control texta" type="text" name="picUrl">
+										<label id="picUrl_tit">主图地址:</label>
+										<div class="row">
+										<div class="col-md-6">
+										<input class="w650 form-control texta" type="text" name="picUrl">
+										</div>
+										<div class="col-md-6">
+										<button id="upload_main_pic" type="button"  class="btn btn-info btn-sm">上传图片</button>
+										</div>
+										</div>
 									</div>
 									<div class="form-group">
 										<label id="siteUrl_tit">跳转地址:</label> <input
@@ -123,6 +130,7 @@
 
 	<script src="${ut:getCtxPath()}/static/keditor/kindeditor-min.js"></script>
 	<script src="${ut:getCtxPath()}/static/keditor/lang/zh_CN.js"></script>
+	<script src="${ut:getCtxPath()}/static/layer/layer.js"></script>
 
 	<script>
 		initJQuery();
@@ -246,6 +254,15 @@
 					});
 		};
 
+		// 主图上传后回调
+		INFO.uploadMainPicResultHandle=function(url, err, mess){
+			if('0' == err && url){
+				$('input[name="picUrl"]').val(url);
+			}else{
+				$('input[name="picUrl"]').val('');
+			}
+		};
+		
 		$(function() {
 			$('#infoType').txwebInitSelect({
 				'url' : window.ctx + '/manager/app/dictconfig/jsonp',
@@ -262,6 +279,17 @@
 			});
 
 			initSiteCatTree();
+			
+			$('#upload_main_pic').click(function(){
+				layer.open({
+			        type: 2,
+			        title: '上传主图',
+			        maxmin: true,
+			        shadeClose: true, //点击遮罩关闭层
+			        area : ['80%' , '15em'],
+			        content: window.ctx + '/uploader?jscallback=INFO.uploadMainPicResultHandle&dir=image'
+			    });
+			});
 		});
 	</script>
 </body>
