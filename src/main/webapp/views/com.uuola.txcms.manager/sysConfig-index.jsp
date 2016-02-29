@@ -167,11 +167,11 @@ TXWEB.tb.datagrid({
 	}, {
 		field : 'sysValue',
 		title : '参数值',
-		width : 100
+		width : 150
 	}, {
 		field : 'sysType',
 		title : '参数类型',
-		width : 50
+		width : 100
 	}, {
 		field : 'generalClass',
 		title : '转换类名',
@@ -190,7 +190,7 @@ TXWEB.tb.datagrid({
 	}, {
 		field : 'remark',
 		title : '备注',
-		width : 100
+		width : 150
 	}  ] ],
 	idField : 'id',
 	width : '100%',
@@ -201,7 +201,7 @@ TXWEB.tb.datagrid({
 	rownumbers : true,
 	singleSelect : true,
 	remoteSort : false,
-	fitColumns : true,
+	fitColumns : false,
 	showFooter : true,
 	sortName : 'id',
 	sortOrder : 'asc',

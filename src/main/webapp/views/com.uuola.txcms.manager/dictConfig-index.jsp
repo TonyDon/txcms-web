@@ -184,7 +184,7 @@ TXWEB.tb.datagrid({
 	rownumbers : true,
 	singleSelect : true,
 	remoteSort : false,
-	fitColumns : true,
+	fitColumns : false,
 	showFooter : true,
 	sortName : 'id',
 	sortOrder : 'asc',
