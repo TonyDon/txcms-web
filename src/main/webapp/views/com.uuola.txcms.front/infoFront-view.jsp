@@ -108,7 +108,7 @@ body {
 <footer class="footer"> 
 	 <div class="container">
 	 	<p class="text-muted">
-	 		Copyright 2005-2015 mahua.com 版权所有 京ICP备13039142号-1 京ICP证130395号
+	 		986001.COM 手机娱乐在线
 	 	</p>
 	 </div>
 </footer>
