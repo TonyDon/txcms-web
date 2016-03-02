@@ -105,8 +105,15 @@ div.out-site{
 		<div class="page-header">
 			<h3 class="title"></h3>
 		</div>
-		<div class="info-meta">
-			<span class="time"></span>
+		<div class="info-meta container-fluid">
+			<div class="row">
+				<div class="col-xs-6">
+					<span class="time"></span>
+				</div>
+				<div class="col-xs-6">
+					<span class="share">分享到： 微信 QQ空间 微博 </span>
+				</div>
+			</div>
 		</div>
 		<blockquote class="summary"></blockquote>
 		<div class="main-pic">
@@ -115,11 +122,13 @@ div.out-site{
 		<article></article>
 		<div class="info-meta out-site container-fluid">
 			<div class="row">
-				<div class="col-xs-8">
+				<div class="col-xs-4">
+					<span class="read-num">阅读：76253次</span>
 					<a class="site-url" href="javascript:;" target="_blank">文章来源</a>
 				</div>
-				<div  class="col-xs-4">
+				<div  class="col-xs-8">
 					<span class="author"></span>
+					<span class="share">分享到： 微信 QQ空间 微博 </span>
 				</div>
 			</div>
 		</div>
@@ -131,28 +140,35 @@ div.out-site{
 <footer class="footer"> 
 	 <div class="container">
 	 	<p class="text-muted">
-	 		986001.COM 手机娱乐在线
+	 		986001.COM 娱乐星空 手机娱乐在线
 	 	</p>
 	 </div>
 </footer>
-	
-<script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js"></script> 
-<script src="${ut:getCtxPath()}/static/bootstrap/js/bootstrap.min.js"></script> 
-<script src="${ut:getCtxPath()}/static/js/common.js"></script> 
+<script src="${ut:getCtxPath()}/static/js/require-2.1.22.js"></script> 
 <script>
+require.config({
+    baseUrl: '${ut:getCtxPath()}/static',
+    paths: {
+        jquery : 'js/jquery-2.1.4.min',
+        bootstrap : 'bootstrap/js/bootstrap.min',
+        common : 'js/common'
+    }
+});
 var PAGE_DATA = {};
 PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
 PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
-PAGE_DATA.jqObj = {
-		artTitle : $("h3.title"),
-		artTime : $("span.time"),
-		artAuthor : $("span.author"),
-		artSummary : $("blockquote.summary"),
-		artContent : $("div#main article"),
-		artPicDir : $('div.main-pic'),
-		artMainPic : $("div.main-pic img"),
-		outSiteHref : $("a.site-url"),
-		currSite : $('span.curr-site')
+PAGE_DATA.doInit = function(){
+	PAGE_DATA.jqObj = {
+			artTitle : $("h3.title"),
+			artTime : $("span.time"),
+			artAuthor : $("span.author"),
+			artSummary : $("blockquote.summary"),
+			artContent : $("div#main article"),
+			artPicDir : $('div.main-pic'),
+			artMainPic : $("div.main-pic img"),
+			outSiteHref : $("a.site-url"),
+			currSite : $('span.curr-site')
+	};
 };
 PAGE_DATA.getUrl = function(url){
 	if(!url){
@@ -170,7 +186,6 @@ PAGE_DATA.existError = function(){
 	}
 	return false;
 };
-
 PAGE_DATA.doRender = function(){
 	if(PAGE_DATA.existError())return ;
 	PAGE_DATA.jqObj.artTitle.text(this.infoDat.infoBase.title);
@@ -196,7 +211,9 @@ PAGE_DATA.doRender = function(){
 		PAGE_DATA.jqObj.artContent.html(PAGE_DATA.infoDat.infoContent.content || '-无-');
 	},ut.rndint(1000,2000));
 };
-jQuery(function(){
+require(['jquery','bootstrap','common'], function(j) {
+	var jQuery = j;
+	PAGE_DATA.doInit();
 	PAGE_DATA.doRender();
 });
 </script>
