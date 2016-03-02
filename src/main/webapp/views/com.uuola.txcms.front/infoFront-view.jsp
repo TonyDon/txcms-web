@@ -16,73 +16,111 @@
 <link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <style>
 html {
-  position: relative;
-  min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
 body {
-  margin-bottom: 4em;
-  background:#EBEBEB;
+	margin-bottom: 4em;
+	background: #EBEBEB;
+	padding-top:4em;
 }
-.navbar-brand{
-	padding-top:0.25em;
+.navbar-brand {
+	padding-top: 0.25em;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 4em;
-  background-color: #f5f5f5;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 4em;
+	background-color: #f5f5f5;
 }
 .container {
-  width: auto;
-  max-width: 40em;
-  padding: 0 1em;
+	width: auto;
+	max-width: 40em;
+	padding: 0 1em;
 }
 .container .text-muted {
-  margin: 1.2em 0;
-  text-align:center;
+	margin: 1.2em 0;
+	text-align: center;
 }
-#main{
-	background:#F5F5F5;
+#main {
+	background: #F5F5F5;
 }
-#main div.aside{
+
+#main div.aside {
 	width: auto;
 	max-width: 40em;
 	text-align: center;
-	margin-top:2em;
-	border-top:0.15em #f5f5f5 solid;
-	padding:0.5em 0 0.5em 0;
+	margin-top: 2em;
+	border-top: 0.15em #f5f5f5 solid;
+	padding: 0.5em 0 0.5em 0;
 }
-#main div.main-pic, a.site-url{
- 	display:none;
+
+#main div.main-pic, a.site-url {
+	display: none;
 }
-div.out-site{
-	margin-top:3em;
+
+div.out-site {
+	margin-top: 3em;
 }
-#main div.main-pic img{
-	border:1px #DBDBDB solid;
+
+#main div.main-pic img {
+	border: 1px #DBDBDB solid;
 }
-#main article{
-	font-size:1.2em;
-	line-height:1.6em;
+
+#main article {
+	font-size: 1.2em;
+	line-height: 1.6em;
 }
-.title{
-	font-weight:600;
+
+.title {
+	font-weight: 600;
 	text-shadow: 0 2px 2px #fff;
 }
-.summary{
-	text-indent:2em;
-	font-size:1.2em;
+
+.summary {
+	text-indent: 2em;
+	font-size: 1.2em;
 }
-.info-meta{
-	padding:0 0 0.5em 0;
-	color:#35A6D1;
+
+.info-meta {
+	padding: 0 0 0.5em 0;
+	color: #35A6D1;
+}
+
+.float-box {
+	width: 6em;
+	overflow: hidden;
+	position: fixed;
+	right: 0.5em;
+	bottom: 0.5em;
+	z-index: 10;
+}
+.float-zone {
+	width: 100%;
+	overflow: hidden;
+}
+.float-qr-wx {
+	width: 6em;
+	height: 6em;
+}
+.float-gotop {
+	width: 6em;
+	height: 2em;
+	display:block;
+	background:#F5F5F5;
+}
+.float-gotop a {
+	display: block;
+	text-align: center;
+	color: #000;
+	cursor: pointer;
 }
 </style>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
 <body>
-<header class="navbar navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -137,6 +175,18 @@ div.out-site{
   		</div>
   </div>
 </main>
+
+<aside class="float-box">
+	<div class="float-zone">
+		<div class="float-qr-wx" target="_blank">
+			<img  class="img-responsive" src="http://tool.oschina.net/action/qrcode/generate?size=4"/>
+		</div>
+		<div class="float-gotop">
+			<a href="#">返回顶部</a>
+		</div>
+	</div>
+</aside>
+
 <footer class="footer"> 
 	 <div class="container">
 	 	<p class="text-muted">
