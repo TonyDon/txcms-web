@@ -47,6 +47,9 @@ body {
 	width: auto;
 	max-width: 40em;
 	text-align: center;
+	margin-top:2em;
+	border-top:0.1em #f5f5f5 solid;
+	padding:0.25em 0 0.25em 0;
 }
 #main div.main-pic img{
 	width: auto;
