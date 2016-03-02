@@ -137,6 +137,8 @@ div.out-site{
 <script src="${ut:getCtxPath()}/static/js/common.js"></script> 
 <script>
 var PAGE_DATA = {};
+PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
+PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
 PAGE_DATA.jqObj = {
 		artTitle : $("h3.title"),
 		artTime : $("span.time"),
@@ -148,8 +150,6 @@ PAGE_DATA.jqObj = {
 		outSiteHref : $("a.site-url"),
 		currSite : $('span.curr-site')
 };
-PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
-PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
 PAGE_DATA.getUrl = function(url){
 	if(!url){
 		return 'https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif';
