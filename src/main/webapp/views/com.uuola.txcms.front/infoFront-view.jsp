@@ -102,7 +102,7 @@ body {
 		<article>
 			${infoDTO.infoContent.content}
 		</article>
-  		<div class="aside"> <img src="static/p1.png" /> </div>
+  		<div class="aside"> <img src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" /> </div>
   </div>
 </main>
 <footer class="footer"> 
