@@ -20,7 +20,6 @@ html {
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 4em;
   background:#EBEBEB;
 }
@@ -31,7 +30,6 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 4em;
   background-color: #f5f5f5;
 }
@@ -88,13 +86,16 @@ div.out-site{
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="#"><img class="img-responsive" src="${ut:getCtxPath()}/static/style/986001-logo-2.png"/></a> </div>
+      <a class="navbar-brand" href="${ut:getCtxPath()}/"  title="986001.com 娱乐星空">
+      	<img alt="986001.com" title="986001.com 娱乐星空" class="img-responsive" src="${ut:getCtxPath()}/static/style/986001-logo-2.png"/>
+      </a>
+    </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">最新</a></li>
-        <li><a href="#">奇趣</a></li>
-        <li><a href="#">搞笑</a></li>
-        <li><a href="#">游戏</a></li>
+        <li class="active"><a href="${ut:getCtxPath()}/all/latest">最新</a></li>
+        <li><a href="${ut:getCtxPath()}/qiqu">O_o 奇趣</a></li>
+        <li><a href="${ut:getCtxPath()}/gaosiao">∩_∩ 搞笑</a></li>
+        <li><a href="${ut:getCtxPath()}/xiaoyouxi">≧▽≦ 小游戏</a></li>
       </ul>
     </div>
   </div>
