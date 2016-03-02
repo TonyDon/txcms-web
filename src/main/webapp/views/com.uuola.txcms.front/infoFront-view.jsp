@@ -236,6 +236,9 @@ PAGE_DATA.existError = function(){
 	}
 	return false;
 };
+PAGE_DATA.fixArtImage = function(){
+	$('div#main article img').addClass('img-responsive');
+};
 PAGE_DATA.doRender = function(){
 	if(PAGE_DATA.existError())return ;
 	PAGE_DATA.jqObj.artTitle.text(this.infoDat.infoBase.title);
@@ -259,6 +262,7 @@ PAGE_DATA.doRender = function(){
 	PAGE_DATA.jqObj.currSite.text('986001娱乐在线');
 	setTimeout(function(){
 		PAGE_DATA.jqObj.artContent.html(PAGE_DATA.infoDat.infoContent.content || '-无-');
+		PAGE_DATA.fixArtImage();
 	},ut.rndint(1000,2000));
 };
 require(['jquery','bootstrap','common'], function(j) {
