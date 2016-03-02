@@ -39,6 +39,7 @@ body {
 }
 .container .text-muted {
   margin: 1.2em 0;
+  text-align:center;
 }
 #main{
 	background:#FAFAFA;
@@ -51,6 +52,12 @@ body {
 	border-top:0.1em #f5f5f5 solid;
 	padding:0.25em 0 0.25em 0;
 }
+#main div.main-pic, a.site-url{
+ 	display:none;
+}
+div.out-site{
+	margin-top:3em;
+}
 #main div.main-pic img{
 	width: auto;
 	max-width: 38em;
@@ -60,6 +67,7 @@ body {
 	line-height:1.5em;
 }
 .summary{
+	text-indent:2em;
 	font-size:1.2em;
 }
 .info-meta{
@@ -88,24 +96,24 @@ body {
 <main>
   <div id="main" class="container">
 		<div class="page-header">
-			<h3>${infoDTO.infoBase.title}</h3>
+			<h3 class="title"></h3>
 		</div>
 		<div class="info-meta">
-			<span class="time">${ut:formatTimeMillis(infoDTO.infoBase.createTime, "yyyy-MM-dd")}</span>
-			<span class="author">${infoDTO.infoBase.authorId} 噢啦生活</span>
+			<span class="time"></span>
+			<span class="author"></span>
+			<span class="site">986001.com</span>
 		</div>
-		<blockquote class="summary">
-			&nbsp;&nbsp;&nbsp;&nbsp;${infoDTO.infoBase.summary}
-		</blockquote>
+		<blockquote class="summary"></blockquote>
 		<div class="main-pic">
-			<p>
-				<img src="${infoDTO.infoBase.picUrl}" />
-			</p>
+			<p><img src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
 		</div>
-		<article>
-			${infoDTO.infoContent.content}
-		</article>
-  		<div class="aside"> <img src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" /> </div>
+		<article></article>
+		<div class="info-meta out-site">
+			<a class="site-url" href="javascript:;" target="_blank">文章来源</a>
+		</div>
+  		<div class="aside">
+  			<img src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
+  		</div>
   </div>
 </main>
 <footer class="footer"> 
@@ -115,14 +123,68 @@ body {
 	 	</p>
 	 </div>
 </footer>
-
-<c:if test="${not empty validErrors}">
-		<c:forEach var="verr" items="${validErrors}">
-			<b>${verr}</b>
-		</c:forEach>
-</c:if>
 	
 <script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js"></script> 
 <script src="${ut:getCtxPath()}/static/bootstrap/js/bootstrap.min.js"></script> 
+<script src="${ut:getCtxPath()}/static/js/common.js"></script> 
+<script>
+var PAGE_DATA = {};
+PAGE_DATA.jqObj = {
+		artTitle : $("h3.title"),
+		artTime : $("span.time"),
+		artAuthor : $("span.author"),
+		artSummary : $("blockquote.summary"),
+		artContent : $("div#main article"),
+		artPicDir : $('div.main-pic'),
+		artMainPic : $("div.main-pic img"),
+		outSiteHref : $("a.site-url")
+};
+PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
+PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
+PAGE_DATA.getUrl = function(url){
+	if(!url){
+		return 'https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif';
+	}
+	if(url.indexOf('http')!==0 && url.indexOf(window.ctx)<0){
+		return window.ctx + url ;
+	}
+	return url ;
+};
+PAGE_DATA.existError = function(){
+	if(this.verrors && this.verrors.length>0){
+		alert('读取文章出错,请稍后再试! \r\n ' + this.verrors.join('\r\n'));
+		return true;
+	}
+	return false;
+};
+
+PAGE_DATA.doRender = function(){
+	if(PAGE_DATA.existError())return ;
+	PAGE_DATA.jqObj.artTitle.text(this.infoDat.infoBase.title);
+	PAGE_DATA.jqObj.artTime.text(ut.parseDate(this.infoDat.infoBase.createTime, 10));
+	PAGE_DATA.jqObj.artAuthor.text(this.infoDat.infoBase.authorId);
+	PAGE_DATA.jqObj.artSummary.text(this.infoDat.infoBase.summary);
+	if(this.infoDat.infoBase.hasPic===1){
+		var picurl = this.getUrl(this.infoDat.infoBase.picUrl);
+		if(picurl!=''){
+			PAGE_DATA.jqObj.artMainPic.attr('src', picurl);
+			PAGE_DATA.jqObj.artPicDir.show();
+		}
+	}
+	if(this.infoDat.infoBase.siteUrl && this.infoDat.infoBase.siteUrl.length>5){
+		var siteurl = this.getUrl(this.infoDat.infoBase.siteUrl);
+		if(siteurl!=''){
+			PAGE_DATA.jqObj.outSiteHref.attr('href', siteurl);
+			PAGE_DATA.jqObj.outSiteHref.show();
+		}
+	}
+	setTimeout(function(){
+		PAGE_DATA.jqObj.artContent.html(PAGE_DATA.infoDat.infoContent.content || '-无-');
+	},ut.rndint(1000,2000));
+};
+jQuery(function(){
+	PAGE_DATA.doRender();
+});
+</script>
 </body>
 </html>

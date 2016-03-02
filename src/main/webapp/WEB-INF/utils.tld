@@ -18,4 +18,9 @@
         <function-class>com.uuola.txweb.framework.utils.ContextUtil</function-class>
         <function-signature>java.lang.String getContextPath()</function-signature>
     </function>
+    <function>
+        <name>toJSON</name>
+        <function-class>com.uuola.commons.JsonUtil</function-class>
+        <function-signature>java.lang.String toJSONString(java.lang.Object)</function-signature>
+    </function>
 </taglib>
