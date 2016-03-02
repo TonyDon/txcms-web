@@ -24,6 +24,9 @@ body {
   margin-bottom: 4em;
   background:#EBEBEB;
 }
+.navbar-brand{
+	padding-top:0.25em;
+}
 .footer {
   position: absolute;
   bottom: 0;
@@ -42,7 +45,7 @@ body {
   text-align:center;
 }
 #main{
-	background:#FAFAFA;
+	background:#F5F5F5;
 }
 #main div.aside{
 	width: auto;
@@ -59,15 +62,15 @@ div.out-site{
 	margin-top:3em;
 }
 #main div.main-pic img{
-	width: auto;
-	max-width: 38em;
+	border:1px #DBDBDB solid;
 }
 #main article{
 	font-size:1.2em;
-	line-height:1.5em;
+	line-height:1.6em;
 }
 .title{
 	font-weight:600;
+	text-shadow: 0 2px 2px #fff;
 }
 .summary{
 	text-indent:2em;
@@ -85,7 +88,7 @@ div.out-site{
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="#"><img src="${ut:getCtxPath()}/static/style/986001-logo-1.png"/></a> </div>
+      <a class="navbar-brand" href="#"><img class="img-responsive" src="${ut:getCtxPath()}/static/style/986001-logo-2.png"/></a> </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">最新</a></li>
@@ -106,7 +109,7 @@ div.out-site{
 		</div>
 		<blockquote class="summary"></blockquote>
 		<div class="main-pic">
-			<p><img src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
+			<p><img class="img-responsive" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
 		</div>
 		<article></article>
 		<div class="info-meta out-site container-fluid">
@@ -120,7 +123,7 @@ div.out-site{
 			</div>
 		</div>
   		<div class="aside">
-  			<img src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
+  			<img  class="img-responsive"  src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
   		</div>
   </div>
 </main>
