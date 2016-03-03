@@ -125,7 +125,7 @@ div.out-site {
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <a class="navbar-brand" href="${ut:getCtxPath()}/"  title="986001.com 娱乐星空">
-      	<img alt="986001.com" title="986001.com 娱乐星空" class="img-responsive" src="${ut:getCtxPath()}/static/style/986001-1.png"/>
+      	<img alt="986001.com" title="986001.com 娱乐星空" class="img-responsive" src="${ut:getCtxPath()}/static/image/nav-logo.png"/>
       </a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
