@@ -14,109 +14,7 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 <link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<style>
-html {
-	position: relative;
-	min-height: 100%;
-}
-body {
-	margin-bottom: 4em;
-	background: #EBEBEB;
-	padding-top:4em;
-}
-.navbar-brand {
-	padding-top: 0.25em;
-}
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 4em;
-	background-color: #f5f5f5;
-}
-.container {
-	width: auto;
-	max-width: 40em;
-	padding: 0 1em;
-}
-.container .text-muted {
-	margin: 1.2em 0;
-	text-align: center;
-}
-#main {
-	background: #F5F5F5;
-}
-
-#main div.aside {
-	width: auto;
-	max-width: 40em;
-	text-align: center;
-	margin-top: 2em;
-	border-top: 0.15em #f5f5f5 solid;
-	padding: 0.5em 0 0.5em 0;
-}
-
-#main div.main-pic, a.site-url {
-	display: none;
-}
-
-div.out-site {
-	margin-top: 3em;
-}
-
-#main div.main-pic img {
-	border: 1px #DBDBDB solid;
-}
-
-#main article {
-	font-size: 1.2em;
-	line-height: 1.6em;
-}
-
-.title {
-	font-weight: 600;
-	text-shadow: 0 2px 2px #fff;
-}
-
-.summary {
-	text-indent: 2em;
-	font-size: 1.2em;
-}
-
-.info-meta {
-	padding: 0 0 0.5em 0;
-	color: #35A6D1;
-}
-
-.float-box {
-	width: 6em;
-	overflow: hidden;
-	position: fixed;
-	right: 0.5em;
-	bottom: 0.5em;
-	z-index: 10;
-}
-.float-zone {
-	width: 100%;
-	overflow: hidden;
-}
-.float-qr-wx {
-	width: 6em;
-	height: 6em;
-}
-.float-gotop {
-	width: 6em;
-	height: 2em;
-	display:block;
-	background:#F5F5F5;
-}
-.float-gotop a {
-	display: block;
-	text-align: center;
-	color: #000;
-	cursor: pointer;
-}
-</style>
+<link href="${ut:getCtxPath()}/static/style/v1/info.css" rel="stylesheet" type="text/css"/>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
 <body>
@@ -124,8 +22,8 @@ div.out-site {
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="${ut:getCtxPath()}/"  title="986001.com 娱乐星空">
-      	<img alt="986001.com" title="986001.com 娱乐星空" class="img-responsive" src="${ut:getCtxPath()}/static/image/nav-logo.png"/>
+      <a class="navbar-brand" href="${ut:getCtxPath()}/"  title="986001.com 开心驿站">
+      	<img alt="986001.com" title="986001.com 开心驿站" class="img-responsive" src="${ut:getCtxPath()}/static/image/nav-logo.png"/>
       </a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
@@ -154,7 +52,7 @@ div.out-site {
 			</div>
 		</div>
 		<blockquote class="summary"></blockquote>
-		<div class="main-pic">
+		<div class="main-pic text-center">
 			<p><img class="img-responsive" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
 		</div>
 		<article></article>
@@ -190,16 +88,16 @@ div.out-site {
 <footer class="footer"> 
 	 <div class="container">
 	 	<p class="text-muted">
-	 		986001.COM 娱乐星空 手机娱乐在线
+	 		986001.COM 手机娱乐 开心驿站
 	 	</p>
 	 </div>
 </footer>
 <script src="${ut:getCtxPath()}/static/js/require-2.1.22.js"></script> 
+<script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js"></script> 
 <script>
 require.config({
     baseUrl: '${ut:getCtxPath()}/static',
     paths: {
-        jquery : 'js/jquery-2.1.4.min',
         bootstrap : 'bootstrap/js/bootstrap.min',
         common : 'js/common'
     }
@@ -237,7 +135,7 @@ PAGE_DATA.existError = function(){
 	return false;
 };
 PAGE_DATA.fixArtImage = function(){
-	$('div#main article img').addClass('img-responsive');
+	$('div#main article img').addClass('img-responsive center-block');
 };
 PAGE_DATA.doRender = function(){
 	if(PAGE_DATA.existError())return ;
@@ -260,13 +158,14 @@ PAGE_DATA.doRender = function(){
 		}
 	}
 	PAGE_DATA.jqObj.currSite.text('986001娱乐在线');
-	setTimeout(function(){
-		PAGE_DATA.jqObj.artContent.html(PAGE_DATA.infoDat.infoContent.content || '-无-');
-		PAGE_DATA.fixArtImage();
-	},ut.rndint(1000,2000));
+	if(PAGE_DATA.infoDat.infoContent && PAGE_DATA.infoDat.infoContent.content){
+		setTimeout(function(){
+			PAGE_DATA.jqObj.artContent.html(PAGE_DATA.infoDat.infoContent.content);
+			PAGE_DATA.fixArtImage();
+		},ut.rndint(1000,2000));
+	}
 };
-require(['jquery','bootstrap','common'], function(j) {
-	var jQuery = j;
+require(['bootstrap','common'], function() {
 	PAGE_DATA.doInit();
 	PAGE_DATA.doRender();
 });
