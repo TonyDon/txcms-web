@@ -35,7 +35,7 @@
 			</bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/h5gfile/**/index.html" />
+			<mvc:mapping path="/h5gfs/**/index.html" />
 			<bean id="fileResourceWebAccessInterceptor" class="com.uuola.txcms.interceptor.FileResourceWebAccessInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
