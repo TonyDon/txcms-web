@@ -131,9 +131,9 @@ div.out-site {
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="${ut:getCtxPath()}/all/latest">最新</a></li>
-        <li><a href="${ut:getCtxPath()}/qiqu">O_o 奇趣</a></li>
-        <li><a href="${ut:getCtxPath()}/gaosiao">∩_∩ 搞笑</a></li>
-        <li><a href="${ut:getCtxPath()}/xiaoyouxi">≧▽≦ 小游戏</a></li>
+        <li><a href="${ut:getCtxPath()}/qiqu">O_o奇趣</a></li>
+        <li><a href="${ut:getCtxPath()}/gaosiao">∩_∩搞笑</a></li>
+        <li><a href="${ut:getCtxPath()}/xiaoyouxi">≧▽≦小游戏</a></li>
       </ul>
     </div>
   </div>
