@@ -59,7 +59,7 @@
 		</div>
 		<article></article>
 		<div class="text-center">
-			<button type="button" id="playBtn" class="btn btn-info">开始游戏</button>
+			<button type="button" id="playBtn" class="btn btn-info btn-lg">开始游戏</button>
 		</div>
 		<div class="info-meta out-site container-fluid">
 			<div class="row">

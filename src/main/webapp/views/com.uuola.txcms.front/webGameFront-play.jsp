@@ -22,8 +22,15 @@
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
 #h5gIframe {
+	width:100%;
 	min-height: 40em;
+	border: 0; 
+	margin: 0; 
+	padding: 0;
 	z-index: -100;
+}
+.container{
+	max-width:90%;
 }
 </style>
 </head>
@@ -60,7 +67,7 @@
 			<h3 class="title"></h3>
 		</div>
 		<div class="text-center">
-			<iframe src="about:blank;" id="h5gIframe" style="width: 100%; border: 0; margin: 0; padding: 0;" allowtransparency="true"></iframe>
+			<iframe src="about:blank;" id="h5gIframe" allowtransparency="true"></iframe>
 		</div>
 		<div class="aside">
 			<img class="img-responsive"
@@ -118,6 +125,10 @@ PAGE_DATA.doRender = function(){
 		if(siteurl!=''){
 			var height = $(window).height() + $(window).scrollTop();
 			PAGE_DATA.jqObj.h5gIframe.css({'height' : (parseInt(height/16)+1.5)+'em'});
+			PAGE_DATA.jqObj.h5gIframe.load(function(){
+				var thisheight = $(this).contents().find("body").height()+30;
+				$(this).height(thisheight < 500 ? 500 : thisheight);
+			});
 			PAGE_DATA.jqObj.h5gIframe.attr('src', siteurl + 'index.html?T=' + Math.random() * 1000 + '&frwahash=' + PAGE_DATA.frwahash);
 		}
 	}
