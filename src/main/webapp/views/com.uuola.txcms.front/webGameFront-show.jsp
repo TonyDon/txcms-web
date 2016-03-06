@@ -41,16 +41,6 @@
 		<div class="page-header">
 			<h3 class="title"></h3>
 		</div>
-		<div class="info-meta container-fluid">
-			<div class="row">
-				<div class="col-xs-6">
-					<span class="time"></span>
-				</div>
-				<div class="col-xs-6">
-					<span class="share">分享到： 微信 QQ空间 微博 </span>
-				</div>
-			</div>
-		</div>
 		<blockquote class="summary"></blockquote>
 		<div class="main-pic">
 			<p>
@@ -64,12 +54,16 @@
 		<div class="info-meta out-site container-fluid">
 			<div class="row">
 				<div class="col-xs-4">
-					<span class="read-num">阅读：76253次</span>
-					<a class="site-url" href="javascript:;" target="_blank">文章来源</a>
+					<span class="read-num">有76253人玩过</span>
 				</div>
-				<div  class="col-xs-8">
+				<div class="col-xs-2">
+					<span class="time"></span>
+				</div>
+				<div  class="col-xs-2">
 					<span class="author"></span>
-					<span class="share">分享到： 微信 QQ空间 微博 </span>
+				</div>
+				<div  class="col-xs-4">
+					<span class="share">分享到： 微信</span>
 				</div>
 			</div>
 		</div>
@@ -119,8 +113,6 @@ PAGE_DATA.doInit = function(){
 			artContent : $("div#main article"),
 			artPicDir : $('div.main-pic'),
 			artMainPic : $("div.main-pic img"),
-			outSiteHref : $("a.site-url"),
-			currSite : $('span.curr-site'),
 			playBtn : $('#playBtn')
 	};
 };
@@ -152,7 +144,7 @@ PAGE_DATA.doRender = function(){
 	if(PAGE_DATA.existError())return ;
 	PAGE_DATA.jqObj.artTitle.text(this.infoDat.infoBase.title);
 	PAGE_DATA.jqObj.artTime.text(ut.parseDate(this.infoDat.infoBase.createTime, 10));
-	PAGE_DATA.jqObj.artAuthor.text('[编辑:'+this.infoDat.infoBase.authorId+']');
+	PAGE_DATA.jqObj.artAuthor.text('['+this.infoDat.infoBase.authorId+']');
 	PAGE_DATA.jqObj.artSummary.text(this.infoDat.infoBase.summary);
 	if(this.infoDat.infoBase.hasPic===1){
 		var picurl = this.getUrl(this.infoDat.infoBase.picUrl);
@@ -164,11 +156,9 @@ PAGE_DATA.doRender = function(){
 	if(this.infoDat.infoBase.siteUrl && this.infoDat.infoBase.siteUrl.length>5){
 		var siteurl = this.getUrl(this.infoDat.infoBase.siteUrl);
 		if(siteurl!=''){
-			PAGE_DATA.jqObj.outSiteHref.attr('href', siteurl);
-			PAGE_DATA.jqObj.outSiteHref.show();
+			PAGE_DATA.configPlayBtn();
 		}
 	}
-	PAGE_DATA.jqObj.currSite.text('986001娱乐在线');
 	if(PAGE_DATA.infoDat.infoContent && PAGE_DATA.infoDat.infoContent.content){
 		setTimeout(function(){
 			PAGE_DATA.jqObj.artContent.html(PAGE_DATA.infoDat.infoContent.content);
@@ -179,7 +169,6 @@ PAGE_DATA.doRender = function(){
 require(['bootstrap','common'], function() {
 	PAGE_DATA.doInit();
 	PAGE_DATA.doRender();
-	PAGE_DATA.configPlayBtn();
 });
 </script>
 </body>

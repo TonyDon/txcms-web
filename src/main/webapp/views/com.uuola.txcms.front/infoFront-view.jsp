@@ -41,16 +41,6 @@
 		<div class="page-header">
 			<h3 class="title"></h3>
 		</div>
-		<div class="info-meta container-fluid">
-			<div class="row">
-				<div class="col-xs-6">
-					<span class="time"></span>
-				</div>
-				<div class="col-xs-6">
-					<span class="share">分享到： 微信 QQ空间 微博 </span>
-				</div>
-			</div>
-		</div>
 		<blockquote class="summary"></blockquote>
 		<div class="main-pic text-center">
 			<p><img class="img-responsive" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
@@ -62,9 +52,14 @@
 					<span class="read-num">阅读：76253次</span>
 					<a class="site-url" href="javascript:;" target="_blank">文章来源</a>
 				</div>
-				<div  class="col-xs-8">
+				<div class="col-xs-2">
+					<span class="time"></span>
+				</div>
+				<div  class="col-xs-2">
 					<span class="author"></span>
-					<span class="share">分享到： 微信 QQ空间 微博 </span>
+				</div>
+				<div  class="col-xs-4">
+					<span class="share">分享到： 微信</span>
 				</div>
 			</div>
 		</div>
@@ -141,7 +136,7 @@ PAGE_DATA.doRender = function(){
 	if(PAGE_DATA.existError())return ;
 	PAGE_DATA.jqObj.artTitle.text(this.infoDat.infoBase.title);
 	PAGE_DATA.jqObj.artTime.text(ut.parseDate(this.infoDat.infoBase.createTime, 10));
-	PAGE_DATA.jqObj.artAuthor.text('[编辑:'+this.infoDat.infoBase.authorId+']');
+	PAGE_DATA.jqObj.artAuthor.text('['+this.infoDat.infoBase.authorId+']');
 	PAGE_DATA.jqObj.artSummary.text(this.infoDat.infoBase.summary);
 	if(this.infoDat.infoBase.hasPic===1){
 		var picurl = this.getUrl(this.infoDat.infoBase.picUrl);
