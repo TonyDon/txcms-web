@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="ut" uri="/utils"%>
@@ -18,24 +18,7 @@
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
 <body>
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="${ut:getCtxPath()}/"  title="986001.com 开心驿站">
-      	<img alt="986001.com" title="986001.com 开心驿站" class="img-responsive" src="${ut:getCtxPath()}/static/image/nav-logo.png"/>
-      </a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="${ut:getCtxPath()}/all/latest">最新</a></li>
-        <li><a href="${ut:getCtxPath()}/qiqu">O_o奇趣</a></li>
-        <li><a href="${ut:getCtxPath()}/gaosiao">∩_∩搞笑</a></li>
-        <li><a href="${ut:getCtxPath()}/xiaoyouxi">≧▽≦小游戏</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
+<%@include file="inc-nav.jspf" %>
 <main>
   <div id="main" class="container">
 		<div class="page-header">
@@ -80,13 +63,8 @@
 	</div>
 </aside>
 
-<footer class="footer"> 
-	 <div class="container">
-	 	<p class="text-muted">
-	 		986001.COM 手机娱乐 开心驿站
-	 	</p>
-	 </div>
-</footer>
+<%@include file="inc-footer.jspf" %>
+
 <script src="${ut:getCtxPath()}/static/js/require-2.1.22.js"></script> 
 <script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js"></script> 
 <script>
