@@ -156,8 +156,8 @@
 			showFooter : true,
 			sortName : 'id',
 			sortOrder : 'asc',
-			pageSize : 5,
-			pageList : [ 5, 10, 20, 50 ],
+			pageSize : 20,
+			pageList : [20, 50],
 			records : 0,
 			toolbar : [ {
 				text : '添加',
