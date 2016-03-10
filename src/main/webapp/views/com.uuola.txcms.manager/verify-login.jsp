@@ -38,7 +38,7 @@ label.error{margin:0.2em 1.2em;}
 								</div>
 								<div class="form-group hidden" id="vcode_group">
 									<input class="form-control" placeholder="请输入图片中的字符" id="login_captcha" name="captcha" type="text" value="">
-									<img id="vcode" class="vcode codeimg" src="${ut:getCtxPath()}/static/image/blank.gif" data-src="${ut:getCtxPath()}/captcha/vcode.png">
+									<img id="vcode" class="vcode codeimg" src="${ut:getCtxPath()}/static/image/blank.gif" data-src="${ut:getCtxPath()}/captcha/vcode">
 	                                <a href="javascript:void();" id="refresh_captcha">不好识别, 换一张</a>
 	                                <label for="login_captcha" class="error none"></label>
 								</div>
