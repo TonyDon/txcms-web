@@ -9,16 +9,11 @@
 <meta charset="UTF-8">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="format-detection" content="telephone=no" />
-<meta
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
-	name="viewport" id="viewport" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 <title>${infoDTO.infoBase.title}</title>
 <meta content="" name="keywords">
 <meta content="" name="description">
-<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="${ut:getCtxPath()}/static/style/v1/info.css"
-	rel="stylesheet" type="text/css" />
+<%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
 #h5gIframe {

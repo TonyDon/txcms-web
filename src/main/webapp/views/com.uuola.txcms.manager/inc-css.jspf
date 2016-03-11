@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="${ut:getCtxPath()}/static/manager/css/metisMenu.css" rel="stylesheet" type="text/css">
 <link href="${ut:getCtxPath()}/static/manager/css/sb-admin-2.css" rel="stylesheet" type="text/css">
 <link href="${ut:getCtxPath()}/static/manager/css/font-awesome.css" rel="stylesheet" type="text/css">

@@ -13,8 +13,7 @@
 <title>${infoDTO.infoBase.title}</title>
 <meta content="" name="keywords">
 <meta content="" name="description">
-<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="${ut:getCtxPath()}/static/style/v1/info.css" rel="stylesheet" type="text/css"/>
+<%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
 <body>
