@@ -34,16 +34,14 @@
 					<span class="read-num">阅读：76253次</span>
 					<a class="site-url" href="javascript:;" target="_blank">文章来源</a>
 				</div>
-				<div class="col-xs-2">
+				<div class="col-xs-4">
 					<span class="time"></span>
 				</div>
-				<div  class="col-xs-2">
+				<div  class="col-xs-4">
 					<span class="author"></span>
 				</div>
-				<div  class="col-xs-4">
-					<span class="share">分享到： 微信</span>
-				</div>
 			</div>
+			<%@include file="inc-share.jspf" %>
 		</div>
   		<div class="aside">
   			<img  class="img-responsive"  src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
