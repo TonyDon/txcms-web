@@ -48,7 +48,7 @@
 			<%@include file="inc-share.jspf" %>
 		</div>
   		<div class="aside">
-  			<img  class="img-responsive"  src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
+  			<img class="img-responsive"  src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
   		</div>
   </div>
 </main>
