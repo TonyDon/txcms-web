@@ -35,13 +35,11 @@
 		</div>
 		<div class="info-meta out-site container-fluid">
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-6">
 					<span class="read-num">有76253人玩过</span>
 				</div>
-				<div class="col-xs-4">
+				<div class="col-xs-6">
 					<span class="time"></span>
-				</div>
-				<div  class="col-xs-4">
 					<span class="author"></span>
 				</div>
 			</div>

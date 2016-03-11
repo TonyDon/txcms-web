@@ -30,14 +30,12 @@
 		<article></article>
 		<div class="info-meta out-site container-fluid">
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-6">
 					<span class="read-num">阅读：76253次</span>
 					<a class="site-url" href="javascript:;" target="_blank">文章来源</a>
 				</div>
-				<div class="col-xs-4">
+				<div class="col-xs-6">
 					<span class="time"></span>
-				</div>
-				<div  class="col-xs-4">
 					<span class="author"></span>
 				</div>
 			</div>
