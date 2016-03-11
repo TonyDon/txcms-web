@@ -55,17 +55,7 @@
   </div>
 </main>
 
-<aside class="float-box">
-	<div class="float-zone">
-		<div class="float-qr-wx" target="_blank">
-			<img  class="img-responsive" src="http://tool.oschina.net/action/qrcode/generate?size=4"/>
-		</div>
-		<div class="float-gotop">
-			<a href="#">返回顶部</a>
-		</div>
-	</div>
-</aside>
-
+<%@include file="inc-float.jspf" %>
 <%@include file="inc-footer.jspf" %>
 
 <script src="${ut:getCtxPath()}/static/js/require-2.1.22.js"></script> 

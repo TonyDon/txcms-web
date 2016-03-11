@@ -1,0 +1,11 @@
+<%@ page pageEncoding="UTF-8" %>
+<aside class="float-box">
+	<div class="float-zone">
+		<div class="float-qr-wx" target="_blank">
+			<img class="img-responsive" src="https://mmbiz.qlogo.cn/mmbiz/bCGqEjic93pZRHVOfTKAYibicuBR5CRia7F22g2174yuAeByOzYXtWaicOsCNL0icObGQjrxzicrXj33p0icY9Z7KpDznA/0?wx_fmt=jpeg"/>
+		</div>
+		<div class="float-gotop">
+			<a href="#">返回顶部</a>
+		</div>
+	</div>
+</aside>
