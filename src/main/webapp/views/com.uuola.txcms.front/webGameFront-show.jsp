@@ -34,7 +34,7 @@
 		<div class="info-meta out-site container-fluid">
 			<div class="row">
 				<div class="col-xs-6">
-					<span class="read-num">有76253人玩过</span>
+					<span class="read-num"></span>
 				</div>
 				<div class="col-xs-6">
 					<span class="time"></span>
@@ -63,6 +63,7 @@ PAGE_DATA.doInit = function(){
 	PAGE_DATA.jqObj = {
 			artTitle : $("h3.title"),
 			artTime : $("span.time"),
+			artReadNum : $("span.read-num"),
 			artAuthor : $("span.author"),
 			artSummary : $("blockquote.summary"),
 			artContent : $("div#main article"),
@@ -99,6 +100,7 @@ PAGE_DATA.doRender = function(){
 	if(PAGE_DATA.existError())return ;
 	PAGE_DATA.jqObj.artTitle.text(this.infoDat.infoBase.title);
 	PAGE_DATA.jqObj.artTime.text(ut.parseDate(this.infoDat.infoBase.createTime, 10));
+	PAGE_DATA.jqObj.artReadNum.text('玩'+this.infoDat.infoBase.viewNum+'次');
 	PAGE_DATA.jqObj.artAuthor.text('['+this.infoDat.infoBase.authorId+']');
 	PAGE_DATA.jqObj.artSummary.text(this.infoDat.infoBase.summary);
 	if(this.infoDat.infoBase.hasPic===1){
