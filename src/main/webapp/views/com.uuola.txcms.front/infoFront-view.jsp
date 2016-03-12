@@ -22,8 +22,8 @@
 			<h3 class="title"></h3>
 		</div>
 		<blockquote class="summary"></blockquote>
-		<div class="main-pic text-center">
-			<p><img class="img-responsive" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
+		<div class="main-pic">
+			<p><img class="img-responsive center-block" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
 		</div>
 		<article></article>
 		<div class="info-meta out-site container-fluid">
