@@ -59,73 +59,12 @@
 var PAGE_DATA = {};
 PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
 PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
-PAGE_DATA.doInit = function(){
-	PAGE_DATA.jqObj = {
-			artTitle : $("h3.title"),
-			artTime : $("span.time"),
-			artReadNum : $("span.read-num"),
-			artAuthor : $("span.author"),
-			artSummary : $("blockquote.summary"),
-			artContent : $("div#main article"),
-			artPicDir : $('div.main-pic'),
-			artMainPic : $("div.main-pic img"),
-			playBtn : $('#playBtn')
-	};
-};
-PAGE_DATA.getUrl = function(url){
-	if(!url){
-		return 'https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif';
-	}
-	if(url.indexOf('http')!==0 && url.indexOf(window.ctx)<0){
-		return window.ctx + url ;
-	}
-	return url ;
-};
-PAGE_DATA.existError = function(){
-	if(this.verrors && this.verrors.length>0){
-		alert('读取文章出错,请稍后再试! \r\n ' + this.verrors.join('\r\n'));
-		return true;
-	}
-	return false;
-};
-PAGE_DATA.fixArtImage = function(){
-	$('div#main article img').addClass('img-responsive center-block');
-};
-PAGE_DATA.configPlayBtn = function(){
-	PAGE_DATA.jqObj.playBtn.on('click', function(){
-		location.href = window.ctx + '/h5g/play?id=' + PAGE_DATA.infoDat.infoBase.id + '&t=' + Math.random() * 1000;
-	});
-};
-PAGE_DATA.doRender = function(){
-	if(PAGE_DATA.existError())return ;
-	PAGE_DATA.jqObj.artTitle.text(this.infoDat.infoBase.title);
-	PAGE_DATA.jqObj.artTime.text(ut.parseDate(this.infoDat.infoBase.createTime, 10));
-	PAGE_DATA.jqObj.artReadNum.text('玩'+this.infoDat.infoBase.viewNum+'次');
-	PAGE_DATA.jqObj.artAuthor.text('['+this.infoDat.infoBase.authorId+']');
-	PAGE_DATA.jqObj.artSummary.text(this.infoDat.infoBase.summary);
-	if(this.infoDat.infoBase.hasPic===1){
-		var picurl = this.getUrl(this.infoDat.infoBase.picUrl);
-		if(picurl!=''){
-			PAGE_DATA.jqObj.artMainPic.attr('src', picurl);
-			PAGE_DATA.jqObj.artPicDir.show();
-		}
-	}
-	if(this.infoDat.infoBase.siteUrl && this.infoDat.infoBase.siteUrl.length>5){
-		var siteurl = this.getUrl(this.infoDat.infoBase.siteUrl);
-		if(siteurl!=''){
-			PAGE_DATA.configPlayBtn();
-		}
-	}
-	if(PAGE_DATA.infoDat.infoContent && PAGE_DATA.infoDat.infoContent.content){
-		setTimeout(function(){
-			PAGE_DATA.jqObj.artContent.html(PAGE_DATA.infoDat.infoContent.content);
-			PAGE_DATA.fixArtImage();
-		},ut.rndint(1000,2000));
-	}
-};
+</script>
+<script src="${ut:getCtxPath()}/static/js/site-min.js"></script>
+<script>
 jQuery(function(){
-	PAGE_DATA.doInit();
-	PAGE_DATA.doRender();
+	PAGE_DATA.H5G.doInit();
+	PAGE_DATA.H5G.doRender();
 });
 </script>
 </body>

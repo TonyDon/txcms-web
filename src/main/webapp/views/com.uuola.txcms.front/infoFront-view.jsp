@@ -55,71 +55,12 @@
 var PAGE_DATA = {};
 PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
 PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
-PAGE_DATA.doInit = function(){
-	PAGE_DATA.jqObj = {
-			artTitle : $("h3.title"),
-			artTime : $("span.time"),
-			artReadNum : $("span.read-num"),
-			artAuthor : $("span.author"),
-			artSummary : $("blockquote.summary"),
-			artContent : $("div#main article"),
-			artPicDir : $('div.main-pic'),
-			artMainPic : $("div.main-pic img"),
-			outSiteHref : $("a.site-url"),
-			currSite : $('span.curr-site')
-	};
-};
-PAGE_DATA.getUrl = function(url){
-	if(!url){
-		return 'https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif';
-	}
-	if(url.indexOf('http')!==0 && url.indexOf(window.ctx)<0){
-		return window.ctx + url ;
-	}
-	return url ;
-};
-PAGE_DATA.existError = function(){
-	if(this.verrors && this.verrors.length>0){
-		alert('读取文章出错,请稍后再试! \r\n ' + this.verrors.join('\r\n'));
-		return true;
-	}
-	return false;
-};
-PAGE_DATA.fixArtImage = function(){
-	$('div#main article img').addClass('img-responsive center-block');
-};
-PAGE_DATA.doRender = function(){
-	if(PAGE_DATA.existError())return ;
-	PAGE_DATA.jqObj.artTitle.text(this.infoDat.infoBase.title);
-	PAGE_DATA.jqObj.artTime.text(ut.parseDate(this.infoDat.infoBase.createTime, 10));
-	PAGE_DATA.jqObj.artReadNum.text('阅读：'+this.infoDat.infoBase.viewNum+'次');
-	PAGE_DATA.jqObj.artAuthor.text('['+this.infoDat.infoBase.authorId+']');
-	PAGE_DATA.jqObj.artSummary.text(this.infoDat.infoBase.summary);
-	if(this.infoDat.infoBase.hasPic===1){
-		var picurl = this.getUrl(this.infoDat.infoBase.picUrl);
-		if(picurl!=''){
-			PAGE_DATA.jqObj.artMainPic.attr('src', picurl);
-			PAGE_DATA.jqObj.artPicDir.show();
-		}
-	}
-	if(this.infoDat.infoBase.siteUrl && this.infoDat.infoBase.siteUrl.length>5){
-		var siteurl = this.getUrl(this.infoDat.infoBase.siteUrl);
-		if(siteurl!=''){
-			PAGE_DATA.jqObj.outSiteHref.attr('href', siteurl);
-			PAGE_DATA.jqObj.outSiteHref.show();
-		}
-	}
-	PAGE_DATA.jqObj.currSite.text('986001娱乐在线');
-	if(PAGE_DATA.infoDat.infoContent && PAGE_DATA.infoDat.infoContent.content){
-		setTimeout(function(){
-			PAGE_DATA.jqObj.artContent.html(PAGE_DATA.infoDat.infoContent.content);
-			PAGE_DATA.fixArtImage();
-		},ut.rndint(1000,2000));
-	}
-};
+</script>
+<script src="${ut:getCtxPath()}/static/js/site-min.js"></script>
+<script>
 jQuery(function(){
-	PAGE_DATA.doInit();
-	PAGE_DATA.doRender();
+	PAGE_DATA.INFO.doInit();
+	PAGE_DATA.INFO.doRender();
 });
 </script>
 </body>

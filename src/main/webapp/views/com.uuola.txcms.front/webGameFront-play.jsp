@@ -41,45 +41,12 @@ var PAGE_DATA = {};
 PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
 PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
 PAGE_DATA.frwahash = '${frwahash}';
-PAGE_DATA.doInit = function(){
-	PAGE_DATA.jqObj = {
-			h5gIframe : $('#h5gIframe')
-	};
-};
-PAGE_DATA.getUrl = function(url){
-	if(!url){
-		return 'https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif';
-	}
-	if(url.indexOf('http')!==0 && url.indexOf(window.ctx)<0){
-		return window.ctx + url ;
-	}
-	return url ;
-};
-PAGE_DATA.existError = function(){
-	if(this.verrors && this.verrors.length>0){
-		alert('读取文章出错,请稍后再试! \r\n ' + this.verrors.join('\r\n'));
-		return true;
-	}
-	return false;
-};
-PAGE_DATA.doRender = function(){
-	if(PAGE_DATA.existError())return ;
-	if(this.infoDat.infoBase.siteUrl && this.infoDat.infoBase.siteUrl.length>5){
-		var siteurl = this.getUrl(this.infoDat.infoBase.siteUrl);
-		if(siteurl!=''){
-			var height = $(window).height() + $(window).scrollTop();
-			PAGE_DATA.jqObj.h5gIframe.css({'height' : (parseInt(height/16)+1.5)+'em'});
-			PAGE_DATA.jqObj.h5gIframe.load(function(){
-				var thisheight = $(this).contents().find("body").height()+32;
-				$(this).height(thisheight < 500 ? 500 : thisheight);
-			});
-			PAGE_DATA.jqObj.h5gIframe.attr('src', siteurl + 'index.html?T=' + Math.random() * 1000 + '&frwahash=' + PAGE_DATA.frwahash);
-		}
-	}
-};
+</script>
+<script src="${ut:getCtxPath()}/static/js/site-min.js"></script>
+<script>
 jQuery(function(){
-	PAGE_DATA.doInit();
-	PAGE_DATA.doRender();
+	PAGE_DATA.H5G_PLAY.doInit();
+	PAGE_DATA.H5G_PLAY.doRender();
 });
 </script>
 </body>
