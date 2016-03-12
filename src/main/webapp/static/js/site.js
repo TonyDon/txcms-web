@@ -92,7 +92,7 @@ SITE_PAGE.H5G.doRender = function(){
 	if(SITE_PAGE.existError())return ;
 	SITE_PAGE.jqObj.artTitle.text(SITE_PAGE.infoDat.infoBase.title);
 	SITE_PAGE.jqObj.artTime.text(ut.parseDate(SITE_PAGE.infoDat.infoBase.createTime, 10));
-	SITE_PAGE.jqObj.artReadNum.text('有'+SITE_PAGE.infoDat.infoBase.viewNum+'人玩');
+	SITE_PAGE.jqObj.artReadNum.text('有'+SITE_PAGE.infoDat.infoBase.viewNum+'人玩过');
 	SITE_PAGE.jqObj.artAuthor.text('['+SITE_PAGE.infoDat.infoBase.authorId+']');
 	SITE_PAGE.jqObj.artSummary.text(SITE_PAGE.infoDat.infoBase.summary);
 	if(SITE_PAGE.infoDat.infoBase.hasPic===1){
@@ -137,5 +137,6 @@ SITE_PAGE.H5G_PLAY.doRender = function(){
 			});
 			SITE_PAGE.jqObj.h5gIframe.attr('src', siteurl + 'index.html?T=' + Math.random() * 1000 + '&frwahash=' + SITE_PAGE.frwahash);
 		}
+		SITE_PAGE.doHit(SITE_PAGE.infoDat.infoBase.id);
 	}
 };
