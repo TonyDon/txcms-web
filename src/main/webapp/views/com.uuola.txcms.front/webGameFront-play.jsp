@@ -33,16 +33,10 @@
 
 <%@include file="inc-footer.jspf" %>
 
-<script src="${ut:getCtxPath()}/static/js/require-2.1.22.js"></script>
 <script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js"></script>
+<script src="${ut:getCtxPath()}/static/bootstrap/js/bootstrap.min.js"></script> 
+<script src="${ut:getCtxPath()}/static/js/common.min.js"></script>
 <script>
-require.config({
-    baseUrl: '${ut:getCtxPath()}/static',
-    paths: {
-        bootstrap : 'bootstrap/js/bootstrap.min',
-        common : 'js/common'
-    }
-});
 var PAGE_DATA = {};
 PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
 PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
@@ -83,7 +77,7 @@ PAGE_DATA.doRender = function(){
 		}
 	}
 };
-require(['bootstrap','common'], function() {
+jQuery(function(){
 	PAGE_DATA.doInit();
 	PAGE_DATA.doRender();
 });
