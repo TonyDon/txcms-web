@@ -166,6 +166,10 @@
 				formatter : function(v,r,i){ 
 					return TXWEB.boolTmpl[String(v)];
 				}
+			},{
+				field : 'viewNum',
+				title : '浏览数',
+				width : 55
 			}, {
 				field : 'updateTime',
 				title : '更新时间',
