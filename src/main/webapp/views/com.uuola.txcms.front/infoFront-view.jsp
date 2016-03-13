@@ -40,27 +40,25 @@
 			<%@include file="inc-share.jspf" %>
 		</div>
   		<div class="aside">
-  			<img class="img-responsive"  src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
+  			<img class="img-responsive center-block"  src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
+  		</div>
+  		<div class="aside">
+  			<div id="uyan_frame"></div>
   		</div>
   </div>
 </main>
 
-<%@include file="inc-float.jspf" %>
 <%@include file="inc-footer.jspf" %>
-
-<script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js"></script>
-<script src="${ut:getCtxPath()}/static/bootstrap/js/bootstrap.min.js"></script> 
-<script src="${ut:getCtxPath()}/static/js/common.min.js"></script>
+<%@include file="inc-js.jspf" %>
 <script>
 var PAGE_DATA = {};
 PAGE_DATA.infoDat = ${ut:toJSON(infoDTO)};
 PAGE_DATA.verrors = ${ut:toJSON(validErrors)};
-</script>
-<script src="${ut:getCtxPath()}/static/js/site-min.js"></script>
-<script>
 jQuery(function(){
-	PAGE_DATA.INFO.doInit();
-	PAGE_DATA.INFO.doRender();
+	SITE_MAIN.loadPage(PAGE_DATA);
+	SITE_MAIN.INFO.doInit();
+	SITE_MAIN.INFO.doRender();
+	SITE_MAIN.UYAN.doInit(SITE_MAIN.pageId);
 });
 </script>
 </body>

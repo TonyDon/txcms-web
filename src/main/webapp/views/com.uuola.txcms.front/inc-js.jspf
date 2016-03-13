@@ -1,0 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+<script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js?v=1000"></script>
+<script src="${ut:getCtxPath()}/static/bootstrap/js/bootstrap.min.js?v=1000"></script> 
+<script src="${ut:getCtxPath()}/static/js/common.min.js?v=1000"></script>
+<script src="${ut:getCtxPath()}/static/js/site-min.js?v=1000"></script>
