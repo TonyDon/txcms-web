@@ -52,7 +52,11 @@ div.out-site {
 
 #main article {
 	font-size: 1.2em;
-	line-height: 1.6em;
+	line-height: 1.8em;
+}
+
+#main article p{
+	text-indent: 2em;
 }
 
 .title {
@@ -63,6 +67,7 @@ div.out-site {
 .summary {
 	text-indent: 2em;
 	font-size: 1.2em;
+	line-height: 1.8em;
 }
 
 .info-meta {
