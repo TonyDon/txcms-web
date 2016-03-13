@@ -197,6 +197,13 @@ ut.hashPassKey = function(pass, token){
 	}
 	return "";
 };
+/* 格式化缩图地址 */
+ut.fmtImageThumb = function(picUrl, thumbWidth){
+	var pos = picUrl.lastIndexOf('.');// abc.jpg
+	var pre = picUrl.substring(0, pos);// abc
+	var ext = picUrl.substring(pos+1); // jpg
+	return [pre, thumbWidth, ext].join('.');
+};
 var va={
     tint:function(s){return (/^[0-9\-]{1,2}$/).test(s);},
     mint:function(s){return (/^[0-9\-]{1,5}$/).test(s);},
@@ -239,23 +246,6 @@ var filter={
         return t.replace(/<[^>]+>/g,"").replace(/[\f\t\b]{1,}/g,"");
     }
 };
-var win={
-open:function(s){window.open(s, '_blank', 'height=600, width=980, top=20, left=50, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');},
-close:function(){var ua=navigator.userAgent;var ie=(navigator.appName=="Microsoft Internet Explorer")?(true):(false);
-if(ie){var IEversion=parseFloat(ua.substring(ua.indexOf("MSIE ")+5,ua.indexOf(";",ua.indexOf("MSIE "))));
-if(IEversion< 5.5){var str  = '<object id=noTipClose classid="clsid:ADB880A6-D8FF-11CF-9377-00AA003B7A11">';
-str += '<param name="Command" value="Close"></object>';document.body.insertAdjacentHTML("beforeEnd", str);
-document.all.noTipClose.Click();document.all.WinCls.Click();
-}else{window.opener ='me';window.close();}
-}else{window.close();}
-    },
- chk:function(){
-    $.cookie('ts','1001');
-    var s = $.cookie('ts');
-    $.cookie('ts','');
-    if(va.isnull(s)){return false;}else{return true;}
-    }
-};
 var J = {
     toJson: function(str) {var a;if(va.isnull(str)){return null;}else{eval('a=' + str.toString() + ';');return a;}},
     toStr: function(obj) {
@@ -281,29 +271,5 @@ var J = {
             case 'boolean':return obj.toString();
             default:return obj.toString();
         }
-    }
-};
-function addFavorite() {
-    var url = window.location.href;
-    var title = document.title;
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf("360se") > -1) {
-        alert("由于360浏览器功能限制，请按 Ctrl+D 手动收藏！");
-    }
-    else if (ua.indexOf("msie 8") > -1) {
-        window.external.AddToFavoritesBar(url, title); //IE8
-    }
-    else if (document.all) {
-		try{
-			window.external.addFavorite(url, title);
-		}catch(e){
-			alert('您的浏览器不支持自动收藏,请按 Ctrl+D 手动收藏!');
-		}
-    }
-    else if (window.sidebar) {
-        window.sidebar.addPanel(title, url, "");
-    }
-    else {
-		alert('您的浏览器不支持自动收藏,请按 Ctrl+D 手动收藏!');
     }
 };
