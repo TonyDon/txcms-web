@@ -160,3 +160,30 @@ SITE_MAIN.UYAN.doInit = function(pageId){
 	}
 };
 
+/** site latest list */
+SITE_MAIN.NAV={};
+SITE_MAIN.NAV.currPage=1;
+SITE_MAIN.NAV.doInit = function(){
+	SITE_MAIN.jqObj={
+				infoList:$('div.info-list'),
+				navNextBtn : $('a.nav-next')
+			};
+	SITE_MAIN.jqObj.navNextBtn.on('click', function(){
+		SITE_MAIN.NAV.fetchLatest();
+	});
+};
+SITE_MAIN.NAV.fetchLatest = function(){
+	var param = {'pageNo':SITE_MAIN.NAV.currPage, 'listSize':12};
+	SITE_MAIN.jqObj.navNextBtn.text('努力加载中...');
+	$.get(window.ctx + '/info/api/fetch-latest.json', param, function(x){
+		if(x.pageDTO.datas && x.pageDTO.datas.length>0){
+			SITE_MAIN.jqObj.infoList.append(template("infoBoxTpl", x.pageDTO));
+			SITE_MAIN.NAV.currPage++;
+			SITE_MAIN.jqObj.navNextBtn.text('∞ 不要停, 点我往下翻↓ :-D');
+		}else{
+			//隐藏  next 加载按钮
+			SITE_MAIN.jqObj.navNextBtn.unbind('click');
+			SITE_MAIN.jqObj.navNextBtn.text('这么快就看完了.').delay(2000).fadeOut();
+		}
+	});
+};
