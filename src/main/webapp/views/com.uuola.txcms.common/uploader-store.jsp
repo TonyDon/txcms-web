@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>上传结果 </title>
-<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js"></script>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
