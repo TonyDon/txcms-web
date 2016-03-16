@@ -43,6 +43,7 @@
   			<img class="img-responsive center-block"  src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
   		</div>
   		<div class="aside">
+  			<a name="#uyan"></a>
   			<div id="uyan_frame"></div>
   		</div>
   </div>

@@ -47,35 +47,29 @@
 <script id="infoBoxTpl"  type="text/html">
 {% for(var i=0; i<datas.length; i++){ var info = datas[i]; %}
 	<div class="row info-box">
-	 <h3><a href="{%=GetNavUrl(info.siteUrl, info.id)%}">{%=info.title%}</a></h3>
+	 <h3><a href="{%=GetNavUrl(info.siteUrl, info.id)%}#!/info/view">{%=info.title%}</a></h3>
 	 <a>【{%=info.catId%}】</a>
 	 <p class="note">{%=info.summary%}</p>
 	 <div class="main-pic {%=(info.hasPic==1?'show':'hidden')%}">
 	 	<img class="img-responsive center-block" src="{%=GetUrl(info.picUrl)%}" />
 	 </div>
-	 <div class="more content-box {%=(info.hasContent==1?'show':'hidden')%}">……</div>
+	 <div id="content{%=info.id%}" class="more content-box {%=(info.hasContent==1?'show':'hidden')%}">……</div>
 	 <div class="user-act">
 	 {% if(info.hasContent==1){ %}
-	  <a class="btn btn-success btn-sm">看全文 <span>&#969;</span></a>
+	  <a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=info.id%}">看全文 <span>&#969;</span></a>
 	 {% } %}
-	  <a class="btn btn-warning btn-sm">点赞 <span>&#9829;</span> <span class="zan-count">{%=info.loveNum%}</span></a>
-	  <a class="btn btn-default btn-sm">踩 <span>&#966;</span> <span class="cai-count">{%=info.hateNum%}</span></a>
-	  <a class="btn btn-default btn-sm">吐槽 <span>&#945;</span></a>
+	  <a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=info.id%}">点赞 <span>&#9829;</span> <span class="zan-count">{%=info.loveNum%}</span></a>
+	  <a href="javascript:;" class="btn btn-default btn-sm hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);" data-id="{%=info.id%}">踩 <span>&#966;</span> <span class="cai-count">{%=info.hateNum%}</span></a>
+	  <a href="javascript:;" class="btn btn-default btn-sm" onclick="SITE_MAIN.NAV.LATEST.talkClick(this);" data-id="{%=info.id%}" data-su="{%=info.siteUrl%}">吐槽 <span>&#945;</span></a>
 	 </div>
 	</div>
 {% } %}
 </script>
 <script>
 template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
-template.helper('GetNavUrl', function(su,id){
-	var s =('/info/view?id='+id);
-	if(su && su.indexOf('h5gfs')>=0){
-		s = ('/h5g/show?id='+id);
-	}
-	return SITE_MAIN.getUrl(s);
-});
+template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
 jQuery(function(){
-	SITE_MAIN.NAV.doInit();
+	SITE_MAIN.NAV.LATEST.doInit();
 	SITE_MAIN.NAV.fetchLatest();
 });
 </script>

@@ -8,6 +8,14 @@ SITE_MAIN.getUrl = function(url){
 	}
 	return url ;
 };
+/**暂时通过siteurl区分GAME和INFO*/
+SITE_MAIN.getNavUrl = function(su,id){
+	var s =('/info/view?id='+id);
+	if(su && su.indexOf('h5gfs')>=0){
+		s = ('/h5g/show?id='+id);
+	}
+	return SITE_MAIN.getUrl(s);
+};
 SITE_MAIN.existError = function(){
 	if(SITE_MAIN.verrors && SITE_MAIN.verrors.length>0){
 		alert('读取出错,请稍后再试! \r\n ' + SITE_MAIN.verrors.join('\r\n'));
@@ -163,14 +171,79 @@ SITE_MAIN.UYAN.doInit = function(pageId){
 /** site latest list */
 SITE_MAIN.NAV={};
 SITE_MAIN.NAV.currPage=1;
-SITE_MAIN.NAV.doInit = function(){
+SITE_MAIN.NAV.LATEST={};
+SITE_MAIN.NAV.LATEST.doInit = function(){
 	SITE_MAIN.jqObj={
 				infoList:$('div.info-list'),
 				navNextBtn : $('a.nav-next')
-			};
+	};
 	SITE_MAIN.jqObj.navNextBtn.on('click', function(){
 		SITE_MAIN.NAV.fetchLatest();
 	});
+};
+SITE_MAIN.NAV.LATEST.loveClick=function(target){
+		var that = $(target);
+	    var clicked = that.data('clicked');
+	    if(!clicked){
+	    	that.data('clicked', 1);
+			var id = that.data('id');
+			var param ={'id':id, 'mood':'love'};
+			$.get(window.ctx + '/info/api/post-mood.json', param, function(){
+				var zan = that.find('span.zan-count');
+				var zanCnt = parseInt(zan.text());
+				zan.text(String(zanCnt+1));
+			});
+	    }
+};
+SITE_MAIN.NAV.LATEST.hateClick=function(target){
+	var that = $(target);
+    var clicked = that.data('clicked');
+    if(!clicked){
+    	that.data('clicked', 1);
+		var id = that.data('id');
+		var param ={'id':id, 'mood':'hate'};
+		that.unbind('click');
+		$.get(window.ctx + '/info/api/post-mood.json', param, function(){
+			var cai = that.find('span.cai-count');
+			var caiCnt = parseInt(cai.text());
+			cai.text(String(caiCnt+1));
+		});
+    }
+};
+SITE_MAIN.NAV.LATEST.viewAllClick=function(target){
+	var that = $(target);
+	var id = that.data('id');
+	var cent = $('#content'+id);
+	var isView = that.data('view');
+	var isOpen = that.data('opened');
+	if(!isView){
+		var param ={'id':id,'flag':'content'};
+		$.get(window.ctx + '/info/api/view-cont.json', param, function(x){
+			that.data('view', 1);
+			that.data('opened', true);
+			that.html('收起 <span>∧</span>');
+			if(x.infoConent){
+				cent.html(x.infoConent.content);
+				cent.find('img').addClass('img-responsive center-block');
+			}
+		});
+		return ;
+	}
+	if(isOpen){
+		that.data('opened', false);
+		cent.removeClass('show').addClass('hidden');
+		that.html('看全文 <span>&#969;</span>');
+	}else if(!isOpen){
+		that.data('opened', true);
+		cent.removeClass('hidden').addClass('show');
+		that.html('收起 <span>∧</span>');
+	}
+};
+SITE_MAIN.NAV.LATEST.talkClick=function(target){
+	var that = $(target);
+	var id = that.data('id');
+	var su = that.data('su');
+	location.href= SITE_MAIN.getNavUrl(su, id)+'#uyan';
 };
 SITE_MAIN.NAV.fetchLatest = function(){
 	var param = {'pageNo':SITE_MAIN.NAV.currPage, 'listSize':12};
