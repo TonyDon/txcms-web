@@ -10,7 +10,8 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="format-detection" content="telephone=no"/>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
-<title>${infoDTO.infoBase.title}</title>
+<title>${infoDTO.infoBase.title}-开心驿站-m.986001.com</title>
+<meta name="description" content="${infoDTO.infoBase.summary}" />
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
