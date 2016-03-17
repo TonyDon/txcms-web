@@ -32,11 +32,10 @@
 		</div>
 		<div class="info-meta out-site container-fluid">
 			<div class="row">
-				<div class="col-xs-6">
+				<div class="col-xs-8">
 					<span class="read-num"></span>
 				</div>
-				<div class="col-xs-6">
-					<span class="time"></span>
+				<div class="col-xs-4">
 					<span class="author"></span>
 				</div>
 			</div>

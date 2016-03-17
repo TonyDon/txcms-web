@@ -105,7 +105,6 @@ SITE_MAIN.H5G.configPlayBtn = function(){
 SITE_MAIN.H5G.doRender = function(){
 	if(SITE_MAIN.existError())return ;
 	SITE_MAIN.jqObj.artTitle.text(SITE_MAIN.infoDat.infoBase.title);
-	SITE_MAIN.jqObj.artTime.text(ut.parseDate(SITE_MAIN.infoDat.infoBase.createTime, 10));
 	SITE_MAIN.jqObj.artReadNum.text('有'+SITE_MAIN.infoDat.infoBase.viewNum+'人玩过');
 	SITE_MAIN.jqObj.artAuthor.text('['+SITE_MAIN.infoDat.infoBase.authorId+']');
 	SITE_MAIN.jqObj.artSummary.text(SITE_MAIN.infoDat.infoBase.summary);
