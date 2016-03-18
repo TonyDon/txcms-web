@@ -20,29 +20,28 @@
 <body>
 <%@include file="inc-nav.jspf" %>
 <main>
-			<div id="main" class="container">
-				
-			<div class="container-fluid">
-				<div class="row info-box">
-					<div class="main-pic show">
-						<img  class="img-responsive center-block" src="http://image.uc.cn/s/uae/g/view/eae61cb3a24a63a9a8d2437703c21ac6" />
-					</div>
-					<div class="header-title"><h5>一元纸币退出市场，以后端个存钱罐出门。</h5></div>
+	<div id="main" class="container">
+		<div class="container-fluid">
+			<div class="row info-box">
+				<div class="main-pic show">
+					<img class="img-responsive center-block"
+						src="http://image.uc.cn/s/uae/g/view/eae61cb3a24a63a9a8d2437703c21ac6" />
+				</div>
+				<div class="header-title">
+					<h5>一元纸币退出市场，以后端个存钱罐出门。</h5>
 				</div>
 			</div>
-			
-			<div class="container-fluid info-list"></div>	
-			
-			<div class="container-fluid">
-				<div class="row next-page">
-					<a class="btn btn-default btn-lg nav-next">∞ 不要停, 点我往下翻↓ :-D</a>
-				</div>
+		</div>
+		<div class="container-fluid info-list"></div>
+		<div class="container-fluid">
+			<div class="row next-page">
+				<a class="btn btn-default btn-lg nav-next">∞ 点我继续 :-D</a>
 			</div>
-			
-		 </div>
+		</div>
+	</div>
 </main>
 
-<%@include file="inc-footer.jspf" %>
+	<%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <script id="infoBoxTpl"  type="text/html">
 {% for(var i=0; i<datas.length; i++){ var info = datas[i]; %}
