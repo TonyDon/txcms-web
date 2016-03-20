@@ -114,6 +114,10 @@ SITE_MAIN.H5G.doRender = function(){
 	SITE_MAIN.jqObj.artReadNum.text('有'+SITE_MAIN.infoDat.infoBase.viewNum+'人玩过');
 	SITE_MAIN.jqObj.artAuthor.text('['+SITE_MAIN.infoDat.infoBase.authorId+']');
 	SITE_MAIN.jqObj.artSummary.text(SITE_MAIN.infoDat.infoBase.summary);
+	SITE_MAIN.jqObj.loveNav.find('span.zan-count').text(SITE_MAIN.infoDat.infoBase.loveNum);
+	SITE_MAIN.jqObj.hateNav.find('span.cai-count').text(SITE_MAIN.infoDat.infoBase.hateNum);
+	SITE_MAIN.jqObj.loveNav.data('id', SITE_MAIN.infoDat.infoBase.id);
+	SITE_MAIN.jqObj.hateNav.data('id', SITE_MAIN.infoDat.infoBase.id);
 	if(SITE_MAIN.infoDat.infoBase.hasPic===1){
 		var picurl = SITE_MAIN.getUrl(SITE_MAIN.infoDat.infoBase.picUrl);
 		if(picurl!=''){
@@ -140,11 +144,17 @@ SITE_MAIN.H5G.doRender = function(){
 SITE_MAIN.H5G_PLAY={};
 SITE_MAIN.H5G_PLAY.doInit = function(){
 	SITE_MAIN.jqObj={
-			h5gIframe:$('#h5gIframe')
+			h5gIframe:$('#h5gIframe'),
+			loveNav : $("a.love"),
+			hateNav : $("a.hate")
 	};
 };
 SITE_MAIN.H5G_PLAY.doRender = function(){
 	if(SITE_MAIN.existError())return ;
+	SITE_MAIN.jqObj.loveNav.find('span.zan-count').text(SITE_MAIN.infoDat.infoBase.loveNum);
+	SITE_MAIN.jqObj.hateNav.find('span.cai-count').text(SITE_MAIN.infoDat.infoBase.hateNum);
+	SITE_MAIN.jqObj.loveNav.data('id', SITE_MAIN.infoDat.infoBase.id);
+	SITE_MAIN.jqObj.hateNav.data('id', SITE_MAIN.infoDat.infoBase.id);
 	if(SITE_MAIN.infoDat.infoBase.siteUrl && SITE_MAIN.infoDat.infoBase.siteUrl.length>5){
 		var siteurl = SITE_MAIN.getUrl(SITE_MAIN.infoDat.infoBase.siteUrl);
 		if(siteurl!=''){

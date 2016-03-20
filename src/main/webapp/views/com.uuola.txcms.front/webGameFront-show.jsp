@@ -31,6 +31,7 @@
 			<button type="button" id="playBtn" class="btn btn-info btn-lg">开始游戏</button>
 		</div>
 		<div class="info-meta out-site container-fluid">
+			<%@include file="inc-moon.jspf" %>
 			<div class="row">
 				<div class="col-xs-8">
 					<span class="read-num"></span>
