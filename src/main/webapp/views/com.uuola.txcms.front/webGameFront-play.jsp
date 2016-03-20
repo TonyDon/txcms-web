@@ -54,5 +54,6 @@ jQuery(function(){
 	SITE_MAIN.UYAN.doInit(SITE_MAIN.pageId);
 });
 </script>
+<%@include file="inc-trace.jspf" %>
 </body>
 </html>

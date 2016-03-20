@@ -74,5 +74,6 @@ jQuery(function(){
 	SITE_MAIN.NAV.fetchLatest();
 });
 </script>
+<%@include file="inc-trace.jspf" %>
 </body>
 </html>
