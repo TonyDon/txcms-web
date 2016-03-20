@@ -27,9 +27,6 @@
 			<iframe src="about:blank;" id="h5gIframe" allowtransparency="true"></iframe>
 		</div>
 		<blockquote class="summary"></blockquote>
-		<div class="main-pic">
-			<p><img class="img-responsive center-block" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
-		</div>
 		<div class="container-fluid">
 			<%@include file="inc-moon.jspf" %>
 			<%@include file="inc-share.jspf" %>
