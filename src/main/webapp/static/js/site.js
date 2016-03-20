@@ -255,7 +255,7 @@ SITE_MAIN.NAV.fetchLatest = function(){
 		}else{
 			//隐藏  next 加载按钮
 			SITE_MAIN.jqObj.navNextBtn.unbind('click');
-			SITE_MAIN.jqObj.navNextBtn.text('wow！到底了,小编正在忙碌中...').delay(2000).fadeOut();
+			SITE_MAIN.jqObj.navNextBtn.text('wow！到底了,小编正在编辑中...').delay(2000).fadeOut();
 		}
 	});
 };
