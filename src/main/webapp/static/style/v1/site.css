@@ -59,12 +59,12 @@ div.out-site {
 }
 
 #main article {
-	font-size: 1.2em;
-	line-height: 1.8em;
+	font-size: 1.25em;
+	line-height: 1.85em;
 }
 
 #main article p {
-	text-indent: 2em;
+	text-indent: 1.5em;
 }
 
 .title {
@@ -73,9 +73,9 @@ div.out-site {
 }
 
 .summary {
-	text-indent: 2em;
-	font-size: 1.2em;
-	line-height: 1.8em;
+	text-indent: 1.5em;
+	font-size: 1.25em;
+	line-height: 1.85em;
 }
 
 .info-meta {
