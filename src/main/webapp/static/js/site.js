@@ -163,7 +163,7 @@ SITE_MAIN.UYAN.doInit = function(pageId){
 			     'su':pageId
 		};
 		uyan_config = SITE_MAIN.UYAN.config;
-		$.getScript("http://v2.uyan.cc/code/uyan.js?uid=2088046");
+		$.getScript("http://v2.uyan.cc/code/uyan.js?uid=2088046&_t="+Math.random());
 	}
 };
 
@@ -200,9 +200,9 @@ SITE_MAIN.NAV.LATEST.hateClick=function(target){
     if(!clicked){
     	that.data('clicked', 1);
 		var id = that.data('id');
-		var param ={'id':id, 'mood':'hate'};
+		var param ={'id':id, 'mood':'hate', '_method':'put'};
 		that.unbind('click');
-		$.get(window.ctx + '/info/api/post-mood.json', param, function(){
+		$.post(window.ctx + '/info/api/post-mood.json', param, function(){
 			var cai = that.find('span.cai-count');
 			var caiCnt = parseInt(cai.text());
 			cai.text(String(caiCnt+1));
