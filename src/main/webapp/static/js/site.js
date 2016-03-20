@@ -166,13 +166,6 @@ SITE_MAIN.H5G_PLAY.doRender = function(){
 		}
 		SITE_MAIN.doHit(SITE_MAIN.infoDat.infoBase.id);
 	}
-	if(SITE_MAIN.infoDat.infoBase.hasPic===1){
-		var picurl = SITE_MAIN.getUrl(SITE_MAIN.infoDat.infoBase.picUrl);
-		if(picurl!=''){
-			SITE_MAIN.jqObj.artMainPic.attr('src', picurl);
-			SITE_MAIN.jqObj.artPicDir.show();
-		}
-	}
 };
 
 /*uyan comment**/
