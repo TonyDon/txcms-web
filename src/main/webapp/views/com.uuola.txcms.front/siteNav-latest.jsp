@@ -46,11 +46,13 @@
 <script id="infoBoxTpl"  type="text/html">
 {% for(var i=0; i<datas.length; i++){ var info = datas[i]; %}
 	<div class="row info-box">
-	 <h3><a href="{%=GetNavUrl(info.siteUrl, info.id)%}#!/info/view">{%=info.title%}</a></h3>
+	 <h3><a href="{%=GetNavUrl(info.siteUrl, info.id)%}">{%=info.title%}</a></h3>
 	 <a>【{%=info.catId%}】</a>
 	 <p class="note">{%=info.summary%}</p>
 	 <div class="main-pic {%=(info.hasPic==1?'show':'hidden')%}">
-	 	<img class="img-responsive center-block" src="{%=GetUrl(info.picUrl)%}" />
+	 	<a href="{%=GetNavUrl(info.siteUrl, info.id)%}">
+			<img class="img-responsive center-block" src="{%=GetUrl(info.picUrl)%}" />
+		</a>
 	 </div>
 	 <div id="content{%=info.id%}" class="more content-box {%=(info.hasContent==1?'show':'hidden')%}">……</div>
 	 <div class="user-act">
