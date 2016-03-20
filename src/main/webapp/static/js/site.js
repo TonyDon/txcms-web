@@ -186,8 +186,8 @@ SITE_MAIN.NAV.LATEST.loveClick=function(target){
 	    if(!clicked){
 	    	that.data('clicked', 1);
 			var id = that.data('id');
-			var param ={'id':id, 'mood':'love'};
-			$.get(window.ctx + '/info/api/post-mood.json', param, function(){
+			var param ={'id':id, 'mood':'love', '_method':'put'};
+			$.post(window.ctx + '/info/api/post-mood.json', param, function(){
 				var zan = that.find('span.zan-count');
 				var zanCnt = parseInt(zan.text());
 				zan.text(String(zanCnt+1));

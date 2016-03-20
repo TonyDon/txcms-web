@@ -35,6 +35,17 @@
 			</bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
+			<mvc:mapping path="/info/api/**" />
+			<bean id="ajaxRequestSourceInterceptor" class="com.uuola.txcms.interceptor.AjaxRequestSourceInterceptor">
+				<property name="checkHeaders">
+					<map>
+						<entry key="X-Requested-With" value="XMLHttpRequest" />
+						<entry key="Referer" value="986001.com" />
+					</map>
+				</property>
+			</bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
 			<mvc:mapping path="/h5gfs/**/index.html" />
 			<bean id="fileResourceWebAccessInterceptor" class="com.uuola.txcms.interceptor.FileResourceWebAccessInterceptor"></bean>
 		</mvc:interceptor>
