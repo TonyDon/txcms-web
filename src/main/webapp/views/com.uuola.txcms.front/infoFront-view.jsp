@@ -28,6 +28,7 @@
 		</div>
 		<article></article>
 		<div class="info-meta out-site container-fluid">
+			<%@include file="inc-moon.jspf" %>
 			<div class="row">
 				<div class="col-xs-6">
 					<span class="read-num"></span>

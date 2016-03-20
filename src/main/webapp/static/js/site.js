@@ -51,7 +51,9 @@ SITE_MAIN.initPageJqObj = function(){
 			artContent : $("div#main article"),
 			artPicDir : $('div.main-pic'),
 			artMainPic : $("div.main-pic img"),
-			outSiteHref : $("a.site-url")
+			outSiteHref : $("a.site-url"),
+			loveNav : $("a.love"),
+			hateNav : $("a.hate")
 	};
 };
 
@@ -66,6 +68,10 @@ SITE_MAIN.INFO.doRender = function(){
 	SITE_MAIN.jqObj.artTime.text(ut.parseDate(SITE_MAIN.infoDat.infoBase.createTime, 10));
 	SITE_MAIN.jqObj.artReadNum.text('阅读：'+SITE_MAIN.infoDat.infoBase.viewNum+'次');
 	SITE_MAIN.jqObj.artAuthor.text('['+SITE_MAIN.infoDat.infoBase.authorId+']');
+	SITE_MAIN.jqObj.loveNav.find('span.zan-count').text(SITE_MAIN.infoDat.infoBase.loveNum);
+	SITE_MAIN.jqObj.hateNav.find('span.cai-count').text(SITE_MAIN.infoDat.infoBase.hateNum);
+	SITE_MAIN.jqObj.loveNav.data('id', SITE_MAIN.infoDat.infoBase.id);
+	SITE_MAIN.jqObj.hateNav.data('id', SITE_MAIN.infoDat.infoBase.id);
 	SITE_MAIN.jqObj.artSummary.text(SITE_MAIN.infoDat.infoBase.summary);
 	if(SITE_MAIN.infoDat.infoBase.hasPic===1){
 		var picurl = SITE_MAIN.getUrl(SITE_MAIN.infoDat.infoBase.picUrl);
