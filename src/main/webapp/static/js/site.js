@@ -27,7 +27,7 @@ SITE_MAIN.fixArtImage = function(){
 	$('div#main article img').addClass('img-responsive center-block');
 };
 SITE_MAIN.doHit = function(id){
-	$.post(window.ctx + '/info/viewnum/hit.json', {'_method':'put', 'id':id});
+	$.post(window.ctx + '/info/api/hit-viewnum.json', {'_method':'put', 'id':id});
 };
 SITE_MAIN.loadPage = function(PAGE_DATA, func){
 	SITE_MAIN.infoDat = PAGE_DATA.infoDat || {};
@@ -251,11 +251,11 @@ SITE_MAIN.NAV.fetchLatest = function(){
 		if(x.pageDTO.datas && x.pageDTO.datas.length>0){
 			SITE_MAIN.jqObj.infoList.append(template("infoBoxTpl", x.pageDTO));
 			SITE_MAIN.NAV.currPage++;
-			SITE_MAIN.jqObj.navNextBtn.text('∞ 不要停, 点我往下翻↓ :-D');
+			SITE_MAIN.jqObj.navNextBtn.text('∞ 点我继续 :-D');
 		}else{
 			//隐藏  next 加载按钮
 			SITE_MAIN.jqObj.navNextBtn.unbind('click');
-			SITE_MAIN.jqObj.navNextBtn.text('这么快就看完了.').delay(2000).fadeOut();
+			SITE_MAIN.jqObj.navNextBtn.text('wow！到底了,小编正在忙碌中...').delay(2000).fadeOut();
 		}
 	});
 };
