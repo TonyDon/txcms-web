@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <link href="${ut:getCtxPath()}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="${ut:getCtxPath()}/static/style/v1/site-min.css?v=1000" rel="stylesheet" type="text/css"/>
+<link href="${ut:getCtxPath()}/static/style/v1/site-min.css?v=1001" rel="stylesheet" type="text/css"/>
 <!--[if lt IE 9]>
 <script src="${ut:getCtxPath()}/static/js/html5shiv.js"></script>
 <script src="${ut:getCtxPath()}/static/js/respond.min.js"></script>

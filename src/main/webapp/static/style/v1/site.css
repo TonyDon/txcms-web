@@ -116,8 +116,8 @@ div.out-site {
 	cursor: pointer;
 }
 
-.share-text {
-	line-height: 2.4em;
+.info-mood {
+	padding:0.5em 0 1em 0;
 }
 
 /** latest page **/
