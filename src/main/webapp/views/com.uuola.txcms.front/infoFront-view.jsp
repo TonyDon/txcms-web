@@ -61,6 +61,7 @@ jQuery(function(){
 	SITE_MAIN.loadPage(PAGE_DATA);
 	SITE_MAIN.INFO.doInit();
 	SITE_MAIN.INFO.doRender();
+	SITE_MAIN.BDSHARE.doInit();
 	SITE_MAIN.UYAN.doInit(SITE_MAIN.pageId);
 });
 </script>

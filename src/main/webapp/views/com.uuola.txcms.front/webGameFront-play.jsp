@@ -51,6 +51,7 @@ jQuery(function(){
 	});
 	SITE_MAIN.H5G_PLAY.doInit();
 	SITE_MAIN.H5G_PLAY.doRender();
+	SITE_MAIN.BDSHARE.doInit();
 	SITE_MAIN.UYAN.doInit(SITE_MAIN.pageId);
 });
 </script>

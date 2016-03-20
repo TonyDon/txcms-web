@@ -182,7 +182,33 @@ SITE_MAIN.UYAN.doInit = function(pageId){
 		$.getScript("http://v2.uyan.cc/code/uyan.js?uid=2088046&_t="+Math.random());
 	}
 };
-
+/**baidu share*/
+SITE_MAIN.BDSHARE={};
+SITE_MAIN.BDSHARE.doInit = function(){
+	window._bd_share_config = {
+		"common" : {
+			"bdSnsKey" : {},
+			"bdText" : "",
+			"bdMini" : "2",
+			"bdMiniList" : [ "weixin", "tqq", "bdxc", "tieba", "sqq",
+					"diandian", "huaban", "people", "mail", "isohu", "copy" ],
+			"bdPic" : "",
+			"bdStyle" : "1",
+			"bdSize" : "24"
+		},
+		"share" : {},
+		"image" : {
+			"viewList" : [ "qzone", "weixin", "tsina", "tqq", "sqq" ],
+			"viewText" : "分享到：",
+			"viewSize" : "24"
+		},
+		"selectShare" : {
+			"bdContainerClass" : null,
+			"bdSelectMiniList" : [ "qzone", "weixin", "tsina", "tqq", "sqq" ]
+		}
+	};
+	$.getScript('http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5));
+};
 /** site latest list */
 SITE_MAIN.NAV={};
 SITE_MAIN.NAV.currPage=1;
