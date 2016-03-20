@@ -34,16 +34,14 @@
 					<span class="read-num"></span>
 					<a class="site-url" href="javascript:;" target="_blank">文章来源</a>
 				</div>
-				<div class="col-xs-6">
+				<div class="col-xs-6 text-right">
 					<span class="time"></span>
 					<span class="author"></span>
 				</div>
 			</div>
 			<%@include file="inc-share.jspf" %>
 		</div>
-  		<div class="aside">
-  			<img class="img-responsive center-block"  src="https://img.alicdn.com/imgextra/i1/152137799/TB2I7zLkVXXXXX5XXXXXXXXXXXX-152137799.png" />
-  		</div>
+  		<div class="aside"></div>
   		<div class="aside">
   			<a name="#uyan"></a>
   			<div id="uyan_frame"></div>
