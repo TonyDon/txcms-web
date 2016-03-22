@@ -26,6 +26,9 @@ SITE_MAIN.existError = function(){
 SITE_MAIN.fixArtImage = function(){
 	$('div#main article img').addClass('img-responsive center-block');
 };
+SITE_MAIN.isH5G = function(info){
+		return info.siteUrl && info.siteUrl.indexOf('h5gfs')>0;
+};
 SITE_MAIN.doHit = function(id){
 	$.post(window.ctx + '/info/api/hit-viewnum.json', {'_method':'put', 'id':id});
 };
@@ -248,6 +251,10 @@ SITE_MAIN.NAV.LATEST.hateClick=function(target){
 			cai.text(String(caiCnt+1));
 		});
     }
+};
+SITE_MAIN.NAV.LATEST.h5gPlayClick=function(target){
+	var that = $(target);
+	location.href= window.ctx + '/h5g/play?id=' + that.data('id') + '&t=' + ut.r();
 };
 SITE_MAIN.NAV.LATEST.viewAllClick=function(target){
 	var that = $(target);

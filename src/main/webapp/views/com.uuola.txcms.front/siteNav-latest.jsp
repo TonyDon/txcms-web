@@ -41,14 +41,14 @@
 	</div>
 </main>
 
-	<%@include file="inc-footer.jspf" %>
+<%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <script id="infoBoxTpl"  type="text/html">
 {% for(var i=0; i<datas.length; i++){ var info = datas[i]; %}
 	<div class="row info-box">
 	 <h3><a href="{%=GetNavUrl(info.siteUrl, info.id)%}">{%=info.title%}</a></h3>
 	 <a>【{%=info.catId%}】</a>
-	 <p class="note">{%=info.summary%}</p>
+     <p class="note">{%=info.summary%}</p>
 	 <div class="main-pic {%=(info.hasPic==1?'show':'hidden')%}">
 	 	<a href="{%=GetNavUrl(info.siteUrl, info.id)%}">
 			<img class="img-responsive center-block" src="{%=GetUrl(info.picUrl)%}" />
@@ -56,6 +56,9 @@
 	 </div>
 	 <div id="content{%=info.id%}" class="more content-box {%=(info.hasContent==1?'show':'hidden')%}">……</div>
 	 <div class="user-act">
+	 {% if(IsH5G(info)){ %}
+	  <a class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=info.id%}">现在玩</a>
+	 {% } %}
 	 {% if(info.hasContent==1){ %}
 	  <a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=info.id%}">看全文 <span>&#969;</span></a>
 	 {% } %}
@@ -69,6 +72,7 @@
 <script>
 template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
+template.helper('IsH5G', function(i){return SITE_MAIN.isH5G(i);});
 jQuery(function(){
 	SITE_MAIN.NAV.LATEST.doInit();
 	SITE_MAIN.NAV.fetchLatest();
