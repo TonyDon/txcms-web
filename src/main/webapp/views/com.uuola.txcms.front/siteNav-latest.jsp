@@ -56,15 +56,22 @@
 	 </div>
 	 <div id="content{%=info.id%}" class="more content-box {%=(info.hasContent==1?'show':'hidden')%}">……</div>
 	 <div class="user-act">
-	 {% if(IsH5G(info)){ %}
-	  <a class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=info.id%}">现在玩</a>
-	 {% } %}
-	 {% if(info.hasContent==1){ %}
-	  <a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=info.id%}">看全文 <span>&#969;</span></a>
-	 {% } %}
-	  <a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=info.id%}">赞 <span>&#9829;</span> <span class="zan-count">{%=info.loveNum%}</span></a>
-	  <a href="javascript:;" class="btn btn-default btn-sm hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);" data-id="{%=info.id%}">踩 <span>&#966;</span> <span class="cai-count">{%=info.hateNum%}</span></a>
-	  <a href="javascript:;" class="btn btn-default btn-sm" onclick="SITE_MAIN.NAV.LATEST.talkClick(this);" data-id="{%=info.id%}" data-su="{%=info.siteUrl%}">吐槽 <span>&#945;</span></a>
+	 	<div class="pull-left">
+	 		{% if(IsH5G(info)){ %}
+	  		<a class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=info.id%}">现在玩</a>
+	 		{% } %}
+	 		{% if(info.hasContent==1){ %}
+	  		<a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=info.id%}">看全文 <span>&#969;</span></a>
+	 		{% } %}
+	  		<a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=info.id%}">赞 <span>&#9829;</span> <span class="zan-count">{%=info.loveNum%}</span></a>
+	  		<a href="javascript:;" class="btn btn-default btn-sm hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);" data-id="{%=info.id%}">踩 <span>&#966;</span> <span class="cai-count">{%=info.hateNum%}</span></a>
+	  		<a href="javascript:;" class="btn btn-default btn-sm" onclick="SITE_MAIN.NAV.LATEST.talkClick(this);" data-id="{%=info.id%}" data-su="{%=info.siteUrl%}">吐槽 <span>&#945;</span></a>
+	  	</div>	  
+	  	<div class="pull-right">
+      		<a href="{%=GetNavUrl(info.siteUrl, info.id)%}">
+			<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> {%=info.viewNum%}
+			</a>
+	  	</div>
 	 </div>
 	</div>
 {% } %}
