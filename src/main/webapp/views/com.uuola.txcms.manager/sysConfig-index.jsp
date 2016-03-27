@@ -53,7 +53,8 @@
 														<option value="number">number</option>
 														<option value="list">list</option>
 														<option value="array">array</option>
-														<option value="json">json</option>
+														<option value="map">map</option>
+														<option value="boolean">boolean</option>
 												</select></td>
 											</tr>
 											<tr>

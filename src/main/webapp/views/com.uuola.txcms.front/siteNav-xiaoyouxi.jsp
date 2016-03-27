@@ -38,6 +38,7 @@
 <script>
 template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
+var topCid = ${topCid};
 jQuery(function(){
 });
 </script>
