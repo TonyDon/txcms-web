@@ -58,6 +58,9 @@
 								</form>
 							</div>
 						</div>
+						<div style="padding:5px 0">
+							<button id="rebuidCatFileBtn" type="button" class="btn btn-info btn-sm">构建JSON文件</button>
+						</div>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
@@ -283,6 +286,11 @@
 				'valueName' : 'dictValue',
 				'textName' : 'name',
 				'defaultText' : '--'
+			});
+			$('#rebuidCatFileBtn').on('click', function(){
+				$.get(window.ctx + '/manager/app/sitecat/rebuild.json', function(){
+					alert('构建成功');
+				});
 			});
 		});
 	</script>
