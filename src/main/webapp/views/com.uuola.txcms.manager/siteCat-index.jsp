@@ -289,8 +289,11 @@
 			});
 			$('#rebuidCatFileBtn').on('click', function(){
 				$.get(window.ctx + '/manager/app/sitecat/rebuild.json', function(){
-					alert('构建成功');
+					$.get(window.ctx + '/manager/app/sitecatlevel/rebuild.json', function(){
+						alert('构建成功');
+					});
 				});
+				
 			});
 		});
 	</script>

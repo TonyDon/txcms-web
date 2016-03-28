@@ -123,6 +123,9 @@
 									</form>
 							    </div>
 							</div>
+							<div style="padding:5px 0">
+								<button id="rebuidWebAccessTokenBtn" type="button" class="btn btn-info btn-sm">刷新WEB资源访问Token</button>
+						    </div>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -383,6 +386,12 @@ jQuery(function(){
 	
 	$('#queryBtn').click(function(){
 		TXWEB.tb.datagrid('reload');
+	});
+	
+	$('#rebuidWebAccessTokenBtn').on('click', function(){
+		$.get(window.ctx + '/manager/app/sysconfig/webtoken/refresh', function(r){
+				alert('刷新成功, 新值为：' + r);
+		});
 	});
 });
 </script>
