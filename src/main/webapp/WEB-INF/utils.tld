@@ -23,4 +23,9 @@
         <function-class>com.uuola.commons.JsonUtil</function-class>
         <function-signature>java.lang.String toJSONString(java.lang.Object)</function-signature>
     </function>
+    <function>
+        <name>getThumb</name>
+        <function-class>com.uuola.txcms.component.PicUtil</function-class>
+        <function-signature>java.lang.String getPicThumbUrl(java.lang.String, java.lang.String)</function-signature>
+    </function>
 </taglib>
