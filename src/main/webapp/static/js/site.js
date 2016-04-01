@@ -59,6 +59,20 @@ SITE_MAIN.initPageJqObj = function(){
 			hateNav : $("a.hate")
 	};
 };
+SITE_MAIN.getCatNav=function(cid){
+	if(!cid || !SITE_CAT_LIST){
+		return '';
+	}
+	var c = 'c'+cid;
+	var cat = SITE_CAT_LIST[c];
+	var cp = cat.catPath;
+	var cparr = cp.substring(2,cp.length-1).split('-');
+	var na = [];
+	for(var k in cparr){
+		na.push(SITE_CAT_LIST['c'+cparr[k]].name);
+	}
+	return na.join('/');
+};
 
 /* info Page **/
 SITE_MAIN.INFO={};

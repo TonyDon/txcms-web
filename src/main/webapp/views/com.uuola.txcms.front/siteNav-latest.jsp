@@ -47,7 +47,7 @@
 {% for(var i=0; i<datas.length; i++){ var d = datas[i];  var href = GetNavUrl(d.siteUrl, d.id);%}
 	<div class="row info-box">
 	 <h3><a href="{%=href%}">{%=d.title%}</a></h3>
-	 <a>【{%=d.catId%}】</a>
+	 <span>{%=GetCatNav(d.catId)%}</span>
      <p class="note">{%=d.summary%}</p>
 	 <div class="main-pic {%=(d.hasPic==1?'show':'hidden')%}">
 	 	<a href="{%=href%}">
@@ -78,6 +78,7 @@
 template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
 template.helper('IsH5G', function(i){return SITE_MAIN.isH5G(i);});
+template.helper('GetCatNav', function(c){return SITE_MAIN.getCatNav(c);});
 jQuery(function(){
 	SITE_MAIN.NAV.LATEST.doInit();
 });
