@@ -53,7 +53,7 @@
 			<div class="col-sm-6 item">
 					<div class="thumbnail">
 					<a href="{%=href%}">
-						<img class="img-rounded" src="{%=GetUrl(d.picUrl)%}"/>
+						<img class="img-rounded" src="{%=GetUrl(GetThumb(d.picUrl))%}"/>
 					</a>
 					<div class="intro">
 						<h4><a href="{%=href%}">{%=d.title%}</a></h4>
@@ -75,6 +75,7 @@
 template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
 template.helper('GetCatNav', function(c){return SITE_MAIN.getCatNav(c);});
+template.helper('GetThumb', function(u){return ut.fmtImageThumb(u,'w120');});
 jQuery(function(){
 	var $container = $('.masonry-container');
     SITE_MAIN.NAV.CAT.doInit(${topCid}, function(){
