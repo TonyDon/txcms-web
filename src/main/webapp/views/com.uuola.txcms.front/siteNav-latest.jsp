@@ -44,33 +44,31 @@
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <script id="infoBoxTpl"  type="text/html">
-{% for(var i=0; i<datas.length; i++){ var info = datas[i]; %}
+{% for(var i=0; i<datas.length; i++){ var d = datas[i];  var href = GetNavUrl(d.siteUrl, d.id);%}
 	<div class="row info-box">
-	 <h3><a href="{%=GetNavUrl(info.siteUrl, info.id)%}">{%=info.title%}</a></h3>
-	 <a>【{%=info.catId%}】</a>
-     <p class="note">{%=info.summary%}</p>
-	 <div class="main-pic {%=(info.hasPic==1?'show':'hidden')%}">
-	 	<a href="{%=GetNavUrl(info.siteUrl, info.id)%}">
-			<img class="img-responsive center-block" src="{%=GetUrl(info.picUrl)%}" />
+	 <h3><a href="{%=href%}">{%=d.title%}</a></h3>
+	 <a>【{%=d.catId%}】</a>
+     <p class="note">{%=d.summary%}</p>
+	 <div class="main-pic {%=(d.hasPic==1?'show':'hidden')%}">
+	 	<a href="{%=href%}">
+			<img class="img-responsive center-block" src="{%=GetUrl(d.picUrl)%}" />
 		</a>
 	 </div>
-	 <div id="content{%=info.id%}" class="more content-box {%=(info.hasContent==1?'show':'hidden')%}">……</div>
+	 <div id="content{%=d.id%}" class="more content-box {%=(d.hasContent==1?'show':'hidden')%}">……</div>
 	 <div class="user-act">
 	 	<div class="pull-left">
-	 		{% if(IsH5G(info)){ %}
-	  		<a class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=info.id%}">现在玩</a>
+	 		{% if(IsH5G(d)){ %}
+	  		<a class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=d.id%}">现在玩</a>
 	 		{% } %}
-	 		{% if(info.hasContent==1){ %}
-	  		<a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=info.id%}">看全文 <span>&#969;</span></a>
+	 		{% if(d.hasContent==1){ %}
+	  		<a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=d.id%}">看全文 <span>&#969;</span></a>
 	 		{% } %}
-	  		<a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=info.id%}">赞 <span>&#9829;</span> <span class="zan-count">{%=info.loveNum%}</span></a>
-	  		<a href="javascript:;" class="btn btn-default btn-sm hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);" data-id="{%=info.id%}">踩 <span>&#966;</span> <span class="cai-count">{%=info.hateNum%}</span></a>
-	  		<a href="javascript:;" class="btn btn-default btn-sm" onclick="SITE_MAIN.NAV.LATEST.talkClick(this);" data-id="{%=info.id%}" data-su="{%=info.siteUrl%}">吐槽 <span>&#945;</span></a>
+	  		<a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=d.id%}">赞 <span>&#9829;</span> <span class="zan-count">{%=d.loveNum%}</span></a>
+	  		<a href="javascript:;" class="btn btn-default btn-sm hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);" data-id="{%=d.id%}">踩 <span>&#966;</span> <span class="cai-count">{%=d.hateNum%}</span></a>
+	  		<a href="javascript:;" class="btn btn-default btn-sm" onclick="SITE_MAIN.NAV.LATEST.talkClick(this);" data-id="{%=d.id%}" data-su="{%=d.siteUrl%}">吐槽 <span>&#945;</span></a>
 	  	</div>	  
 	  	<div class="pull-right">
-      		<a href="{%=GetNavUrl(info.siteUrl, info.id)%}">
-			<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> {%=info.viewNum%}
-			</a>
+      		<a href="{%=href%}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> {%=d.viewNum%}</a>
 	  	</div>
 	 </div>
 	</div>
@@ -82,7 +80,6 @@ template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);}
 template.helper('IsH5G', function(i){return SITE_MAIN.isH5G(i);});
 jQuery(function(){
 	SITE_MAIN.NAV.LATEST.doInit();
-	SITE_MAIN.NAV.fetchLatest();
 });
 </script>
 <%@include file="inc-trace.jspf" %>

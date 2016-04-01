@@ -222,6 +222,7 @@ SITE_MAIN.NAV.LATEST.doInit = function(){
 	SITE_MAIN.jqObj.navNextBtn.on('click', function(){
 		SITE_MAIN.NAV.fetchLatest();
 	});
+	SITE_MAIN.NAV.fetchLatest();
 };
 SITE_MAIN.NAV.LATEST.loveClick=function(target){
 		var that = $(target);
@@ -305,4 +306,33 @@ SITE_MAIN.NAV.fetchLatest = function(){
 			SITE_MAIN.jqObj.navNextBtn.text('wow！到底了,小编正在编辑中...').delay(2000).fadeOut();
 		}
 	});
+};
+SITE_MAIN.NAV.fetchByCat = function(cid, fn){
+	var param = {'pageNo':SITE_MAIN.NAV.currPage, 'listSize':12, 'catId':cid};
+	SITE_MAIN.jqObj.navNextBtn.text('努力加载中...');
+	$.get(window.ctx + '/info/api/fetch-cat-list.json', param, function(x){
+		if(x.pageDTO && x.pageDTO.datas && x.pageDTO.datas.length>0){
+			SITE_MAIN.jqObj.infoList.append(template("infoBoxTpl", x.pageDTO));
+			SITE_MAIN.NAV.currPage++;
+			SITE_MAIN.jqObj.navNextBtn.text('∞ 点我继续 :-D');
+			if(typeof fn === "function"){
+				fn();
+			}
+		}else{
+			//隐藏  next 加载按钮
+			SITE_MAIN.jqObj.navNextBtn.unbind('click');
+			SITE_MAIN.jqObj.navNextBtn.text('wow！到底了,小编正在编辑中...').delay(2000).fadeOut();
+		}
+	});
+};
+SITE_MAIN.NAV.XIAOYOUXI={};
+SITE_MAIN.NAV.XIAOYOUXI.doInit = function(cid, fn){
+	SITE_MAIN.jqObj={
+				infoList:$('div.info-list'),
+				navNextBtn : $('a.nav-next')
+	};
+	SITE_MAIN.jqObj.navNextBtn.on('click', function(){
+		SITE_MAIN.NAV.fetchByCat(cid, fn);
+	});
+	SITE_MAIN.NAV.fetchByCat(cid, fn);
 };
