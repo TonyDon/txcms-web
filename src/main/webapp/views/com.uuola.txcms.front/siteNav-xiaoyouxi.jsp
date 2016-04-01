@@ -60,9 +60,9 @@
 						<div class="text-info">{%=d.summary%}</div>
 						<p>
 							<a href="javascript:;" class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=d.id%}">现在玩</a>
-							<a role="button" class="btn btn-default btn-sm" href="#">分享</a>
 							<a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=d.id%}"><span>♥</span> <span class="zan-count">{%=d.loveNum%}</span></a>
 							<a href="javascript:;" class="btn btn-default btn-sm hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);" data-id="{%=d.id%}"><span>φ</span> <span class="cai-count">{%=d.hateNum%}</span></a>
+							<a href="javascript:;" class="btn btn-default btn-sm" onclick="SITE_MAIN.NAV.LATEST.talkClick(this);" data-id="{%=d.id%}" data-su="{%=d.siteUrl%}">吐槽 </a>
 							<b class="pull-right"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> {%=d.viewNum%}</b>
 						</p>
 					</div>
@@ -75,7 +75,7 @@ template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
 jQuery(function(){
 	var $container = $('.masonry-container');
-    SITE_MAIN.NAV.XIAOYOUXI.doInit(${topCid}, function(){
+    SITE_MAIN.NAV.CAT.doInit(${topCid}, function(){
     	$container.imagesLoaded( function () {
             $container.masonry({
                 columnWidth: '.item',

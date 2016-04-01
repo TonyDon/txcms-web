@@ -325,8 +325,8 @@ SITE_MAIN.NAV.fetchByCat = function(cid, fn){
 		}
 	});
 };
-SITE_MAIN.NAV.XIAOYOUXI={};
-SITE_MAIN.NAV.XIAOYOUXI.doInit = function(cid, fn){
+SITE_MAIN.NAV.CAT={};
+SITE_MAIN.NAV.CAT.doInit = function(cid, fn){
 	SITE_MAIN.jqObj={
 				infoList:$('div.info-list'),
 				navNextBtn : $('a.nav-next')

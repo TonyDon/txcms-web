@@ -33,12 +33,38 @@
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <script id="infoBoxTpl"  type="text/html">
-
+{% for(var i=0; i<datas.length; i++){ var d = datas[i];  var href = GetNavUrl(d.siteUrl, d.id);%}
+	<div class="row info-box">
+	 <h3><a href="{%=href%}">{%=d.title%}</a></h3>
+	 <a>【{%=d.catId%}】</a>
+     <p class="note">{%=d.summary%}</p>
+	 <div class="main-pic {%=(d.hasPic==1?'show':'hidden')%}">
+	 	<a href="{%=href%}">
+			<img class="img-responsive center-block" src="{%=GetUrl(d.picUrl)%}" />
+		</a>
+	 </div>
+	 <div id="content{%=d.id%}" class="more content-box {%=(d.hasContent==1?'show':'hidden')%}">……</div>
+	 <div class="user-act">
+	 	<div class="pull-left">
+	 		{% if(d.hasContent==1){ %}
+	  		<a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=d.id%}">看全文 <span>&#969;</span></a>
+	 		{% } %}
+	  		<a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=d.id%}">赞 <span>&#9829;</span> <span class="zan-count">{%=d.loveNum%}</span></a>
+	  		<a href="javascript:;" class="btn btn-default btn-sm hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);" data-id="{%=d.id%}">踩 <span>&#966;</span> <span class="cai-count">{%=d.hateNum%}</span></a>
+	  		<a href="javascript:;" class="btn btn-default btn-sm" onclick="SITE_MAIN.NAV.LATEST.talkClick(this);" data-id="{%=d.id%}" data-su="{%=d.siteUrl%}">吐槽 <span>&#945;</span></a>
+	  	</div>	  
+	  	<div class="pull-right">
+      		<a href="{%=href%}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> {%=d.viewNum%}</a>
+	  	</div>
+	 </div>
+	</div>
+{% } %}
 </script>
 <script>
 template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
 jQuery(function(){
+	SITE_MAIN.NAV.CAT.doInit(${topCid});
 });
 </script>
 <%@include file="inc-trace.jspf" %>
