@@ -16,7 +16,7 @@
 <meta property="og:image" content="${ut:getCtxPath()}${ut:getThumb(infoDTO.infoBase.picUrl, 'w120')}" />
 <link rel="shortcut icon" href="${ut:getCtxPath()}${ut:getThumb(infoDTO.infoBase.picUrl, 'w120')}"/>
 <link rel="icon" href="${ut:getCtxPath()}${ut:getThumb(infoDTO.infoBase.picUrl, 'w120')}"/>
-</c:if>" href="${ut:getCtxPath()}${ut:getThumb(infoDTO.infoBase.picUrl, 'w120')}"/>
+</c:if>
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
