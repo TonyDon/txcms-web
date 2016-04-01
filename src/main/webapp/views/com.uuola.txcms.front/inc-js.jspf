@@ -6,3 +6,4 @@
 <script src="${ut:getCtxPath()}/static/js/masonry.min.js?v=1002"></script>
 <script src="${ut:getCtxPath()}/static/js/common.min.js?v=1002"></script>
 <script src="${ut:getCtxPath()}/static/js/site-min.js?v=1002"></script>
+<script src="${ut:getCtxPath()}/static/js/cat.js?v=1002"></script>
