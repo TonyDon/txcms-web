@@ -14,9 +14,9 @@
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
-.container{padding: 0 0.5em;}
+.container{padding: 0 0.25em;}
 .thumbnail{
-	  background-color: #FFFFFF;
+	background-color: #FFFFFF;
     border: 1px solid #DDDDDD;
     border-radius: 4px 4px 4px 4px;
     display: block;
