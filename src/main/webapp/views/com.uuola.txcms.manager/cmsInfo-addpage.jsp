@@ -31,12 +31,6 @@
 										<ul id="siteCat" class="easyui-tree"></ul>
 									</div>
 								</div>
-								<div title="标签设置" style="padding: 10px">This is the help
-									content.
-								</div>
-								<div title="图片设置" style="padding: 10px">This is the help
-									content.
-								</div>
 								<div title="基本信息输入" style="padding: 50px">
 									<div class="form-group">
 										<label id="title_tit">资讯标题:</label> <input
@@ -76,6 +70,22 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<div class="row">
+											<div class="col-md-4">
+												<label id="infoType_tit">查看次数:</label>
+												<input name="viewNum" type="text"  value="0" class="form-control" style="width: 100px;"/>
+											</div>
+											<div class="col-md-4">
+												<label id="infoType_tit">点赞次数:</label>
+												<input name="loveNum" type="text"  value="0" class="form-control" style="width: 100px;"/>
+											</div>
+											<div class="col-md-4">
+												<label id="infoType_tit">点踩次数:</label>
+												<input name="hateNum" type="text"  value="0" class="form-control" style="width: 100px;"/>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
 										<label id="picUrl_tit">主图地址:</label>
 										<div class="row">
 										<div class="col-md-6">
@@ -87,20 +97,21 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label id="siteUrl_tit">跳转地址:</label> <input
-											class="w650 form-control texta" type="text" name="siteUrl">
+										<label id="videoUrl_tit">视频地址:</label> 
+										<input class="w650 form-control texta" type="text" name="videoUrl">
+									</div>
+									<div class="form-group">
+										<label id="siteUrl_tit">跳转地址:</label> 
+										<input class="w650 form-control texta" type="text" name="siteUrl">
 									</div>
 								</div>
 								<div id="infoAddPanle" title="信息内容输入"
 									style="height: auto; margin: auto; padding: 9px; text-align: left;">
 									<div class="form-group">
 										<label id="content_tit">文章内容:</label>
-										<div
-											style="width: 95%; height: 500px; margin: auto; display: block; text-align: left;">
+										<div style="width: 95%; height: 500px; margin: auto; display: block; text-align: left;">
 											<textarea id="editor" name="content"
-												style="width: 100%; height: 400px; visibility: hidden;">
-									请输入文本内容..
-									</textarea>
+												style="width: 100%; height: 400px; visibility: hidden;"></textarea>
 										</div>
 									</div>
 								</div>
@@ -262,6 +273,12 @@
 			}
 		};
 		
+		INFO.randomSetNum = function(){
+			$('input[name="viewNum"]').val(ut.rndint(1,100));
+			$('input[name="loveNum"]').val(ut.rndint(1,10));
+			$('input[name="hateNum"]').val(ut.rndint(1,10));
+		};
+		
 		$(function() {
 			$('#infoType').txwebInitSelect({
 				'url' : window.ctx + '/manager/app/dictconfig/jsonp',
@@ -289,6 +306,8 @@
 			        content: window.ctx + '/uploader?jscallback=INFO.uploadMainPicResultHandle&dir=image'
 			    });
 			});
+			
+			INFO.randomSetNum();
 		});
 	</script>
 </body>
