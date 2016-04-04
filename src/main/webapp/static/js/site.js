@@ -82,7 +82,7 @@ SITE_MAIN.INFO.doInit = function(){
 SITE_MAIN.INFO.doRender = function(){
 	if(SITE_MAIN.existError())return ;
 	SITE_MAIN.jqObj.artTitle.text(SITE_MAIN.infoDat.infoBase.title);
-	SITE_MAIN.jqObj.artTime.text(ut.parseDate(SITE_MAIN.infoDat.infoBase.createTime, 10));
+	/* SITE_MAIN.jqObj.artTime.text(ut.parseDate(SITE_MAIN.infoDat.infoBase.createTime, 10)); */
 	SITE_MAIN.jqObj.artReadNum.text('阅读：'+SITE_MAIN.infoDat.infoBase.viewNum+'次');
 	SITE_MAIN.jqObj.artAuthor.text('['+SITE_MAIN.infoDat.infoBase.authorId+']');
 	SITE_MAIN.jqObj.loveNav.find('span.zan-count').text(SITE_MAIN.infoDat.infoBase.loveNum);
