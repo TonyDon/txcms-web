@@ -48,7 +48,7 @@
 	<div class="row info-box">
 	 <h3><a href="{%=href%}">{%=d.title%}</a></h3>
 	 <span>{%=GetCatNav(d.catId)%}</span>
-     <p class="note">{%=FmtSummary(d.summary)%}</p>
+     <p class="note">{%=#FmtSummary(d.summary)%}</p>
 	 <div class="main-pic {%=(d.hasPic==1?'show':'hidden')%}">
 	 	<a href="{%=href%}">
 			<img class="img-responsive center-block" src="{%=GetUrl(d.picUrl)%}" />
