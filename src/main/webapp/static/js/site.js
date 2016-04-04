@@ -26,6 +26,12 @@ SITE_MAIN.existError = function(){
 SITE_MAIN.fixArtImage = function(){
 	$('div#main article img').addClass('img-responsive center-block');
 };
+SITE_MAIN.fmtSummary = function(s){
+	if(s && s.length>0){
+		return s.replace(/\r\n/gi,'<br/>');
+	}
+	return s;
+};
 SITE_MAIN.isH5G = function(info){
 		return info.siteUrl && info.siteUrl.indexOf('h5gfs')>0;
 };
@@ -89,7 +95,7 @@ SITE_MAIN.INFO.doRender = function(){
 	SITE_MAIN.jqObj.hateNav.find('span.cai-count').text(SITE_MAIN.infoDat.infoBase.hateNum);
 	SITE_MAIN.jqObj.loveNav.data('id', SITE_MAIN.infoDat.infoBase.id);
 	SITE_MAIN.jqObj.hateNav.data('id', SITE_MAIN.infoDat.infoBase.id);
-	SITE_MAIN.jqObj.artSummary.text(SITE_MAIN.infoDat.infoBase.summary);
+	SITE_MAIN.jqObj.artSummary.html(SITE_MAIN.fmtSummary(SITE_MAIN.infoDat.infoBase.summary));
 	if(SITE_MAIN.infoDat.infoBase.hasPic===1){
 		var picurl = SITE_MAIN.getUrl(SITE_MAIN.infoDat.infoBase.picUrl);
 		if(picurl!=''){

@@ -37,7 +37,7 @@
 	<div class="row info-box">
 	 <h3><a href="{%=href%}">{%=d.title%}</a></h3>
 	 <span>{%=GetCatNav(d.catId)%}</span>
-     <p class="note">{%=d.summary%}</p>
+     <p class="note">{%=FmtSummary(d.summary)%}</p>
 	 <div class="main-pic {%=(d.hasPic==1?'show':'hidden')%}">
 	 	<a href="{%=href%}">
 			<img class="img-responsive center-block" src="{%=GetUrl(d.picUrl)%}" />
@@ -64,6 +64,7 @@
 template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
 template.helper('GetCatNav', function(c){return SITE_MAIN.getCatNav(c);});
+template.helper('FmtSummary', function(s){return SITE_MAIN.fmtSummary(s);});
 jQuery(function(){
 	SITE_MAIN.NAV.CAT.doInit(${topCid});
 });
