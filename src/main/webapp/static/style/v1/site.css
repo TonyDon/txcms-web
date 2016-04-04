@@ -46,7 +46,7 @@ body {
 	padding: 0.5em 0 0.5em 0;
 }
 
-#main div.main-pic, a.site-url {
+div.main-pic, a.site-url , div.main-video{
 	display: none;
 }
 
@@ -57,7 +57,11 @@ div.out-site {
 #main div.main-pic img {
 	border: 1px #DBDBDB solid;
 }
-
+#vplayer{
+	width:99%;
+	max-width:35em;
+	max-height:25em;
+}
 #main article {
 	font-size: 1.25em;
 	line-height: 1.85em;

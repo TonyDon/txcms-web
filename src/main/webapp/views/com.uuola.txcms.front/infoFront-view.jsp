@@ -26,13 +26,15 @@
 		<div class="main-pic">
 			<p><img class="img-responsive center-block" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
 		</div>
+		<div class="main-video">
+			<p class="text-center"><video id="vplayer" controls="controls" preload="auto">抱歉,您的浏览器不支持该播放技术.</video></p>
+		</div>
 		<article></article>
 		<div class="info-meta out-site container-fluid">
 			<%@include file="inc-moon.jspf" %>
 			<div class="row">
 				<div class="col-xs-6">
 					<span class="read-num"></span>
-					<a class="site-url" href="javascript:;" target="_blank">文章来源</a>
 				</div>
 				<div class="col-xs-6 text-right">
 					<span class="time"></span>

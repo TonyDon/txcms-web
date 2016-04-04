@@ -60,9 +60,10 @@ SITE_MAIN.initPageJqObj = function(){
 			artContent : $("div#main article"),
 			artPicDir : $('div.main-pic'),
 			artMainPic : $("div.main-pic img"),
-			outSiteHref : $("a.site-url"),
 			loveNav : $("a.love"),
-			hateNav : $("a.hate")
+			hateNav : $("a.hate"),
+			artMainVideo : $('div.main-video'),
+			vplayer : $("#vplayer")
 	};
 };
 SITE_MAIN.getCatNav=function(cid){
@@ -88,8 +89,7 @@ SITE_MAIN.INFO.doInit = function(){
 SITE_MAIN.INFO.doRender = function(){
 	if(SITE_MAIN.existError())return ;
 	SITE_MAIN.jqObj.artTitle.text(SITE_MAIN.infoDat.infoBase.title);
-	/* SITE_MAIN.jqObj.artTime.text(ut.parseDate(SITE_MAIN.infoDat.infoBase.createTime, 10)); */
-	SITE_MAIN.jqObj.artReadNum.text('阅读：'+SITE_MAIN.infoDat.infoBase.viewNum+'次');
+	SITE_MAIN.jqObj.artReadNum.text('浏览 '+SITE_MAIN.infoDat.infoBase.viewNum+'次');
 	SITE_MAIN.jqObj.artAuthor.text('['+SITE_MAIN.infoDat.infoBase.authorId+']');
 	SITE_MAIN.jqObj.loveNav.find('span.zan-count').text(SITE_MAIN.infoDat.infoBase.loveNum);
 	SITE_MAIN.jqObj.hateNav.find('span.cai-count').text(SITE_MAIN.infoDat.infoBase.hateNum);
@@ -103,11 +103,13 @@ SITE_MAIN.INFO.doRender = function(){
 			SITE_MAIN.jqObj.artPicDir.show();
 		}
 	}
-	if(SITE_MAIN.infoDat.infoBase.siteUrl && SITE_MAIN.infoDat.infoBase.siteUrl.length>5){
-		var siteurl = SITE_MAIN.getUrl(SITE_MAIN.infoDat.infoBase.siteUrl);
-		if(siteurl!=''){
-			SITE_MAIN.jqObj.outSiteHref.attr('href', siteurl);
-			SITE_MAIN.jqObj.outSiteHref.show();
+	if(SITE_MAIN.infoDat.infoBase.hasVideo===1){
+		var vurl = SITE_MAIN.getUrl(SITE_MAIN.infoDat.infoBase.videoUrl);
+		if(vurl!=''){
+			SITE_MAIN.jqObj.vplayer.attr('src', vurl);
+			SITE_MAIN.jqObj.vplayer.attr('preload', 'auto');
+			SITE_MAIN.jqObj.artMainVideo.show();
+			SITE_MAIN.jqObj.artPicDir.hide();
 		}
 	}
 	if(SITE_MAIN.infoDat.infoContent && SITE_MAIN.infoDat.infoContent.content){
