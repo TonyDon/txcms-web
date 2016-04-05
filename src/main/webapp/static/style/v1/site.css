@@ -88,39 +88,6 @@ div.main-pic img {
 	color: #35A6D1;
 }
 
-.float-box {
-	width: 6em;
-	overflow: hidden;
-	position: fixed;
-	right: 0.5em;
-	bottom: 0.5em;
-	z-index: 10;
-}
-
-.float-zone {
-	width: 100%;
-	overflow: hidden;
-}
-
-.float-qr-wx {
-	width: 6em;
-	height: 6em;
-}
-
-.float-gotop {
-	width: 6em;
-	height: 2em;
-	display: block;
-	background: #F5F5F5;
-}
-
-.float-gotop a {
-	display: block;
-	text-align: center;
-	color: #000;
-	cursor: pointer;
-}
-
 .info-mood {
 	padding:0.5em 0 1em 0;
 }
@@ -154,6 +121,11 @@ div.main-pic img {
 
 .info-box h3 {
 	margin-top:0.5em;
+}
+
+.info-box p.note{
+	font-size:1.2em;
+	line-height:1.5em;
 }
 
 div.user-act>div{
