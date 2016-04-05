@@ -1,7 +1,7 @@
 var SITE_MAIN = {};
 SITE_MAIN.getUrl = function(url){
 	if(!url){
-		return 'https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif';
+		return '';
 	}
 	if(url.indexOf('http')!==0 && url.indexOf(window.ctx)<0){
 		return window.ctx + url ;
@@ -109,8 +109,8 @@ SITE_MAIN.INFO.doRender = function(){
 			SITE_MAIN.jqObj.vplayer.attr('src', vurl);
 			SITE_MAIN.jqObj.vplayer.attr('preload', 'auto');
 			SITE_MAIN.jqObj.artMainVideo.show();
-			SITE_MAIN.jqObj.artPicDir.hide();
 		}
+		SITE_MAIN.jqObj.artPicDir.hide();
 	}
 	if(SITE_MAIN.infoDat.infoContent && SITE_MAIN.infoDat.infoContent.content){
 		setTimeout(function(){

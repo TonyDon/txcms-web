@@ -55,13 +55,17 @@ div.out-site {
 }
 
 div.main-pic img {
-	min-width:25em;
+	min-width:21em;
 	border: 1px #DBDBDB solid;
 }
 #vplayer{
 	width:99%;
 	max-width:35em;
 	max-height:25em;
+}
+.ivplayer{
+	max-width:35em;
+	min-height:14em
 }
 #main article {
 	font-size: 1.25em;
