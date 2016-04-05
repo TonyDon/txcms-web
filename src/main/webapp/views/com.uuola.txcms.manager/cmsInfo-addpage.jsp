@@ -108,7 +108,7 @@
 								<div id="infoAddPanle" title="信息内容输入"
 									style="height: auto; margin: auto; padding: 9px; text-align: left;">
 									<div class="form-group">
-										<label id="content_tit">文章内容:</label>
+										<label id="content_tit">文章内容:(iframe 视频播放添加 class="ivplayer")</label>
 										<div style="width: 95%; height: 500px; margin: auto; display: block; text-align: left;">
 											<textarea id="editor" name="content"
 												style="width: 100%; height: 400px; visibility: hidden;"></textarea>
