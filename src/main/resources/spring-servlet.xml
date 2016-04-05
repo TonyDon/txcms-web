@@ -23,8 +23,8 @@
 	<!-- upload file --> 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 	p:defaultEncoding="utf-8"
-	p:maxInMemorySize="131072"
-	p:maxUploadSize="2048000"
+	p:maxInMemorySize="262144"
+	p:maxUploadSize="3072000"
 	/>
 
 
