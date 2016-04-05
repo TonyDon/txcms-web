@@ -54,7 +54,8 @@ div.out-site {
 	margin-top: 3em;
 }
 
-#main div.main-pic img {
+div.main-pic img {
+	min-width:25em;
 	border: 1px #DBDBDB solid;
 }
 #vplayer{
@@ -143,15 +144,16 @@ div.out-site {
 }
 
 .info-box {
+	border-top: 0.1em solid #E5E5E5;
 	border-bottom: 0.1em dashed #E5E5E5;
 	background: #ffffff;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
-	padding: 0 0.5em;
+	padding: 0 0.5em; 
 }
 
 .info-box h3 {
-	color: #C33B18;
+	margin-top:0.5em;
 }
 
 div.user-act>div{
