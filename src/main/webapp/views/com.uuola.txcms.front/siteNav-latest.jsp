@@ -59,7 +59,7 @@
 	 <div id="content{%=d.id%}" class="more content-box {%=(d.hasContent==1?'show':'hidden')%}">……</div>
 	 <div class="user-act">
 	 	<div class="pull-left">
-	 		{% if(IsH5G(d)){ %}
+	 		{% if(IsH5G(d.catId)){ %}
 	  		<a class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=d.id%}">现在玩</a>
 	 		{% } %}
 	 		{% if(d.hasContent==1){ %}

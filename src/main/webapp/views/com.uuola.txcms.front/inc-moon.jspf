@@ -1,7 +1,12 @@
 <%@ page pageEncoding="UTF-8" %>
 <div class="row">
 	<div class="text-center info-mood">
-	<a href="javascript:;" class="btn btn-warning love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);">赞 <span>&#9829;</span> <span class="zan-count">0</span></a>
+	<a href="javascript:;" class="btn btn-default prev" onclick="SITE_MAIN.INFO.go(this,-1);">上一条</a>
+	<a href="javascript:;" class="btn btn-default love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);">赞 <span>&#9829;</span> <span class="zan-count">0</span></a>
 	<a href="javascript:;" class="btn btn-default hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);">踩 <span>&#966;</span> <span class="cai-count">0</span></a>
+	<a href="javascript:;" class="btn btn-default next" onclick="SITE_MAIN.INFO.go(this,1);">下一条</a>
+	</div>
+	<div class="text-center">
+	<a href="javascript:;" class="btn btn-success rand-pick" onclick="SITE_MAIN.INFO.randPick(this);">随便看看</a>
 	</div>
 </div>
