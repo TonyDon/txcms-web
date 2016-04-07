@@ -62,6 +62,7 @@ div.main-pic img {
 	width:99%;
 	max-width:35em;
 	max-height:25em;
+	background:#000;
 }
 .ivplayer{
 	max-width:35em;
