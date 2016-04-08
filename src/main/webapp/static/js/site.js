@@ -10,7 +10,7 @@ SITE_MAIN.getUrl = function(url){
 };
 /**暂时通过siteurl区分GAME和INFO*/
 SITE_MAIN.getNavUrl = function(su,id){
-	var s =('/info/view?id='+id);
+	var s =('/info/'+id);
 	if(su && su.indexOf('h5gfs')>=0){
 		s = ('/h5g/show?id='+id);
 	}
@@ -144,7 +144,7 @@ SITE_MAIN.INFO.randPick = function(target){
 			if(SITE_MAIN.isH5G(cid)){
 				location.href = window.ctx + '/h5g/show?id=' + x.id + '&fr=randpick&t=' + Math.random() * 1000;
 			}else{
-				location.href = window.ctx + '/info/view?id=' + x.id + '&fr=randpick&t=' + Math.random() * 1000;
+				location.href = window.ctx + '/info/' + x.id + '?fr=randpick&t=' + Math.random() * 1000;
 			}
 		}else{
 			alert('驿站访客过多，请稍后再试哦~');
@@ -162,7 +162,7 @@ SITE_MAIN.INFO.go = function(target,flg){
 			if(SITE_MAIN.isH5G(cid)){
 				location.href = window.ctx + '/h5g/show?id=' + x.id + '&fr=gopick&t=' + Math.random() * 1000;
 			}else{
-				location.href = window.ctx + '/info/view?id=' + x.id + '&fr=gopick&t=' + Math.random() * 1000;
+				location.href = window.ctx + '/info/' + x.id + '?fr=gopick&t=' + Math.random() * 1000;
 			}
 		}else{
 			alert('驿站访客过多，请稍后再试哦~');
