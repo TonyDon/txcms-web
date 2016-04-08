@@ -111,18 +111,18 @@ SITE_MAIN.INFO.doRender = function(){
 	if(ib.hasPic===1){
 		var picurl = SITE_MAIN.getUrl(ib.picUrl);
 		if(picurl!=''){
-			SITE_MAIN.jqObj.artMainPic.attr('src', picurl);
-			SITE_MAIN.jqObj.artPicDir.show();
+			jqO.artMainPic.attr('src', picurl);
+			jqO.artPicDir.show();
 		}
 	}
 	if(ib.hasVideo===1){
 		var vurl = SITE_MAIN.getUrl(ib.videoUrl);
 		if(vurl!=''){
-			SITE_MAIN.jqObj.vplayer.attr('src', vurl);
-			SITE_MAIN.jqObj.vplayer.attr('preload', 'auto');
-			SITE_MAIN.jqObj.artMainVideo.show();
+			jqO.vplayer.attr('src', vurl);
+			jqO.vplayer.attr('preload', 'auto');
+			jqO.artMainVideo.show();
 		}
-		SITE_MAIN.jqObj.artPicDir.hide();
+		jqO.artPicDir.hide();
 	}
 	if(SITE_MAIN.infoDat.infoContent && SITE_MAIN.infoDat.infoContent.content){
 		setTimeout(function(){
@@ -132,7 +132,7 @@ SITE_MAIN.INFO.doRender = function(){
 	}
 	SITE_MAIN.doHit(iid);
 };
-
+SITE_MAIN.INFO.a1 = '驿站访客过多，请稍后再试哦~';
 /* rand pick info */
 SITE_MAIN.INFO.randPick = function(target){
 	var that = $(target);
@@ -147,7 +147,7 @@ SITE_MAIN.INFO.randPick = function(target){
 				location.href = window.ctx + '/info/' + x.id + '?fr=randpick&t=' + Math.random() * 1000;
 			}
 		}else{
-			alert('驿站访客过多，请稍后再试哦~');
+			alert(SITE_MAIN.INFO.a1);
 		}
 	});
 };
@@ -165,7 +165,7 @@ SITE_MAIN.INFO.go = function(target,flg){
 				location.href = window.ctx + '/info/' + x.id + '?fr=gopick&t=' + Math.random() * 1000;
 			}
 		}else{
-			alert('驿站访客过多，请稍后再试哦~');
+			alert(SITE_MAIN.INFO.a1);
 		}
 	});
 }
@@ -248,12 +248,12 @@ SITE_MAIN.H5G_PLAY.doRender = function(){
 		var siteurl = SITE_MAIN.getUrl(ib.siteUrl);
 		if(siteurl!=''){
 			var height = $(window).height() + $(window).scrollTop();
-			SITE_MAIN.jqObj.h5gIframe.css({'height' : (parseInt(height/16)+1.5)+'em'});
-			SITE_MAIN.jqObj.h5gIframe.load(function(){
+			jqO.h5gIframe.css({'height' : (parseInt(height/16)+1.5)+'em'});
+			jqO.h5gIframe.load(function(){
 				var thisheight = $(this).contents().find("body").height()+32;
 				$(this).height(thisheight < 500 ? 500 : thisheight);
 			});
-			SITE_MAIN.jqObj.h5gIframe.attr('src', siteurl + 'index.html?T=' + Math.random() * 1000 + '&frwahash=' + SITE_MAIN.frwahash);
+			jqO.h5gIframe.attr('src', siteurl + 'index.html?T=' + Math.random() * 1000 + '&frwahash=' + SITE_MAIN.frwahash);
 		}
 		SITE_MAIN.doHit(ib.id);
 	}
@@ -366,7 +366,7 @@ SITE_MAIN.NAV.LATEST.viewAllClick=function(target){
 	if(isOpen){
 		that.data('opened', false);
 		cent.removeClass('show').addClass('hidden');
-		that.html('看全文 <span>&#969;</span>');
+		that.html('看全文');
 	}else if(!isOpen){
 		that.data('opened', true);
 		cent.removeClass('hidden').addClass('show');
@@ -380,35 +380,37 @@ SITE_MAIN.NAV.LATEST.talkClick=function(target){
 	location.href= SITE_MAIN.getNavUrl(su, id)+'#uyan';
 };
 SITE_MAIN.NAV.fetchLatest = function(){
-	var param = {'pageNo':SITE_MAIN.NAV.currPage, 'listSize':12};
-	SITE_MAIN.jqObj.navNextBtn.text('努力加载中...');
+	var param = {'pageNo':SITE_MAIN.NAV.currPage, 'listSize':16};
+	var jqO = SITE_MAIN.jqObj;
+	jqO.navNextBtn.text('努力加载中...');
 	$.get(window.ctx + '/info/api/fetch-latest.json', param, function(x){
 		if(x.pageDTO.datas && x.pageDTO.datas.length>0){
-			SITE_MAIN.jqObj.infoList.append(template("infoBoxTpl", x.pageDTO));
+			jqO.infoList.append(template("infoBoxTpl", x.pageDTO));
 			SITE_MAIN.NAV.currPage++;
-			SITE_MAIN.jqObj.navNextBtn.text('∞ 点我继续 :-D');
+			jqO.navNextBtn.text('点我继续');
 		}else{
 			//隐藏  next 加载按钮
-			SITE_MAIN.jqObj.navNextBtn.unbind('click');
-			SITE_MAIN.jqObj.navNextBtn.text('wow！到底了,小编正在编辑中...').delay(2000).fadeOut();
+			jqO.navNextBtn.off('click');
+			jqO.navNextBtn.text('到底了,看看其他的吧...').delay(2000).fadeOut();
 		}
 	});
 };
 SITE_MAIN.NAV.fetchByCat = function(cid, fn){
-	var param = {'pageNo':SITE_MAIN.NAV.currPage, 'listSize':12, 'catId':cid};
-	SITE_MAIN.jqObj.navNextBtn.text('努力加载中...');
+	var param = {'pageNo':SITE_MAIN.NAV.currPage, 'listSize':16, 'catId':cid};
+	var jqO = SITE_MAIN.jqObj;
+	jqO.navNextBtn.text('努力加载中...');
 	$.get(window.ctx + '/info/api/fetch-cat-list.json', param, function(x){
 		if(x.pageDTO && x.pageDTO.datas && x.pageDTO.datas.length>0){
-			SITE_MAIN.jqObj.infoList.append(template("infoBoxTpl", x.pageDTO));
+			jqO.infoList.append(template("infoBoxTpl", x.pageDTO));
 			SITE_MAIN.NAV.currPage++;
-			SITE_MAIN.jqObj.navNextBtn.text('∞ 点我继续 :-D');
+			jqO.navNextBtn.text('点我继续 ');
 			if(typeof fn === "function"){
 				fn();
 			}
 		}else{
 			//隐藏  next 加载按钮
-			SITE_MAIN.jqObj.navNextBtn.unbind('click');
-			SITE_MAIN.jqObj.navNextBtn.text('wow！到底了,小编正在编辑中...').delay(2000).fadeOut();
+			jqO.navNextBtn.off('click');
+			jqO.navNextBtn.text('到底了,小编忙碌中...').delay(2000).fadeOut();
 		}
 	});
 };

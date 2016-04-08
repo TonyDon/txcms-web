@@ -24,7 +24,7 @@
 		<div class="container-fluid info-list"></div>
 		<div class="container-fluid">
 			<div class="row next-page">
-				<a class="btn btn-default btn-lg nav-next">∞ 点我继续 :-D</a>
+				<a class="btn btn-default btn-lg nav-next">点我继续</a>
 			</div>
 		</div>
 	</div>
@@ -47,7 +47,7 @@
 	 <div class="user-act">
 	 	<div class="pull-left">
 	 		{% if(d.hasContent==1){ %}
-	  		<a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=d.id%}">看全文 <span>&#969;</span></a>
+	  		<a class="btn btn-success btn-sm" onclick="SITE_MAIN.NAV.LATEST.viewAllClick(this);" data-id="{%=d.id%}">看全文</a>
 	 		{% } %}
 	  		<a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=d.id%}">赞 <span>&#9829;</span> <span class="zan-count">{%=d.loveNum%}</span></a>
 	  		<a href="javascript:;" class="btn btn-default btn-sm hate" onclick="SITE_MAIN.NAV.LATEST.hateClick(this);" data-id="{%=d.id%}">踩 <span>&#966;</span> <span class="cai-count">{%=d.hateNum%}</span></a>
