@@ -48,6 +48,8 @@
 
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
+<script src="${ut:getCtxPath()}/static/js/imagesloaded.min.js?v=1008"></script>
+<script src="${ut:getCtxPath()}/static/js/masonry.min.js?v=1008"></script>
 <script id="infoBoxTpl"  type="text/html">
 {% for(var i=0; i<datas.length; i++){ var d = datas[i]; var href = GetNavUrl(d.siteUrl, d.id);%}
 			<div class="col-sm-6 item">
