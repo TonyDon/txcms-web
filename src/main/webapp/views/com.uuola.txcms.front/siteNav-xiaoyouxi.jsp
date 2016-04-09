@@ -40,7 +40,7 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row next-page">
-				<a class="btn btn-default btn-lg nav-next">∞ 点我继续 :-D</a>
+				<a class="btn btn-default btn-lg nav-next">点我继续</a>
 			</div>
 		</div>
 	</div>
