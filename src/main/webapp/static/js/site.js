@@ -124,6 +124,16 @@ SITE_MAIN.INFO.doRender = function(){
 			if(picurl!=''){
 				jqO.vplayer.attr('poster', picurl);
 			}
+			jqO.vplayer.click(function(){
+				var s = jqO.vplayer.data('s') || '0';
+				if(s=='0'){
+					this.play();
+					jqO.vplayer.data('s','1');
+				}else if(s=='1'){
+					this.pause();
+					jqO.vplayer.data('s','0');
+				}
+			});
 			jqO.artMainVideo.show();
 		}
 		jqO.artPicDir.hide();
