@@ -120,6 +120,10 @@ SITE_MAIN.INFO.doRender = function(){
 		if(vurl!=''){
 			jqO.vplayer.attr('src', vurl);
 			jqO.vplayer.attr('preload', 'auto');
+			var picurl = SITE_MAIN.getUrl(ib.picUrl);
+			if(picurl!=''){
+				jqO.vplayer.attr('poster', picurl);
+			}
 			jqO.artMainVideo.show();
 		}
 		jqO.artPicDir.hide();
