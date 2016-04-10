@@ -1,8 +1,1 @@
-;
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?9f500a4f9d80fd5ee3ce3293d0d896d5";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+var _hmt=_hmt||[];(function(){var a=document.getElementsByTagName("script")[0];var b=document.createElement("script");b.src="//s4.cnzz.com/z_stat.php?id=1258492986&web_id=1258492986";a.parentNode.insertBefore(b,a);var c=document.createElement("script");c.src="//hm.baidu.com/hm.js?9f500a4f9d80fd5ee3ce3293d0d896d5";a.parentNode.insertBefore(c,a)})();
