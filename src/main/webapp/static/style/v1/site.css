@@ -65,8 +65,9 @@ div.main-pic img {
 	background:#000;
 }
 .ivplayer{
+	width:90%;
 	max-width:35em;
-	min-height:14em
+	min-height:18em
 }
 #main article {
 	font-size: 1.25em;
