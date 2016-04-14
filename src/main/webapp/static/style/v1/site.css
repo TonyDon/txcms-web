@@ -127,6 +127,8 @@ div.main-pic img {
 
 .info-box h3 {
 	margin-top:0.5em;
+	border-left:0.2em solid #BFD4F6;
+	padding-left:0.2em;
 }
 
 .info-box p.note{
