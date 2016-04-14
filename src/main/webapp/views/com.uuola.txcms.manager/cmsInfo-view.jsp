@@ -16,7 +16,7 @@
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 </head>
 <body>
-	<c:if test="${infoDTO.infoBase!=null && infoDTO.infoBase.infoState==1}">
+	<c:if test="${infoDTO.infoBase!=null}">
 		<div class="main">
 			<h1 class="title">${infoDTO.infoBase.title}</h1>
 			<div class="info-meta">
@@ -33,9 +33,6 @@
 			</div>
 			<div class="cont">${infoDTO.infoContent.content}</div>
 		</div>
-	</c:if>
-	<c:if test="${infoDTO.infoBase==null || infoDTO.infoBase.infoState!=1}">
-		<p>信息禁止查阅！</p>
 	</c:if>
 </body>
 </html>
