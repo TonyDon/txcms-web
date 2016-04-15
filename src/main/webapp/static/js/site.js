@@ -3,7 +3,10 @@ SITE_MAIN.getUrl = function(url){
 	if(!url){
 		return '';
 	}
-	if(url.indexOf('http')!==0 && url.indexOf(window.ctx)<0){
+	if(url.indexOf('http')!==0){
+		if(/.*\/store\/.*/.test(url)){
+			return 'http://s.986001.com'+window.ctx + url ;
+		}
 		return window.ctx + url ;
 	}
 	return url ;
