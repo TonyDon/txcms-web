@@ -2,8 +2,10 @@
 <script>
 var PAGE_DEF ={
 		sessCheckUrl : window.ctx + '/manager/console/session_check',
+		sysVersUrl : window.ctx + '/manager/console/system_version',
 		loginUrl : window.ctx + '/manager/verify/login',
 		sess_curr_time : $('#sess-curr-time'),
+		system_version : $('#system-version'),
 		admin_name : $('#admin_name'),
 		sess_check_timer : null
 };
@@ -19,6 +21,11 @@ function SessCheck(){
 			PAGE_DEF.admin_name.text(t);
 			PAGE_DEF.sess_curr_time.text(ut.parseDate((new Date()).getTime(), 16));
 		}
+	});
+};
+function LoadVer(){
+	$.get(PAGE_DEF.sysVersUrl+"?t="+ut.r(), function(r){
+		PAGE_DEF.system_version.text(r);
 	});
 };
 PAGE_DEF.NAV={};
@@ -61,6 +68,6 @@ $(function(){
 	});
 	
 	PAGE_DEF.NAV.SetActive();
-	
+	LoadVer();
 });
 </script>

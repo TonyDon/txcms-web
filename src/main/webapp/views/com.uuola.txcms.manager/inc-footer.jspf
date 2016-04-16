@@ -2,6 +2,6 @@
 <footer>
     	 <div style="padding:1em 0 1em 0; text-align:right;">
     	 	<div>当前时间：<span id="sess-curr-time"></span> </div>
-    	 	<div>系统版本：txcms version 1.0.0-20150721170112938 </div>
+    	 	<div>版本： <span id="system-version"></span> </div>
     	 </div>
 </footer>
