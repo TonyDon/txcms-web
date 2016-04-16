@@ -274,9 +274,9 @@
 		};
 		
 		INFO.randomSetNum = function(){
-			$('input[name="viewNum"]').val(ut.rndint(1,100));
-			$('input[name="loveNum"]').val(ut.rndint(1,10));
-			$('input[name="hateNum"]').val(ut.rndint(1,10));
+			$('input[name="viewNum"]').val(ut.rndint(30,80));
+			$('input[name="loveNum"]').val(ut.rndint(5,20));
+			$('input[name="hateNum"]').val(ut.rndint(5,9));
 		};
 		
 		$(function() {
