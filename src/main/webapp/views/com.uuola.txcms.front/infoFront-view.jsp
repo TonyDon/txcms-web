@@ -24,7 +24,7 @@
 		</div>
 		<blockquote class="summary"></blockquote>
 		<div class="main-pic">
-			<p><img class="img-responsive center-block" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
+			<p><img class="img-responsive center-block" src="${ut:getCtxPath()}/static/image/blank.gif"/></p>
 		</div>
 		<div class="main-video">
 			<p class="text-center"><video id="vplayer" controls="controls" preload="auto">抱歉,您的浏览器不支持该播放技术.</video></p>
