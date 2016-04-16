@@ -1,8 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
-<%-- script src="${ut:getCtxPath()}/static/js/jquery-2.1.4.min.js?v=5"></script --%>
-<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="${ut:getCtxPath()}/static/bootstrap/js/bootstrap.min.js?v=5"></script> 
-<script src="${ut:getCtxPath()}/static/js/template.js?v=5"></script> 
-<script src="${ut:getCtxPath()}/static/js/common.min.js?v=5"></script>
-<script src="${ut:getCtxPath()}/static/js/site-min.js?v=5"></script>
-<script src="${ut:getCtxPath()}/static/js/cat.js?v=5"></script>
+<% String jsctp = com.uuola.txweb.framework.utils.ContextUtil.getContextPath(); String jsver = com.uuola.txcms.component.VersionUtil.getSrcVer(); %>
+<%-- script src="<%=jsctp %>/static/js/jquery-2.1.4.min.js?v=<%=jsver%>"></script --%>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js?v=<%=jsver%>"></script>
+<script src="<%=jsctp %>/static/bootstrap/js/bootstrap.min.js?v=<%=jsver%>"></script> 
+<script src="<%=jsctp %>/static/js/template.js?v=<%=jsver%>"></script> 
+<script src="<%=jsctp %>/static/js/common.min.js?v=<%=jsver%>"></script>
+<script src="<%=jsctp %>/static/js/site-min.js?v=<%=jsver%>"></script>
+<script src="<%=jsctp %>/static/js/cat.js?v=<%=jsver%>"></script>
