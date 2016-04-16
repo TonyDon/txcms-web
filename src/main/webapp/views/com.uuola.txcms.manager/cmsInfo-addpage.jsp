@@ -101,7 +101,7 @@
 										<input class="w650 form-control texta" type="text" name="videoUrl">
 									</div>
 									<div class="form-group">
-										<label id="siteUrl_tit">跳转地址:</label> 
+										<label id="siteUrl_tit">Site地址:</label> 
 										<input class="w650 form-control texta" type="text" name="siteUrl">
 									</div>
 								</div>
