@@ -1,2 +1,2 @@
 <%@ page pageEncoding="UTF-8" %>
-<script src="${ut:getCtxPath()}/static/js/gmtrace.js?v=10008"></script>
+<script src="<%=jsctp %>/static/js/gmtrace.js?v=<%=jsver%>"></script>
