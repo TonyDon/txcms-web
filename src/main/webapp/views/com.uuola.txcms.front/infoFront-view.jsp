@@ -19,36 +19,26 @@
 <%@include file="inc-nav.jspf" %>
 <main>
   <div id="main" class="container">
-		<div class="page-header">
-			<h3 class="title"></h3>
-		</div>
+		<div class="page-header"><h3 class="title"></h3></div>
 		<blockquote class="summary"></blockquote>
 		<div class="main-pic">
 			<p><img class="img-responsive center-block" src="${ut:getCtxPath()}/static/image/blank.gif"/></p>
 		</div>
 		<div class="main-video">
-			<p class="text-center"><video id="vplayer" controls="controls" preload="auto">抱歉,您的浏览器不支持该播放技术.</video></p>
+			<p class="text-center"><video id="vplayer" controls="controls" preload="auto"></video></p>
 			<p class="text-center"><iframe id="ifvplayer" src="about:blank;"></iframe></p>
 		</div>
 		<article></article>
 		<div class="info-meta out-site container-fluid">
 			<%@include file="inc-moon.jspf" %>
 			<div class="row">
-				<div class="col-xs-6">
-					<span class="read-num"></span>
-				</div>
-				<div class="col-xs-6 text-right">
-					<span class="time"></span>
-					<span class="author"></span>
-				</div>
+				<div class="col-xs-6"><span class="read-num"></span></div>
+				<div class="col-xs-6 text-right"><span class="time"></span><span class="author"></span></div>
 			</div>
 			<%@include file="inc-share.jspf" %>
 		</div>
   		<div class="aside"></div>
-  		<div class="aside">
-  			<a name="#uyan"></a>
-  			<div id="uyan_frame"></div>
-  		</div>
+  		<div class="aside"><a name="#uyan"></a><div id="uyan_frame"></div></div>
   </div>
 </main>
 
