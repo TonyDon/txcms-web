@@ -69,7 +69,8 @@ SITE_MAIN.initPageJqObj = function(){
 			goPrev : $('a.prev'),
 			goNext : $('a.next'),
 			artMainVideo : $('div.main-video'),
-			vplayer : $("#vplayer")
+			vplayer : $("#vplayer"),
+			ifvplayer : $('#ifvplayer')
 	};
 };
 SITE_MAIN.getCatNav=function(cid){
@@ -111,7 +112,7 @@ SITE_MAIN.INFO.doRender = function(){
 	jqO.goPrev.data('cid', ib.catId);
 	jqO.goNext.data('cid', ib.catId);
 	jqO.artSummary.html(SITE_MAIN.fmtSummary(ib.summary));
-	if(ib.hasPic===1){
+	if(ib.hasPic===1 && ib.hasVideo!==1){
 		var picurl = SITE_MAIN.getUrl(ib.picUrl);
 		if(picurl!=''){
 			jqO.artMainPic.attr('src', picurl);
@@ -120,7 +121,8 @@ SITE_MAIN.INFO.doRender = function(){
 	}
 	if(ib.hasVideo===1){
 		var vurl = SITE_MAIN.getUrl(ib.videoUrl);
-		if(vurl!=''){
+		var surl = SITE_MAIN.getUrl(ib.siteUrl);
+		if(vurl!=''){ // 视频源地址存在则使用video播放
 			jqO.vplayer.attr('src', vurl);
 			jqO.vplayer.attr('preload', 'auto');
 			var picurl = SITE_MAIN.getUrl(ib.picUrl);
@@ -137,9 +139,14 @@ SITE_MAIN.INFO.doRender = function(){
 					jqO.vplayer.data('s','0');
 				}
 			});
+			jqO.ifvplayer.hide();
+			jqO.artMainVideo.show();
+			
+		}else if(surl!=''){ // 视频站点使用iframe站点嵌入播放
+			jqO.vplayer.hide();
+			jqO.ifvplayer.attr('src', surl);
 			jqO.artMainVideo.show();
 		}
-		jqO.artPicDir.hide();
 	}
 	if(SITE_MAIN.infoDat.infoContent && SITE_MAIN.infoDat.infoContent.content){
 		setTimeout(function(){

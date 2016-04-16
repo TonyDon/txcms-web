@@ -28,6 +28,7 @@
 		</div>
 		<div class="main-video">
 			<p class="text-center"><video id="vplayer" controls="controls" preload="auto">抱歉,您的浏览器不支持该播放技术.</video></p>
+			<p class="text-center"><iframe id="ifvplayer" src="about:blank;"></iframe></p>
 		</div>
 		<article></article>
 		<div class="info-meta out-site container-fluid">

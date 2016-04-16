@@ -69,6 +69,13 @@ div.main-pic img {
 	max-width:35em;
 	min-height:18em
 }
+#ifvplayer{
+	border:none;
+	background:#000;
+	width:90%;
+	max-width:35em;
+	min-height:18em;
+}
 #main article {
 	font-size: 1.25em;
 	line-height: 1.85em;
