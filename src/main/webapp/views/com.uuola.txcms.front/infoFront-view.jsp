@@ -18,7 +18,7 @@
 <body>
 <%@include file="inc-nav.jspf" %>
 <main>
-  <div id="main" class="container">
+<div id="main" class="container">
 		<div class="page-header"><h3 class="title"></h3></div>
 		<blockquote class="summary"></blockquote>
 		<div class="main-pic">
@@ -39,7 +39,7 @@
 		</div>
   		<div class="aside"></div>
   		<div class="aside"><a name="#uyan"></a><div id="uyan_frame"></div></div>
-  </div>
+</div>
 </main>
 
 <%@include file="inc-footer.jspf" %>
