@@ -35,9 +35,6 @@
 										<ul id="siteCat" class="easyui-tree"></ul>
 									</div>
 								</div>
-								<div title="标签设置" style="padding: 10px">This is the help
-									content.
-								</div>
 								<div title="游戏包上传" style="padding: 10px">
 									<iframe id="gameUploadIframe" src="about:blank;" style="width:100%;border:0;height:200px;" allowtransparency="true"></iframe>
 								</div>
@@ -88,7 +85,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label id="picUrl_tit">外站地址:</label> <input
+										<label id="siteUrl_tit">外站地址:</label> <input
 											class="w650 form-control texta" type="text" name="siteUrl">
 									</div>
 									<div class="form-group">
