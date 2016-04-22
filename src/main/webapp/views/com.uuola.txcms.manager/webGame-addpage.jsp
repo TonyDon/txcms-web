@@ -59,14 +59,14 @@
 												<select class="form-control input-sm" name="hasPic" style="width: 100px;">
 													<option value="">--</option>
 													<option value="0">否</option>
-													<option value="1">是</option>
+													<option value="1" selected="selected">是</option>
 												</select>
 											</div>
 											<div class="col-md-4">
 												<label id="hasVideo_tit">有视频:</label>
 												<select class="form-control input-sm" name="hasVideo" style="width: 100px;">
 													<option value="">--</option>
-													<option value="0">否</option>
+													<option value="0" selected="selected">否</option>
 													<option value="1">是</option>
 												</select>
 											</div>
@@ -296,7 +296,7 @@
 				'params' : {
 					'dictCode' : 'INFO_TYPE'
 				},
-				'selectedIndex' : -1,
+				'selectedIndex' : 0,
 				'callfunc' : function(data, val) {
 					console.log(val);
 				},

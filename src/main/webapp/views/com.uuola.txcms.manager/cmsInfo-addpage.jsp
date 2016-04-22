@@ -45,23 +45,20 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-md-4">
-												<label id="infoType_tit">资讯类型:</label> <select id="infoType"
-													name="infoType" class="form-control input-sm"
-													style="width: 100px;"></select>
+												<label id="infoType_tit">资讯类型:</label>
+												<select id="infoType" name="infoType" class="form-control input-sm" style="width: 100px;"></select>
 											</div>
 											<div class="col-md-4">
-												<label id="hasPic_tit">有图文:</label> <select
-													class="form-control input-sm" name="hasPic"
-													style="width: 100px;">
+												<label id="hasPic_tit">有图文:</label>
+												<select class="form-control input-sm" name="hasPic" style="width: 100px;">
 													<option value="">--</option>
 													<option value="0">否</option>
-													<option value="1">是</option>
+													<option value="1" selected="selected">是</option>
 												</select>
 											</div>
 											<div class="col-md-4">
-												<label id="hasVideo_tit">有视频:</label> <select
-													class="form-control input-sm" name="hasVideo"
-													style="width: 100px;">
+												<label id="hasVideo_tit">有视频:</label>
+												<select class="form-control input-sm" name="hasVideo" style="width: 100px;">
 													<option value="">--</option>
 													<option value="0">否</option>
 													<option value="1">是</option>
@@ -110,8 +107,7 @@
 									<div class="form-group">
 										<label id="content_tit">文章内容:(iframe 视频播放添加 class="ivplayer")</label>
 										<div style="width: 95%; height: 500px; margin: auto; display: block; text-align: left;">
-											<textarea id="editor" name="content"
-												style="width: 100%; height: 400px; visibility: hidden;"></textarea>
+											<textarea id="editor" name="content" style="width: 100%; height: 400px; visibility: hidden;"></textarea>
 										</div>
 									</div>
 								</div>
@@ -285,7 +281,7 @@
 				'params' : {
 					'dictCode' : 'INFO_TYPE'
 				},
-				'selectedIndex' : -1,
+				'selectedIndex' : 0,
 				'callfunc' : function(data, val) {
 					console.log(val);
 				},
