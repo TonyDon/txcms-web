@@ -46,8 +46,7 @@
 									</div>
 									<div class="form-group">
 										<label id="summary_tit">资讯摘要:</label>
-										<textarea class="w650 h50 form-control texta" type="text"
-											name="summary"></textarea>
+										<textarea class="w650 h50 form-control texta" type="text" name="summary"></textarea>
 									</div>
 									<div class="form-group">
 										<div class="row">
@@ -74,6 +73,22 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<div class="row">
+											<div class="col-md-4">
+												<label id="infoType_tit">查看次数:</label>
+												<input name="viewNum" type="text"  value="0" class="form-control" style="width: 100px;"/>
+											</div>
+											<div class="col-md-4">
+												<label id="infoType_tit">点赞次数:</label>
+												<input name="loveNum" type="text"  value="0" class="form-control" style="width: 100px;"/>
+											</div>
+											<div class="col-md-4">
+												<label id="infoType_tit">点踩次数:</label>
+												<input name="hateNum" type="text"  value="0" class="form-control" style="width: 100px;"/>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
 										<label id="picUrl_tit">主图地址:</label>
 										<div class="row">
 										<div class="col-md-6">
@@ -85,12 +100,12 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label id="siteUrl_tit">外站地址:</label> <input
-											class="w650 form-control texta" type="text" name="siteUrl">
+										<label id="siteUrl_tit">Site地址:</label>
+										<input class="w650 form-control texta" type="text" name="siteUrl">
 									</div>
 									<div class="form-group">
-										<label id="picUrl_tit">视频地址:</label> <input
-											class="w650 form-control texta" type="text" name="videoUrl">
+										<label id="videoUrl_tit">视频地址:</label>
+										<input class="w650 form-control texta" type="text" name="videoUrl">
 									</div>
 								</div>
 								<div id="gameAddPanle" title="游戏内容"
@@ -269,6 +284,12 @@
 			}
 		};
 		
+		GAME.randomSetNum = function(){
+			$('input[name="viewNum"]').val(ut.rndint(10,30));
+			$('input[name="loveNum"]').val(ut.rndint(5,10));
+			$('input[name="hateNum"]').val(ut.rndint(2,5));
+		};
+		
 		$(function() {
 			$('#infoType').txwebInitSelect({
 				'url' : window.ctx + '/manager/app/dictconfig/jsonp',
@@ -298,6 +319,8 @@
 			        content: window.ctx + '/uploader?jscallback=GAME.uploadMainPicResultHandle&dir=image'
 			    });
 			});
+			
+			GAME.randomSetNum();
 		});
 	</script>
 </body>
