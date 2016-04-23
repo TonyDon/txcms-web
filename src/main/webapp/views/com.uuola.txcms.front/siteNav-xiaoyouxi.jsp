@@ -64,7 +64,7 @@
 					<div class="intro">
 						<h4><a href="{%=href%}">{%=d.title%}</a></h4>
 						<span>{%=GetCatNav(d.catId)%}</span>
-						<div class="text-info">{%=d.summary%}</div>
+						<div class="text-info">{%=#FmtSummary(d.summary)%}</div>
 						<p>
 							<a href="javascript:;" class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=d.id%}">现在玩</a>
 							<a href="javascript:;" class="btn btn-warning btn-sm love" onclick="SITE_MAIN.NAV.LATEST.loveClick(this);" data-id="{%=d.id%}"><span>♥</span> <span class="zan-count">{%=d.loveNum%}</span></a>
@@ -82,6 +82,7 @@ template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
 template.helper('GetCatNav', function(c){return SITE_MAIN.getCatNav(c);});
 template.helper('GetThumb', function(u){return ut.fmtImageThumb(u,'w120');});
+template.helper('FmtSummary', function(s){return SITE_MAIN.fmtSummary(s);});
 jQuery(function(){
 	var $container = $('.masonry-container');
     SITE_MAIN.NAV.CAT.doInit(${topCid}, function(){
