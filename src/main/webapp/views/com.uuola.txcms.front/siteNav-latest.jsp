@@ -12,7 +12,6 @@
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="full-screen" content="yes"/>
-<meta name="screen-orientation" content="portrait"/>
 <meta name="x5-fullscreen" content="true"/>
 <meta name="360-fullscreen" content="true"/>
 <title>开心驿站-m.986001.com</title>
