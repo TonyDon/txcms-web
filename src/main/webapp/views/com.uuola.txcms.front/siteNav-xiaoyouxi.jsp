@@ -19,20 +19,9 @@
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
 .container{padding: 0 0.25em;}
-.thumbnail{
-	background-color: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px 4px 4px 4px;
-    display: block;
-    line-height: 1.42857;
-    margin-bottom: 0.5em;
-    padding: 0.25em;
-    transition: all 0.2s ease-in-out 0s;
-}
+.thumbnail{margin-bottom: 0.5em;padding: 0.25em;}
 .item{padding-left:0.15em; padding-right:0.15em;}
-.intro>p{
-	margin-top:0.5em;
-}
+.intro>p{margin-top:0.5em;}
 </style>
 </head>
 <body>
