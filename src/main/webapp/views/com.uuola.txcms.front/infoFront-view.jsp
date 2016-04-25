@@ -15,7 +15,7 @@
 <c:if test="${infoDTO.infoBase.hasPic==1}">
 <meta property="og:image" content="${infoDTO.infoBase.picUrl}" />
 <link rel="shortcut icon" href="${infoDTO.infoBase.picUrl}"/>
-<link rel="icon" href="${${infoDTO.infoBase.picUrl}}"/>
+<link rel="icon" href="${infoDTO.infoBase.picUrl}"/>
 </c:if>
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
