@@ -126,6 +126,7 @@
 							<div style="padding:5px 0">
 								<button id="rebuidWebAccessTokenBtn" type="button" class="btn btn-info btn-sm">刷新WEB资源访问Token</button>
 								<button id="reloadVersionBtn" type="button" class="btn btn-info btn-sm">刷新版本信息</button>
+								<button id="reloadStoreDomainBtn" type="button" class="btn btn-info btn-sm">刷新文件存储域</button>
 						    </div>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -400,6 +401,13 @@ jQuery(function(){
 				alert('刷新成功, 新值为：' + r);
 		});
 	});
+	
+	$('#reloadStoreDomainBtn').on('click', function(){
+		$.get(window.ctx + '/manager/app/sysconfig/storedomain/refresh', function(r){
+				alert('刷新成功, 新值为：' + r);
+		});
+	});
+	
 });
 </script>
 </body>
