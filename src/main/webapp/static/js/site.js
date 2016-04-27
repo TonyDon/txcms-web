@@ -31,7 +31,7 @@ SITE_MAIN.fixArtImage = function(){
 };
 SITE_MAIN.fmtSummary = function(s){
 	if(s && s.length>0){
-		return s.replace(/\r\n/gi,'<br/>');
+		return s.replace(/\n/gi,'<br/>');
 	}
 	return s;
 };
