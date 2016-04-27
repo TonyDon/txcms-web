@@ -321,6 +321,7 @@
 				'params' : {'dictCode' : 'TRUE_OR_FALSE'},
 				'valueName' : 'dictValue',
 				'textName' : 'name',
+				'selectedIndex' : 1,
 				'defaultText' : '--'
 			});
 		});
