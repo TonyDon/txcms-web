@@ -324,6 +324,9 @@
 				'selectedIndex' : 1,
 				'defaultText' : '--'
 			});
+			$('#queryFrm input[type="text"]').on('click', function(){
+				$(this).val('');
+			});
 		});
 	</script>
 </body>
