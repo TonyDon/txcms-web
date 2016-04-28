@@ -36,12 +36,16 @@
                         		<input type="text" id="q_id" name="id"  class="form-control input-sm">
                         		</div>
                         		<div class="form-group">
-                        		<label for="id">删除：</label>
+                        		<label for="isDelete">删除：</label>
 							      <select id="q_is_delete" name="isDelete" class="form-control input-sm"></select>
                         		</div>
                         		<div class="form-group">
-                        		<label for="id">状态：</label>
+                        		<label for="infoState">状态：</label>
 							      <select id="q_info_state" name="infoState"  class="form-control input-sm"></select>
+                        		</div>
+                        		<div class="form-group">
+                        		<label for="catId">类目ID：</label>
+							      <input id="q_cat_id" name="catId"  class="form-control input-sm">
                         		</div>
                         		<button id="queryBtn" type="button" class="btn btn-info btn-sm">搜索</button>
                         	</form>
