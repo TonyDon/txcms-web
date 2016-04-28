@@ -45,7 +45,7 @@
                         		</div>
                         		<div class="form-group">
                         		<label for="catId">类目ID：</label>
-							      <input id="q_cat_id" name="catId"  class="form-control input-sm">
+							      <input type="text"  id="q_cat_id" name="catId"  class="form-control input-sm">
                         		</div>
                         		<button id="queryBtn" type="button" class="btn btn-info btn-sm">搜索</button>
                         	</form>
