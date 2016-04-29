@@ -9,6 +9,7 @@ body {
 	margin-bottom: 4em;
 	background: #EBEBEB;
 	padding-top: 4em;
+	font-family: alright_sansmedium, 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, sans-serif;
 }
 
 .navbar-brand {
@@ -25,7 +26,7 @@ body {
 
 .container {
 	width: auto;
-	max-width: 42em;
+	max-width: 45em;
 	padding: 0 1em;
 }
 
