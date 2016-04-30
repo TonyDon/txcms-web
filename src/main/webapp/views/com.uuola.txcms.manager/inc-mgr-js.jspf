@@ -39,7 +39,8 @@ PAGE_DEF.NAV.hrefs = {
 		'app_cmsinfo' : '/manager/app/cmsinfo',
 		'app_cmsinfo_addpage' : '/manager/app/cmsinfo/addpage',
 		'app_webgame_addpage' : '/manager/app/webgame/addpage',
-		'app_webgame' : '/manager/app/webgame'
+		'app_webgame' : '/manager/app/webgame',
+		'goto_home' :  '/#!/?mgr-panel'
 };
 PAGE_DEF.NAV.Goto=function(hrefId){
 	var href =  PAGE_DEF.NAV.hrefs[hrefId];

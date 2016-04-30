@@ -20,7 +20,7 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> 用户属性</a></li>
+                        <li><a id="goto_home" href="javascript:;"><i class="fa fa-user fa-fw"></i> 返回主页</a></li>
                         <li class="divider"></li>
                         <li><a id="console_logout" href="javascript:;"><i class="fa fa-sign-out fa-fw"></i> 退出</a></li>
                     </ul>
