@@ -12,9 +12,10 @@
       <ul class="nav navbar-nav">
         <li><a href="<%=navctp %>/latest">最新</a></li>
         <li><a href="<%=navctp %>/yule">娱乐</a></li>
-        <li><a href="<%=navctp %>/qiqu">O_o奇趣</a></li>
-        <li><a href="<%=navctp %>/gaosiao">∩_∩搞笑</a></li>
-        <li><a href="<%=navctp %>/xiaoyouxi">≧▽≦小游戏</a></li>
+        <li><a href="<%=navctp %>/qiqu">奇趣</a></li>
+        <li><a href="<%=navctp %>/gaosiao">搞笑</a></li>
+        <li><a href="<%=navctp %>/jiankang">健康</a></li>
+        <li><a href="<%=navctp %>/xiaoyouxi">小游戏</a></li>
       </ul>
     </div>
   </div>
