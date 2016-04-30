@@ -8,12 +8,8 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>控制台</title>
-<meta content="" name="keywords">
-<meta content="" name="description">
 <%@include file="inc-css.jspf" %>
-<style>
-
-</style>
+<style></style>
 </head>
 <body>
 <div id="wrapper">
