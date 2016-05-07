@@ -14,7 +14,7 @@
         <li><a href="<%=navctp %>/yule">娱乐</a></li>
         <li><a href="<%=navctp %>/qiqu">奇趣</a></li>
         <li><a href="<%=navctp %>/gaosiao">搞笑</a></li>
-        <li><a href="<%=navctp %>/jiankang">健康</a></li>
+        <li><a href="<%=navctp %>/yundong">运动</a></li>
         <li><a href="<%=navctp %>/xiaoyouxi">小游戏</a></li>
       </ul>
     </div>

@@ -13,7 +13,7 @@
 <meta name="full-screen" content="yes"/>
 <meta name="x5-fullscreen" content="true"/>
 <meta name="360-fullscreen" content="true"/>
-<title>健康-开心驿站-m.986001.com</title>
+<title>运动健身-开心驿站-m.986001.com</title>
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
