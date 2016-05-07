@@ -433,7 +433,7 @@ SITE_MAIN.NAV.fetchByCat = function(cid, fn){
 		}else{
 			//隐藏  next 加载按钮
 			jqO.navNextBtn.off('click');
-			jqO.navNextBtn.text('到底了,小编忙碌中...').delay(2000).fadeOut();
+			jqO.navNextBtn.text('到底了,看看其他的吧...').delay(2000).fadeOut();
 		}
 	});
 };
