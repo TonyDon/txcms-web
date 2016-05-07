@@ -56,8 +56,8 @@ div.out-site {
 }
 
 div.main-pic img {
-	min-width:21em;
 	border: 1px #DBDBDB solid;
+	padding:0.25em;
 }
 #vplayer{
 	width:99%;
@@ -84,6 +84,11 @@ div.main-pic img {
 
 #main article p {
 	text-indent: 1.5em;
+}
+
+#main article img{
+	border: 1px #DBDBDB solid;
+	padding:0.25em;
 }
 
 .title {

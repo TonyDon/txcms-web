@@ -148,9 +148,8 @@ SITE_MAIN.INFO.doRender = function(){
 			jqO.artMainVideo.show();
 		}
 	}
-	if(SITE_MAIN.infoDat.infoContent && SITE_MAIN.infoDat.infoContent.content){
+	if(SITE_MAIN.infoDat.infoContent && SITE_MAIN.infoDat.infoContent.infoId){
 		setTimeout(function(){
-			SITE_MAIN.jqObj.artContent.html(SITE_MAIN.infoDat.infoContent.content);
 			SITE_MAIN.fixArtImage();
 		},ut.rndint(1000,2000));
 	}

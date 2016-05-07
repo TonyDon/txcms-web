@@ -23,16 +23,22 @@
 <%@include file="inc-nav.jspf" %>
 <main>
 <div id="main" class="container">
-		<div class="page-header"><h3 class="title"></h3></div>
-		<blockquote class="summary"></blockquote>
+		<div class="page-header"><h3 class="title">${infoDTO.infoBase.title}</h3></div>
+		<blockquote class="summary">
+			<c:if test="${not empty infoDTO.infoBase.summary}">
+			${infoDTO.infoBase.summary}
+			</c:if>
+		</blockquote>
 		<div class="main-pic">
-			<p><img class="img-responsive center-block" src="${ut:getCtxPath()}/static/image/blank.gif"/></p>
+			<c:if test="${infoDTO.infoBase.hasPic==1}">
+			<img alt="${infoDTO.infoBase.title}" title="${infoDTO.infoBase.title}" class="img-responsive center-block" src="${infoDTO.infoBase.picUrl}"/>
+			</c:if>
 		</div>
 		<div class="main-video">
 			<p class="text-center"><video id="vplayer" controls="controls" preload="auto"></video></p>
 			<p class="text-center"><iframe id="ifvplayer" src="about:blank"></iframe></p>
 		</div>
-		<article></article>
+		<article><c:if test="${not empty content}">${content}</c:if></article>
 		<div class="info-meta out-site container-fluid">
 			<%@include file="inc-moon.jspf" %>
 			<div class="row">
