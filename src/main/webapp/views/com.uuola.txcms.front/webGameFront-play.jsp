@@ -9,7 +9,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="format-detection" content="telephone=no" />
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
-<title>${infoDTO.infoBase.title}-开心驿站-m.986001.com</title>
+<title>${infoDTO.infoBase.title}-小游戏-开心驿站-m.986001.com</title>
 <meta name="description" content="${infoDTO.infoBase.summary}" />
 <c:if test="${infoDTO.infoBase.hasPic==1}">
 <meta property="og:image" content="${ut:getThumb(infoDTO.infoBase.picUrl, 'w120')}" />
@@ -30,12 +30,17 @@
 		<div class="text-center">
 			<iframe src="about:blank;" id="h5gIframe" allowtransparency="true"></iframe>
 		</div>
-		<blockquote class="summary"></blockquote>
+		<blockquote class="summary">
+		${infoDTO.infoBase.title}
+		<c:if test="${not empty infoDTO.infoBase.summary}">${infoDTO.infoBase.summary}</c:if>
+		</blockquote>
 		<div class="container-fluid">
 			<%@include file="inc-moon.jspf" %>
 			<%@include file="inc-share.jspf" %>
 		</div>
-		<div class="aside"></div>
+		<div class="aside">
+		<%@include file="inc-mgg1.jspf" %>
+		</div>
 		<div class="aside">
   			<div id="uyan_frame"></div>
   		</div>
@@ -58,6 +63,7 @@ jQuery(function(){
 	SITE_MAIN.UYAN.doInit(SITE_MAIN.pageId);
 });
 </script>
+<%@include file="inc-adsense.jspf" %>
 <%@include file="inc-trace.jspf" %>
 </body>
 </html>

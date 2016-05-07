@@ -9,7 +9,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="format-detection" content="telephone=no"/>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
-<title>${infoDTO.infoBase.title}-开心驿站-m.986001.com</title>
+<title>${infoDTO.infoBase.title}-小游戏-开心驿站-m.986001.com</title>
 <meta name="description" content="${infoDTO.infoBase.summary}" />
 <c:if test="${infoDTO.infoBase.hasPic==1}">
 <meta property="og:image" content="${ut:getThumb(infoDTO.infoBase.picUrl, 'w120')}" />
@@ -23,12 +23,14 @@
 <%@include file="inc-nav.jspf" %>
 <main>
   <div id="main" class="container">
-		<div class="page-header">
-			<h3 class="title"></h3>
-		</div>
-		<blockquote class="summary"></blockquote>
+		<div class="page-header"><h3 class="title">${infoDTO.infoBase.title}</h3></div>
+		<blockquote class="summary">
+			<c:if test="${not empty infoDTO.infoBase.summary}">${infoDTO.infoBase.summary}</c:if>
+		</blockquote>
 		<div class="main-pic">
-			<p><img class="img-responsive center-block" src="https://img.alicdn.com/imgextra/i2/152137799/T2jXVgXgdOXXXXXXXX_!!152137799.gif"/></p>
+			<c:if test="${infoDTO.infoBase.hasPic==1}">
+			<img alt="${infoDTO.infoBase.title}" title="${infoDTO.infoBase.title}" class="img-responsive center-block" src="${infoDTO.infoBase.picUrl}"/>
+			</c:if>
 		</div>
 		<article></article>
 		<div class="text-center">
@@ -46,7 +48,9 @@
 			</div>
 			<%@include file="inc-share.jspf" %>
 		</div>
-  		<div class="aside"></div>
+  		<div class="aside">
+  		<%@include file="inc-mgg1.jspf" %>
+  		</div>
   		<div class="aside">
   			<a name="#uyan"></a>
   			<div id="uyan_frame"></div>
@@ -68,6 +72,7 @@ jQuery(function(){
 	SITE_MAIN.UYAN.doInit(SITE_MAIN.pageId);
 });
 </script>
+<%@include file="inc-adsense.jspf" %>
 <%@include file="inc-trace.jspf" %>
 </body>
 </html>
