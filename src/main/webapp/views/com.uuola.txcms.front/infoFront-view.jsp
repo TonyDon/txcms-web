@@ -23,7 +23,7 @@
 <%@include file="inc-nav.jspf" %>
 <main>
 <div id="main" class="container">
-		<div class="page-header"><h3 class="title">${infoDTO.infoBase.title}</h3></div>
+		<div class="page-header"><h1 class="title">${infoDTO.infoBase.title}</h1></div>
 		<blockquote class="summary">
 			<c:if test="${not empty infoDTO.infoBase.summary}">
 			${infoDTO.infoBase.summary}
