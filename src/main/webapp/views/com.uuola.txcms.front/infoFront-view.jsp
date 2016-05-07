@@ -41,7 +41,9 @@
 			</div>
 			<%@include file="inc-share.jspf" %>
 		</div>
-  		<div class="aside"></div>
+  		<div class="aside">
+  			<%@include file="inc-mgg1.jspf" %>
+  		</div>
   		<div class="aside"><a name="#uyan"></a><div id="uyan_frame"></div></div>
 </div>
 </main>
@@ -60,6 +62,7 @@ jQuery(function(){
 	SITE_MAIN.UYAN.doInit(SITE_MAIN.pageId);
 });
 </script>
+<%@include file="inc-adsense.jspf" %>
 <%@include file="inc-trace.jspf" %>
 </body>
 </html>
