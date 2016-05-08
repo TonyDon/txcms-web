@@ -96,6 +96,7 @@ div.main-pic img {
 #main article img{
 	border: 1px #DBDBDB solid;
 	padding:0.25em;
+	margin-top:0.25em;
 }
 
 .title {
