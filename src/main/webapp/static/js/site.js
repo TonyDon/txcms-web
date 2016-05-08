@@ -302,8 +302,7 @@ SITE_MAIN.BDSHARE.doInit = function(){
 			"bdSnsKey" : {},
 			"bdText" : "",
 			"bdMini" : "2",
-			"bdMiniList" : [ "weixin", "tqq", "bdxc", "tieba", "sqq",
-					"diandian", "huaban", "people", "mail", "isohu", "copy" ],
+			"bdMiniList" : [ "weixin", "tqq", "bdxc", "tieba", "sqq", "huaban", "people", "mail", "isohu", "copy" ],
 			"bdPic" : "",
 			"bdStyle" : "1",
 			"bdSize" : "24"
@@ -319,6 +318,13 @@ SITE_MAIN.BDSHARE.doInit = function(){
 			"bdSelectMiniList" : [ "qzone", "weixin", "tsina", "tqq", "sqq" ]
 		}
 	};
+	var share = window._bd_share_config.share;
+	var pic  = $('meta[property="og:image"]').attr('content') || '';
+	var desc = $('meta[name="description"]').attr('content') || document.title;
+	share.bdUrl = document.location.href ;
+	share.bdText = document.title ;
+	share.bdPic = pic ;
+	share.bdDesc = ut.cutstr(desc, 90);
 	$.getScript('http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5));
 };
 /** site latest list */
