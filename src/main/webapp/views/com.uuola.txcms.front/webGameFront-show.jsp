@@ -52,8 +52,7 @@
   		<%@include file="inc-mgg1.jspf" %>
   		</div>
   		<div class="aside">
-  			<a name="#uyan"></a>
-  			<div id="uyan_frame"></div>
+  			<a name="#uyan"></a><div id="uyan_frame"></div>
   		</div>
   </div>
 </main>

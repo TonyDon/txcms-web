@@ -28,11 +28,10 @@
 		<div class="container-fluid">
 			<div class="row info-box">
 				<div class="main-pic show">
-					<img class="img-responsive center-block"
-						src="http://image.uc.cn/s/uae/g/view/eae61cb3a24a63a9a8d2437703c21ac6" />
+					<img class="img-responsive center-block" src="" />
 				</div>
 				<div class="header-title">
-					<h5>一元纸币退出市场，以后端个存钱罐出门。</h5>
+					<h5></h5>
 				</div>
 			</div>
 		</div>
