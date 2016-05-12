@@ -154,7 +154,7 @@
 				uploadJson : window.ctx + '/uploader/store.json',
 				filePostName : 'mpfile',
 				extraFileUploadParams : {
-					'needThumb' : true
+					'needThumb' : false
 				}
 			});
 		});
