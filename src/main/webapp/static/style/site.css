@@ -146,6 +146,10 @@ div.main-pic img {
 	padding: 0 0.5em; 
 }
 
+.info-box a:hover{
+	text-decoration:none;
+}
+
 .info-box h3 {
 	margin-top:0.5em;
 	border-left:0.2em solid #BFD4F6;
@@ -153,8 +157,8 @@ div.main-pic img {
 }
 
 .info-box p.note{
-	font-size:1.2em;
-	line-height:1.5em;
+	font-size:1.25em;
+	line-height:1.8em;
 }
 
 div.user-act>div{
@@ -162,8 +166,14 @@ div.user-act>div{
 }
 
 .more {
-	font-size: 1.2em;
-	line-height: 1.6em;
+	font-size: 1.25em;
+	line-height: 1.8em;
+}
+
+div.more p img{
+	border: 1px #DBDBDB solid;
+	padding:0.15em;
+	margin-top:0.25em;
 }
 
 .content-box p {
