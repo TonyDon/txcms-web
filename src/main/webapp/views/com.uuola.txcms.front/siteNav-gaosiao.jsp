@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="ut" uri="/utils"%>
+<%@include file="inc-comm.jspf" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
@@ -13,7 +14,7 @@
 <meta name="full-screen" content="yes"/>
 <meta name="x5-fullscreen" content="true"/>
 <meta name="360-fullscreen" content="true"/>
-<title>搞siao-开心驿站-m.986001.com</title>
+<title>搞siao-手机娱乐-m.986001.com</title>
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
@@ -32,7 +33,6 @@
 		</div>
 	</div>
 </main>
-
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <script id="infoBoxTpl"  type="text/html">

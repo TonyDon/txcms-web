@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="ut" uri="/utils"%>
+<%@include file="inc-comm.jspf" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
@@ -17,7 +18,7 @@
 <link rel="icon" href="${ut:getThumb(infoDTO.infoBase.picUrl, 'w120')}"/>
 </c:if>
 <%@include file="inc-css.jspf" %>
-<script>window.ctx = '${ut:getCtxPath()}';</script>
+<script>window.ctx = '<%=ctp%>';</script>
 </head>
 <body>
 <%@include file="inc-nav.jspf" %>
@@ -56,7 +57,6 @@
   		</div>
   </div>
 </main>
-
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <script>

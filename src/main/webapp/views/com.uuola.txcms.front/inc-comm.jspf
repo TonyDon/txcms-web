@@ -1,0 +1,2 @@
+<%@ page pageEncoding="UTF-8" %>
+<%String ctp = com.uuola.txweb.framework.utils.ContextUtil.getContextPath();String ver = com.uuola.txcms.component.VersionUtil.getSrcVer();%>

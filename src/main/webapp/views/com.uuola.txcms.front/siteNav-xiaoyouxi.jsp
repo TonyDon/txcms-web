@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="ut" uri="/utils"%>
+<%@include file="inc-comm.jspf" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
@@ -13,7 +14,7 @@
 <meta name="full-screen" content="yes"/>
 <meta name="x5-fullscreen" content="true"/>
 <meta name="360-fullscreen" content="true"/>
-<title>小游戏-开心驿站-m.986001.com</title>
+<title>小游戏-手机娱乐-开心驿站-m.986001.com</title>
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '${ut:getCtxPath()}';</script>
 <style>
@@ -40,8 +41,8 @@
 
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
-<script src="${ut:getCtxPath()}/static/js/imagesloaded.min.js?v=1008"></script>
-<script src="${ut:getCtxPath()}/static/js/masonry.min.js?v=1008"></script>
+<script src="<%=ctp %>/static/js/imagesloaded.min.js?v=<%=ver%>"></script>
+<script src="<%=ctp %>/static/js/masonry.min.js?v=<%=ver%>"></script>
 <script id="infoBoxTpl"  type="text/html">
 {% for(var i=0; i<datas.length; i++){ var d = datas[i]; var href = GetNavUrl(d.siteUrl, d.id);%}
 			<div class="col-sm-6 item">

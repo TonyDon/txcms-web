@@ -1,8 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
-<% String csctp = com.uuola.txweb.framework.utils.ContextUtil.getContextPath(); String cssver = com.uuola.txcms.component.VersionUtil.getSrcVer(); %>
-<link href="<%=csctp %>/static/bootstrap/css/bootstrap.min.css?v=<%=cssver%>" rel="stylesheet" type="text/css"/>
-<link href="<%=csctp %>/static/style/v1/site-min.css?v=<%=cssver%>" rel="stylesheet" type="text/css"/>
+<link href="<%=ctp %>/static/bootstrap/css/bootstrap.min.css?v=<%=ver%>" rel="stylesheet" type="text/css"/>
+<link href="<%=ctp %>/static/style/site-min.css?v=<%=ver%>" rel="stylesheet" type="text/css"/>
 <!--[if lt IE 9]>
-<script src="<%=csctp %>/static/js/html5shiv.js?v=<%=cssver%>"></script>
-<script src="<%=csctp %>/static/js/respond.min.js?v=<%=cssver%>"></script>
+<script src="<%=ctp %>/static/js/html5shiv.js?v=<%=ver%>"></script>
+<script src="<%=ctp %>/static/js/respond.min.js?v=<%=ver%>"></script>
 <![endif]-->

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="ut" uri="/utils"%>
+<%@include file="inc-comm.jspf" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
@@ -9,7 +10,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="format-detection" content="telephone=no"/>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
-<title>${infoDTO.infoBase.title}-开心驿站-m.986001.com</title>
+<title>${infoDTO.infoBase.title}-手机娱乐-m.986001.com</title>
 <meta name="description" content="${infoDTO.infoBase.summary}" />
 <c:if test="${infoDTO.infoBase.hasPic==1}">
 <meta property="og:image" content="${infoDTO.infoBase.picUrl}" />
@@ -53,7 +54,6 @@
   		<div class="aside"><a name="#uyan"></a><div id="uyan_frame"></div></div>
 </div>
 </main>
-
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <script>
