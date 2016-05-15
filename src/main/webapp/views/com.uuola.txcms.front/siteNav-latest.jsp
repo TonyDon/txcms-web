@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>手机娱乐-开心驿站-m.986001.com</title>
 <%@include file="inc-css.jspf" %>
-<script>window.ctx = '${ut:getCtxPath()}';</script>
+<script>window.ctx = '<%=ctp%>';</script>
 <style>
 .container{padding: 0 0.5em;}
 </style>

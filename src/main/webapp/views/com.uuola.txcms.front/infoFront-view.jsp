@@ -18,7 +18,7 @@
 <link rel="icon" href="${infoDTO.infoBase.picUrl}"/>
 </c:if>
 <%@include file="inc-css.jspf" %>
-<script>window.ctx = '${ut:getCtxPath()}';</script>
+<script>window.ctx = '<%=ctp%>';</script>
 </head>
 <body>
 <%@include file="inc-nav.jspf" %>
