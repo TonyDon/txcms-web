@@ -23,27 +23,27 @@
 		</div>
 		<div class="container-fluid info-list" title="归档列表">
 		<c:if test="${not empty pageDTO.datas}">
-		<c:forEach var="item" items="${pageDTO.datas}" varStatus="status">   
-	      <div class="row info-box">
-		      <c:choose>
-		      	<c:when test="${item.catId>=30 && item.catId<=34 }">
+		<c:forEach var="item" items="${pageDTO.datas}">   
+	    <div class="row info-box">
+		<c:choose>
+		   <c:when test="${item.catId>=30 && item.catId<=34 }">
 		      		<h3><a href="<%=ctp%>/h5g/show?id=${item.id}?ref=archive-list" target="_blank" title="小游戏-${item.title }">[小游戏] ${item.title }</a></h3>
-		      	</c:when>
-		      	<c:otherwise>
-		      		<c:choose>
-		      			<c:when test="${item.hasPic==1}">
-		      				<h3><a href="<%=ctp%>/info/${item.id}?ref=archive-list" target="_blank" title="${item.title }(图)">[图] ${item.title }</a></h3>
-		      			</c:when>
-		      			<c:when test="${item.hasVideo==1}">
-		      				<h3><a href="<%=ctp%>/info/${item.id}?ref=archive-list" target="_blank" title="${item.title }(视频)">[视频] ${item.title }</a></h3>
-		      			</c:when>
-		      			<c:otherwise>
-		      				<h3><a href="<%=ctp%>/info/${item.id}?ref=archive-list" target="_blank" title="${item.title }">${item.title }</a></h3>
-		      			</c:otherwise>
-		      		</c:choose>
-		      	</c:otherwise>
+		   </c:when>
+		   <c:otherwise>
+		      <c:choose>
+		      		<c:when test="${item.hasVideo==1}">
+		      		<h3><a href="<%=ctp%>/info/${item.id}?ref=archive-list" target="_blank" title="${item.title }(视频)">[视频] ${item.title }</a></h3>
+		      		</c:when>
+		      		<c:when test="${item.hasPic==1}">
+		      		<h3><a href="<%=ctp%>/info/${item.id}?ref=archive-list" target="_blank" title="${item.title }(图)">[图] ${item.title }</a></h3>
+		      		</c:when>
+		      		<c:otherwise>
+		      		<h3><a href="<%=ctp%>/info/${item.id}?ref=archive-list" target="_blank" title="${item.title }">${item.title }</a></h3>
+		      		</c:otherwise>
 		      </c:choose>
-		  </div> 
+		   </c:otherwise>
+		</c:choose>
+		</div> 
 		</c:forEach> 
 		</c:if>
 		</div>
