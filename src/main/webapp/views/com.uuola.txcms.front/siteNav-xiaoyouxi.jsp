@@ -26,6 +26,9 @@
 <main>
 	<div id="main" class="container">
 		<div class="container-fluid">
+		<div class="row"><h3>小游戏</h3></div>
+		</div>
+		<div class="container-fluid">
 			<div class="row masonry-container info-list"></div>
 		</div>
 		<div class="container-fluid">

@@ -22,6 +22,9 @@
 <%@include file="inc-nav.jspf" %>
 <main>
 	<div id="main" class="container">
+		<div class="container-fluid">
+		<div class="row"><h3>娱乐</h3></div>
+		</div>
 		<div class="container-fluid info-list"></div>
 		<div class="container-fluid">
 			<div class="row next-page">
