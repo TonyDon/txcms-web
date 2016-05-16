@@ -11,7 +11,7 @@
 <meta name="format-detection" content="telephone=no"/>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-<title>手机娱乐-开心驿站-m.986001.com</title>
+<title>内容列表-手机娱乐-开心驿站-m.986001.com</title>
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '<%=ctp%>';</script>
 <style>
@@ -22,18 +22,9 @@
 <%@include file="inc-nav.jspf" %>
 <main>
 	<div id="main" class="container">
-	<!-- 
 		<div class="container-fluid">
-			<div class="row info-box">
-				<div class="main-pic show">
-					<img class="img-responsive center-block" src="" />
-				</div>
-				<div class="header-title">
-					<h5></h5>
-				</div>
-			</div>
+		<div class="row"><h3 id="cateNav"></h3></div>
 		</div>
-	 -->
 		<div class="container-fluid info-list"></div>
 		<div class="container-fluid">
 			<div class="row next-page">
@@ -42,14 +33,13 @@
 		</div>
 	</div>
 </main>
-
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <script id="infoBoxTpl"  type="text/html">
 {% for(var i=0; i<datas.length; i++){ var d = datas[i];  var href = GetNavUrl(d.siteUrl, d.id);%}
 	<div class="row info-box">
 	 <h3><a href="{%=href%}">{%=d.title%}</a></h3>
-	 <span>{%=#GetCatNav(d.catId)%}</span>
+	 <span></span>
      <p class="note">{%=#FmtSummary(d.summary)%}</p>
 	 <div class="main-pic {%=(d.hasPic==1?'show':'hidden')%}">
 	 	<a href="{%=href%}">
@@ -80,10 +70,12 @@
 template.helper('GetUrl', function(s){return SITE_MAIN.getUrl(s);});
 template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);});
 template.helper('IsH5G', function(i){return SITE_MAIN.isH5G(i);});
-template.helper('GetCatNav', function(c){return SITE_MAIN.getCatNav(c);});
 template.helper('FmtSummary', function(s){return SITE_MAIN.fmtSummary(s);});
 jQuery(function(){
-	SITE_MAIN.NAV.LATEST.doInit();
+	var ci = '${cid}';
+	SITE_MAIN.NAV.CAT.doInit(ci, function(){
+		$('#cateNav').text(SITE_MAIN.getCatNav(ci,'text'));
+	});
 });
 </script>
 <%@include file="inc-trace.jspf" %>

@@ -49,7 +49,7 @@
 					</a>
 					<div class="intro">
 						<h4><a href="{%=href%}">{%=d.title%}</a></h4>
-						<span>{%=GetCatNav(d.catId)%}</span>
+						<span>{%=#GetCatNav(d.catId)%}</span>
 						<div class="text-info">{%=#FmtSummary(d.summary)%}</div>
 						<p>
 							<a href="javascript:;" class="btn btn-info btn-sm" onclick="SITE_MAIN.NAV.LATEST.h5gPlayClick(this);" data-id="{%=d.id%}">现在玩</a>

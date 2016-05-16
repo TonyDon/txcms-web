@@ -70,10 +70,11 @@ SITE_MAIN.initPageJqObj = function(){
 			goNext : $('a.next'),
 			artMainVideo : $('div.main-video'),
 			vplayer : $("#vplayer"),
-			ifvplayer : $('#ifvplayer')
+			ifvplayer : $('#ifvplayer'),
+			catNav :  $('div.cat-nav')
 	};
 };
-SITE_MAIN.getCatNav=function(cid){
+SITE_MAIN.getCatNav=function(cid,type){
 	if(!cid || !SITE_CAT_LIST){
 		return '';
 	}
@@ -85,7 +86,11 @@ SITE_MAIN.getCatNav=function(cid){
 	for(var k in cparr){
 		na.push(SITE_CAT_LIST['c'+cparr[k]].name);
 	}
-	return na.join('/');
+	var ss = na.join('/');
+	if(type && type=='text'){
+		return ss;
+	}
+	return ['<a href="',window.ctx,'/catelist/',cid,'">',ss,'</a>'].join('');
 };
 
 /* info Page **/
@@ -154,6 +159,8 @@ SITE_MAIN.INFO.doRender = function(){
 		},ut.rndint(1000,2000));
 	}
 	SITE_MAIN.doHit(iid);
+	var cn = SITE_MAIN.getCatNav(ib.catId);
+	jqO.catNav.html(cn);
 };
 SITE_MAIN.INFO.a1 = '驿站访客过多，请稍后再试哦~';
 /* rand pick info */
@@ -192,7 +199,6 @@ SITE_MAIN.INFO.go = function(target,flg){
 		}
 	});
 }
-
 /* h5g page */
 SITE_MAIN.H5G={};
 SITE_MAIN.H5G.doInit = function(){
@@ -243,6 +249,8 @@ SITE_MAIN.H5G.doRender = function(){
 		},ut.rndint(1000,2000));
 	}
 	SITE_MAIN.doHit(iid);
+	var cn = SITE_MAIN.getCatNav(ib.catId);
+	jqO.catNav.html(cn);
 };
 
 /*h5g play page**/
@@ -279,6 +287,8 @@ SITE_MAIN.H5G_PLAY.doRender = function(){
 			jqO.h5gIframe.attr('src', siteurl + 'index.html?T=' + Math.random() * 1000 + '&frwahash=' + SITE_MAIN.frwahash);
 		}
 		SITE_MAIN.doHit(ib.id);
+		var cn = SITE_MAIN.getCatNav(ib.catId);
+		jqO.catNav.html(cn);
 	}
 };
 

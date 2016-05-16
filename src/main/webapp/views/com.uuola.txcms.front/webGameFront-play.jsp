@@ -31,6 +31,7 @@
 		<div class="text-center">
 			<iframe src="about:blank;" id="h5gIframe" allowtransparency="true"></iframe>
 		</div>
+		<div class="cat-nav"></div>
 		<blockquote class="summary">
 		${infoDTO.infoBase.title}
 		<c:if test="${not empty infoDTO.infoBase.summary}">${infoDTO.infoBase.summary}</c:if>

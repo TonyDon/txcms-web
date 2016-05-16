@@ -25,6 +25,7 @@
 <main>
   <div id="main" class="container">
 		<div class="page-header"><h1 class="title">${infoDTO.infoBase.title}</h1></div>
+		<div class="cat-nav"></div>
 		<blockquote class="summary">
 			<c:if test="${not empty infoDTO.infoBase.summary}">${infoDTO.infoBase.summary}</c:if>
 		</blockquote>

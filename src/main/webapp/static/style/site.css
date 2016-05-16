@@ -87,6 +87,7 @@ div.main-pic img {
 #main article {
 	font-size: 1.25em;
 	line-height: 1.85em;
+	padding-bottom:1em;
 }
 
 #main article p {
@@ -98,7 +99,15 @@ div.main-pic img {
 	padding:0.15em;
 	margin-top:0.25em;
 }
-
+div.cat-nav{
+	margin-bottom:1em;
+}
+div.cat-nav a{
+	font-size:1.2em;
+}
+div.page-header{
+	margin-top:1.2em;
+}
 .title {
 	font-weight: 600;
 	text-shadow: 0 2px 2px #fff;
