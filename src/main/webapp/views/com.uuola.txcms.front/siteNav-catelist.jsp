@@ -11,7 +11,7 @@
 <meta name="format-detection" content="telephone=no"/>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-<title>内容列表-手机娱乐-开心驿站-m.986001.com</title>
+<title>${catNamepath}-内容列表-手机娱乐-开心驿站-m.986001.com</title>
 <%@include file="inc-css.jspf" %>
 <script>window.ctx = '<%=ctp%>';</script>
 <style>
@@ -23,7 +23,7 @@
 <main>
 	<div id="main" class="container">
 		<div class="container-fluid">
-		<div class="row"><h3 id="cateNav"></h3></div>
+		<div class="row"><h3 id="cateNav">${catNamepath}</h3></div>
 		</div>
 		<div class="container-fluid info-list"></div>
 		<div class="container-fluid">
@@ -72,10 +72,7 @@ template.helper('GetNavUrl', function(su,id){return SITE_MAIN.getNavUrl(su,id);}
 template.helper('IsH5G', function(i){return SITE_MAIN.isH5G(i);});
 template.helper('FmtSummary', function(s){return SITE_MAIN.fmtSummary(s);});
 jQuery(function(){
-	var ci = '${cid}';
-	SITE_MAIN.NAV.CAT.doInit(ci, function(){
-		$('#cateNav').text(SITE_MAIN.getCatNav(ci,'text'));
-	});
+	SITE_MAIN.NAV.CAT.doInit('${cid}');
 });
 </script>
 <%@include file="inc-trace.jspf" %>
