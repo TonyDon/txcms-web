@@ -23,7 +23,7 @@
 <main>
 	<div id="main" class="container">
 		<div class="container-fluid">
-		<div class="row"><h3 id="cateNav">${catNamepath}</h3></div>
+		<div class="row"><h3>${catNamepath}</h3></div>
 		</div>
 		<div class="container-fluid info-list"></div>
 		<div class="container-fluid">
