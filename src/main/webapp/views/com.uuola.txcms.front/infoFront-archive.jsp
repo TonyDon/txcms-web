@@ -61,6 +61,7 @@
 		</c:if>
 		</div>
 </div>
+<%@include file="inc-qrcode.jspf" %>
 </main>
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>

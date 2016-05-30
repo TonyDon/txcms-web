@@ -52,6 +52,9 @@
   		<div class="aside">
   		<%@include file="inc-mgg1.jspf" %>
   		</div>
+  		<div class="aside">
+  		<%@include file="inc-qrcode.jspf" %>
+  		</div>
   		<div class="aside"><a name="#uyan"></a><div id="uyan_frame"></div></div>
 </div>
 </main>

@@ -1,0 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
+<div class="text-center">
+<p>扫码访问本页</p><p id="currQRcode"></p>
+</div>

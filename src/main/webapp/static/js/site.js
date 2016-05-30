@@ -466,6 +466,6 @@ SITE_MAIN.NAV.CAT.doInit = function(cid, fn){
 };
 SITE_MAIN.showQRcode=function(el,url){
 	var u = url || (location.href+'#!/ref=footer-qrcode');
-	var el = el || 'currQRcode';
-	$('#'+el).qrcode({text:u, width: 64, height: 64});
+	var el = el || '#currQRcode';
+	$(el).qrcode({text:u, width: 128, height: 128});
 };

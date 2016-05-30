@@ -44,6 +44,7 @@
 			</div>
 		</div>
 	</div>
+	<%@include file="inc-qrcode.jspf" %>
 </main>
 
 <%@include file="inc-footer.jspf" %>
