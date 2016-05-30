@@ -65,5 +65,8 @@
 <%@include file="inc-footer.jspf" %>
 <%@include file="inc-js.jspf" %>
 <%@include file="inc-trace.jspf" %>
+<script>
+jQuery(function(){SITE_MAIN.showQRcode();});
+</script>
 </body>
 </html>

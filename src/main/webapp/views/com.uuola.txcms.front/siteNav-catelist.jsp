@@ -73,6 +73,7 @@ template.helper('IsH5G', function(i){return SITE_MAIN.isH5G(i);});
 template.helper('FmtSummary', function(s){return SITE_MAIN.fmtSummary(s);});
 jQuery(function(){
 	SITE_MAIN.NAV.CAT.doInit('${cid}');
+	SITE_MAIN.showQRcode();
 });
 </script>
 <%@include file="inc-trace.jspf" %>

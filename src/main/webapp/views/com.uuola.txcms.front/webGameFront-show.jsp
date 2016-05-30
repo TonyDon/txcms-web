@@ -70,6 +70,7 @@ jQuery(function(){
 	SITE_MAIN.H5G.doRender();
 	SITE_MAIN.BDSHARE.doInit();
 	SITE_MAIN.UYAN.doInit(SITE_MAIN.pageId);
+	SITE_MAIN.showQRcode();
 });
 </script>
 <%@include file="inc-adsense.jspf" %>

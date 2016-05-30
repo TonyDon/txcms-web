@@ -6,3 +6,4 @@
 <script src="<%=ctp %>/static/js/common.min.js?v=<%=ver%>"></script>
 <script src="<%=ctp %>/static/js/site-min.js?v=<%=ver%>"></script>
 <script src="<%=ctp %>/static/js/cat.js?v=<%=ver%>"></script>
+<script src="<%=ctp %>/static/js/jq.qrcode.min.js?v=<%=ver%>"></script>

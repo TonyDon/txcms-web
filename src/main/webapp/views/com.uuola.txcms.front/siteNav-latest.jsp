@@ -87,6 +87,7 @@ template.helper('GetCatNav', function(c){return SITE_MAIN.getCatNav(c);});
 template.helper('FmtSummary', function(s){return SITE_MAIN.fmtSummary(s);});
 jQuery(function(){
 	SITE_MAIN.NAV.LATEST.doInit();
+	SITE_MAIN.showQRcode();
 });
 </script>
 <%@include file="inc-trace.jspf" %>

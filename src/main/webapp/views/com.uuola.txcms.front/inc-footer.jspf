@@ -1,4 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <footer class="footer"> 
-	 <div class="container"><p class="text-muted">m.986001.com 手机娱乐 开心驿站</p></div>
+	<div class="container">
+	<p class="text-muted">m.986001.com 手机娱乐 开心驿站 手机扫码访问本页</p>
+	<p id="currQRcode"></p>
+	</div>
 </footer>

@@ -74,7 +74,7 @@ template.helper('GetThumb', function(u){return ut.fmtImageThumb(u,'w120');});
 template.helper('FmtSummary', function(s){return SITE_MAIN.fmtSummary(s);});
 jQuery(function(){
 	var $container = $('.masonry-container');
-    SITE_MAIN.NAV.CAT.doInit(${topCid}, function(){
+    SITE_MAIN.NAV.CAT.doInit('${topCid}', function(){
     	$container.imagesLoaded( function () {
             $container.masonry({
                 columnWidth: '.item',
@@ -82,6 +82,7 @@ jQuery(function(){
             });
         });
     });
+    SITE_MAIN.showQRcode();
 });
 </script>
 <%@include file="inc-trace.jspf" %>
