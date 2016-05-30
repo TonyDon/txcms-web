@@ -162,7 +162,7 @@ SITE_MAIN.INFO.doRender = function(){
 	var cn = SITE_MAIN.getCatNav(ib.catId);
 	jqO.catNav.html(cn);
 };
-SITE_MAIN.INFO.a1 = '驿站访客过多，请稍后再试哦~';
+SITE_MAIN.INFO.a1 = '当前没有更新，看看其他的吧~';
 /* rand pick info */
 SITE_MAIN.INFO.randPick = function(target){
 	var that = $(target);
